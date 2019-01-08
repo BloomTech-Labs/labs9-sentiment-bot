@@ -12,7 +12,12 @@ class NavMenu extends React.Component {
 
     render() {
         if (this.props.fetchingUsers || this.props.fetchingTeams) {
-            return <h1>Just a moment...</h1>
+            return (
+                <div className="navigation">
+                    <NavLink to="/my-profile">My Profile</NavLink>
+                    <NavLink to="/settings">Settings</NavLink>
+                </div>
+            )
         }
         if (this.props.teams[0] === undefined) {
             return (

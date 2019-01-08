@@ -10,4 +10,6 @@
 
 .navigation a {
     width: 60%;
+    color: black;
+    text-decoration: none;
 }
