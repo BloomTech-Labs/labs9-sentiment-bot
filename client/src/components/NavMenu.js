@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchUsers, fetchTeams } from "../actions";
 
@@ -15,19 +16,19 @@ class NavMenu extends React.Component {
         if (this.props.teams[0] === undefined) {
             return (
                 <div>
-                    <p>My Profile</p>
-                    <p>Settings</p>
+                    <NavLink to="/my-profile">My Profile</NavLink>
+                    <NavLink to="/settings">Settings</NavLink>
                 </div>
             )
         } else {
             return (
                 <div>
-                    <p>My Profile</p>
-                    <p>My Team</p>
-                    <p>Survey</p>
-                    <p>Reports</p>
-                    <p>Settings</p>
-                    <p>Billing</p>
+                    <NavLink to="/my-profile">My Profile</NavLink>
+                    <NavLink to="/my-team">My Team</NavLink>
+                    <NavLink to="/new-survey">Survey</NavLink>
+                    <NavLink to="/reports">Reports</NavLink>
+                    <NavLink to="/settings">Settings</NavLink>
+                    <NavLink to="/billing">Billing</NavLink>
                 </div>
             );
         }
