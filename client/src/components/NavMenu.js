@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchUsers, fetchTeams } from "../actions";
+import "./NavMenu.css";
 
 class NavMenu extends React.Component {
     componentDidMount() {
@@ -15,14 +16,14 @@ class NavMenu extends React.Component {
         }
         if (this.props.teams[0] === undefined) {
             return (
-                <div>
+                <div className="navigation">
                     <NavLink to="/my-profile">My Profile</NavLink>
                     <NavLink to="/settings">Settings</NavLink>
                 </div>
             )
         } else {
             return (
-                <div>
+                <div className="navigation">
                     <NavLink to="/my-profile">My Profile</NavLink>
                     <NavLink to="/my-team">My Team</NavLink>
                     <NavLink to="/new-survey">Survey</NavLink>
