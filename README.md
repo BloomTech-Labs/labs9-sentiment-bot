@@ -11,12 +11,12 @@ Install dependencies
 npm install
 ```
 
-Start server
+Then start the server!
 ```sh
 npm run start
 ```
 
-Development
+Or if you're developing
 ```sh
-npm run server
+npm run dev
 ```
