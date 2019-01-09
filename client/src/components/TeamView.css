@@ -1,0 +1,33 @@
+.no-team {
+    width: 100%;
+}
+
+.no-team .join-team {
+    border: 1px solid black;
+    display: flex;
+    flex-wrap: nowrap;
+    width: 60%;
+    height: 325px;
+    justify-content: center;
+    align-items: center;
+}
+
+.no-team .join-team .button-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.team-manager {
+    width: 100%;
+}
+
+.team-manager .timeline {
+    border: 1px solid black;
+    display: flex;
+    flex-wrap: nowrap;
+    width: 60%;
+    height: 325px;
+    justify-content: center;
+    align-items: center;
+}

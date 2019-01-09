@@ -1,0 +1,17 @@
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.top-nav .left {
+    display: flex;
+    align-items: center;
+    margin-left: 1%;
+}
+
+.top-nav .right {
+    display: flex;
+    align-items: center;
+    margin-right: 1%;
+}

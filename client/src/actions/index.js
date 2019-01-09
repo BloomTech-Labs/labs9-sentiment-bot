@@ -14,7 +14,6 @@ export const fetchUsers = () => dispatch => {
     axios
         .get(`${URL}/users/1`)
         .then(response => {
-            console.log(response);
             dispatch({type: FETCHING_USERS_SUCCESS, payload: response.data});
         })
         .catch(error => {
@@ -27,7 +26,6 @@ export const fetchTeams = () => dispatch => {
     axios
         .get(`${URL}/users/1/teams`)
         .then(response => {
-            console.log(response);
             dispatch({type: FETCHING_TEAMS_SUCCESS, payload: response.data});
         })
         .catch(error => {
