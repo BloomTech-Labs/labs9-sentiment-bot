@@ -4,14 +4,10 @@ import { fetchUsers, fetchTeams } from "../actions";
 import NavMenu from "./NavMenu";
 import TopNav from "./TopNav";
 import Avatar from "./Avatar";
+import TeamView from "./TeamView";
 import "./UserProfile.css";
 
 class UserProfile extends React.Component {
-    componentDidMount() {
-        this.props.fetchUsers();
-        this.props.fetchTeams();
-    }
-
     render() {
         if (this.props.users) {
             return (
@@ -22,7 +18,8 @@ class UserProfile extends React.Component {
                         <div className="profile-view">
                             <Avatar imageSrc={this.props.users.image} />
                             <h3>{this.props.users.firstName} {this.props.users.lastName}</h3>
-                            <button>Connect to Slack</button>
+                            <div>Connect to Slack</div>
+                            <TeamView />
                         </div>
                     </div>
                      
