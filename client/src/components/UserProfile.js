@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { fetchUsers, fetchTeams } from "../actions";
 import NavMenu from "./NavMenu";
 import TopNav from "./TopNav";
+import Avatar from "./Avatar";
+import "./UserProfile.css";
 
 class UserProfile extends React.Component {
     componentDidMount() {
@@ -11,33 +13,24 @@ class UserProfile extends React.Component {
     }
 
     render() {
-        if (this.props.fetchingUsers || this.props.fetchingTeams) {
+        if (this.props.users) {
             return (
                 <div className="profile-page">
                     <TopNav pageName="My Profile" />
-                    <NavMenu />
-                    
-                </div>
-            )
-        }
-        if (this.props.teams[0] === undefined) {
-            return (
-                <div className="profile-page">
-                    <TopNav pageName="My Profile" />
-                    <NavMenu />
-                    
-                </div>
-            )
-        } else {
-            return (
-                <div className="profile-page">
-                    <TopNav pageName="My Profile" />
-                    <NavMenu />
-                    
+                    <div className="main-view">
+                        <NavMenu />
+                        <div className="profile-view">
+                            <Avatar imageSrc={this.props.users.image} />
+                            <h3>{this.props.users.firstName} {this.props.users.lastName}</h3>
+                            <button>Connect to Slack</button>
+                        </div>
+                    </div>
+                     
                 </div>
             );
+        } else {
+            return <h1>Loading...</h1>
         }
-        
     }
 }
 
