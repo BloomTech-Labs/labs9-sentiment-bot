@@ -15,10 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        APIController.shared.getUserResponses(userId: 1) { (respones, error) in
+        testingApiCalls()
+        return true
+    }
+    
+    func testingApiCalls() {
+        APIController.shared.getUserResponses(userId: 4) { (respones, error) in
             
         }
-        return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

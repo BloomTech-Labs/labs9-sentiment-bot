@@ -14,6 +14,8 @@ class Response: NSObject, Decodable {
     let date: Date
     let longitude: CLLocationDegrees
     let latitude: CLLocationDegrees
+    let mood: String
+    let emoji: String
     let userId: Int
     let surveyId: Int
     var location: CLLocationCoordinate2D
@@ -25,6 +27,8 @@ class Response: NSObject, Decodable {
         case latitude
         case userId
         case surveyId
+        case mood
+        case emoji
     }
     
     required init(from decoder: Decoder) throws {
@@ -36,6 +40,8 @@ class Response: NSObject, Decodable {
         let longitude = (try container.decode(String.self, forKey: .longitude) as NSString).doubleValue
         let latitude = (try container.decode(String.self, forKey: .latitude) as NSString).doubleValue
         let id = try container.decode(Int.self, forKey: .id)
+        let mood = try container.decode(String.self, forKey: .mood)
+        let emoji = try container.decode(String.self, forKey: .emoji)
         let userId = try container.decode(Int.self, forKey: .userId)
         let surveyId = try container.decode(Int.self, forKey: .surveyId)
         
@@ -44,6 +50,8 @@ class Response: NSObject, Decodable {
         self.date = date!
         self.longitude = longitude
         self.latitude = latitude
+        self.mood = mood
+        self.emoji = emoji
         self.userId = userId
         self.surveyId = surveyId
         self.location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
