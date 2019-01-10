@@ -12,16 +12,16 @@ exports.seed = function (knex, Promise) {
 
       // creates empty array with length numUsers 
       // and maps over it with faker.js userdata
-      const users = Array.from({ length: numUsers }, generateUser)
-      const teams = Array.from({ length: numTeams }, generateTeam)
+      const users = Array.from({ length: numUsers }, (v, i) => generateUser(v, i+1))
+      const teams = Array.from({ length: numTeams }, (v, i) => generateTeam(v, i+1))
       // Inserts seed entries
       return knex('users').insert(users).then(function () {
         // sqlite3 must have a limit preventing you from inserting more then
         // 199 rows at a time
         // calling insert multiple times this way is a work around
-        const users = Array.from({ length: numUsers }, (v, i) => generateUser(v, i + numUsers))
+        const users = Array.from({ length: numUsers }, (v, i) => generateUser(v, 1 + i + numUsers))
         return knex('users').insert(users).then(function () {
-          const users = Array.from({ length: numUsers }, (v, i) => generateUser(v, i + numUsers * 2))
+          const users = Array.from({ length: numUsers }, (v, i) => generateUser(v, 1 + i + numUsers * 2))
           return knex('users').insert(users).then(function () {
 
           })
