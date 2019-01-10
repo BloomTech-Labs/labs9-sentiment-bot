@@ -10,5 +10,10 @@ import Foundation
 
 
 struct User: Codable {
-    
+    let id: Int
+    var firstName: String
+    var lastName: String
+    var teamId: Int
 }
+
+

@@ -27,6 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         APIController.shared.getManagingTeam(userId: 4) { (team, error) in
             
         }
+        
+        APIController.shared.getTeamMembers(teamId: 3) { (users, error) in
+            
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
