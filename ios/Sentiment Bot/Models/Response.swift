@@ -48,7 +48,7 @@ class Response: NSObject, Decodable {
         let emoji = try container.decode(String.self, forKey: .emoji)
         let userId = try container.decode(Int.self, forKey: .userId)
         let surveyId = try container.decode(Int.self, forKey: .surveyId)
-        let imageUrl = URL(string: try container.decode(String.self, forKey: .imageUrl))!
+        let imageUrl = try container.decode(URL.self, forKey: .imageUrl)
         
         self.id = id
         self.date = date!
