@@ -4,7 +4,11 @@ const getUser = (id) => db('users')
   .where('id', id)
 
 const getUserList = (page) => db('users')
-  .whereBetween('id', [0, 100])
+/* will figure out pagination later
+  .whereBetween('id', [
+    ((page-1) * 100) + 1, 
+    (page-1) * 100
+  ])*/
 
 const addUser = (user) => db('users')
   .insert(user)
