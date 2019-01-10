@@ -6,6 +6,7 @@ exports.up = function(knex, Promise) {
     user.string('lastName')
     user.string('password')
     user.string('email').unique()
+    user.timestamps(true, true)
   }).then(function() {
     return knex.schema.createTable('teams', (team) => {
       team.increments('id')

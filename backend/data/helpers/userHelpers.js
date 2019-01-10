@@ -3,7 +3,7 @@ const db = require('../dbConfig')
 const getUser = (id) => db('users')
   .where('id', id)
 
-const getUsers = (page) => db('users')
+const getUserList = (page) => db('users')
   .whereBetween('id', [0, 100])
 
 const addUser = (user) => db('users')
@@ -18,7 +18,7 @@ const deleteUser = (id) => db('user')
 
 module.exports = {
   getUser,
-  getUsers,
+  getUserList,
   addUser,
   editUser,
   deleteUser,
