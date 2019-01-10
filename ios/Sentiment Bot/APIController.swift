@@ -12,10 +12,21 @@ import Foundation
 class APIController {
     
     
-    func getUserFeelings(completion: @escaping ([Feeling]?, Error?) -> Void) {
+    func getUserResponses(userId: Int, completion: @escaping ([Response]?, Error?) -> Void) {
+        let url = baseUrl.appendingPathComponent("users")
+                         .appendingPathComponent("\(userId)")
+                         .appendingPathComponent("responses")
+        
+        
+    }
+    
+    func getManagingTeam(completion: @escaping (Team?, Error?) -> Void) {
         
     }
     
     
-    static let baseURL = URL(string: "http://localhost:3000/")!
+    
+    
+    
+    let baseUrl = URL(string: "http://localhost:3000/")!
 }

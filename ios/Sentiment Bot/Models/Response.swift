@@ -1,5 +1,5 @@
 //
-//  Feeling.swift
+//  Response.swift
 //  Sentiment Bot
 //
 //  Created by Moin Uddin on 1/9/19.
@@ -8,7 +8,6 @@
 
 import Foundation
 
-
-struct Feeling: Codable {
+struct Response: Codable {
     
 }
