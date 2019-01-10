@@ -8,20 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		F1B7E58B21E547450096FC6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B7E58A21E547450096FC6F /* AppDelegate.swift */; };
-		F1B7E58D21E547450096FC6F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B7E58C21E547450096FC6F /* ViewController.swift */; };
 		F1B7E59021E547450096FC6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E58E21E547450096FC6F /* Main.storyboard */; };
 		F1B7E59221E547460096FC6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E59121E547460096FC6F /* Assets.xcassets */; };
 		F1B7E59521E547460096FC6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E59321E547460096FC6F /* LaunchScreen.storyboard */; };
+		F1ECBCFB21E706AA005CDBE8 /* UserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1ECBCFA21E706AA005CDBE8 /* UserView.xib */; };
+		F1ECBCFD21E706B7005CDBE8 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECBCFC21E706B7005CDBE8 /* UserView.swift */; };
+		F1ECBD0221E70BF5005CDBE8 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECBD0121E70BF5005CDBE8 /* TimelineViewController.swift */; };
+		F1ECBD0621E70C26005CDBE8 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECBD0521E70C26005CDBE8 /* MapViewController.swift */; };
+		F1ECBD0821E70C33005CDBE8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECBD0721E70C33005CDBE8 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F1B7E58721E547450096FC6F /* Sentiment Bot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sentiment Bot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B7E58A21E547450096FC6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F1B7E58C21E547450096FC6F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F1B7E58F21E547450096FC6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F1B7E59121E547460096FC6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1B7E59421E547460096FC6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F1B7E59621E547460096FC6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1ECBCFA21E706AA005CDBE8 /* UserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserView.xib; sourceTree = "<group>"; };
+		F1ECBCFC21E706B7005CDBE8 /* UserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		F1ECBD0121E70BF5005CDBE8 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
+		F1ECBD0521E70C26005CDBE8 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		F1ECBD0721E70C33005CDBE8 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +62,58 @@
 		F1B7E58921E547450096FC6F /* Sentiment Bot */ = {
 			isa = PBXGroup;
 			children = (
-				F1B7E58A21E547450096FC6F /* AppDelegate.swift */,
-				F1B7E58C21E547450096FC6F /* ViewController.swift */,
-				F1B7E58E21E547450096FC6F /* Main.storyboard */,
-				F1B7E59121E547460096FC6F /* Assets.xcassets */,
-				F1B7E59321E547460096FC6F /* LaunchScreen.storyboard */,
-				F1B7E59621E547460096FC6F /* Info.plist */,
+				F1ECBD0921E7A039005CDBE8 /* Model */,
+				F1ECBD0A21E7A041005CDBE8 /* Model Controllers */,
+				F1ECBCFE21E708F2005CDBE8 /* View Controllers */,
+				F1ECBCF821E70664005CDBE8 /* Storyboards */,
+				F1ECBCF921E70671005CDBE8 /* Resources */,
 			);
 			path = "Sentiment Bot";
+			sourceTree = "<group>";
+		};
+		F1ECBCF821E70664005CDBE8 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				F1B7E58E21E547450096FC6F /* Main.storyboard */,
+				F1B7E59321E547460096FC6F /* LaunchScreen.storyboard */,
+				F1ECBCFA21E706AA005CDBE8 /* UserView.xib */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		F1ECBCF921E70671005CDBE8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F1B7E58A21E547450096FC6F /* AppDelegate.swift */,
+				F1B7E59121E547460096FC6F /* Assets.xcassets */,
+				F1B7E59621E547460096FC6F /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F1ECBCFE21E708F2005CDBE8 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F1ECBD0721E70C33005CDBE8 /* ProfileViewController.swift */,
+				F1ECBD0121E70BF5005CDBE8 /* TimelineViewController.swift */,
+				F1ECBD0521E70C26005CDBE8 /* MapViewController.swift */,
+				F1ECBCFC21E706B7005CDBE8 /* UserView.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		F1ECBD0921E7A039005CDBE8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F1ECBD0A21E7A041005CDBE8 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Model Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +177,7 @@
 				F1B7E59521E547460096FC6F /* LaunchScreen.storyboard in Resources */,
 				F1B7E59221E547460096FC6F /* Assets.xcassets in Resources */,
 				F1B7E59021E547450096FC6F /* Main.storyboard in Resources */,
+				F1ECBCFB21E706AA005CDBE8 /* UserView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,8 +188,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1B7E58D21E547450096FC6F /* ViewController.swift in Sources */,
 				F1B7E58B21E547450096FC6F /* AppDelegate.swift in Sources */,
+				F1ECBCFD21E706B7005CDBE8 /* UserView.swift in Sources */,
+				F1ECBD0821E70C33005CDBE8 /* ProfileViewController.swift in Sources */,
+				F1ECBD0221E70BF5005CDBE8 /* TimelineViewController.swift in Sources */,
+				F1ECBD0621E70C26005CDBE8 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,8 +339,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5KBWP959TD;
-				INFOPLIST_FILE = "Sentiment Bot/Info.plist";
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "$(SRCROOT)/Sentiment Bot/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -301,8 +358,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5KBWP959TD;
-				INFOPLIST_FILE = "Sentiment Bot/Info.plist";
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "$(SRCROOT)/Sentiment Bot/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
