@@ -20,7 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func testingApiCalls() {
-        APIController.shared.getUserResponses(userId: 4) { (respones, error) in
+        APIController.shared.getUserResponses(userId: 4) { (responses, error) in
+            
+        }
+        
+        APIController.shared.getManagingTeam(userId: 4) { (team, error) in
             
         }
     }

@@ -6,7 +6,7 @@
 //  Copyright © 2019 Scott Bennett. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreLocation
 
 class Response: NSObject, Decodable {
@@ -19,6 +19,8 @@ class Response: NSObject, Decodable {
     let userId: Int
     let surveyId: Int
     var location: CLLocationCoordinate2D
+    var imageUrl: URL
+    var image: UIImage?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -29,7 +31,9 @@ class Response: NSObject, Decodable {
         case surveyId
         case mood
         case emoji
+        case imageUrl = "image"
     }
+
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -44,7 +48,7 @@ class Response: NSObject, Decodable {
         let emoji = try container.decode(String.self, forKey: .emoji)
         let userId = try container.decode(Int.self, forKey: .userId)
         let surveyId = try container.decode(Int.self, forKey: .surveyId)
-        
+        let imageUrl = URL(string: try container.decode(String.self, forKey: .imageUrl))!
         
         self.id = id
         self.date = date!
@@ -55,7 +59,9 @@ class Response: NSObject, Decodable {
         self.userId = userId
         self.surveyId = surveyId
         self.location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        self.imageUrl = imageUrl
     }
     
  
 }
+
