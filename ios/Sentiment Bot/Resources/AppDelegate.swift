@@ -15,8 +15,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        testingApiCalls()
         return true
+    }
+    
+    func testingApiCalls() {
+        APIController.shared.getUserResponses(userId: 4) { (responses, error) in
+            
+        }
+        
+        APIController.shared.getManagingTeam(userId: 4) { (team, error) in
+            
+        }
+        
+        APIController.shared.getTeamMembers(teamId: 3) { (users, error) in
+            
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

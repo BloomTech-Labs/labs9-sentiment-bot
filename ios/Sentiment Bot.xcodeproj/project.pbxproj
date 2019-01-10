@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A13547BE21E69C5D0045C5F0 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13547BD21E69C5D0045C5F0 /* APIController.swift */; };
+		A13547C021E69D160045C5F0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13547BF21E69D160045C5F0 /* User.swift */; };
+		A13547C421E6D06D0045C5F0 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13547C321E6D06D0045C5F0 /* Response.swift */; };
+		A13547C721E6D0C70045C5F0 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13547C621E6D0C70045C5F0 /* Team.swift */; };
+		A13547CA21E6D32B0045C5F0 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13547C921E6D32B0045C5F0 /* HTTPMethod.swift */; };
+		A13547CC21E6DE620045C5F0 /* Response+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13547CB21E6DE620045C5F0 /* Response+Mapping.swift */; };
+		A13E4D1621E7104000E19E6D /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13E4D1521E7104000E19E6D /* Survey.swift */; };
 		F1B7E58B21E547450096FC6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B7E58A21E547450096FC6F /* AppDelegate.swift */; };
 		F1B7E59021E547450096FC6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E58E21E547450096FC6F /* Main.storyboard */; };
 		F1B7E59221E547460096FC6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E59121E547460096FC6F /* Assets.xcassets */; };
@@ -19,6 +26,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A13547BD21E69C5D0045C5F0 /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIController.swift; path = ../APIController.swift; sourceTree = "<group>"; };
+		A13547BF21E69D160045C5F0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A13547C321E6D06D0045C5F0 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		A13547C621E6D0C70045C5F0 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		A13547C921E6D32B0045C5F0 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		A13547CB21E6DE620045C5F0 /* Response+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Response+Mapping.swift"; sourceTree = "<group>"; };
+		A13E4D1521E7104000E19E6D /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
 		F1B7E58721E547450096FC6F /* Sentiment Bot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sentiment Bot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B7E58A21E547450096FC6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1B7E58F21E547450096FC6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -43,6 +57,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A13547C521E6D0750045C5F0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A13547BF21E69D160045C5F0 /* User.swift */,
+				A13547C321E6D06D0045C5F0 /* Response.swift */,
+				A13547C621E6D0C70045C5F0 /* Team.swift */,
+				A13547CB21E6DE620045C5F0 /* Response+Mapping.swift */,
+				A13E4D1521E7104000E19E6D /* Survey.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A13547C821E6D3170045C5F0 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				A13547C921E6D32B0045C5F0 /* HTTPMethod.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		F1B7E57E21E547450096FC6F = {
 			isa = PBXGroup;
 			children = (
@@ -62,8 +96,8 @@
 		F1B7E58921E547450096FC6F /* Sentiment Bot */ = {
 			isa = PBXGroup;
 			children = (
-				F1ECBD0921E7A039005CDBE8 /* Model */,
-				F1ECBD0A21E7A041005CDBE8 /* Model Controllers */,
+				A13547C821E6D3170045C5F0 /* Enums */,
+				A13547C521E6D0750045C5F0 /* Models */,
 				F1ECBCFE21E708F2005CDBE8 /* View Controllers */,
 				F1ECBCF821E70664005CDBE8 /* Storyboards */,
 				F1ECBCF921E70671005CDBE8 /* Resources */,
@@ -84,9 +118,10 @@
 		F1ECBCF921E70671005CDBE8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F1B7E58A21E547450096FC6F /* AppDelegate.swift */,
 				F1B7E59121E547460096FC6F /* Assets.xcassets */,
 				F1B7E59621E547460096FC6F /* Info.plist */,
+				F1B7E58A21E547450096FC6F /* AppDelegate.swift */,
+				A13547BD21E69C5D0045C5F0 /* APIController.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -100,20 +135,6 @@
 				F1ECBCFC21E706B7005CDBE8 /* UserView.swift */,
 			);
 			path = "View Controllers";
-			sourceTree = "<group>";
-		};
-		F1ECBD0921E7A039005CDBE8 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		F1ECBD0A21E7A041005CDBE8 /* Model Controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Model Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,7 +209,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A13E4D1621E7104000E19E6D /* Survey.swift in Sources */,
+				A13547C721E6D0C70045C5F0 /* Team.swift in Sources */,
+				A13547C021E69D160045C5F0 /* User.swift in Sources */,
+				A13547CA21E6D32B0045C5F0 /* HTTPMethod.swift in Sources */,
 				F1B7E58B21E547450096FC6F /* AppDelegate.swift in Sources */,
+				A13547BE21E69C5D0045C5F0 /* APIController.swift in Sources */,
+				A13547C421E6D06D0045C5F0 /* Response.swift in Sources */,
+				A13547CC21E6DE620045C5F0 /* Response+Mapping.swift in Sources */,
 				F1ECBCFD21E706B7005CDBE8 /* UserView.swift in Sources */,
 				F1ECBD0821E70C33005CDBE8 /* ProfileViewController.swift in Sources */,
 				F1ECBD0221E70BF5005CDBE8 /* TimelineViewController.swift in Sources */,
