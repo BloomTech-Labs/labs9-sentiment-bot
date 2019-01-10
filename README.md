@@ -11,6 +11,13 @@ Install dependencies
 npm install
 ```
 
+Migrate and seed the database
+```sh
+npx knex migrate:latest
+
+npx knex seed:run
+```
+
 Then start the server!
 ```sh
 npm run start

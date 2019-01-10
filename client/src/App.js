@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import NavMenu from "./components/NavMenu";
+import { Route } from "react-router-dom";
+import UserProfile from "./components/UserProfile";
 
 class App extends Component {
   render() {
     return (
       <div>
-        <NavMenu />
+        <Route path="/" component={UserProfile} />
       </div>
     );
   }

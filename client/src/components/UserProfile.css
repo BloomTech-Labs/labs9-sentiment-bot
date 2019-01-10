@@ -1,0 +1,17 @@
+.main-view {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main-view .profile-view h3 {
+    height: 1.17em;
+    margin-right: 80%;
+}
+
+.main-view .profile-view {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    height: 100vh;
+    align-items: flex-start;
+}
