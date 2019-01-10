@@ -2,6 +2,9 @@
   "name": "labs9-sentiment-bot",
   "version": "0.0.1",
   "description": "Creates a RESTful api for accessing the database",
+  "repository": {
+    "url": "https://github.com/Lambda-School-Labs/labs9-sentiment-bot"
+  },
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
@@ -16,6 +19,7 @@
   "author": "labs9-team",
   "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
