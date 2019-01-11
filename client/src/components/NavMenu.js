@@ -7,25 +7,17 @@ import "./NavMenu.css";
 class NavMenu extends React.Component {
 
     render() {
-        if (this.props.fetchingUsers || this.props.fetchingTeams) {
-            return (
-                <div className="navigation">
-                    <NavLink to="/my-profile">My Profile</NavLink>
-                    <NavLink to="/settings">Settings</NavLink>
-                </div>
-            )
-        }
         if (this.props.teams[0] === undefined) {
             return (
                 <div className="navigation">
-                    <NavLink to="/my-profile">My Profile</NavLink>
+                    <NavLink to="/">My Profile</NavLink>
                     <NavLink to="/settings">Settings</NavLink>
                 </div>
             )
         } else {
             return (
                 <div className="navigation">
-                    <NavLink to="/my-profile">My Profile</NavLink>
+                    <NavLink to="/">My Profile</NavLink>
                     <NavLink to="/my-team">My Team</NavLink>
                     <NavLink to="/new-survey">Survey</NavLink>
                     <NavLink to="/reports">Reports</NavLink>

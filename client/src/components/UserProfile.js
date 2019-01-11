@@ -14,7 +14,7 @@ class UserProfile extends React.Component {
     }
 
     render() {
-        if (this.props.users[0]) {
+        if (this.props.users[0] && this.props.teams) {
             return (
                 <div className="profile-page">
                     <TopNav pageName="My Profile" />
