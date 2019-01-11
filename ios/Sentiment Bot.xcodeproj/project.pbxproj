@@ -14,6 +14,7 @@
 		A13547CA21E6D32B0045C5F0 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13547C921E6D32B0045C5F0 /* HTTPMethod.swift */; };
 		A13547CC21E6DE620045C5F0 /* Response+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13547CB21E6DE620045C5F0 /* Response+Mapping.swift */; };
 		A13E4D1621E7104000E19E6D /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13E4D1521E7104000E19E6D /* Survey.swift */; };
+		A1EA605B21E8270300ACE25D /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605A21E8270300ACE25D /* LocationHelper.swift */; };
 		F1B7E58B21E547450096FC6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B7E58A21E547450096FC6F /* AppDelegate.swift */; };
 		F1B7E59021E547450096FC6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E58E21E547450096FC6F /* Main.storyboard */; };
 		F1B7E59221E547460096FC6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E59121E547460096FC6F /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 		A13547C921E6D32B0045C5F0 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		A13547CB21E6DE620045C5F0 /* Response+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Response+Mapping.swift"; sourceTree = "<group>"; };
 		A13E4D1521E7104000E19E6D /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
+		A1EA605A21E8270300ACE25D /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
 		F1B7E58721E547450096FC6F /* Sentiment Bot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sentiment Bot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B7E58A21E547450096FC6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1B7E58F21E547450096FC6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -77,6 +79,14 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
+		A1EA605C21E8274500ACE25D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A1EA605A21E8270300ACE25D /* LocationHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		F1B7E57E21E547450096FC6F = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +106,7 @@
 		F1B7E58921E547450096FC6F /* Sentiment Bot */ = {
 			isa = PBXGroup;
 			children = (
+				A1EA605C21E8274500ACE25D /* Helpers */,
 				A13547C821E6D3170045C5F0 /* Enums */,
 				A13547C521E6D0750045C5F0 /* Models */,
 				F1ECBCFE21E708F2005CDBE8 /* View Controllers */,
@@ -216,6 +227,7 @@
 				F1B7E58B21E547450096FC6F /* AppDelegate.swift in Sources */,
 				A13547BE21E69C5D0045C5F0 /* APIController.swift in Sources */,
 				A13547C421E6D06D0045C5F0 /* Response.swift in Sources */,
+				A1EA605B21E8270300ACE25D /* LocationHelper.swift in Sources */,
 				A13547CC21E6DE620045C5F0 /* Response+Mapping.swift in Sources */,
 				F1ECBCFD21E706B7005CDBE8 /* UserView.swift in Sources */,
 				F1ECBD0821E70C33005CDBE8 /* ProfileViewController.swift in Sources */,
