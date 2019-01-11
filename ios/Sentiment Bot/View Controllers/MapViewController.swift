@@ -19,6 +19,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        APIController.shared.getUserResponses(userId: 1) { (responses, error) in
+            self.responses = responses
+        }
+        
         mapView.showsUserLocation = true
         if CLLocationManager.locationServicesEnabled() == true {
             
@@ -34,17 +38,43 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
     }
     
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        guard let experience = annotation as? Response else { return nil }
+        
+        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "ResponseAnnotationView", for: experience) as! MKMarkerAnnotationView
+        
+        annotationView.glyphTintColor = .red
+        annotationView.canShowCallout = true
+        
+        return annotationView
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        updateViews()
+    }
+    
+    func updateViews() {
+        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "ResponseAnnotationView")
+        
+        guard let responses = responses else {
+        NSLog("User Response not set on MapViewController")
+        return
+        }
+        mapView.addAnnotations(responses)
+    }
+    
     //MARK:- CLLocationManager Delegates
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.locationManager.stopUpdatingLocation()
         
         enum location {
-            static let pioneer = CLLocationCoordinate2D(latitude: 38.9679, longitude: -84.5844)
+            static let pioneer = CLLocationCoordinate2D(latitude: 40.730610, longitude: -73.935242)
             static let live = CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude)
         }
         
-        let span = MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002)
+        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
         
         let region = MKCoordinateRegion(center: location.pioneer, span: span)
         
@@ -55,5 +85,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         NSLog("Unable to access your current location")
     }
+    
+    var responses: [Response]? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    let locationHelper = LocationHelper()
 
 }
