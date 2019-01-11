@@ -166,7 +166,7 @@ class APIController {
     }
     
     //Get Image
-    private func getImage(url: URL, completion: @escaping (UIImage?, Error?) -> Void = {_,_ in}) {
+    func getImage(url: URL, completion: @escaping (UIImage?, Error?) -> Void = {_,_ in}) {
         let request = URLRequest(url: url)
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             if let error = error {
