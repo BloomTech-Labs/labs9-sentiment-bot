@@ -12,7 +12,7 @@ export const FETCHING_TEAMS_FAILURE = "FETCHING_TEAMS_FAILURE";
 export const fetchUsers = () => dispatch => {
     dispatch({type: FETCHING_USERS});
     axios
-        .get(`${URL}/users/1`)
+        .get(`https://feelzy-api.herokuapp.com/api/users/1`)
         .then(response => {
             dispatch({type: FETCHING_USERS_SUCCESS, payload: response.data});
         })

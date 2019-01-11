@@ -5,10 +5,6 @@ import { fetchUsers, fetchTeams } from "../actions";
 import "./NavMenu.css";
 
 class NavMenu extends React.Component {
-    componentDidMount() {
-        this.props.fetchUsers();
-        this.props.fetchTeams();
-    }
 
     render() {
         if (this.props.fetchingUsers || this.props.fetchingTeams) {

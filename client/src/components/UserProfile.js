@@ -8,8 +8,13 @@ import TeamView from "./TeamView";
 import "./UserProfile.css";
 
 class UserProfile extends React.Component {
+    componentDidMount() {
+        this.props.fetchUsers();
+        this.props.fetchTeams();
+    }
+
     render() {
-        if (this.props.users) {
+        if (this.props.users[0]) {
             return (
                 <div className="profile-page">
                     <TopNav pageName="My Profile" />
@@ -17,7 +22,7 @@ class UserProfile extends React.Component {
                         <NavMenu />
                         <div className="profile-view">
                             <Avatar imageSrc={this.props.users.image} />
-                            <h3>{this.props.users.firstName} {this.props.users.lastName}</h3>
+                            <h3>{this.props.users[0].firstName} {this.props.users[0].lastName}</h3>
                             <div>Connect to Slack</div>
                             <TeamView />
                         </div>
