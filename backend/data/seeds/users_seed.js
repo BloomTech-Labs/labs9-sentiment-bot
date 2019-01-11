@@ -1,6 +1,5 @@
 const faker = require('faker')
 
-const mock_users = require('./MOCK_DATA.json')
 // number of mock entries that will be created
 const numUsers = 199;
 const numTeams = 50;
