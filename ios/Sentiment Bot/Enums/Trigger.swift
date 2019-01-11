@@ -13,4 +13,5 @@ enum Trigger: String {
     case weekly
     case monthly
     case daily
+    case now
 }
