@@ -14,6 +14,7 @@ class UserProfile extends React.Component {
     }
 
     render() {
+        // if the user has been retrieved and the teams data exists, render profile
         if (this.props.users[0] && this.props.teams) {
             return (
                 <div className="profile-page">

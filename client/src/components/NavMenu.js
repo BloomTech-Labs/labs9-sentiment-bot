@@ -7,6 +7,8 @@ import "./NavMenu.css";
 class NavMenu extends React.Component {
 
     render() {
+        // if user has no teams, they will only have access to profile and settings
+        // when the teams data model is updated, this will be updated as well
         if (this.props.teams[0] === undefined) {
             return (
                 <div className="navigation">
