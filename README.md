@@ -27,3 +27,20 @@ Or if you're developing
 ```sh
 npm run dev
 ```
+
+## Frontend startup
+----------------
+*currently depends on both the deployed backend and @Legitcoder's mock api [Sentiment-Bot-Mock-API](https://github.com/Legitcoder/sentiment-bot-mock-api)*
+
+Install dependencies 
+```sh
+cd client/
+yarn install
+```
+
+Start the React app
+```sh
+yarn start
+```
+
+The webpage will open automatically once the app has started!
