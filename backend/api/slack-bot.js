@@ -1,9 +1,9 @@
 'use strict'
 const express = require('express')
-const app = express();
+const router = express();
 const apiUrl = 'https://slack.com/api';
 
-app.post('/echo', (req, res) => {
+router.post('/echo', (req, res) => {
 
   if(req.body.token !== process.env.SLACK_VERIFICATION_TOKEN) {
     // the request is not coming from slack!
@@ -58,3 +58,5 @@ const getReply = (body) => new Promise((resolve, reject) => {
     return resolve(data);
   }
 });
+
+module.exports = router
