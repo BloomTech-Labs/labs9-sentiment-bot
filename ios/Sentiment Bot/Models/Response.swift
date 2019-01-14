@@ -41,8 +41,8 @@ class Response: NSObject, Decodable {
         dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSSZ"
         let stringDate = try container.decode(String.self, forKey: .date)
         let date = dateFormatter.date(from: stringDate)
-        let longitude = (try container.decode(String.self, forKey: .longitude) as NSString).doubleValue
-        let latitude = (try container.decode(String.self, forKey: .latitude) as NSString).doubleValue
+        let longitude = try container.decode(Double.self, forKey: .longitude)
+        let latitude = try container.decode(Double.self, forKey: .latitude)
         let id = try container.decode(Int.self, forKey: .id)
         let mood = try container.decode(String.self, forKey: .mood)
         let emoji = try container.decode(String.self, forKey: .emoji)

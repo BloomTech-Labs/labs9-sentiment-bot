@@ -26,4 +26,10 @@ class User: Codable {
     
 }
 
-
+struct JWT: Codable {
+    var jwt: String
+    
+    enum CodingKeys: String, CodingKey {
+        case jwt
+    }
+}
