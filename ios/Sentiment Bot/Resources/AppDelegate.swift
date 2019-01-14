@@ -15,25 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        testingApiCalls()
         return true
     }
     
-    func testingApiCalls() {
-        APIController.shared.getUserResponses(userId: 4) { (responses, error) in
-            
-        }
-        
-        APIController.shared.getManagingTeam(userId: 4) { (team, error) in
-            
-        }
-        
-        APIController.shared.getTeamMembers(teamId: 3) { (users, error) in
-            
-        }
-        
-        APIController.shared.sendSurveyNotification()
-    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

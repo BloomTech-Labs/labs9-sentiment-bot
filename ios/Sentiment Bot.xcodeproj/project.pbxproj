@@ -17,6 +17,9 @@
 		A1EA605B21E8270300ACE25D /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605A21E8270300ACE25D /* LocationHelper.swift */; };
 		A1EA605E21E85D5A00ACE25D /* LocalNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605D21E85D5A00ACE25D /* LocalNotificationHelper.swift */; };
 		A1EA606021E8707100ACE25D /* Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605F21E8707100ACE25D /* Trigger.swift */; };
+		A1EA606321ECFD4E00ACE25D /* JWTDecode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1EA606221ECFD4D00ACE25D /* JWTDecode.framework */; };
+		A1EA606621ECFF4800ACE25D /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA606521ECFF4800ACE25D /* UserDefaultKeys.swift */; };
+		A1EA606921ECFF9A00ACE25D /* UserDefaults+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA606821ECFF9A00ACE25D /* UserDefaults+extension.swift */; };
 		F1B7E58B21E547450096FC6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B7E58A21E547450096FC6F /* AppDelegate.swift */; };
 		F1B7E59021E547450096FC6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E58E21E547450096FC6F /* Main.storyboard */; };
 		F1B7E59221E547460096FC6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E59121E547460096FC6F /* Assets.xcassets */; };
@@ -43,6 +46,9 @@
 		A1EA605A21E8270300ACE25D /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
 		A1EA605D21E85D5A00ACE25D /* LocalNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationHelper.swift; sourceTree = "<group>"; };
 		A1EA605F21E8707100ACE25D /* Trigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trigger.swift; sourceTree = "<group>"; };
+		A1EA606221ECFD4D00ACE25D /* JWTDecode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JWTDecode.framework; path = Carthage/Build/iOS/JWTDecode.framework; sourceTree = "<group>"; };
+		A1EA606521ECFF4800ACE25D /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
+		A1EA606821ECFF9A00ACE25D /* UserDefaults+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+extension.swift"; sourceTree = "<group>"; };
 		F1B7E58721E547450096FC6F /* Sentiment Bot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sentiment Bot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B7E58A21E547450096FC6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1B7E58F21E547450096FC6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -65,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1EA606321ECFD4E00ACE25D /* JWTDecode.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +95,7 @@
 			children = (
 				A13547C921E6D32B0045C5F0 /* HTTPMethod.swift */,
 				A1EA605F21E8707100ACE25D /* Trigger.swift */,
+				A1EA606521ECFF4800ACE25D /* UserDefaultKeys.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -101,11 +109,28 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		A1EA606121ECFD4D00ACE25D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A1EA606221ECFD4D00ACE25D /* JWTDecode.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A1EA606721ECFF7800ACE25D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A1EA606821ECFF9A00ACE25D /* UserDefaults+extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		F1B7E57E21E547450096FC6F = {
 			isa = PBXGroup;
 			children = (
 				F1B7E58921E547450096FC6F /* Sentiment Bot */,
 				F1B7E58821E547450096FC6F /* Products */,
+				A1EA606121ECFD4D00ACE25D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -120,6 +145,7 @@
 		F1B7E58921E547450096FC6F /* Sentiment Bot */ = {
 			isa = PBXGroup;
 			children = (
+				A1EA606721ECFF7800ACE25D /* Extensions */,
 				A1EA605C21E8274500ACE25D /* Helpers */,
 				A13547C821E6D3170045C5F0 /* Enums */,
 				A13547C521E6D0750045C5F0 /* Models */,
@@ -176,6 +202,7 @@
 				F1B7E58321E547450096FC6F /* Sources */,
 				F1B7E58421E547450096FC6F /* Frameworks */,
 				F1B7E58521E547450096FC6F /* Resources */,
+				A1EA606421ECFD5E00ACE25D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -236,6 +263,28 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A1EA606421ECFD5E00ACE25D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/JWTDecode.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/JWTDecode.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F1B7E58321E547450096FC6F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -251,7 +300,9 @@
 				A13547C421E6D06D0045C5F0 /* Response.swift in Sources */,
 				A1EA605B21E8270300ACE25D /* LocationHelper.swift in Sources */,
 				A13547CC21E6DE620045C5F0 /* Response+Mapping.swift in Sources */,
+				A1EA606921ECFF9A00ACE25D /* UserDefaults+extension.swift in Sources */,
 				F1ECBCFD21E706B7005CDBE8 /* UserView.swift in Sources */,
+				A1EA606621ECFF4800ACE25D /* UserDefaultKeys.swift in Sources */,
 				A1EA605E21E85D5A00ACE25D /* LocalNotificationHelper.swift in Sources */,
 				F1ECBD0821E70C33005CDBE8 /* ProfileViewController.swift in Sources */,
 				F1ECBD0221E70BF5005CDBE8 /* TimelineViewController.swift in Sources */,
@@ -420,6 +471,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sentiment Bot/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -439,6 +494,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sentiment Bot/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
