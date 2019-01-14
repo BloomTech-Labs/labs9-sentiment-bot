@@ -5,31 +5,21 @@ import { fetchUsers, fetchTeams } from "../actions";
 import "./NavMenu.css";
 
 class NavMenu extends React.Component {
-    componentDidMount() {
-        this.props.fetchUsers();
-        this.props.fetchTeams();
-    }
 
     render() {
-        if (this.props.fetchingUsers || this.props.fetchingTeams) {
-            return (
-                <div className="navigation">
-                    <NavLink to="/my-profile">My Profile</NavLink>
-                    <NavLink to="/settings">Settings</NavLink>
-                </div>
-            )
-        }
+        // if user has no teams, they will only have access to profile and settings
+        // when the teams data model is updated, this will be updated as well
         if (this.props.teams[0] === undefined) {
             return (
                 <div className="navigation">
-                    <NavLink to="/my-profile">My Profile</NavLink>
+                    <NavLink to="/">My Profile</NavLink>
                     <NavLink to="/settings">Settings</NavLink>
                 </div>
             )
         } else {
             return (
                 <div className="navigation">
-                    <NavLink to="/my-profile">My Profile</NavLink>
+                    <NavLink to="/">My Profile</NavLink>
                     <NavLink to="/my-team">My Team</NavLink>
                     <NavLink to="/new-survey">Survey</NavLink>
                     <NavLink to="/reports">Reports</NavLink>

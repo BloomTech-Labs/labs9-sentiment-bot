@@ -31,6 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         APIController.shared.getTeamMembers(teamId: 3) { (users, error) in
             
         }
+        
+        APIController.shared.sendSurveyNotification()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

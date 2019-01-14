@@ -145,8 +145,28 @@ class APIController {
             }.resume()
     }
     
+    func sendSurveyNotification() {
+        //This will be inside
+        let emojis = ["😄","😃"]
+        localNotificationHelper.getAuthorizationStatus { (status) in
+            switch status {
+            case .authorized:
+                self.localNotificationHelper.sendSurveyNotification(emojis: emojis, schedule: "Daily")
+            case .notDetermined:
+                self.localNotificationHelper.requestAuthorization(completion: { (granted) in
+                    
+                    if (granted) {
+                        self.localNotificationHelper.sendSurveyNotification(emojis: emojis, schedule: "Daily")
+                    }
+                })
+            default:
+                return
+            }
+        }
+    }
+    
     //Get Image
-    private func getImage(url: URL, completion: @escaping (UIImage?, Error?) -> Void = {_,_ in}) {
+    func getImage(url: URL, completion: @escaping (UIImage?, Error?) -> Void = {_,_ in}) {
         let request = URLRequest(url: url)
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             if let error = error {
@@ -168,6 +188,6 @@ class APIController {
     
     
     
-    
+    let localNotificationHelper = LocalNotificationHelper()
     let baseUrl = URL(string: "http://localhost:3000/")!
 }
