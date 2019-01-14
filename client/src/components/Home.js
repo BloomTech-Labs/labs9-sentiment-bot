@@ -1,5 +1,5 @@
 import React from 'react';
-import Rainbow from '../HOC/Rainbow'; 
+
 
 
 const Home = () => {
@@ -12,4 +12,4 @@ const Home = () => {
   )
 }
 
-export default Rainbow(Home)
+export default Home
