@@ -17,8 +17,11 @@ class TimelineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        APIController.shared.getUserResponses(userId: 1) { (responses, error) in
-            self.responses = responses
+        APIController.shared.getUserResponses(userId: 44) { (responses, error) in
+            DispatchQueue.main.async {
+                self.responses = responses
+                self.timelineTableView.reloadData()
+            }
         }
     }
     

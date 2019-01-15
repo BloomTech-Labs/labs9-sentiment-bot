@@ -23,6 +23,9 @@
 		A1EA606B21ED39B500ACE25D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA606A21ED39B500ACE25D /* SignUpViewController.swift */; };
 		A1EA606D21ED39C600ACE25D /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA606C21ED39C600ACE25D /* SignInViewController.swift */; };
 		A1EA606F21ED3A7B00ACE25D /* SegmentedControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA606E21ED3A7B00ACE25D /* SegmentedControlViewController.swift */; };
+		A1EA607221ED5E0200ACE25D /* Signin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1EA607021ED5E0100ACE25D /* Signin.storyboard */; };
+		A1EA607421ED60D300ACE25D /* SegmentedControl.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1EA607321ED60D300ACE25D /* SegmentedControl.storyboard */; };
+		A1EA607621ED617F00ACE25D /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1EA607521ED617F00ACE25D /* Signup.storyboard */; };
 		F1B7E58B21E547450096FC6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B7E58A21E547450096FC6F /* AppDelegate.swift */; };
 		F1B7E59021E547450096FC6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E58E21E547450096FC6F /* Main.storyboard */; };
 		F1B7E59221E547460096FC6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E59121E547460096FC6F /* Assets.xcassets */; };
@@ -54,6 +57,9 @@
 		A1EA606A21ED39B500ACE25D /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A1EA606C21ED39C600ACE25D /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		A1EA606E21ED3A7B00ACE25D /* SegmentedControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlViewController.swift; sourceTree = "<group>"; };
+		A1EA607121ED5E0100ACE25D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Sentiment Bot/Storyboards/Base.lproj/Signin.storyboard"; sourceTree = "<group>"; };
+		A1EA607321ED60D300ACE25D /* SegmentedControl.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SegmentedControl.storyboard; sourceTree = "<group>"; };
+		A1EA607521ED617F00ACE25D /* Signup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Signup.storyboard; sourceTree = "<group>"; };
 		F1B7E58721E547450096FC6F /* Sentiment Bot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sentiment Bot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B7E58A21E547450096FC6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1B7E58F21E547450096FC6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -163,8 +169,11 @@
 		F1ECBCF821E70664005CDBE8 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				A1EA607521ED617F00ACE25D /* Signup.storyboard */,
 				F1B7E58E21E547450096FC6F /* Main.storyboard */,
 				F1CDD23B21ECFF06008E7A57 /* Timeline.storyboard */,
+				A1EA607321ED60D300ACE25D /* SegmentedControl.storyboard */,
+				A1EA607021ED5E0100ACE25D /* Signin.storyboard */,
 				F1CDD23D21ECFF36008E7A57 /* Map.storyboard */,
 				F1ECBCFA21E706AA005CDBE8 /* UserView.xib */,
 				F1B7E59321E547460096FC6F /* LaunchScreen.storyboard */,
@@ -259,10 +268,13 @@
 			files = (
 				F1B7E59521E547460096FC6F /* LaunchScreen.storyboard in Resources */,
 				F1CDD23F21ECFF36008E7A57 /* Map.storyboard in Resources */,
+				A1EA607221ED5E0200ACE25D /* Signin.storyboard in Resources */,
 				F1CDD23C21ECFF06008E7A57 /* Timeline.storyboard in Resources */,
+				A1EA607621ED617F00ACE25D /* Signup.storyboard in Resources */,
 				F1B7E59221E547460096FC6F /* Assets.xcassets in Resources */,
 				F1B7E59021E547450096FC6F /* Main.storyboard in Resources */,
 				F1ECBCFB21E706AA005CDBE8 /* UserView.xib in Resources */,
+				A1EA607421ED60D300ACE25D /* SegmentedControl.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +334,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		A1EA607021ED5E0100ACE25D /* Signin.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A1EA607121ED5E0100ACE25D /* Base */,
+			);
+			name = Signin.storyboard;
+			sourceTree = "<group>";
+		};
 		F1B7E58E21E547450096FC6F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

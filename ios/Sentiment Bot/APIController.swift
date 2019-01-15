@@ -140,7 +140,6 @@ class APIController {
             
             
             guard let data = data else {
-                NSLog("Error retrieving data: \(error)")
                 completion(nil, error)
                 return
             }
@@ -184,7 +183,6 @@ class APIController {
             
             
             guard let data = data else {
-                NSLog("Error retrieving data: \(error)")
                 completion(nil, error)
                 return
             }
@@ -228,7 +226,6 @@ class APIController {
             
             
             guard let data = data else {
-                NSLog("Error retrieving data: \(error)")
                 completion(nil, error)
                 return
             }
@@ -279,7 +276,6 @@ class APIController {
             }
             
             guard let data = data else {
-                NSLog("Error returning image: \(error)")
                 completion(nil, error)
                 return
             }

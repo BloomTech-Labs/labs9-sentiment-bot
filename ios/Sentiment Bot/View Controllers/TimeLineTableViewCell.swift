@@ -17,7 +17,8 @@ class TimeLineTableViewCell: UITableViewCell {
     @IBOutlet weak var feelzImageView: UIImageView!
     
     func setResponse(response: Response) {
-        dateLabel.text = formatter.string(from: response.date)
+        //dateLabel.text = formatter.string(from: response.date)
+        dateLabel.text = response.date
         emojiLabel.text = response.emoji
         feelzNameLabel.text = response.mood
         feelzImageView.image = #imageLiteral(resourceName: "stevejobs.jpeg")
