@@ -17,6 +17,7 @@ import UIKit
     @IBOutlet weak var lastInLabel: UILabel!
     
     var view: UIView!
+    var users: [Response]? = []
     
     // Gives storyboard access to outlets
     @IBInspectable var userImageImage: UIImage? {
@@ -29,10 +30,20 @@ import UIKit
         }
     }
     
+    override func awakeFromNib() {
+        APIController.shared.getUserResponses(userId: 44) { (response, error) in
+            self.users = response
+            
+            DispatchQueue.main.async {
+                self.feelzNumberLabel.text = "Feelz: \(self.users?.count ?? 0)"
+                self.nameLabel.text = users.
+            }
+            
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
-        testCode()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -57,13 +68,17 @@ import UIKit
         return view
     }
     
+    
+    
     @IBAction func connectToSlack(_ sender: UIButton) {
         NSLog("Connecting to Slack....")
     }
     
     func testCode() {
-        feelzNumberLabel.text = "Feelz: 22"
+//        feelzNumberLabel.text = "Feelz: 22"
         lastInLabel.text = "Last In: \(dateFormatter.string(from: Date()))"
+        feelzNumberLabel.text = "Feelz: \(self.users?.count ?? 0)"
+        
     }
     
     lazy var dateFormatter: DateFormatter = {
