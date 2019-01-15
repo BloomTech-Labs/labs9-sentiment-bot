@@ -24,9 +24,9 @@
 		F1B7E59021E547450096FC6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E58E21E547450096FC6F /* Main.storyboard */; };
 		F1B7E59221E547460096FC6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E59121E547460096FC6F /* Assets.xcassets */; };
 		F1B7E59521E547460096FC6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E59321E547460096FC6F /* LaunchScreen.storyboard */; };
-		F1CDD23A21ECFE19008E7A57 /* Porfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1CDD23821ECFE19008E7A57 /* Porfile.storyboard */; };
 		F1CDD23C21ECFF06008E7A57 /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1CDD23B21ECFF06008E7A57 /* Timeline.storyboard */; };
 		F1CDD23F21ECFF36008E7A57 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1CDD23D21ECFF36008E7A57 /* Map.storyboard */; };
+		F1CDD27121ED99D5008E7A57 /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1CDD27021ED99D5008E7A57 /* ProfileViewController.storyboard */; };
 		F1E949A821EBB05F000634AD /* TimeLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E949A721EBB05F000634AD /* TimeLineTableViewCell.swift */; };
 		F1ECBCFB21E706AA005CDBE8 /* UserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1ECBCFA21E706AA005CDBE8 /* UserView.xib */; };
 		F1ECBCFD21E706B7005CDBE8 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECBCFC21E706B7005CDBE8 /* UserView.swift */; };
@@ -55,9 +55,9 @@
 		F1B7E59121E547460096FC6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1B7E59421E547460096FC6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F1B7E59621E547460096FC6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F1CDD23921ECFE19008E7A57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Sentiment Bot/Storyboards/Base.lproj/Porfile.storyboard"; sourceTree = "<group>"; };
 		F1CDD23B21ECFF06008E7A57 /* Timeline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
 		F1CDD23E21ECFF36008E7A57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Sentiment Bot/Storyboards/Base.lproj/Map.storyboard"; sourceTree = "<group>"; };
+		F1CDD27021ED99D5008E7A57 /* ProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileViewController.storyboard; sourceTree = "<group>"; };
 		F1E949A721EBB05F000634AD /* TimeLineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineTableViewCell.swift; sourceTree = "<group>"; };
 		F1ECBCFA21E706AA005CDBE8 /* UserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserView.xib; sourceTree = "<group>"; };
 		F1ECBCFC21E706B7005CDBE8 /* UserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
@@ -160,9 +160,9 @@
 			isa = PBXGroup;
 			children = (
 				F1B7E58E21E547450096FC6F /* Main.storyboard */,
-				F1CDD23821ECFE19008E7A57 /* Porfile.storyboard */,
 				F1CDD23B21ECFF06008E7A57 /* Timeline.storyboard */,
 				F1CDD23D21ECFF36008E7A57 /* Map.storyboard */,
+				F1CDD27021ED99D5008E7A57 /* ProfileViewController.storyboard */,
 				F1ECBCFA21E706AA005CDBE8 /* UserView.xib */,
 				F1B7E59321E547460096FC6F /* LaunchScreen.storyboard */,
 			);
@@ -255,8 +255,8 @@
 				F1CDD23F21ECFF36008E7A57 /* Map.storyboard in Resources */,
 				F1CDD23C21ECFF06008E7A57 /* Timeline.storyboard in Resources */,
 				F1B7E59221E547460096FC6F /* Assets.xcassets in Resources */,
-				F1CDD23A21ECFE19008E7A57 /* Porfile.storyboard in Resources */,
 				F1B7E59021E547450096FC6F /* Main.storyboard in Resources */,
+				F1CDD27121ED99D5008E7A57 /* ProfileViewController.storyboard in Resources */,
 				F1ECBCFB21E706AA005CDBE8 /* UserView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,14 +328,6 @@
 				F1B7E59421E547460096FC6F /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		F1CDD23821ECFE19008E7A57 /* Porfile.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F1CDD23921ECFE19008E7A57 /* Base */,
-			);
-			name = Porfile.storyboard;
 			sourceTree = "<group>";
 		};
 		F1CDD23D21ECFF36008E7A57 /* Map.storyboard */ = {

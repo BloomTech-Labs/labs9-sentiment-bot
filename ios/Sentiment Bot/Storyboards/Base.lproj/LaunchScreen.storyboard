@@ -18,27 +18,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Robot" translatesAutoresizingMaskIntoConstraints="NO" id="k5W-ps-j8v">
-                                <rect key="frame" x="16" y="334" width="124" height="144"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="144" id="037-k7-iMS"/>
-                                    <constraint firstAttribute="width" constant="124" id="MGZ-cA-Qp1"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sentiment Bot" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8h-il-35g">
-                                <rect key="frame" x="156" y="388" width="203" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="M31-lW-j5X">
+                                <rect key="frame" x="41" y="334" width="293" height="144"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Robot" translatesAutoresizingMaskIntoConstraints="NO" id="k5W-ps-j8v">
+                                        <rect key="frame" x="0.0" y="0.0" width="124" height="144"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="144" id="037-k7-iMS"/>
+                                            <constraint firstAttribute="width" constant="124" id="MGZ-cA-Qp1"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sentiment Bot" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8h-il-35g">
+                                        <rect key="frame" x="140" y="57" width="153" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.96460121870040894" green="0.96476620435714722" blue="0.96459084749221802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="r8h-il-35g" firstAttribute="leading" secondItem="k5W-ps-j8v" secondAttribute="trailing" constant="16" id="0DM-iQ-oFe"/>
-                            <constraint firstItem="r8h-il-35g" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="5cm-CE-kjV"/>
-                            <constraint firstItem="k5W-ps-j8v" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="QqB-bo-DYr"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="r8h-il-35g" secondAttribute="trailing" constant="16" id="aW9-zY-u9h"/>
-                            <constraint firstItem="k5W-ps-j8v" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="j6u-T6-rlo"/>
+                            <constraint firstItem="M31-lW-j5X" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="hpp-2r-nXE"/>
+                            <constraint firstItem="M31-lW-j5X" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ukT-cy-h6t"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
