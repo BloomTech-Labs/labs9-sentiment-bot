@@ -122,7 +122,7 @@ class APIController {
 //            NSLog("No JWT Token Set to User Defaults")
 //            return
 //        }
-//        
+//
 //        request.setValue(token, forHTTPHeaderField: "Authorization")
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -158,6 +158,10 @@ class APIController {
             
             
         }.resume()
+    }
+    
+    func googleSignIn(email: String, fullName: String, completion: @escaping (User?, Error?) -> Void) {
+        
     }
     
     func getTeamMembers(teamId: Int, completion: @escaping ([User]?, Error?) -> Void) {
