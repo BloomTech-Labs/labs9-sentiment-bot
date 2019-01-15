@@ -16,10 +16,9 @@ import UIKit
     @IBOutlet weak var feelzNumberLabel: UILabel!
     @IBOutlet weak var lastInLabel: UILabel!
     
-    
     var view: UIView!
     
-    
+    // Gives storyboard access to outlets
     @IBInspectable var userImageImage: UIImage? {
         get {
             return userImage.image
@@ -41,7 +40,7 @@ import UIKit
         setup()
         testCode()
     }
-    
+
     func setup() {
         view = loadViewFromNib()
         view.frame = bounds
@@ -58,8 +57,13 @@ import UIKit
         return view
     }
     
+    @IBAction func connectToSlack(_ sender: UIButton) {
+        NSLog("Connecting to Slack....")
+    }
+    
     func testCode() {
-        lastInLabel.text = dateFormatter.string(from: Date())
+        feelzNumberLabel.text = "Feelz: 22"
+        lastInLabel.text = "Last In: \(dateFormatter.string(from: Date()))"
     }
     
     lazy var dateFormatter: DateFormatter = {

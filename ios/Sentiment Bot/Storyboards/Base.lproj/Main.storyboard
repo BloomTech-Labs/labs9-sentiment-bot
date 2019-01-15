@@ -19,19 +19,19 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="UzP-H7-Jsx" kind="relationship" relationship="viewControllers" id="ocD-49-VfU"/>
                         <segue destination="Sfm-c5-uNS" kind="relationship" relationship="viewControllers" id="Ol7-AW-aCw"/>
                         <segue destination="i1S-C0-Yaz" kind="relationship" relationship="viewControllers" id="kcp-Vd-DRC"/>
+                        <segue destination="UzP-H7-Jsx" kind="relationship" relationship="viewControllers" id="ocD-49-VfU"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6px-Ly-p8B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-567" y="-72"/>
         </scene>
-        <!--Porfile-->
+        <!--ProfileViewController-->
         <scene sceneID="XL4-Hi-M16">
             <objects>
-                <viewControllerPlaceholder storyboardName="Porfile" id="UzP-H7-Jsx" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="ProfileViewController" storyboardName="ProfileViewController" id="UzP-H7-Jsx" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="ngy-4j-YH4"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2VK-lX-PCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
