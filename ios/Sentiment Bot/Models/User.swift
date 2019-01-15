@@ -13,16 +13,8 @@ class User: Codable {
     let id: Int
     var firstName: String
     var lastName: String
-    var teamId: Int
+    var teamId: Int?
     var imageUrl: URL?
-    
-    enum CodingKeys: String, CodingKey {
-        case id
-        case firstName
-        case lastName
-        case teamId
-        case imageUrl = "image"
-    }
     
 }
 
