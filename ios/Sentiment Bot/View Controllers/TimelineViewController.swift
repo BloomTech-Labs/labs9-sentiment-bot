@@ -19,8 +19,11 @@ class TimelineViewController: UIViewController {
         
         self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
 
-        APIController.shared.getUserResponses(userId: 1) { (responses, error) in
-            self.responses = responses
+        APIController.shared.getUserResponses(userId: 44) { (responses, error) in
+            DispatchQueue.main.async {
+                self.responses = responses
+                self.timelineTableView.reloadData()
+            }
         }
     }    
 }

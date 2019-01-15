@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C99F989B5C76ECD3F5C3CD2 /* Pods_Sentiment_Bot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C4288AE6B4B1B0B2C7069D /* Pods_Sentiment_Bot.framework */; };
 		A13547BE21E69C5D0045C5F0 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13547BD21E69C5D0045C5F0 /* APIController.swift */; };
 		A13547C021E69D160045C5F0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13547BF21E69D160045C5F0 /* User.swift */; };
 		A13547C421E6D06D0045C5F0 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13547C321E6D06D0045C5F0 /* Response.swift */; };
@@ -20,6 +21,8 @@
 		A1EA606321ECFD4E00ACE25D /* JWTDecode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1EA606221ECFD4D00ACE25D /* JWTDecode.framework */; };
 		A1EA606621ECFF4800ACE25D /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA606521ECFF4800ACE25D /* UserDefaultKeys.swift */; };
 		A1EA606921ECFF9A00ACE25D /* UserDefaults+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA606821ECFF9A00ACE25D /* UserDefaults+extension.swift */; };
+		A1EA607821EE56E400ACE25D /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1EA607721EE56E300ACE25D /* credentials.plist */; };
+		A1EA607A21EE57B000ACE25D /* GoogleSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA607921EE57B000ACE25D /* GoogleSignInViewController.swift */; };
 		F1B7E58B21E547450096FC6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B7E58A21E547450096FC6F /* AppDelegate.swift */; };
 		F1B7E59021E547450096FC6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E58E21E547450096FC6F /* Main.storyboard */; };
 		F1B7E59221E547460096FC6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E59121E547460096FC6F /* Assets.xcassets */; };
@@ -36,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E65500EBE0280EA0839F9CF /* Pods-Sentiment Bot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sentiment Bot.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sentiment Bot/Pods-Sentiment Bot.release.xcconfig"; sourceTree = "<group>"; };
 		A13547BD21E69C5D0045C5F0 /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIController.swift; path = ../APIController.swift; sourceTree = "<group>"; };
 		A13547BF21E69D160045C5F0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A13547C321E6D06D0045C5F0 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
@@ -49,6 +53,9 @@
 		A1EA606221ECFD4D00ACE25D /* JWTDecode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JWTDecode.framework; path = Carthage/Build/iOS/JWTDecode.framework; sourceTree = "<group>"; };
 		A1EA606521ECFF4800ACE25D /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		A1EA606821ECFF9A00ACE25D /* UserDefaults+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+extension.swift"; sourceTree = "<group>"; };
+		A1EA607721EE56E300ACE25D /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
+		A1EA607921EE57B000ACE25D /* GoogleSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInViewController.swift; sourceTree = "<group>"; };
+		D5A27D069A6F1B1A0A158705 /* Pods-Sentiment Bot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sentiment Bot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sentiment Bot/Pods-Sentiment Bot.debug.xcconfig"; sourceTree = "<group>"; };
 		F1B7E58721E547450096FC6F /* Sentiment Bot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sentiment Bot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B7E58A21E547450096FC6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1B7E58F21E547450096FC6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -64,6 +71,7 @@
 		F1ECBD0121E70BF5005CDBE8 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		F1ECBD0521E70C26005CDBE8 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		F1ECBD0721E70C33005CDBE8 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		F7C4288AE6B4B1B0B2C7069D /* Pods_Sentiment_Bot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sentiment_Bot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,12 +80,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1EA606321ECFD4E00ACE25D /* JWTDecode.framework in Frameworks */,
+				0C99F989B5C76ECD3F5C3CD2 /* Pods_Sentiment_Bot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		353C3ED470EF5F25D6B1142C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D5A27D069A6F1B1A0A158705 /* Pods-Sentiment Bot.debug.xcconfig */,
+				3E65500EBE0280EA0839F9CF /* Pods-Sentiment Bot.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A13547C521E6D0750045C5F0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				A1EA606221ECFD4D00ACE25D /* JWTDecode.framework */,
+				F7C4288AE6B4B1B0B2C7069D /* Pods_Sentiment_Bot.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -131,6 +150,7 @@
 				F1B7E58921E547450096FC6F /* Sentiment Bot */,
 				F1B7E58821E547450096FC6F /* Products */,
 				A1EA606121ECFD4D00ACE25D /* Frameworks */,
+				353C3ED470EF5F25D6B1142C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -173,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				F1B7E59121E547460096FC6F /* Assets.xcassets */,
+				A1EA607721EE56E300ACE25D /* credentials.plist */,
 				F1B7E59621E547460096FC6F /* Info.plist */,
 				F1B7E58A21E547450096FC6F /* AppDelegate.swift */,
 				A13547BD21E69C5D0045C5F0 /* APIController.swift */,
@@ -183,6 +204,7 @@
 		F1ECBCFE21E708F2005CDBE8 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A1EA607921EE57B000ACE25D /* GoogleSignInViewController.swift */,
 				F1ECBD0721E70C33005CDBE8 /* ProfileViewController.swift */,
 				F1ECBD0121E70BF5005CDBE8 /* TimelineViewController.swift */,
 				F1E949A721EBB05F000634AD /* TimeLineTableViewCell.swift */,
@@ -199,10 +221,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F1B7E59921E547460096FC6F /* Build configuration list for PBXNativeTarget "Sentiment Bot" */;
 			buildPhases = (
+				18027B42F7106CC6299A4617 /* [CP] Check Pods Manifest.lock */,
 				F1B7E58321E547450096FC6F /* Sources */,
 				F1B7E58421E547450096FC6F /* Frameworks */,
 				F1B7E58521E547450096FC6F /* Resources */,
 				A1EA606421ECFD5E00ACE25D /* ShellScript */,
+				F8912A07B3110061B21F0D81 /* [CP] Embed Pods Frameworks */,
+				21358EE14FC3DB77E923EC6A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -252,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1B7E59521E547460096FC6F /* LaunchScreen.storyboard in Resources */,
+				A1EA607821EE56E400ACE25D /* credentials.plist in Resources */,
 				F1CDD23F21ECFF36008E7A57 /* Map.storyboard in Resources */,
 				F1CDD23C21ECFF06008E7A57 /* Timeline.storyboard in Resources */,
 				F1B7E59221E547460096FC6F /* Assets.xcassets in Resources */,
@@ -264,6 +290,50 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		18027B42F7106CC6299A4617 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Sentiment Bot-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		21358EE14FC3DB77E923EC6A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Sentiment Bot/Pods-Sentiment Bot-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sentiment Bot/Pods-Sentiment Bot-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A1EA606421ECFD5E00ACE25D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -283,6 +353,32 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
+		F8912A07B3110061B21F0D81 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Sentiment Bot/Pods-Sentiment Bot-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sentiment Bot/Pods-Sentiment Bot-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -297,6 +393,7 @@
 				A13547CA21E6D32B0045C5F0 /* HTTPMethod.swift in Sources */,
 				F1B7E58B21E547450096FC6F /* AppDelegate.swift in Sources */,
 				A13547BE21E69C5D0045C5F0 /* APIController.swift in Sources */,
+				A1EA607A21EE57B000ACE25D /* GoogleSignInViewController.swift in Sources */,
 				A13547C421E6D06D0045C5F0 /* Response.swift in Sources */,
 				A1EA605B21E8270300ACE25D /* LocationHelper.swift in Sources */,
 				A13547CC21E6DE620045C5F0 /* Response+Mapping.swift in Sources */,
@@ -459,6 +556,7 @@
 		};
 		F1B7E59A21E547460096FC6F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D5A27D069A6F1B1A0A158705 /* Pods-Sentiment Bot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -482,6 +580,7 @@
 		};
 		F1B7E59B21E547460096FC6F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E65500EBE0280EA0839F9CF /* Pods-Sentiment Bot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
