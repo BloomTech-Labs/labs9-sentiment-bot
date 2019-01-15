@@ -29,16 +29,10 @@ const getTeam = async (req, res) => {
 const postTeam = async (req, res) => {
   try {
     // destructing body
-    const { name, email, password, firstName, lastName} = req.body
-    console.log(name, email, password) 
-    const newTeam = {
-      firstName,
-      lastName,
-      email,
-      password,
-    }
-    console.log(newTeam)
-    const teams = await db.addTeam(newTeam);
+    const team = req.body
+    
+    console.log(team)
+    const teams = await db.addTeam(team);
 
     res.status(200).json(teams)
   } catch (error) {
@@ -50,21 +44,9 @@ const putTeam = async (req, res) => {
   try {
     const { id } = req.params
     // destructing body
-    const {
-      firstName,
-      lastName,
-      email,
-      password,
-    } = req.body
-    const updatedTeam = {
-      id,
-      firstName,
-      lastName,
-      email,
-      password,
-    }
+    const team = req.body
 
-    const teams = await db.updateTeam(newTeam);
+    const teams = await db.updateTeam(team);
 
     res.status(200).json(teams)
   } catch (error) {
