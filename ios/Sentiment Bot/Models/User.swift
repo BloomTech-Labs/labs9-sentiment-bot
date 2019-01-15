@@ -14,7 +14,7 @@ class User: Codable {
     var firstName: String
     var lastName: String
     var teamId: Int
-    var imageUrl: URL
+    var imageUrl: URL?
     
     enum CodingKeys: String, CodingKey {
         case id

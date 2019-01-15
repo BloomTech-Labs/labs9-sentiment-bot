@@ -1,0 +1,6 @@
+framework module Pods_Sentiment_Bot {
+  umbrella header "Pods-Sentiment Bot-umbrella.h"
+
+  export *
+  module * { export * }
+}
