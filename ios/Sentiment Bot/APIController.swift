@@ -118,12 +118,12 @@ class APIController {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.get.rawValue
         
-        guard let token = UserDefaults.standard.token else {
-            NSLog("No JWT Token Set to User Defaults")
-            return
-        }
-        
-        request.setValue(token, forHTTPHeaderField: "Authorization")
+//        guard let token = UserDefaults.standard.token else {
+//            NSLog("No JWT Token Set to User Defaults")
+//            return
+//        }
+//        
+//        request.setValue(token, forHTTPHeaderField: "Authorization")
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
