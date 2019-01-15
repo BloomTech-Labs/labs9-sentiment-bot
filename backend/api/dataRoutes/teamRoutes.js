@@ -46,7 +46,7 @@ const putTeam = async (req, res) => {
     // destructing body
     const team = req.body
 
-    const teams = await db.updateTeam(team);
+    const teams = await db.editTeam(team);
 
     res.status(200).json(teams)
   } catch (error) {
