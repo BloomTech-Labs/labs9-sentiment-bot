@@ -29,4 +29,5 @@ module.exports = {
   addUser,
   editUser,
   deleteUser,
+  getUserByEmail
 }
