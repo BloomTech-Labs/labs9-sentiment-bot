@@ -12,10 +12,17 @@ class TabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        getUserData()
     }
     
     func passToVCs() {
-        
+        for childVC in children {
+            guard var childVC = childVC as? UserProtocol,
+            let userResponses = userResponses
+            else { return }
+            childVC.user = user
+            childVC.userResponses = userResponses
+        }
     }
     
     func getUserData() {

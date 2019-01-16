@@ -11,5 +11,5 @@ import Foundation
 
 protocol UserProtocol {
     var user: User? {get set}
-    var userResponses: [Response] {get set}
+    var userResponses: [Response]? {get set}
 }
