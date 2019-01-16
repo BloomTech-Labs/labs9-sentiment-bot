@@ -17,6 +17,7 @@
 		A13E4D1621E7104000E19E6D /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13E4D1521E7104000E19E6D /* Survey.swift */; };
 		A140D93A21EEEEED008963C1 /* ReversedGeoLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D93921EEEEED008963C1 /* ReversedGeoLocation.swift */; };
 		A140D93C21EFA581008963C1 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D93B21EFA581008963C1 /* TabBarViewController.swift */; };
+		A140D93F21EFEDC1008963C1 /* UserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D93E21EFEDC1008963C1 /* UserProtocol.swift */; };
 		A1EA605B21E8270300ACE25D /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605A21E8270300ACE25D /* LocationHelper.swift */; };
 		A1EA605E21E85D5A00ACE25D /* LocalNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605D21E85D5A00ACE25D /* LocalNotificationHelper.swift */; };
 		A1EA606021E8707100ACE25D /* Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605F21E8707100ACE25D /* Trigger.swift */; };
@@ -52,6 +53,7 @@
 		A13E4D1521E7104000E19E6D /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
 		A140D93921EEEEED008963C1 /* ReversedGeoLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReversedGeoLocation.swift; sourceTree = "<group>"; };
 		A140D93B21EFA581008963C1 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		A140D93E21EFEDC1008963C1 /* UserProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProtocol.swift; sourceTree = "<group>"; };
 		A1EA605A21E8270300ACE25D /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
 		A1EA605D21E85D5A00ACE25D /* LocalNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationHelper.swift; sourceTree = "<group>"; };
 		A1EA605F21E8707100ACE25D /* Trigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trigger.swift; sourceTree = "<group>"; };
@@ -126,6 +128,14 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
+		A140D93D21EFEAB7008963C1 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				A140D93E21EFEDC1008963C1 /* UserProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		A1EA605C21E8274500ACE25D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +183,7 @@
 		F1B7E58921E547450096FC6F /* Sentiment Bot */ = {
 			isa = PBXGroup;
 			children = (
+				A140D93D21EFEAB7008963C1 /* Protocols */,
 				A1EA606721ECFF7800ACE25D /* Extensions */,
 				A1EA605C21E8274500ACE25D /* Helpers */,
 				A13547C821E6D3170045C5F0 /* Enums */,
@@ -401,6 +412,7 @@
 				A13547CA21E6D32B0045C5F0 /* HTTPMethod.swift in Sources */,
 				F1B7E58B21E547450096FC6F /* AppDelegate.swift in Sources */,
 				A13547BE21E69C5D0045C5F0 /* APIController.swift in Sources */,
+				A140D93F21EFEDC1008963C1 /* UserProtocol.swift in Sources */,
 				A1EA607A21EE57B000ACE25D /* GoogleSignInViewController.swift in Sources */,
 				F18865D221EEB306008F9D35 /* TestUser.swift in Sources */,
 				A13547C421E6D06D0045C5F0 /* Response.swift in Sources */,

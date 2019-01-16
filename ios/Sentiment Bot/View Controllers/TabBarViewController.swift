@@ -12,38 +12,34 @@ class TabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    func passToVCs() {
         
-        APIController.shared.getUser(userId: 34) { (user, error) in
-            self.user = user!
-            APIController.shared.getUserResponses(userId: 34, completion: { (responses, error) in
-                self.userResponses = responses!
+    }
+    
+    func getUserData() {
+        APIController.shared.getUser(userId: TestUser.userID) { (user, error) in
+            if let error = error {
+                NSLog("There was error retreiving current User: \(error)")
+            } else if let user = user {
+                self.user = user
+            }
+            APIController.shared.getUserResponses(userId: TestUser.userID, completion: { (responses, error) in
+                if let error = error {
+                    NSLog("There was error retreiving current User Responses: \(error)")
+                } else if let responses = responses {
+                    self.userResponses = responses
+                }
             })
         }
-
-        // Do any additional setup after loading the view.
     }
-    
-    func passobjectstocontroller() {
-        
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     
     var user: User?
     
     var userResponses: [Response]? {
         didSet {
-            
+            passToVCs()
         }
     }
 

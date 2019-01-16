@@ -18,13 +18,6 @@ class TimelineViewController: UIViewController {
         super.viewDidLoad()
         
         self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
-
-        APIController.shared.getUserResponses(userId: TestUser.userID) { (responses, error) in
-            DispatchQueue.main.async {
-                self.responses = responses
-                self.timelineTableView.reloadData()
-            }
-        }
     }    
 }
 
