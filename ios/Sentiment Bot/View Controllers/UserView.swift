@@ -38,8 +38,8 @@ import UIKit
         APIController.shared.getUser(userId: TestUser.userID) { (users, error) in
             self.users = users
             DispatchQueue.main.async {
-                guard let firstName = users?.firstName, let lastName = users?.lastName else { return }
-                self.nameLabel.text = "\(firstName) \(lastName)"
+                guard let firstName = users?.firstName, let lastName = users?.lastName, let userID = users?.id else { return }
+                self.nameLabel.text = "\(firstName) \(lastName) (\(userID))"
 
                 if let imageUrl = users?.imageUrl {
                     APIController.shared.getImage(url: imageUrl) { (image, error) in

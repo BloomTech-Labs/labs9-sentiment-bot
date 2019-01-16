@@ -41,7 +41,7 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
 //        var error: NSError?
         GIDSignIn.sharedInstance()?.uiDelegate = self
         GIDSignIn.sharedInstance()?.delegate = self
-        let signInButton = GIDSignInButton(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
+        let signInButton = GIDSignInButton(frame: CGRect(x: 0, y: 0, width: 150, height: 50))
         signInButton.center = view.center
         
         view.addSubview(signInButton)
