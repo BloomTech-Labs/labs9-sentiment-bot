@@ -37,7 +37,7 @@ class LocationHelper: NSObject, CLLocationManagerDelegate {
                 completion(nil, error)
             }
             guard let placeMark = placemarks!.first else { return }
-            let place = ReversedGeoLocation(with: placeMark).city
+            let place = "\(ReversedGeoLocation(with: placeMark).city), \(ReversedGeoLocation(with: placeMark).state)"
             
             completion(place, nil)
         }
