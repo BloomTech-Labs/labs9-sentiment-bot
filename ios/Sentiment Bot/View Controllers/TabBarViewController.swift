@@ -20,6 +20,7 @@ class TabBarViewController: UITabBarController {
             guard var childVC = childVC as? UserProtocol,
             let userResponses = userResponses
             else { return }
+            
             childVC.user = user
             childVC.userResponses = userResponses
         }

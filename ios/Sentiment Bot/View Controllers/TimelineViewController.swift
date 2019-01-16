@@ -12,7 +12,13 @@ class TimelineViewController: UIViewController, UserProtocol {
 
     var user: User?
     
-    var userResponses: [Response]?
+    var userResponses: [Response]? {
+        didSet {
+            DispatchQueue.main.async {
+                self.timelineTableView.reloadData()
+            }
+        }
+    }
     
 
     @IBOutlet weak var timelineTableView: UITableView!
@@ -36,6 +42,5 @@ extension TimelineViewController: UITableViewDataSource, UITableViewDelegate {
         cell.setResponse(response: response)
         return cell
     }
-    
     
 }
