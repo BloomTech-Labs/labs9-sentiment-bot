@@ -7,26 +7,28 @@ import {
 const initialState = {
     verifyingUser: false,
     userVerifyed: false,
+    verifyingUserFailure: false,
     userProfile: {},
     error: null
 }
 
 export const authReducer = (state = initialState, action) => {
+  console.log(action.payload)
     switch(action.type) {
         case VERIFYING_USER:
             return {...state, 
-              fetchingUsers: true
+              verifyingUser: true
             };
 
         case USER_VERIFYED:
             return {...state, 
-              fetchingUsers: false, 
-              users: action.payload
+              userVerifyed: false, 
+              user: action.payload
             };
 
         case VERIFYING_USER_FAILURE:
             return {...state, 
-              fetchingUsers: false, 
+              verifyingUserFailure: false, 
               error: action.payload
             };
 

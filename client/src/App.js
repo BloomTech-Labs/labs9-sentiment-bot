@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import { Route } from "react-router-dom";
 import UserProfile from "./components/UserProfile";
-import { oAuthFlow } from './actions'
+import { oAuthFlow, testAction } from './actions'
 
 // import auth0 from 'auth0-js'
 
@@ -25,14 +25,17 @@ import { GoogleLogin } from 'react-google-login'
 
 const responseGoogle = (response) => {
   console.log(response)
-  oAuthFlow(response)
+  testAction({ message: 'a thing' })
+  oAuthFlow(response.profileObj)
 }
 
 class App extends Component {
 
   loginHandler = (event) => {
+    testAction('a thing')
     event.preventDefault()
   }
+
   render() {
     return (
       <div>
