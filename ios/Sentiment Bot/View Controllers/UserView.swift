@@ -17,7 +17,8 @@ import UIKit
     @IBOutlet weak var lastInLabel: UILabel!
     
     var view: UIView!
-    var users: [Response]? = []
+    var responses: [Response]? = []
+    var users: User?
     
     // Gives storyboard access to outlets
     @IBInspectable var userImageImage: UIImage? {
@@ -31,14 +32,35 @@ import UIKit
     }
     
     override func awakeFromNib() {
-        APIController.shared.getUserResponses(userId: 44) { (response, error) in
-            self.users = response
-            
+        
+        // TODO: - Should this be in awakeFromNib?
+        
+        APIController.shared.getUser(userId: TestUser.userID) { (users, error) in
+            self.users = users
             DispatchQueue.main.async {
-                self.feelzNumberLabel.text = "Feelz: \(self.users?.count ?? 0)"
-                self.nameLabel.text = users.
+                guard let firstName = users?.firstName, let lastName = users?.lastName else { return }
+                self.nameLabel.text = "\(firstName) \(lastName)"
+
+                if let imageUrl = users?.imageUrl {
+                    APIController.shared.getImage(url: imageUrl) { (image, error) in
+                        if let error = error {
+                            NSLog("Error getting image \(error)")
+                        } else if let image = image {
+                            DispatchQueue.main.async {
+                                self.userImage.image = image
+                            }
+                        }
+                    }
+                }
             }
-            
+        }
+        
+        APIController.shared.getUserResponses(userId: TestUser.userID) { (responses, error) in
+            self.responses = responses
+            DispatchQueue.main.async {
+                self.feelzNumberLabel.text = "Feelz: \(self.responses?.count ?? 0)"
+                self.lastInLabel.text = "Last In: \(responses?.last?.date ?? " ")"
+            }
         }
     }
     
@@ -49,7 +71,6 @@ import UIKit
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
-        testCode()
     }
 
     func setup() {
@@ -68,17 +89,8 @@ import UIKit
         return view
     }
     
-    
-    
     @IBAction func connectToSlack(_ sender: UIButton) {
         NSLog("Connecting to Slack....")
-    }
-    
-    func testCode() {
-//        feelzNumberLabel.text = "Feelz: 22"
-        lastInLabel.text = "Last In: \(dateFormatter.string(from: Date()))"
-        feelzNumberLabel.text = "Feelz: \(self.users?.count ?? 0)"
-        
     }
     
     lazy var dateFormatter: DateFormatter = {
