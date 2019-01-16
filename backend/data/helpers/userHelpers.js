@@ -3,6 +3,9 @@ const db = require('../dbConfig')
 const getUser = (id) => db('users')
   .where('id', id)
 
+const getUserByEmail = (email) => db('users')
+  .where('email', email)
+
 const getUserList = (page) => db('users')
 /* will figure out pagination later
   .whereBetween('id', [

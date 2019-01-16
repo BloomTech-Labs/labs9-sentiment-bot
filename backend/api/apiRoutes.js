@@ -9,6 +9,8 @@ router.get('/', (req, res) => {
   })
 })
 
+
+router.use('/oauth', require('./Authentication/OAuthFlow'))
 router.use('/users', require('./dataRoutes/usersRoutes'))
 router.use('/slack', require('./slack-bot'))
 
