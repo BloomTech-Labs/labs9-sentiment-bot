@@ -12,13 +12,15 @@ export const FETCHING_TEAMS_FAILURE = "FETCHING_TEAMS_FAILURE";
 export const VERIFYING_USER = 'VERIFYING_USER';
 export const USER_VERIFYED = 'USER_VERIFYED';
 export const VERIFYING_USER_FAILURE = 'VERIFYING_USER_FAILURE';
+
 export const TEST = 'TEST'
 
 export const testAction = something => dispatch => {
-    dispatch({ 
-        type: TEST, 
-        payload: something ? something : 'wasup'
-    })
+    dispatch({type: TEST, payload: 'another'})
+    // return{ 
+    //     type: TEST, 
+    //     payload: something ? something : 'wasup'
+    // }
 }
 
 const APIURL = process.env.REACT_APP_API_URL

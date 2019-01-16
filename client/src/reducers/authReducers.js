@@ -1,7 +1,8 @@
 import { 
   VERIFYING_USER, 
   USER_VERIFYED, 
-  VERIFYING_USER_FAILURE 
+  VERIFYING_USER_FAILURE,
+  TEST
 } from "../actions"; 
 
 const initialState = {
@@ -13,7 +14,7 @@ const initialState = {
 }
 
 export const authReducer = (state = initialState, action) => {
-  console.log(action.payload)
+    console.log(action.payload)
     switch(action.type) {
         case VERIFYING_USER:
             return {...state, 
@@ -31,6 +32,11 @@ export const authReducer = (state = initialState, action) => {
               verifyingUserFailure: false, 
               error: action.payload
             };
+
+        case TEST:
+            return{...state,
+              test: 'test data'
+            }
 
         default: 
             return state;

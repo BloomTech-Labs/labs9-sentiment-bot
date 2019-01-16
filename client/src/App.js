@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import { Route } from "react-router-dom";
 import UserProfile from "./components/UserProfile";
 import { oAuthFlow, testAction } from './actions'
-
+import { connect } from "react-redux";
 // import auth0 from 'auth0-js'
 
 
@@ -32,9 +32,21 @@ const responseGoogle = (response) => {
 class App extends Component {
 
   loginHandler = (event) => {
-    testAction('a thing')
     event.preventDefault()
+    console.log('clicked')
+    // this.state.dispatch(testAction('dispatched'))
+    this.props.testAction('a thing')
+    console.log(this.props) 
   }
+  componentDidMount() {
+    console.log(this.props) 
+  }
+  componentWillReceiveProps() {
+    // this.props.
+    console.log(this.props)
+  }
+
+
 
   render() {
     return (
@@ -52,4 +64,15 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+      state: state
+  }
+}
+
+
+export default connect(
+  mapStateToProps, {
+    testAction, oAuthFlow
+  }
+)(App);
