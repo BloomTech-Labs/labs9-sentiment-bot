@@ -18,20 +18,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="07a-fI-wJZ">
-                                <rect key="frame" x="0.0" y="252" width="375" height="477"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="07a-fI-wJZ">
+                                <rect key="frame" x="0.0" y="252" width="375" height="526"/>
                                 <connections>
                                     <outlet property="delegate" destination="KfZ-l2-Y4p" id="0pc-fU-cb2"/>
                                 </connections>
                             </mapView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6gO-xJ-FCC" customClass="UserView" customModule="Sentiment_Bot" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6gO-xJ-FCC" customClass="UserView" customModule="Sentiment_Bot" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44" width="375" height="200"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.80455785989999995" green="0.90976542230000002" blue="0.96477669479999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6gO-xJ-FCC" firstAttribute="top" secondItem="B4B-dP-059" secondAttribute="top" id="23e-T9-AiB"/>
+                            <constraint firstItem="6gO-xJ-FCC" firstAttribute="trailing" secondItem="07a-fI-wJZ" secondAttribute="trailing" id="8cY-RA-7se"/>
+                            <constraint firstItem="07a-fI-wJZ" firstAttribute="trailing" secondItem="B4B-dP-059" secondAttribute="trailing" id="9wv-gZ-K5A"/>
+                            <constraint firstAttribute="bottom" secondItem="6gO-xJ-FCC" secondAttribute="bottom" constant="568" id="JqS-Z4-7f1"/>
+                            <constraint firstItem="6gO-xJ-FCC" firstAttribute="leading" secondItem="07a-fI-wJZ" secondAttribute="leading" id="Mbg-Jw-jnB"/>
+                            <constraint firstItem="B4B-dP-059" firstAttribute="bottom" secondItem="07a-fI-wJZ" secondAttribute="bottom" id="XRa-4Q-m4P"/>
+                            <constraint firstItem="07a-fI-wJZ" firstAttribute="top" secondItem="6gO-xJ-FCC" secondAttribute="bottom" constant="8" id="es4-c8-30d"/>
+                            <constraint firstItem="07a-fI-wJZ" firstAttribute="leading" secondItem="B4B-dP-059" secondAttribute="leading" id="vDN-5A-mOq"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="B4B-dP-059"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map_marker" id="Bpf-ta-bZE"/>

@@ -47,6 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    // Lets tabBarController present a tab modally
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         if viewController is ProfileViewController {
             if let newVC = tabBarController.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") {

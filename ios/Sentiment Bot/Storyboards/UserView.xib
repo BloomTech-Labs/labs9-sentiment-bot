@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -24,36 +25,40 @@
             <rect key="frame" x="0.0" y="0.0" width="310" height="202"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bPs-7i-nSU">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bPs-7i-nSU">
                     <rect key="frame" x="0.0" y="0.0" width="310" height="202"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="stevejobs" translatesAutoresizingMaskIntoConstraints="NO" id="ela-2R-3qZ">
-                            <rect key="frame" x="0.0" y="0.0" width="310" height="131"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ela-2R-3qZ">
+                            <rect key="frame" x="105" y="0.0" width="100" height="100"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="100" id="5ig-mI-74b"/>
+                                <constraint firstAttribute="width" constant="100" id="6wT-G0-DTf"/>
+                            </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steve Jobs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fV1-HW-Oa0">
-                            <rect key="frame" x="113" y="131" width="84.5" height="20.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fV1-HW-Oa0">
+                            <rect key="frame" x="59" y="108" width="192" height="50"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6z-gh-mBf">
-                            <rect key="frame" x="96.5" y="151.5" width="117" height="30"/>
+                            <rect key="frame" x="96.5" y="166" width="117" height="7.5"/>
                             <state key="normal" title="Connect to Slack"/>
                             <connections>
                                 <action selector="connectToSlack:" destination="-1" eventType="touchUpInside" id="yBR-vx-t4l"/>
                             </connections>
                         </button>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="x1F-oZ-fa8">
-                            <rect key="frame" x="54" y="181.5" width="202" height="20.5"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="x1F-oZ-fa8">
+                            <rect key="frame" x="59" y="181.5" width="192" height="20.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feelz" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2OP-DH-6tK">
-                                    <rect key="frame" x="0.0" y="0.0" width="51" height="20.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="41" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last In" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swV-ez-JgT">
-                                    <rect key="frame" x="151" y="0.0" width="51" height="20.5"/>
+                                    <rect key="frame" x="141" y="0.0" width="51" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -75,7 +80,4 @@
             <point key="canvasLocation" x="-64" y="-170.01499250374815"/>
         </view>
     </objects>
-    <resources>
-        <image name="stevejobs" width="1280" height="1625"/>
-    </resources>
 </document>
