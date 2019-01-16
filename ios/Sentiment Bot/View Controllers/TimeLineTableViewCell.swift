@@ -26,7 +26,7 @@ class TimeLineTableViewCell: UITableViewCell {
         if let imageUrl = response.imageUrl {
             APIController.shared.getImage(url: imageUrl) { (image, error) in
                 if let error = error {
-                    
+                    NSLog("Error getting image \(error)")
                 } else if let image = image {
                     DispatchQueue.main.async {
                         self.feelzImageView.image = image
