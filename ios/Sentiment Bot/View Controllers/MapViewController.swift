@@ -19,7 +19,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        APIController.shared.getUserResponses(userId: 34) { (responses, error) in
+        APIController.shared.getUserResponses(userId: TestUser.userID) { (responses, error) in
             DispatchQueue.main.async {
                 self.responses = responses
             }

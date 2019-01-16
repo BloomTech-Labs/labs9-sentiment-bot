@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
   })
 })
 
+router.use('/teams', require('./dataRoutes/teamRoutes'))
 router.use('/users', require('./dataRoutes/usersRoutes'))
 
 module.exports = router;

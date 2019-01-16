@@ -17,6 +17,8 @@ import UIKit
     @IBOutlet weak var lastInLabel: UILabel!
     
     var view: UIView!
+    var responses: [Response]? = []
+    var users: User?
     
     // Gives storyboard access to outlets
     @IBInspectable var userImageImage: UIImage? {
@@ -29,16 +31,46 @@ import UIKit
         }
     }
     
+    override func awakeFromNib() {
+        
+        // TODO: - Should this be in awakeFromNib?
+        
+        APIController.shared.getUser(userId: TestUser.userID) { (users, error) in
+            self.users = users
+            DispatchQueue.main.async {
+                guard let firstName = users?.firstName, let lastName = users?.lastName, let userID = users?.id else { return }
+                self.nameLabel.text = "\(firstName) \(lastName) (\(userID))"
+
+                if let imageUrl = users?.imageUrl {
+                    APIController.shared.getImage(url: imageUrl) { (image, error) in
+                        if let error = error {
+                            NSLog("Error getting image \(error)")
+                        } else if let image = image {
+                            DispatchQueue.main.async {
+                                self.userImage.image = image
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        APIController.shared.getUserResponses(userId: TestUser.userID) { (responses, error) in
+            self.responses = responses
+            DispatchQueue.main.async {
+                self.feelzNumberLabel.text = "Feelz: \(self.responses?.count ?? 0)"
+                self.lastInLabel.text = "Last In: \(responses?.last?.date ?? " ")"
+            }
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
-        testCode()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
-        testCode()
     }
 
     func setup() {
@@ -59,11 +91,6 @@ import UIKit
     
     @IBAction func connectToSlack(_ sender: UIButton) {
         NSLog("Connecting to Slack....")
-    }
-    
-    func testCode() {
-        feelzNumberLabel.text = "Feelz: 22"
-        lastInLabel.text = "Last In: \(dateFormatter.string(from: Date()))"
     }
     
     lazy var dateFormatter: DateFormatter = {

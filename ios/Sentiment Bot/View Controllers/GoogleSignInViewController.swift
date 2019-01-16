@@ -22,12 +22,12 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
             
             performSegue(withIdentifier: "ToHomeScreen", sender: self)
             
-            //This will be implemented once the back-end is finished.
+            // TODO: - This will be implemented once the back-end is finished.
             APIController.shared.googleSignIn(email: email, fullName: fullName) { (user, error) in
                 if let error = error {
-                    
+                    NSLog("Error: \(error)")
                 } else if let user = user {
-                    
+                    NSLog("User: \(user)")
                 }
             }
             
@@ -37,24 +37,14 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var error: NSError?
+        // TODO: - Do more error handling?
+//        var error: NSError?
         GIDSignIn.sharedInstance()?.uiDelegate = self
         GIDSignIn.sharedInstance()?.delegate = self
-        let signInButton = GIDSignInButton(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
+        let signInButton = GIDSignInButton(frame: CGRect(x: 0, y: 0, width: 150, height: 50))
         signInButton.center = view.center
         
         view.addSubview(signInButton)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
