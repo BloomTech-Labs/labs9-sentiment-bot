@@ -42,10 +42,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
-        guard let experience = annotation as? Response else { return nil }
+        guard let response = annotation as? Response else { return nil }
         
-        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "ResponseAnnotationView", for: experience) as! MKMarkerAnnotationView
-        
+        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "ResponseAnnotationView", for: response) as! MKMarkerAnnotationView
+
         annotationView.glyphTintColor = .red
         annotationView.canShowCallout = true
         
@@ -63,7 +63,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         NSLog("User Response not set on MapViewController")
         return
         }
-        mapView.addAnnotations(responses)
+        DispatchQueue.main.async {
+            self.mapView.addAnnotations(responses)
+        }
+
     }
     
     //MARK:- CLLocationManager Delegates
