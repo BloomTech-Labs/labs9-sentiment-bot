@@ -4,7 +4,9 @@ exports.up = function(knex, Promise) {
     user.string('firstName')
     user.string('lastName')
     user.string('password')
+    user.string('token')
     user.string('email').unique()
+    user.string('imageUrl')
     user.timestamps(true, true)
   }).then(function() {
     return knex.schema.createTable('teams', (team) => {
