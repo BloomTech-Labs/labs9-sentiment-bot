@@ -29,20 +29,20 @@
                     <rect key="frame" x="0.0" y="0.0" width="310" height="202"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ela-2R-3qZ">
-                            <rect key="frame" x="92.5" y="0.0" width="125" height="125"/>
+                            <rect key="frame" x="105" y="0.0" width="100" height="100"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="125" id="5ig-mI-74b"/>
-                                <constraint firstAttribute="width" constant="125" id="6wT-G0-DTf"/>
+                                <constraint firstAttribute="height" constant="100" id="5ig-mI-74b"/>
+                                <constraint firstAttribute="width" constant="100" id="6wT-G0-DTf"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fV1-HW-Oa0">
-                            <rect key="frame" x="59" y="133" width="192" height="2.5"/>
+                            <rect key="frame" x="59" y="108" width="192" height="50"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6z-gh-mBf">
-                            <rect key="frame" x="96.5" y="143.5" width="117" height="30"/>
+                            <rect key="frame" x="96.5" y="166" width="117" height="7.5"/>
                             <state key="normal" title="Connect to Slack"/>
                             <connections>
                                 <action selector="connectToSlack:" destination="-1" eventType="touchUpInside" id="yBR-vx-t4l"/>
