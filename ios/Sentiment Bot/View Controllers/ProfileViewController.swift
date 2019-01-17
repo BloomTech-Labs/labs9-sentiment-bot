@@ -10,21 +10,29 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var profileView: UIView!
+    @IBOutlet weak var teamId: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        profileView.layer.cornerRadius = 10
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // TODO: - Hook up outlets
+    @IBAction func joinTeamButton(_ sender: UIButton) {
+        NSLog("Team ID: \(teamId.text ?? "")")
+        dismiss(animated: true)
     }
-    */
-
+    
+    @IBAction func logOutButton(_ sender: UIButton) {
+        NSLog("Log Out")
+        dismiss(animated: true)
+    }
+    
+    @IBAction func cancelButton(_ sender: UIButton) {
+        NSLog("Cancel")
+        dismiss(animated: true)
+    }
+    
 }

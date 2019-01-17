@@ -66,8 +66,8 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
         
         
         let triggerWeekly = Calendar.current.dateComponents([.weekday,.hour,.minute,.second,], from: Date())
-        let triggerDaily = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
-        let triggerMonthly = Calendar.current.dateComponents([.day], from: Date())
+//        let triggerDaily = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
+//        let triggerMonthly = Calendar.current.dateComponents([.day], from: Date())
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerWeekly, repeats: true)
         

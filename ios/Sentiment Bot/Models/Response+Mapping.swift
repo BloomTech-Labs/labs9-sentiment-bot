@@ -12,7 +12,7 @@ import MapKit
 extension Response: MKAnnotation {
     
     var coordinate: CLLocationCoordinate2D {
-        return self.location
+        return CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
     }
     
 }

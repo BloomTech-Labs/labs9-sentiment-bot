@@ -9,7 +9,8 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UserProtocol {
+    
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -18,11 +19,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        APIController.shared.getUserResponses(userId: 1) { (responses, error) in
-            self.responses = responses
-        }
-        
         mapView.showsUserLocation = true
         if CLLocationManager.locationServicesEnabled() == true {
             
@@ -36,14 +32,24 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             print("PLease turn on location services or GPS")
         }
         
+        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "ResponseAnnotationView")
+        
+        guard let responses = userResponses else {
+            NSLog("User Response not set on MapViewController")
+            return
+        }
+        DispatchQueue.main.async {
+            self.mapView.addAnnotations(responses)
+        }
+        
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
-        guard let experience = annotation as? Response else { return nil }
+        guard let response = annotation as? Response else { return nil }
         
-        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "ResponseAnnotationView", for: experience) as! MKMarkerAnnotationView
-        
+        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "ResponseAnnotationView", for: response) as! MKMarkerAnnotationView
+
         annotationView.glyphTintColor = .red
         annotationView.canShowCallout = true
         
@@ -55,13 +61,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     func updateViews() {
-        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "ResponseAnnotationView")
-        
-        guard let responses = responses else {
-        NSLog("User Response not set on MapViewController")
-        return
-        }
-        mapView.addAnnotations(responses)
+
     }
     
     //MARK:- CLLocationManager Delegates
@@ -86,11 +86,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         NSLog("Unable to access your current location")
     }
     
-    var responses: [Response]? {
-        didSet {
-            updateViews()
-        }
-    }
+    var userResponses: [Response]?
+    
+    var user: User?
     
     let locationHelper = LocationHelper()
 

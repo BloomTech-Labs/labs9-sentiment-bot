@@ -8,31 +8,36 @@
 
 import UIKit
 
-class TimelineViewController: UIViewController {
+class TimelineViewController: UIViewController, UserProtocol {
 
-    @IBOutlet weak var timelineTableView: UITableView!
+    var user: User?
     
-    var responses: [Response]? = []
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        APIController.shared.getUserResponses(userId: 1) { (responses, error) in
-            self.responses = responses
+    var userResponses: [Response]? {
+        didSet {
+            DispatchQueue.main.async {
+                self.timelineTableView?.reloadData()
+            }
         }
     }
     
+
+    @IBOutlet weak var timelineTableView: UITableView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
+    }    
 }
 
 extension TimelineViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return responses?.count ?? 0
+        return userResponses?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let response = responses![indexPath.row]
+        let response = userResponses![indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeelzCell") as! TimeLineTableViewCell
         cell.setResponse(response: response)
         return cell
