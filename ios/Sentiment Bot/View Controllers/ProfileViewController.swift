@@ -19,7 +19,7 @@ class ProfileViewController: UIViewController {
         profileView.layer.cornerRadius = 10
     }
     
-
+    // TODO: - Hook up outlets
     @IBAction func joinTeamButton(_ sender: UIButton) {
         NSLog("Team ID: \(teamId.text ?? "")")
         dismiss(animated: true)
