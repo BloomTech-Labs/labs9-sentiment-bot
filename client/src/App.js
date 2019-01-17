@@ -6,26 +6,26 @@ import { oAuthFlow } from './actions'
 
 // import auth0 from 'auth0-js'
 
+import auth from './Auth/Auth'
 
-import { GoogleLogin } from 'react-google-login'
+// import { GoogleLogin } from 'react-google-login'
 
 
-// import auth from './Auth/Auth'
-// const auth0auth = new auth0.WebAuth({
-//     domain: 'feelzy.auth0.com',
-//     clientID: 'CXO6wkCUgWBSmBw30RNA70AGn9QfKDrE',
-//     redirectUri: 'http://localhost:3000/callback',
-//     responseType: 'token id_token',
-//     scope: 'openid'
-//   })
+const auth0auth = new auth0.WebAuth({
+    domain: 'feelzy.auth0.com',
+    clientID: 'CXO6wkCUgWBSmBw30RNA70AGn9QfKDrE',
+    redirectUri: 'http://localhost:3000/callback',
+    responseType: 'token id_token',
+    scope: 'openid'
+  })
 
-// const login = () => {
-//     auth0auth.authorize();
-//   }
+const login = () => {
+    auth0auth.authorize();
+  }
 
 const responseGoogle = (response) => {
   console.log(response)
-  oAuthFlow(response)
+
 }
 
 class App extends Component {
@@ -36,12 +36,7 @@ class App extends Component {
   render() {
     return (
       <div>
-      <GoogleLogin
-      clientId="1094362572223-hpiugks0gl0iajlp9mt76re45rc7k8v0.apps.googleusercontent.com"
-      buttonText="Login"
-      onSuccess={responseGoogle}
-      onFailure={responseGoogle}
-    />
+
         <Button onClick={this.loginHandler} >Login</Button>
         <Route path="/" component={UserProfile} />
       </div>
