@@ -1,39 +1,25 @@
 import auth0 from 'auth0-js'
 
 class Auth {
-  constructor() {
-    auth0 = new auth0.WebAuth({
-      domain: 'feelzy.auth0.com',
-      clientID: 'CXO6wkCUgWBSmBw30RNA70AGn9QfKDrE',
-      redirectUri: 'http://localhost:3000/callback',
-      responseType: 'token id_token',
-      scope: 'openid'
-    })
+  auth0 = new auth0.WebAuth({
+    domain: 'feelzy.auth0.com',
+    clientID: 'CXO6wkCUgWBSmBw30RNA70AGn9QfKDrE',
+    redirectUri: 'http://localhost:3000/callback',
+    responseType: 'token id_token',
+    scope: 'openid'
+  })
 
-    this.getProfile = this.getProfile.bind(this);
-    this.handleAuthentication = this.handleAuthentication.bind(this);
-    this.isAuthenticated = this.isAuthenticated.bind(this);
-    this.signIn = this.signIn.bind(this);
-    this.signOut = this.signOut.bind(this);
-  }
+  getProfile = () => this.profile;
 
-  getProfile() {
-    return this.profile;
-  }
+  getIdToken = () => this.idToken;
 
-  getIdToken() {
-    return this.idToken;
-  }
+  isAuthenticated = () => (
+    new Date().getTime() < this.expiresAt
+  );
 
-  isAuthenticated() {
-    return new Date().getTime() < this.expiresAt;
-  }
+  signIn = () => this.auth0.authorize();
 
-  signIn() {
-    this.auth0.authorize();
-  }
-
-  handleAuthentication() {
+  handleAuthentication = () => {
     return new Promise((resolve, reject) => {
       this.auth0.parseHash((err, authResult) => {
         if (err) return reject(err);
@@ -43,17 +29,17 @@ class Auth {
         this.setSession(authResult);
         resolve();
       });
-    })
+    });
   }
 
-  setSession(authResult) {
+  setSession = (authResult) => {
     this.idToken = authResult.idToken;
     this.profile = authResult.idTokenPayload;
     // set the time that the id token will expire at
     this.expiresAt = authResult.idTokenPayload.exp * 1000;
   }
 
-  signOut() {
+  signOut = () => {
     this.auth0.logout({
       returnTo: 'http://localhost:3000',
       clientID: 'CXO6wkCUgWBSmBw30RNA70AGn9QfKDrE',
