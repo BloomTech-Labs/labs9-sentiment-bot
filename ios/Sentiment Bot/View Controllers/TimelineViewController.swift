@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class TimelineViewController: UIViewController {
 
@@ -18,7 +19,6 @@ class TimelineViewController: UIViewController {
         super.viewDidLoad()
         
         self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
-//        self.timelineTableView.backgroundColor = UIColor.lightGray
         
         APIController.shared.getUserResponses(userId: TestUser.userID) { (responses, error) in
             DispatchQueue.main.async {
@@ -26,7 +26,19 @@ class TimelineViewController: UIViewController {
                 self.timelineTableView.reloadData()
             }
         }
-    }    
+    }
+    
+    // TODO: - ViewDidAppear not running after modal, fix
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        guard let userAuth = GIDSignIn.sharedInstance()?.hasAuthInKeychain() else { return }
+        if !userAuth {
+            NSLog("User not logged in")
+        } else {
+            NSLog("User still logged in")
+        }
+    }
 }
 
 extension TimelineViewController: UITableViewDataSource, UITableViewDelegate {
@@ -41,9 +53,5 @@ extension TimelineViewController: UITableViewDataSource, UITableViewDelegate {
         cell.setResponse(response: response)
         return cell
     }
-    
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        cell.backgroundColor = UIColor.clear
-//    }
     
 }
