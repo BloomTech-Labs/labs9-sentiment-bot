@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Profile-->
+        <!--Profile View Controller-->
         <scene sceneID="sN3-7y-D0g">
             <objects>
                 <viewController storyboardIdentifier="ProfileViewController" id="cyI-Mj-FGA" customClass="ProfileViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
@@ -22,49 +22,49 @@
                                 <rect key="frame" x="67" y="293" width="241" height="226"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="VCd-Y5-Dvf">
-                                        <rect key="frame" x="8" y="7.9999999999999858" width="225" height="212.33333333333334"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" spacing="97" translatesAutoresizingMaskIntoConstraints="NO" id="Hw2-RG-SqE">
+                                        <rect key="frame" x="8" y="16" width="225" height="195"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update User Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EM9-1h-7QJ">
-                                                <rect key="frame" x="0.0" y="0.0" width="225" height="20.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Email:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-DW-Zbs">
-                                                <rect key="frame" x="0.0" y="38.333333333333336" width="225" height="30.000000000000007"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Phone Number:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Nw-OR-TVV">
-                                                <rect key="frame" x="0.0" y="86.333333333333329" width="225" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cyv-JP-cnR">
-                                                <rect key="frame" x="0.0" y="134.33333333333334" width="225" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="143" translatesAutoresizingMaskIntoConstraints="NO" id="y2L-2c-VCa">
-                                                <rect key="frame" x="0.0" y="182.33333333333334" width="225" height="30"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Y3j-7n-KDo">
+                                                <rect key="frame" x="73.666666666666657" y="0.0" width="77.666666666666657" height="68"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UIg-U6-a6x">
-                                                        <rect key="frame" x="0.0" y="0.0" width="34" height="30"/>
-                                                        <state key="normal" title="Save"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Team ID:" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rdv-DW-Zbs">
+                                                        <rect key="frame" x="0.0" y="0.0" width="77.666666666666671" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHz-hW-xeg">
+                                                        <rect key="frame" x="0.0" y="38" width="77.666666666666671" height="30"/>
+                                                        <state key="normal" title="Join Team">
+                                                            <color key="titleColor" red="0.51579731699999998" green="0.052456617359999999" blue="0.10447398569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
                                                         <connections>
-                                                            <action selector="saveProfile:" destination="cyI-Mj-FGA" eventType="touchUpInside" id="JUl-d1-Wjg"/>
+                                                            <action selector="joinTeamButton:" destination="cyI-Mj-FGA" eventType="touchUpInside" id="XKb-cJ-UjZ"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="122" translatesAutoresizingMaskIntoConstraints="NO" id="RLr-5E-vXe">
+                                                <rect key="frame" x="0.0" y="165" width="225" height="30"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cf-CZ-zqd">
+                                                        <rect key="frame" x="0.0" y="0.0" width="48" height="30"/>
+                                                        <state key="normal" title="Cancel">
+                                                            <color key="titleColor" red="0.51579731699999998" green="0.052456617359999999" blue="0.10447398569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="cancelButton:" destination="cyI-Mj-FGA" eventType="touchUpInside" id="j9j-tI-nSc"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWc-bP-ZM0">
-                                                        <rect key="frame" x="177" y="0.0" width="48" height="30"/>
-                                                        <state key="normal" title="Cancel"/>
+                                                        <rect key="frame" x="170" y="0.0" width="55" height="30"/>
+                                                        <state key="normal" title="Log Out">
+                                                            <color key="titleColor" red="0.51579731699999998" green="0.052456617359999999" blue="0.10447398569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
                                                         <connections>
-                                                            <action selector="cancelButton:" destination="cyI-Mj-FGA" eventType="touchUpInside" id="zS8-7a-BIc"/>
+                                                            <action selector="logOutButton:" destination="cyI-Mj-FGA" eventType="touchUpInside" id="Tyx-rV-brl"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -72,16 +72,17 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.72584866751269028" green="0.72584866751269028" blue="0.72584866751269028" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="fcA-VK-hlf"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="settings" id="lz5-NM-N8d"/>
+                    <tabBarItem key="tabBarItem" title="" image="plus" id="lz5-NM-N8d"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="profileView" destination="FR5-Yd-fpV" id="mHj-PS-eYp"/>
+                        <outlet property="teamId" destination="rdv-DW-Zbs" id="5OA-zZ-hxD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="meT-rA-Q8H" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -90,6 +91,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="settings" width="30" height="30"/>
+        <image name="plus" width="30" height="30"/>
     </resources>
 </document>
