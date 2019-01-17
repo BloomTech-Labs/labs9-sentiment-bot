@@ -16,13 +16,16 @@ class TimelineViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
 
-        APIController.shared.getUserResponses(userId: 1) { (responses, error) in
-            self.responses = responses
+        APIController.shared.getUserResponses(userId: TestUser.userID) { (responses, error) in
+            DispatchQueue.main.async {
+                self.responses = responses
+                self.timelineTableView.reloadData()
+            }
         }
-    }
-    
-    
+    }    
 }
 
 extension TimelineViewController: UITableViewDataSource, UITableViewDelegate {
@@ -37,5 +40,6 @@ extension TimelineViewController: UITableViewDataSource, UITableViewDelegate {
         cell.setResponse(response: response)
         return cell
     }
+    
     
 }
