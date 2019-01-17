@@ -9,7 +9,8 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UserProtocol {
+    
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -18,13 +19,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        APIController.shared.getUserResponses(userId: TestUser.userID) { (responses, error) in
-            DispatchQueue.main.async {
-                self.responses = responses
-            }
-        }
-        
         mapView.showsUserLocation = true
         if CLLocationManager.locationServicesEnabled() == true {
             
@@ -36,6 +30,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             locationManager.startUpdatingLocation()
         } else {
             print("PLease turn on location services or GPS")
+        }
+        
+        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "ResponseAnnotationView")
+        
+        guard let responses = userResponses else {
+            NSLog("User Response not set on MapViewController")
+            return
+        }
+        DispatchQueue.main.async {
+            self.mapView.addAnnotations(responses)
         }
         
     }
@@ -57,15 +61,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     func updateViews() {
-        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "ResponseAnnotationView")
-        
-        guard let responses = responses else {
-        NSLog("User Response not set on MapViewController")
-        return
-        }
-        DispatchQueue.main.async {
-            self.mapView.addAnnotations(responses)
-        }
 
     }
     
@@ -91,11 +86,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         NSLog("Unable to access your current location")
     }
     
-    var responses: [Response]? {
-        didSet {
-            updateViews()
-        }
-    }
+    var userResponses: [Response]?
+    
+    var user: User?
     
     let locationHelper = LocationHelper()
 
