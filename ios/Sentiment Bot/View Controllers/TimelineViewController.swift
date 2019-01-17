@@ -18,7 +18,8 @@ class TimelineViewController: UIViewController {
         super.viewDidLoad()
         
         self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
-
+//        self.timelineTableView.backgroundColor = UIColor.lightGray
+        
         APIController.shared.getUserResponses(userId: TestUser.userID) { (responses, error) in
             DispatchQueue.main.async {
                 self.responses = responses
@@ -41,5 +42,8 @@ extension TimelineViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        cell.backgroundColor = UIColor.clear
+//    }
     
 }
