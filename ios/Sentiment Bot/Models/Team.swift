@@ -13,5 +13,5 @@ struct Team: Codable {
     let id: Int
     var teamName: String
     let code: Int
-    let userId: Int
+    let userId: Int?
 }

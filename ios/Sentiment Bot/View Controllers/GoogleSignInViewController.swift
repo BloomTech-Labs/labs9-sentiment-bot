@@ -22,7 +22,7 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
             }
             
             performSegue(withIdentifier: "ToHomeScreen", sender: self)
-            
+        
             // TODO: - This will be implemented once the back-end is finished.
             APIController.shared.googleSignIn(email: email, fullName: fullName) { (user, error) in
                 if let error = error {
@@ -31,21 +31,48 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
                     NSLog("User: \(user)")
                 }
             }
+            //This will deleted once backend is complete
+            //This is only for test
+            APIController.shared.getUser(userId: TestUser.userID) { (user, error) in
+                if let error = error {
+                    NSLog("There was error retreiving current User: \(error)")
+                } else if let user = user {
+                    self.user = user
+                }
+            }
             
         }
+    }
+    
+    //Once the backend is implemented we can pass the current user to
+    //TabBarViewController and further refactor only doing one api call
+    //there instead of two as we're doing right now. 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ToHomeScreen" {
+            guard let destination = segue.destination as? TabBarViewController else { return }
+            destination.user = user
+        }
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        guard let _ = GIDSignIn.sharedInstance()?.currentUser else {
+            return
+        }
+        performSegue(withIdentifier: "ToHomeScreen", sender: self)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // TODO: - Do more error handling?
-//        var error: NSError?
         GIDSignIn.sharedInstance()?.uiDelegate = self
         GIDSignIn.sharedInstance()?.delegate = self
         let signInButton = GIDSignInButton(frame: CGRect(x: 0, y: 0, width: 150, height: 50))
         signInButton.center = view.center
+        //signInButton.addTarget(self, action: #selector(sign), for: .touchUpInside)
         
         view.addSubview(signInButton)
     }
+    
+    var user: User?
 
 }

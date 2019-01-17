@@ -11,5 +11,6 @@ router.get('/', (req, res) => {
 
 router.use('/teams', require('./dataRoutes/teamRoutes'))
 router.use('/users', require('./dataRoutes/usersRoutes'))
+router.use('/slack', require('./slack-bot'))
 
 module.exports = router;
