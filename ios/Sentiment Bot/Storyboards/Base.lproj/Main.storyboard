@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ot3-Xi-1GB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7Fe-JU-Oqv">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Google Sign In View Controller-->
+        <scene sceneID="8XS-ul-n5O">
+            <objects>
+                <viewController id="7Fe-JU-Oqv" customClass="GoogleSignInViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Xk-Fr-YFD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="adult-background-beard-941693" translatesAutoresizingMaskIntoConstraints="NO" id="ub4-b1-1mJ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ub4-b1-1mJ" firstAttribute="top" secondItem="0Xk-Fr-YFD" secondAttribute="top" id="Nc8-4F-UEJ"/>
+                            <constraint firstItem="ub4-b1-1mJ" firstAttribute="trailing" secondItem="Hv2-ea-9Vs" secondAttribute="trailing" id="anp-Wu-3Xi"/>
+                            <constraint firstItem="ub4-b1-1mJ" firstAttribute="leading" secondItem="Hv2-ea-9Vs" secondAttribute="leading" id="pFu-tf-P7S"/>
+                            <constraint firstItem="ub4-b1-1mJ" firstAttribute="bottom" secondItem="0Xk-Fr-YFD" secondAttribute="bottom" id="yDI-m6-G5x"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Hv2-ea-9Vs"/>
+                    </view>
+                    <connections>
+                        <segue destination="Ot3-Xi-1GB" kind="show" identifier="ToHomeScreen" id="kaD-oo-7Qg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FpL-n3-PHF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1390" y="-72"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="S8s-kq-Nba">
             <objects>
@@ -36,7 +66,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2VK-lX-PCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="115" y="-132"/>
+            <point key="canvasLocation" x="187" y="-132"/>
         </scene>
         <!--Timeline-->
         <scene sceneID="zoX-nQ-l4c">
@@ -59,4 +89,7 @@
             <point key="canvasLocation" x="104" y="-14"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="adult-background-beard-941693" width="5330" height="4610"/>
+    </resources>
 </document>

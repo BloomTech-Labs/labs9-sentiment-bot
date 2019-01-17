@@ -9,7 +9,8 @@
 import Foundation
 import CoreLocation
 
-class LocationHelper: NSObject, CLLocationManagerDelegate {
+class LocationHelper: NSObject, CLLocationManagerDelegate {    
+
     
     let locationManager = CLLocationManager()
     
@@ -20,5 +21,27 @@ class LocationHelper: NSObject, CLLocationManagerDelegate {
     func getCurrentLocation() -> CLLocation? {
         return locationManager.location
     }
+    
+    //This will used during push notification building the response(feelzy)
+    func setPlace(completion: @escaping (String?, Error?) -> Void) {
+        let geoCoder = CLGeocoder()
+        guard let long = locationManager.location?.coordinate.longitude,
+        let lat = locationManager.location?.coordinate.latitude else {
+            NSLog("Couldn't get current location longitude and latitude to set place")
+            return
+        }
+        let location = CLLocation(latitude: lat, longitude: long)
+        geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
+            if let error = error {
+                NSLog("Error retreiving place from reverse GeoCode: \(error)")
+                completion(nil, error)
+            }
+            guard let placeMark = placemarks!.first else { return }
+            let place = ReversedGeoLocation(with: placeMark).city
+            
+            completion(place, nil)
+        }
+    }
+    
     
 }

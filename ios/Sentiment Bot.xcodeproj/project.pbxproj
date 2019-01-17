@@ -15,6 +15,7 @@
 		A13547CA21E6D32B0045C5F0 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13547C921E6D32B0045C5F0 /* HTTPMethod.swift */; };
 		A13547CC21E6DE620045C5F0 /* Response+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13547CB21E6DE620045C5F0 /* Response+Mapping.swift */; };
 		A13E4D1621E7104000E19E6D /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13E4D1521E7104000E19E6D /* Survey.swift */; };
+		A140D93A21EEEEED008963C1 /* ReversedGeoLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D93921EEEEED008963C1 /* ReversedGeoLocation.swift */; };
 		A1EA605B21E8270300ACE25D /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605A21E8270300ACE25D /* LocationHelper.swift */; };
 		A1EA605E21E85D5A00ACE25D /* LocalNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605D21E85D5A00ACE25D /* LocalNotificationHelper.swift */; };
 		A1EA606021E8707100ACE25D /* Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605F21E8707100ACE25D /* Trigger.swift */; };
@@ -23,6 +24,7 @@
 		A1EA606921ECFF9A00ACE25D /* UserDefaults+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA606821ECFF9A00ACE25D /* UserDefaults+extension.swift */; };
 		A1EA607821EE56E400ACE25D /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1EA607721EE56E300ACE25D /* credentials.plist */; };
 		A1EA607A21EE57B000ACE25D /* GoogleSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA607921EE57B000ACE25D /* GoogleSignInViewController.swift */; };
+		F18865D221EEB306008F9D35 /* TestUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18865D121EEB306008F9D35 /* TestUser.swift */; };
 		F1B7E58B21E547450096FC6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B7E58A21E547450096FC6F /* AppDelegate.swift */; };
 		F1B7E59021E547450096FC6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E58E21E547450096FC6F /* Main.storyboard */; };
 		F1B7E59221E547460096FC6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E59121E547460096FC6F /* Assets.xcassets */; };
@@ -47,6 +49,7 @@
 		A13547C921E6D32B0045C5F0 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		A13547CB21E6DE620045C5F0 /* Response+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Response+Mapping.swift"; sourceTree = "<group>"; };
 		A13E4D1521E7104000E19E6D /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
+		A140D93921EEEEED008963C1 /* ReversedGeoLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReversedGeoLocation.swift; sourceTree = "<group>"; };
 		A1EA605A21E8270300ACE25D /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
 		A1EA605D21E85D5A00ACE25D /* LocalNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationHelper.swift; sourceTree = "<group>"; };
 		A1EA605F21E8707100ACE25D /* Trigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trigger.swift; sourceTree = "<group>"; };
@@ -56,6 +59,7 @@
 		A1EA607721EE56E300ACE25D /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
 		A1EA607921EE57B000ACE25D /* GoogleSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInViewController.swift; sourceTree = "<group>"; };
 		D5A27D069A6F1B1A0A158705 /* Pods-Sentiment Bot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sentiment Bot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sentiment Bot/Pods-Sentiment Bot.debug.xcconfig"; sourceTree = "<group>"; };
+		F18865D121EEB306008F9D35 /* TestUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUser.swift; sourceTree = "<group>"; };
 		F1B7E58721E547450096FC6F /* Sentiment Bot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sentiment Bot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B7E58A21E547450096FC6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1B7E58F21E547450096FC6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -99,11 +103,13 @@
 		A13547C521E6D0750045C5F0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F18865D121EEB306008F9D35 /* TestUser.swift */,
 				A13547BF21E69D160045C5F0 /* User.swift */,
 				A13547C321E6D06D0045C5F0 /* Response.swift */,
 				A13547C621E6D0C70045C5F0 /* Team.swift */,
 				A13547CB21E6DE620045C5F0 /* Response+Mapping.swift */,
 				A13E4D1521E7104000E19E6D /* Survey.swift */,
+				A140D93921EEEEED008963C1 /* ReversedGeoLocation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -362,7 +368,6 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Sentiment Bot/Pods-Sentiment Bot-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 			);
@@ -370,7 +375,6 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 			);
@@ -394,6 +398,7 @@
 				F1B7E58B21E547450096FC6F /* AppDelegate.swift in Sources */,
 				A13547BE21E69C5D0045C5F0 /* APIController.swift in Sources */,
 				A1EA607A21EE57B000ACE25D /* GoogleSignInViewController.swift in Sources */,
+				F18865D221EEB306008F9D35 /* TestUser.swift in Sources */,
 				A13547C421E6D06D0045C5F0 /* Response.swift in Sources */,
 				A1EA605B21E8270300ACE25D /* LocationHelper.swift in Sources */,
 				A13547CC21E6DE620045C5F0 /* Response+Mapping.swift in Sources */,
@@ -402,6 +407,7 @@
 				A1EA606621ECFF4800ACE25D /* UserDefaultKeys.swift in Sources */,
 				A1EA605E21E85D5A00ACE25D /* LocalNotificationHelper.swift in Sources */,
 				F1ECBD0821E70C33005CDBE8 /* ProfileViewController.swift in Sources */,
+				A140D93A21EEEEED008963C1 /* ReversedGeoLocation.swift in Sources */,
 				F1ECBD0221E70BF5005CDBE8 /* TimelineViewController.swift in Sources */,
 				A1EA606021E8707100ACE25D /* Trigger.swift in Sources */,
 				F1ECBD0621E70C26005CDBE8 /* MapViewController.swift in Sources */,

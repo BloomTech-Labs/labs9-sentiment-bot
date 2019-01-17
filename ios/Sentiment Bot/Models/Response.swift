@@ -18,8 +18,8 @@ class Response: NSObject, Decodable {
     let emoji: String
     let userId: Int
     let surveyId: Int?
-    var location: CLLocationCoordinate2D
     var imageUrl: URL?
+    var place: String?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -32,36 +32,11 @@ class Response: NSObject, Decodable {
         case emoji
         case imageUrl
     }
-
     
-    required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        //let dateFormatter = DateFormatter()
-        //dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSSZ"
-        //let stringDate = try container.decode(String.self, forKey: .date)
-        //let date = dateFormatter.date(from: stringDate)
-        let date = try container.decode(String.self, forKey: .date)
-        let longitude = try container.decode(Double.self, forKey: .longitude)
-        let latitude = try container.decode(Double.self, forKey: .latitude)
-        let id = try container.decode(Int.self, forKey: .id)
-        let mood = try container.decode(String.self, forKey: .mood)
-        let emoji = try container.decode(String.self, forKey: .emoji)
-        let userId = try container.decode(Int.self, forKey: .userId)
-        let surveyId = try container.decode(Int.self, forKey: .surveyId)
-        //let imageUrl = try container.decode(URL.self, forKey: .imageUrl)
-        
-        self.id = id
-        self.date = date
-        self.longitude = longitude
-        self.latitude = latitude
-        self.mood = mood
-        self.emoji = emoji
-        self.userId = userId
-        self.surveyId = surveyId
-        self.location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        //self.imageUrl = imageUrl
+    var title: String? {
+        return self.place
     }
     
- 
 }
+
 
