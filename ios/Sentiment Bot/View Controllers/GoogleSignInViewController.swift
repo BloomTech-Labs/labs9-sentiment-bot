@@ -34,7 +34,15 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
         }
     }
     
-
+    //Once the backend is implemented we can pass the current user to
+    //TabBarViewController and further refactor only doing one api call
+    //there instead of two as we're doing right now. 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ToHomeScreen" {
+            guard let destination = segue.destination as? TabBarViewController else { return }
+            destination.user = user
+        }
+    }
     
     //Scott you can delete this comment, but I was debugging and kept deleting the app and debugging
     //realizing it didn't redirect to TimeLineVC so I had to implement this
@@ -55,5 +63,7 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
         
         view.addSubview(signInButton)
     }
+    
+    var user: User?
 
 }
