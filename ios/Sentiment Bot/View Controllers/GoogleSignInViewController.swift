@@ -53,8 +53,7 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
         }
     }
     
-    //Scott you can delete this comment, but I was debugging and kept deleting the app and debugging
-    //realizing it didn't redirect to TimeLineVC so I had to implement this
+    
     override func viewDidAppear(_ animated: Bool) {
         guard let _ = GIDSignIn.sharedInstance()?.currentUser else {
             return
