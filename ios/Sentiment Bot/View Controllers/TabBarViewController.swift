@@ -27,20 +27,14 @@ class TabBarViewController: UITabBarController {
     }
     
     func getUserData() {
-        APIController.shared.getUser(userId: TestUser.userID) { (user, error) in
+        APIController.shared.getUserResponses(userId: TestUser.userID, completion: { (responses, error) in
             if let error = error {
-                NSLog("There was error retreiving current User: \(error)")
-            } else if let user = user {
-                self.user = user
+                NSLog("There was error retreiving current User Responses: \(error)")
+            } else if let responses = responses {
+                self.userResponses = responses
             }
-            APIController.shared.getUserResponses(userId: TestUser.userID, completion: { (responses, error) in
-                if let error = error {
-                    NSLog("There was error retreiving current User Responses: \(error)")
-                } else if let responses = responses {
-                    self.userResponses = responses
-                }
-            })
-        }
+        })
+        
     }
     
     var user: User?
