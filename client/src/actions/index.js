@@ -9,6 +9,27 @@ export const FETCHING_TEAMS = "FETCHING_TEAMS";
 export const FETCHING_TEAMS_SUCCESS = "FETCHING_TEAMS_SUCCESS";
 export const FETCHING_TEAMS_FAILURE = "FETCHING_TEAMS_FAILURE";
 
+export const VERIFYING_USER = 'VERIFYING_USER';
+export const USER_VERIFYED = 'USER_VERIFYED';
+export const VERIFYING_USER_FAILURE = 'VERIFYING_USER_FAILURE';
+const APIURL = process.env.REACT_APP_API_URL
+
+export const oAuthFlow = oAuthObj => async dispatch => {
+    try {
+        dispatch({type: VERIFYING_USER})
+
+        const userInApp = await axios.post(
+            `${APIURL}/api/oauth`, 
+            oAuthObj.profileObj.email
+        )
+
+        dispatch({type: USER_VERIFYED, })
+    } 
+    catch (error) {
+        dispatch({ type: VERIFYING_USER_FAILURE })
+    }
+}
+
 export const fetchUsers = () => dispatch => {
     dispatch({type: FETCHING_USERS});
     axios

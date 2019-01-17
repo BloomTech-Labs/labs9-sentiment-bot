@@ -8,6 +8,7 @@ import {createStore, applyMiddleware, compose} from "redux";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
 import rootReducer from "./reducers";
+import { makeMainRoutes } from './routes';
 
 const composeEnhancers =
   typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
@@ -19,11 +20,9 @@ const composeEnhancers =
 const enhancer = composeEnhancers(applyMiddleware(thunk, logger));
 const store = createStore(rootReducer, enhancer);
 
+const routes = makeMainRoutes();
+
 ReactDOM.render(
-  <Provider store={store}>
-    <Router>
-      <App />
-    </Router>
-  </Provider>,
+  routes,
   document.getElementById('root')
 );

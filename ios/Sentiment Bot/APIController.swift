@@ -152,6 +152,53 @@ class APIController {
         UserDefaults.standard.set(true, forKey: UserDefaultsKeys.isLoggedIn.rawValue)
     }
     
+    //Join a Team
+    func joinTeam(code: Int, completion: @escaping (Team?, Error?) -> Void) {
+        let url = baseUrl.appendingPathComponent("join")
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = HTTPMethod.post.rawValue
+        let teamCredentials = ["code": code] as [String: Any]
+        do {
+            let json = try JSONSerialization.data(withJSONObject: teamCredentials, options: .prettyPrinted)
+            request.httpBody = json
+        } catch {
+            NSLog("Error encoding JSON")
+            completion(nil, error)
+        }
+        URLSession.shared.dataTask(with: request) {(data, response, error) in
+            
+            if let error = error {
+                NSLog("There was an error sending team code to server: \(error)")
+                completion(nil, error)
+                return
+            }
+            
+            guard let data = data else {
+                completion(nil, error)
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                NSLog("Error code from the http request: \(httpResponse.statusCode)")
+                completion(nil, error)
+                return
+            }
+            
+            do {
+                let team = try JSONDecoder().decode(Team.self, from: data)
+                completion(team, nil)
+            } catch {
+                NSLog("Error decoding team \(error)")
+                completion(nil, error)
+                return
+            }
+            
+            NSLog("User successfully joined Team")
+        
+            }.resume()
+    }
+    
     func getUserResponses(userId: Int, completion: @escaping ([Response]?, Error?) -> Void) {
         let url = baseUrl.appendingPathComponent("users")
                          .appendingPathComponent("\(userId)")
@@ -335,6 +382,7 @@ class APIController {
     
     
     let localNotificationHelper = LocalNotificationHelper()
-    //let baseUrl = URL(string: "http://localhost:3000/")!
+    //let baseUrl = URL(string: "http://localhost:3000/api")!
     let baseUrl = URL(string: "https://sentimentbot-1.herokuapp.com/api")!
+    let prodUrl = URL(string: "https://feelzy-api.herokuapp.com/api")!
 }
