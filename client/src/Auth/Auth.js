@@ -19,7 +19,7 @@ class Auth {
 
   signIn = () => this.auth0.authorize();
 
-  handleAuthentication = () => {
+  handleAuthentication = (nextState, replace) => {
     return new Promise((resolve, reject) => {
       this.auth0.parseHash((err, authResult) => {
         if (err) return reject(err);

@@ -9,9 +9,13 @@ import history from './history';
 
 // const auth = Auth();
 
-const handleAuthentication = ({location}) => {
-  if (/access_token|id_token|error/.test(location.hash)) {
-    auth.handleAuthentication();
+const handleAuthentication = (props) => {
+  if (/access_token|id_token|error/.test(props.location.hash)) {
+    auth.handleAuthentication(props).then(data => {
+      console.log(data)
+    }).catch(err => {
+      console.log(err)
+    });
   }
 }
 
@@ -30,7 +34,8 @@ export const makeMainRoutes = () => {
           )} />
           <Route path="/callback" render={(props) => {
             handleAuthentication(props);
-            return <Callback {...props} /> 
+            return <Callback {...props } 
+            handleAuthentication={handleAuthentication} /> 
           }}/>        
         </div>
       </Router>
