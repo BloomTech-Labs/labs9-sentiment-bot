@@ -15,7 +15,7 @@ class TimelineViewController: UIViewController, UserProtocol {
     var userResponses: [Response]? {
         didSet {
             DispatchQueue.main.async {
-                self.timelineTableView.reloadData()
+                self.timelineTableView?.reloadData()
             }
         }
     }
