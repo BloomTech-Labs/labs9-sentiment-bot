@@ -31,7 +31,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         } else {
             print("PLease turn on location services or GPS")
         }
-        
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "ResponseAnnotationView")
         
         guard let responses = userResponses else {
@@ -41,7 +40,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         DispatchQueue.main.async {
             self.mapView.addAnnotations(responses)
         }
-        
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -54,14 +52,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         annotationView.canShowCallout = true
         
         return annotationView
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        updateViews()
-    }
-    
-    func updateViews() {
-
     }
     
     //MARK:- CLLocationManager Delegates
@@ -86,7 +76,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         NSLog("Unable to access your current location")
     }
     
-    var userResponses: [Response]?
+    var userResponses: [Response]? {
+    }
     
     var user: User?
     
