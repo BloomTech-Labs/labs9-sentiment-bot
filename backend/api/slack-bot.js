@@ -1,3 +1,9 @@
+/* *********************************************
+ * Echobot: A Simple Bot Example for Slack
+ *
+ * Tomomi Imura (@girlie_mac)
+ * *********************************************/
+
 'use strict'
 
 const express = require('express')
