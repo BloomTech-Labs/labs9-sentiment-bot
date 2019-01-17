@@ -43,22 +43,24 @@
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6z-gh-mBf">
                             <rect key="frame" x="96.5" y="166" width="117" height="7.5"/>
-                            <state key="normal" title="Connect to Slack"/>
+                            <state key="normal" title="Connect to Slack">
+                                <color key="titleColor" red="0.51579731702804565" green="0.05245661735534668" blue="0.10447398573160172" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
                             <connections>
                                 <action selector="connectToSlack:" destination="-1" eventType="touchUpInside" id="yBR-vx-t4l"/>
                             </connections>
                         </button>
-                        <stackView opaque="NO" contentMode="scaleToFill" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="x1F-oZ-fa8">
-                            <rect key="frame" x="59" y="181.5" width="192" height="20.5"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="x1F-oZ-fa8">
+                            <rect key="frame" x="16" y="181.5" width="278" height="20.5"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feelz" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2OP-DH-6tK">
-                                    <rect key="frame" x="0.0" y="0.0" width="41" height="20.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Feelz" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2OP-DH-6tK">
+                                    <rect key="frame" x="0.0" y="0.0" width="219" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last In" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swV-ez-JgT">
-                                    <rect key="frame" x="141" y="0.0" width="51" height="20.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Last In" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swV-ez-JgT">
+                                    <rect key="frame" x="227" y="0.0" width="51" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -66,9 +68,13 @@
                             </subviews>
                         </stackView>
                     </subviews>
+                    <constraints>
+                        <constraint firstItem="x1F-oZ-fa8" firstAttribute="leading" secondItem="bPs-7i-nSU" secondAttribute="leading" constant="16" id="CIL-0p-0hb"/>
+                        <constraint firstAttribute="trailing" secondItem="x1F-oZ-fa8" secondAttribute="trailing" constant="16" id="sQh-Q2-Uvt"/>
+                    </constraints>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" red="0.80455785989999995" green="0.90976542230000002" blue="0.96477669479999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.70786565542221069" green="0.89420825242996216" blue="0.92840433120727539" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="bPs-7i-nSU" secondAttribute="bottom" id="5qL-yH-JLg"/>
                 <constraint firstAttribute="trailing" secondItem="bPs-7i-nSU" secondAttribute="trailing" id="SJ1-29-Ia7"/>

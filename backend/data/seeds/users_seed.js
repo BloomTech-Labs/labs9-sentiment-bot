@@ -1,7 +1,7 @@
 const faker = require('faker')
 
 // number of mock entries that will be created
-const numUsers = 199;
+const numUsers = 100;
 const numTeams = 50;
 
 exports.seed = function (knex, Promise) {
@@ -44,13 +44,15 @@ function generateUser(v, id) {
   const firstName = faker.name.firstName(),
     lastName = faker.name.lastName(),
     email = faker.internet.email(),
-    password = faker.internet.password();
+    password = faker.internet.password(),
+    imageUrl = faker.image.avatar();
   return ({
     "id": id,
     "firstName": firstName,
     "lastName": lastName,
     "email": email,
-    "password": password
+    "password": password,
+    imageUrl
   });
 }
 
