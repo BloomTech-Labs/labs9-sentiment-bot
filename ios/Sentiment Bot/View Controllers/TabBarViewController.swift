@@ -22,6 +22,7 @@ class TabBarViewController: UITabBarController {
         let button = UIButton(frame: CGRect(origin: CGPoint(x: itemWidth * 2, y: view.frame.size.height - itemHeight - bottomPadding! - 10), size: CGSize(width: itemWidth, height: itemHeight)))
         button.setBackgroundImage(#imageLiteral(resourceName: "plus-1"), for: .normal)
         button.adjustsImageWhenHighlighted = false
+        button.sizeToFit()
         button.addTarget(self, action: #selector(popup(sender:)), for: .touchUpInside)
         view.addSubview(button)
     }
