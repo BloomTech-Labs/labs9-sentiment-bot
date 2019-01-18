@@ -69,27 +69,30 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
         super.viewDidLoad()
         GIDSignIn.sharedInstance()?.uiDelegate = self
         GIDSignIn.sharedInstance()?.delegate = self
-        let GoogleSignInButton = createButton(named: "")
-        let googleimage = UIImage(named: "GoogleSignIn")
-        let googleSignUpImage = UIImage(named: "GoogleSignUp")
-        let GoogleSignUpButton = createButton(named: "")
-        GoogleSignUpButton.setBackgroundImage(googleSignUpImage, for: .normal)
-        GoogleSignInButton.setBackgroundImage(googleimage, for: .normal)
-        GoogleSignInButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
-        GoogleSignUpButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
-        let stackView = UIStackView(arrangedSubviews: [GoogleSignInButton, GoogleSignUpButton])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = 20
-        stackView.distribution = .fillEqually
-        GoogleSignInButton.addTarget(self, action: #selector(handleGoogle), for: .touchUpInside)
-        GoogleSignUpButton.addTarget(self, action: #selector(handleGoogle), for: .touchUpInside)
-        view.addSubview(stackView)
-        
-        stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
-        stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
-        stackView.heightAnchor.constraint(equalToConstant: view.frame.height/4).isActive = true
+        containerView.backgroundColor = UIColor.clear.withAlphaComponent(0.0)
+//        let GoogleSignInButton = createButton(named: "")
+//        let googleimage = UIImage(named: "GoogleSignIn")
+//        let googleSignUpImage = UIImage(named: "GoogleSignUp")
+//        let GoogleSignUpButton = createButton(named: "")
+//        GoogleSignUpButton.setBackgroundImage(googleSignUpImage, for: .normal)
+//        GoogleSignInButton.setBackgroundImage(googleimage, for: .normal)
+//        GoogleSignInButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
+//        GoogleSignUpButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
+//        GoogleSignInButton.imageView?.contentMode = .scaleAspectFit
+//        GoogleSignUpButton.imageView?.contentMode = .scaleAspectFit
+//        let stackView = UIStackView(arrangedSubviews: [GoogleSignInButton, GoogleSignUpButton])
+//        stackView.translatesAutoresizingMaskIntoConstraints = false
+//        stackView.axis = .vertical
+//        stackView.spacing = 20
+//        stackView.distribution = .fillEqually
+//        GoogleSignInButton.addTarget(self, action: #selector(handleGoogle), for: .touchUpInside)
+//        GoogleSignUpButton.addTarget(self, action: #selector(handleGoogle), for: .touchUpInside)
+//        //view.addSubview(stackView)
+//
+//        stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
+//        stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -view.center.y + 25).isActive = true
+//        stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
+//        stackView.heightAnchor.constraint(equalToConstant: view.frame.height/6).isActive = true
     }
     
     private func createButton(named: String) -> UIButton {
@@ -102,5 +105,8 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
     }
     
     var user: User?
-
+    
+    
+    @IBOutlet weak var containerView: UIView!
+    
 }
