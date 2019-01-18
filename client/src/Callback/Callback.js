@@ -3,19 +3,14 @@ import loading from './loading.svg';
 import auth0Client from '../Auth/Auth';
 const auth = auth0Client
 
-const handleAuthentication = (nextState, replace) => {
-  if (/access_token|id_token|error/.test(nextState.location.hash)) {
-    auth.handleAuthentication();
-  }
-}
+
 
 class Callback extends Component {
 
   hashCheckHandler = () => {
-    const {location } = this.props
-    console.log(location)
+    console.log(this.props)
     // this.props.handleAuthentication({location})
-    handleAuthentication(this.props).then(data => {
+    this.props.handleAuthentication(this.props).then(data => {
       console.log(data)
     }).catch(err => {
       console.log(err)

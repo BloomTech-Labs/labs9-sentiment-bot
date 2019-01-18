@@ -27,7 +27,7 @@ class Auth {
           return reject(err);
         }
         this.setSession(authResult);
-        resolve();
+        resolve('authenticated');
       });
     });
   }

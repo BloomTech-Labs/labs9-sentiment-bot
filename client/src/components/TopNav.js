@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
+import auth from '../Auth/Auth'
 import "./TopNav.css"
 
 const TopNav = props => {
@@ -11,10 +12,11 @@ const TopNav = props => {
                 <p>{props.pageName}</p>
             </div>
             <div className="right">
-                <NavLink to="/sign-out">Sign Out</NavLink>
+                <button onClick={auth.signOut}>Sign Our</button>
             </div>
-        </div>
-    )
-}
+            </div>
+            )
+        }
 
+        // <NavLink to="/sign-out">Sign Out</NavLink>
 export default TopNav;
