@@ -60,16 +60,45 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
         }
         performSegue(withIdentifier: "ToHomeScreen", sender: self)
     }
+    
+    @objc func handleGoogle() {
+        GIDSignIn.sharedInstance()?.signIn()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance()?.uiDelegate = self
         GIDSignIn.sharedInstance()?.delegate = self
-        let signInButton = GIDSignInButton(frame: CGRect(x: 0, y: 0, width: 150, height: 50))
-        signInButton.center = view.center
-        //signInButton.addTarget(self, action: #selector(sign), for: .touchUpInside)
+        let GoogleSignInButton = createButton(named: "")
+        let googleimage = UIImage(named: "GoogleSignIn")
+        let googleSignUpImage = UIImage(named: "GoogleSignUp")
+        let GoogleSignUpButton = createButton(named: "")
+        GoogleSignUpButton.setBackgroundImage(googleSignUpImage, for: .normal)
+        GoogleSignInButton.setBackgroundImage(googleimage, for: .normal)
+        GoogleSignInButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
+        GoogleSignUpButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
+        let stackView = UIStackView(arrangedSubviews: [GoogleSignInButton, GoogleSignUpButton])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 20
+        stackView.distribution = .fillEqually
+        GoogleSignInButton.addTarget(self, action: #selector(handleGoogle), for: .touchUpInside)
+        GoogleSignUpButton.addTarget(self, action: #selector(handleGoogle), for: .touchUpInside)
+        view.addSubview(stackView)
         
-        view.addSubview(signInButton)
+        stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
+        stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
+        stackView.heightAnchor.constraint(equalToConstant: view.frame.height/4).isActive = true
+    }
+    
+    private func createButton(named: String) -> UIButton {
+            let button = UIButton()
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.setTitle(named, for: .normal)
+            button.backgroundColor = .white
+            button.setTitleColor(.gray, for: .normal)
+            return button
     }
     
     var user: User?

@@ -253,6 +253,7 @@ class APIController {
         
     }
     
+    // TODO: Stretch Goal Management
     func getTeamMembers(teamId: Int, completion: @escaping ([User]?, Error?) -> Void) {
         let url = baseUrl.appendingPathComponent("teams")
             .appendingPathComponent("\(teamId)")
@@ -295,7 +296,7 @@ class APIController {
             
             }.resume()
     }
-    
+    // TODO: Stretch Goal Management
     func getManagingTeam(userId: Int, completion: @escaping (Team?, Error?) -> Void) {
         let url = baseUrl.appendingPathComponent("users")
             .appendingPathComponent("\(userId)")

@@ -76,8 +76,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         NSLog("Unable to access your current location")
     }
     
-    var userResponses: [Response]? {
-    }
+    var userResponses: [Response]? 
     
     var user: User?
     
