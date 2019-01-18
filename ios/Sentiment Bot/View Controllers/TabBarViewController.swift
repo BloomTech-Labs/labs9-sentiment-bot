@@ -17,12 +17,14 @@ class TabBarViewController: UITabBarController {
     
     func passToVCs() {
         for childVC in children {
-            guard var childVC = childVC as? UserProtocol,
-            let userResponses = userResponses
+            guard let userResponses = userResponses
             else { return }
             
-            childVC.user = user
-            childVC.userResponses = userResponses
+            if var childVC = childVC as? UserProtocol {
+                childVC.user = user
+                childVC.userResponses = userResponses
+            }
+
         }
     }
     

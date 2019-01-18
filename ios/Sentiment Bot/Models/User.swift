@@ -9,13 +9,17 @@
 import Foundation
 
 
-class User: Codable {
+struct User: Codable {
     let id: Int
     var firstName: String
     var lastName: String
     var teamId: Int?
     var imageUrl: URL?
     
+}
+
+struct UserArray: Codable {
+    var user: [User]
 }
 
 struct JWT: Codable {

@@ -104,7 +104,7 @@ class APIController {
     }
     
     func getUser(userId: Int, completion: @escaping (User?, Error?) -> Void) {
-        let url = baseUrl.appendingPathComponent("users")
+        let url = prodUrl.appendingPathComponent("users")
                          .appendingPathComponent("\(userId)")
         
         var request = URLRequest(url: url)
@@ -131,8 +131,8 @@ class APIController {
             }
             
             do {
-                let responses = try JSONDecoder().decode(User.self, from: data)
-                completion(responses, nil)
+                let user = try JSONDecoder().decode([User].self, from: data).first
+                completion(user, nil)
             } catch {
                 NSLog("Error with network request: \(error)")
                 completion(nil, error)
@@ -253,6 +253,7 @@ class APIController {
         
     }
     
+    // TODO: Stretch Goal Management
     func getTeamMembers(teamId: Int, completion: @escaping ([User]?, Error?) -> Void) {
         let url = baseUrl.appendingPathComponent("teams")
             .appendingPathComponent("\(teamId)")
@@ -295,7 +296,7 @@ class APIController {
             
             }.resume()
     }
-    
+    // TODO: Stretch Goal Management
     func getManagingTeam(userId: Int, completion: @escaping (Team?, Error?) -> Void) {
         let url = baseUrl.appendingPathComponent("users")
             .appendingPathComponent("\(userId)")
