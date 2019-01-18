@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rbq-ua-8jw">
-                                <rect key="frame" x="30" y="318.5" width="315" height="50"/>
+                                <rect key="frame" x="50" y="318.5" width="275" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Tku-Qu-CDa"/>
                                 </constraints>
@@ -31,8 +31,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="qWw-OV-Lqt" firstAttribute="trailing" secondItem="Rbq-ua-8jw" secondAttribute="trailing" constant="30" id="ZEJ-rX-m1B"/>
-                            <constraint firstItem="Rbq-ua-8jw" firstAttribute="leading" secondItem="qWw-OV-Lqt" secondAttribute="leading" constant="30" id="uOZ-rI-Pok"/>
+                            <constraint firstItem="Rbq-ua-8jw" firstAttribute="leading" secondItem="qWw-OV-Lqt" secondAttribute="leading" constant="50" id="9J5-nd-jnx"/>
+                            <constraint firstAttribute="trailing" secondItem="Rbq-ua-8jw" secondAttribute="trailing" constant="50" id="X0E-f6-8h1"/>
                             <constraint firstItem="Rbq-ua-8jw" firstAttribute="centerY" secondItem="qWw-OV-Lqt" secondAttribute="centerY" id="wgm-FN-1wO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qWw-OV-Lqt"/>

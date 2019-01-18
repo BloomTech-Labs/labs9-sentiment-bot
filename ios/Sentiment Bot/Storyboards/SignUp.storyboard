@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8aw-n6-XXT">
-                                <rect key="frame" x="30" y="318.5" width="315" height="50"/>
+                                <rect key="frame" x="50" y="318.5" width="275" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="19q-I2-qSK"/>
                                 </constraints>
@@ -31,9 +31,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="8aw-n6-XXT" firstAttribute="leading" secondItem="EPM-0E-lKp" secondAttribute="leading" constant="30" id="1yp-DM-V64"/>
+                            <constraint firstItem="8aw-n6-XXT" firstAttribute="leading" secondItem="EPM-0E-lKp" secondAttribute="leading" constant="50" id="1yp-DM-V64"/>
                             <constraint firstItem="8aw-n6-XXT" firstAttribute="centerY" secondItem="EPM-0E-lKp" secondAttribute="centerY" id="4kJ-NI-p47"/>
-                            <constraint firstItem="EPM-0E-lKp" firstAttribute="trailing" secondItem="8aw-n6-XXT" secondAttribute="trailing" constant="30" id="AL4-sw-Don"/>
+                            <constraint firstItem="EPM-0E-lKp" firstAttribute="trailing" secondItem="8aw-n6-XXT" secondAttribute="trailing" constant="50" id="AL4-sw-Don"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EPM-0E-lKp"/>
                     </view>
