@@ -18,22 +18,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rbq-ua-8jw">
-                                <rect key="frame" x="50" y="318.5" width="275" height="50"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="NSF-tK-Ltl">
+                                <rect key="frame" x="50" y="257" width="275" height="173"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8hh-di-BY6">
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="100"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="51" translatesAutoresizingMaskIntoConstraints="NO" id="rEt-qa-Hhj">
+                                                <rect key="frame" x="20" y="0.0" width="235" height="30"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7B-lH-jMy">
+                                                        <rect key="frame" x="0.0" y="0.0" width="45.5" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hh9-Rg-A2Q">
+                                                        <rect key="frame" x="96.5" y="0.0" width="138.5" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="qm7-TK-Rbk">
+                                                <rect key="frame" x="20" y="35" width="235" height="30"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQs-YJ-Fmd">
+                                                        <rect key="frame" x="0.0" y="0.0" width="78.5" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ous-VM-M5b">
+                                                        <rect key="frame" x="97.5" y="0.0" width="137.5" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEx-R4-cPz">
+                                                <rect key="frame" x="114" y="70" width="47" height="30"/>
+                                                <state key="normal" title="Sign in"/>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="rEt-qa-Hhj" firstAttribute="leading" secondItem="8hh-di-BY6" secondAttribute="leading" constant="20" id="7PB-Cd-HFI"/>
+                                            <constraint firstItem="qm7-TK-Rbk" firstAttribute="leading" secondItem="8hh-di-BY6" secondAttribute="leading" constant="20" id="lUT-zW-CcA"/>
+                                        </constraints>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rbq-ua-8jw">
+                                        <rect key="frame" x="0.0" y="123" width="275" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Tku-Qu-CDa"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="GoogleSignIn"/>
+                                        <connections>
+                                            <action selector="googleSignIn:" destination="HIM-GF-J76" eventType="touchUpInside" id="FSp-dO-WH9"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Tku-Qu-CDa"/>
+                                    <constraint firstAttribute="trailing" secondItem="8hh-di-BY6" secondAttribute="trailing" id="6go-br-ed2"/>
+                                    <constraint firstItem="8hh-di-BY6" firstAttribute="leading" secondItem="NSF-tK-Ltl" secondAttribute="leading" id="xpO-xX-rHB"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="GoogleSignIn"/>
-                                <connections>
-                                    <action selector="googleSignIn:" destination="HIM-GF-J76" eventType="touchUpInside" id="FSp-dO-WH9"/>
-                                </connections>
-                            </button>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Rbq-ua-8jw" firstAttribute="leading" secondItem="qWw-OV-Lqt" secondAttribute="leading" constant="50" id="9J5-nd-jnx"/>
-                            <constraint firstAttribute="trailing" secondItem="Rbq-ua-8jw" secondAttribute="trailing" constant="50" id="X0E-f6-8h1"/>
-                            <constraint firstItem="Rbq-ua-8jw" firstAttribute="centerY" secondItem="qWw-OV-Lqt" secondAttribute="centerY" id="wgm-FN-1wO"/>
+                            <constraint firstItem="NSF-tK-Ltl" firstAttribute="leading" secondItem="qWw-OV-Lqt" secondAttribute="leading" constant="50" id="1mW-rs-Lew"/>
+                            <constraint firstItem="NSF-tK-Ltl" firstAttribute="centerY" secondItem="qWw-OV-Lqt" secondAttribute="centerY" id="jlB-Q6-18W"/>
+                            <constraint firstAttribute="trailing" secondItem="NSF-tK-Ltl" secondAttribute="trailing" constant="50" id="ler-Us-VxQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qWw-OV-Lqt"/>
                     </view>
