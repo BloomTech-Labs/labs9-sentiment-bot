@@ -7,15 +7,20 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class SignUpViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.clear.withAlphaComponent(0.25)
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func googleSignUp(_ sender: Any) {
+        GIDSignIn.sharedInstance()?.signIn()
+    }
+    
     /*
     // MARK: - Navigation
 

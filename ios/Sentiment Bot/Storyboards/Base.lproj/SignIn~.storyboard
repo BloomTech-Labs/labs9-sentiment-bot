@@ -111,12 +111,10 @@
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="pgY-gJ-cqj">
                             <rect key="frame" x="80" y="7.6666666666666679" width="183" height="29.000000000000004"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <segments>
                                 <segment title="First"/>
                                 <segment title="Second"/>
                             </segments>
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </segmentedControl>
                     </navigationItem>
                     <connections>
@@ -126,6 +124,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="55J-ML-FKw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="432.80000000000001" y="-739.28571428571433"/>
+        </scene>
+        <!--Sign In View Controller-->
+        <scene sceneID="sZ3-nU-KP2">
+            <objects>
+                <viewController storyboardIdentifier="SignInViewController" id="HIM-GF-J76" customClass="SignInViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iL7-sc-7Rq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="qWw-OV-Lqt"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pCv-43-xum" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-70" y="-1255"/>
+        </scene>
+        <!--Sign Up View Controller-->
+        <scene sceneID="bG2-VJ-dgh">
+            <objects>
+                <viewController storyboardIdentifier="SignUpViewController" id="WVk-6u-oyR" customClass="SignUpViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wV4-RE-RQM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="EPM-0E-lKp"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X23-Pn-vUq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="831" y="-1255"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="z7A-wJ-YZZ">
@@ -144,22 +172,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fwf-z2-iRy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-623" y="-739"/>
-        </scene>
-        <!--SignInViewController-->
-        <scene sceneID="YbD-Ce-mNY">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="SignInViewController" storyboardName="SignIn" referencedIdentifier="SignInViewController" id="kd7-la-ewl" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yir-bI-mjs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-70" y="-1255"/>
-        </scene>
-        <!--SignUpViewController-->
-        <scene sceneID="AUi-N7-LEw">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="SignUpViewController" storyboardName="SignUp" referencedIdentifier="SignUpViewController" id="wGc-Ta-KQQ" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WGT-WF-qib" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="831" y="-1255"/>
         </scene>
     </scenes>
     <resources>

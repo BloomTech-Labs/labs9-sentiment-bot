@@ -21,6 +21,8 @@
 		A140D94321F17DE2008963C1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D94221F17DE2008963C1 /* SignInViewController.swift */; };
 		A140D94521F17E31008963C1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D94421F17E31008963C1 /* SignUpViewController.swift */; };
 		A140D94721F17F9E008963C1 /* SegmentedControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D94621F17F9E008963C1 /* SegmentedControlViewController.swift */; };
+		A140D94A21F188B2008963C1 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A140D94921F188B2008963C1 /* SignIn.storyboard */; };
+		A140D94C21F188F4008963C1 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A140D94B21F188F4008963C1 /* SignUp.storyboard */; };
 		A1EA605B21E8270300ACE25D /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605A21E8270300ACE25D /* LocationHelper.swift */; };
 		A1EA605E21E85D5A00ACE25D /* LocalNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605D21E85D5A00ACE25D /* LocalNotificationHelper.swift */; };
 		A1EA606021E8707100ACE25D /* Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605F21E8707100ACE25D /* Trigger.swift */; };
@@ -60,6 +62,8 @@
 		A140D94221F17DE2008963C1 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		A140D94421F17E31008963C1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A140D94621F17F9E008963C1 /* SegmentedControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlViewController.swift; sourceTree = "<group>"; };
+		A140D94921F188B2008963C1 /* SignIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
+		A140D94B21F188F4008963C1 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		A1EA605A21E8270300ACE25D /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
 		A1EA605D21E85D5A00ACE25D /* LocalNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationHelper.swift; sourceTree = "<group>"; };
 		A1EA605F21E8707100ACE25D /* Trigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trigger.swift; sourceTree = "<group>"; };
@@ -204,6 +208,8 @@
 		F1ECBCF821E70664005CDBE8 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				A140D94B21F188F4008963C1 /* SignUp.storyboard */,
+				A140D94921F188B2008963C1 /* SignIn.storyboard */,
 				F1B7E58E21E547450096FC6F /* Main.storyboard */,
 				F1CDD23B21ECFF06008E7A57 /* Timeline.storyboard */,
 				F1CDD23D21ECFF36008E7A57 /* Map.storyboard */,
@@ -309,6 +315,8 @@
 				A1EA607821EE56E400ACE25D /* credentials.plist in Resources */,
 				F1CDD23F21ECFF36008E7A57 /* Map.storyboard in Resources */,
 				F1CDD23C21ECFF06008E7A57 /* Timeline.storyboard in Resources */,
+				A140D94C21F188F4008963C1 /* SignUp.storyboard in Resources */,
+				A140D94A21F188B2008963C1 /* SignIn.storyboard in Resources */,
 				F1B7E59221E547460096FC6F /* Assets.xcassets in Resources */,
 				F1B7E59021E547450096FC6F /* Main.storyboard in Resources */,
 				F1CDD27121ED99D5008E7A57 /* ProfileViewController.storyboard in Resources */,

@@ -12,9 +12,16 @@ class SegmentedControlViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                view.backgroundColor = UIColor.clear.withAlphaComponent(0.0)
+        view.backgroundColor = UIColor.clear.withAlphaComponent(0.0)
+        setNavigationBarClear()
         setupView()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    func setNavigationBarClear() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.alpha = 0.0
     }
     
     private func setupView() {
@@ -91,11 +98,11 @@ class SegmentedControlViewController: UIViewController {
     
     private func updateView() {
         if segmentedControl.selectedSegmentIndex == 0 {
-            remove(asChildViewController: signInViewController)
-            add(asChildViewController: signUpViewController)
-        } else {
             remove(asChildViewController: signUpViewController)
             add(asChildViewController: signInViewController)
+        } else {
+            remove(asChildViewController: signInViewController)
+            add(asChildViewController: signUpViewController)
         }
     }
     
