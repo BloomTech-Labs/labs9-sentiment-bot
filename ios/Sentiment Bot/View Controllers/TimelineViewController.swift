@@ -15,9 +15,14 @@ class TimelineViewController: UIViewController, UserProtocol {
     
     var userResponses: [Response]? {
         didSet {
-            DispatchQueue.main.async {
-                self.timelineTableView?.reloadData()
-            }
+            updateViews()
+        }
+    }
+    
+    private func updateViews() {
+        DispatchQueue.main.async {
+            //self.timelineTableView.isHidden = false
+            self.timelineTableView?.reloadData()
         }
     }
     
@@ -25,7 +30,6 @@ class TimelineViewController: UIViewController, UserProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
     }
     
