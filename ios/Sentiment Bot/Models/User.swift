@@ -16,6 +16,8 @@ struct User: Codable {
     var teamId: Int?
     var imageUrl: URL?
     
+    static var currentUserId = UserDefaults.standard.userId
+    
 }
 
 struct UserArray: Codable {

@@ -23,6 +23,14 @@ class StripeController {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.post.rawValue
         let stripeParams = ["card_token": token] as [String: Any]
+        
+        guard let token = UserDefaults.standard.token else {
+            NSLog("No JWT Token Set to User Defaults")
+            return
+        }
+        
+        request.setValue(token, forHTTPHeaderField: "Authorization")
+        
         do {
             let json = try JSONSerialization.data(withJSONObject: stripeParams, options: .prettyPrinted)
             request.httpBody = json

@@ -9,6 +9,7 @@
 import UIKit
 import JWTDecode
 
+
 class APIController {
     
     static let shared = APIController()
@@ -19,9 +20,9 @@ class APIController {
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.post.rawValue
-        let userCredentials = ["firstName": firstName, "lastName": lastName, "email": email, "password": password] as [String: Any]
+        let userParams = ["firstName": firstName, "lastName": lastName, "email": email, "password": password] as [String: Any]
         do {
-            let json = try JSONSerialization.data(withJSONObject: userCredentials, options: .prettyPrinted)
+            let json = try JSONSerialization.data(withJSONObject: userParams, options: .prettyPrinted)
             request.httpBody = json
             completion(nil)
         } catch {
@@ -57,9 +58,9 @@ class APIController {
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.post.rawValue
-        let userCredentials = ["email": email, "password": password] as [String: Any]
+        let userParams = ["email": email, "password": password] as [String: Any]
         do {
-            let json = try JSONSerialization.data(withJSONObject: userCredentials, options: .prettyPrinted)
+            let json = try JSONSerialization.data(withJSONObject: userParams, options: .prettyPrinted)
             request.httpBody = json
             completion(nil)
         } catch {
@@ -112,6 +113,14 @@ class APIController {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.get.rawValue
         
+        guard let token = UserDefaults.standard.token else {
+            NSLog("No JWT Token Set to User Defaults")
+            return
+        }
+        
+        request.setValue(token, forHTTPHeaderField: "Authorization")
+    
+        
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 NSLog("Error with getting user: \(error)")
@@ -154,6 +163,14 @@ class APIController {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.post.rawValue
         let teamCredentials = ["code": code] as [String: Any]
+        
+        guard let token = UserDefaults.standard.token else {
+            NSLog("No JWT Token Set to User Defaults")
+            return
+        }
+        
+        request.setValue(token, forHTTPHeaderField: "Authorization")
+        
         do {
             let json = try JSONSerialization.data(withJSONObject: teamCredentials, options: .prettyPrinted)
             request.httpBody = json
@@ -194,6 +211,7 @@ class APIController {
             }.resume()
     }
     
+    //Get User Survey Responses
     func getUserResponses(userId: Int, completion: @escaping ([Response]?, Error?) -> Void) {
         let url = baseUrl.appendingPathComponent("users")
                          .appendingPathComponent("\(userId)")
@@ -203,12 +221,12 @@ class APIController {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.get.rawValue
         
-//        guard let token = UserDefaults.standard.token else {
-//            NSLog("No JWT Token Set to User Defaults")
-//            return
-//        }
-//
-//        request.setValue(token, forHTTPHeaderField: "Authorization")
+        guard let token = UserDefaults.standard.token else {
+            NSLog("No JWT Token Set to User Defaults")
+            return
+        }
+
+        request.setValue(token, forHTTPHeaderField: "Authorization")
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
@@ -244,11 +262,12 @@ class APIController {
         }.resume()
     }
     
+    //Google OAuth Sign In
     func googleSignIn(email: String, fullName: String, completion: @escaping (User?, Error?) -> Void) {
         
     }
     
-    // TODO: Stretch Goal Management
+    // Get Team Members of a team
     func getTeamMembers(teamId: Int, completion: @escaping ([User]?, Error?) -> Void) {
         let url = baseUrl.appendingPathComponent("teams")
             .appendingPathComponent("\(teamId)")
@@ -257,6 +276,13 @@ class APIController {
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.get.rawValue
+        
+        guard let token = UserDefaults.standard.token else {
+            NSLog("No JWT Token Set to User Defaults")
+            return
+        }
+        
+        request.setValue(token, forHTTPHeaderField: "Authorization")
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
@@ -291,7 +317,8 @@ class APIController {
             
             }.resume()
     }
-    // TODO: Stretch Goal Management
+    
+    //Get Managing Team as Manager
     func getManagingTeam(userId: Int, completion: @escaping (Team?, Error?) -> Void) {
         let url = baseUrl.appendingPathComponent("users")
             .appendingPathComponent("\(userId)")
@@ -300,6 +327,13 @@ class APIController {
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.get.rawValue
+        
+        guard let token = UserDefaults.standard.token else {
+            NSLog("No JWT Token Set to User Defaults")
+            return
+        }
+        
+        request.setValue(token, forHTTPHeaderField: "Authorization")
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
@@ -335,6 +369,7 @@ class APIController {
             }.resume()
     }
     
+    //Send Survey to Server -> APN -> User's Mobile Phone
     func sendSurveyNotification() {
         //This will be inside
         let emojis = ["😄","😃"]
@@ -373,7 +408,7 @@ class APIController {
             }
             let image = UIImage(data: data)
             completion(image, error);
-            }.resume()
+        }.resume()
     }
     
     //Save JSON Web Token and Associated User

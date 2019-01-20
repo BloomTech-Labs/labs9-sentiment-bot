@@ -8,6 +8,10 @@
 
 import UIKit
 import GoogleSignIn
+
+//This needs to be renamed to AuthenticationViewController
+//because now we can log in through google or regular sign in sign up
+//We'll do it together to avoid merge conflicts
 class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
@@ -15,13 +19,15 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
         } else {
 
             guard let email = user.profile.email,
-                let fullName = user.profile.name else {
+                let fullName = user.profile.name,
+                let idToken = user.authentication.idToken ,
+                let profileImageUrl = user.profile.imageURL(withDimension: 400) else {
                     NSLog("Email and Full Name wasn't returned from GoogleSignIn")
                     return
             }
             
             performSegue(withIdentifier: "ToHomeScreen", sender: self)
-        
+            
             // TODO: - This will be implemented once the back-end is finished.
             APIController.shared.googleSignIn(email: email, fullName: fullName) { (user, error) in
                 if let error = error {
@@ -70,29 +76,6 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
         GIDSignIn.sharedInstance()?.uiDelegate = self
         GIDSignIn.sharedInstance()?.delegate = self
         containerView.backgroundColor = UIColor.clear.withAlphaComponent(0.0)
-//        let GoogleSignInButton = createButton(named: "")
-//        let googleimage = UIImage(named: "GoogleSignIn")
-//        let googleSignUpImage = UIImage(named: "GoogleSignUp")
-//        let GoogleSignUpButton = createButton(named: "")
-//        GoogleSignUpButton.setBackgroundImage(googleSignUpImage, for: .normal)
-//        GoogleSignInButton.setBackgroundImage(googleimage, for: .normal)
-//        GoogleSignInButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
-//        GoogleSignUpButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
-//        GoogleSignInButton.imageView?.contentMode = .scaleAspectFit
-//        GoogleSignUpButton.imageView?.contentMode = .scaleAspectFit
-//        let stackView = UIStackView(arrangedSubviews: [GoogleSignInButton, GoogleSignUpButton])
-//        stackView.translatesAutoresizingMaskIntoConstraints = false
-//        stackView.axis = .vertical
-//        stackView.spacing = 20
-//        stackView.distribution = .fillEqually
-//        GoogleSignInButton.addTarget(self, action: #selector(handleGoogle), for: .touchUpInside)
-//        GoogleSignUpButton.addTarget(self, action: #selector(handleGoogle), for: .touchUpInside)
-//        //view.addSubview(stackView)
-//
-//        stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
-//        stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -view.center.y + 25).isActive = true
-//        stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
-//        stackView.heightAnchor.constraint(equalToConstant: view.frame.height/6).isActive = true
     }
     
     private func createButton(named: String) -> UIButton {
