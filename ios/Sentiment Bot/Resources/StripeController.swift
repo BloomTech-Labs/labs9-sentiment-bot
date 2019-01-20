@@ -49,6 +49,6 @@ class StripeController {
             }.resume()
     }
     
-    let baseUrl = URL(string: "https://sentimentbot-1.herokuapp.com/api")!
-    //let baseUrl = URL(string: "http://localhost:3000/api")!
+    //let baseUrl = URL(string: "https://sentimentbot-1.herokuapp.com/api")!
+    let baseUrl = URL(string: "http://localhost:3000/api")!
 }
