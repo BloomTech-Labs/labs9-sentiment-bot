@@ -20,7 +20,7 @@ const getUser = async (req, res) => {
     const { id } = req.params;
     const users = await db.getUser(id);
 
-    res.status(200).json(users)
+    res.status(200).json(users[0])
   } catch (error) {
     res.status(500).json({error}) 
   }
