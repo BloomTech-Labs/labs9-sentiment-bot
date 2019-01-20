@@ -19,5 +19,13 @@ class SignInViewController: UIViewController{
     @IBAction func googleSignIn(_ sender: Any) {
         GIDSignIn.sharedInstance()?.signIn()
     }
-
+    
+    
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    
+    @IBAction func signIn(_ sender: Any) {
+    }
+    
 }

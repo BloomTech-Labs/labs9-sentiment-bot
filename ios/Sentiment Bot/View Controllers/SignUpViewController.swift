@@ -21,6 +21,18 @@ class SignUpViewController: UIViewController {
         GIDSignIn.sharedInstance()?.signIn()
     }
     
+    @IBOutlet weak var firstNameTextField: UITextField!
+    
+    @IBOutlet weak var lastNameTextField: UITextField!
+    
+    @IBOutlet weak var emailTextField: UITextField!
+    
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    @IBAction func signUp(_ sender: Any) {
+    }
+    
+    
     /*
     // MARK: - Navigation
 
