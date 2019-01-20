@@ -103,8 +103,9 @@ class APIController {
             }.resume()
     }
     
+    //Get User through userId
     func getUser(userId: Int, completion: @escaping (User?, Error?) -> Void) {
-        let url = prodUrl.appendingPathComponent("users")
+        let url = baseUrl.appendingPathComponent("users")
                          .appendingPathComponent("\(userId)")
         
         var request = URLRequest(url: url)
@@ -144,12 +145,6 @@ class APIController {
             
             }.resume()
         
-    }
-    
-    private func saveCurrentUser(userId: Int, token: String) {
-        UserDefaults.standard.set(token, forKey: UserDefaultsKeys.token.rawValue)
-        UserDefaults.standard.set(userId, forKey: UserDefaultsKeys.userId.rawValue)
-        UserDefaults.standard.set(true, forKey: UserDefaultsKeys.isLoggedIn.rawValue)
     }
     
     //Join a Team
@@ -360,39 +355,8 @@ class APIController {
         }
     }
     
-    //Stripe Integration
-    //Create Unlimited Teams Subscription
-    func createCustomerKey(withAPIVersion apiVersion: String, completion: @escaping (Error?) -> Void) {
-        let url = baseUrl.appendingPathComponent("teams")
-        var request = URLRequest(url: url)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = HTTPMethod.post.rawValue
-        let stripeParams = ["api_version": apiVersion] as [String: Any]
-        do {
-            let json = try JSONSerialization.data(withJSONObject: stripeParams, options: .prettyPrinted)
-            request.httpBody = json
-        } catch {
-            NSLog("Error encoding JSON")
-            completion(error)
-        }
-        URLSession.shared.dataTask(with: request) {(data, response, error) in
-            
-            if let error = error {
-                NSLog("There was an error sending stripe client credentials to server: \(error)")
-                completion(error)
-                return
-            }
-            
-            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
-                NSLog("Error code(createCustomerKey) from the http request: \(httpResponse.statusCode)")
-                completion(error)
-                return
-            }
-            NSLog("User created Stripe Customer")
-            
-            }.resume()
-    }
-    
+    //Helper Functions
+
     //Get Image
     func getImage(url: URL, completion: @escaping (UIImage?, Error?) -> Void = {_,_ in}) {
         let request = URLRequest(url: url)
@@ -412,11 +376,17 @@ class APIController {
             }.resume()
     }
     
+    //Save JSON Web Token and Associated User
+    private func saveCurrentUser(userId: Int, token: String) {
+        UserDefaults.standard.set(token, forKey: UserDefaultsKeys.token.rawValue)
+        UserDefaults.standard.set(userId, forKey: UserDefaultsKeys.userId.rawValue)
+        UserDefaults.standard.set(true, forKey: UserDefaultsKeys.isLoggedIn.rawValue)
+    }
+    
     
     
     
     let localNotificationHelper = LocalNotificationHelper()
     //let baseUrl = URL(string: "http://localhost:3000/api")!
     let baseUrl = URL(string: "https://sentimentbot-1.herokuapp.com/api")!
-    let prodUrl = URL(string: "https://feelzy-api.herokuapp.com/api")!
 }
