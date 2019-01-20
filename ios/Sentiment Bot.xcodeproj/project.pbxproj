@@ -23,6 +23,7 @@
 		A140D94721F17F9E008963C1 /* SegmentedControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D94621F17F9E008963C1 /* SegmentedControlViewController.swift */; };
 		A140D94A21F188B2008963C1 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A140D94921F188B2008963C1 /* SignIn.storyboard */; };
 		A140D94C21F188F4008963C1 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A140D94B21F188F4008963C1 /* SignUp.storyboard */; };
+		A140D94E21F40E30008963C1 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A140D94D21F40E30008963C1 /* Stripe.framework */; };
 		A1EA605B21E8270300ACE25D /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605A21E8270300ACE25D /* LocationHelper.swift */; };
 		A1EA605E21E85D5A00ACE25D /* LocalNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605D21E85D5A00ACE25D /* LocalNotificationHelper.swift */; };
 		A1EA606021E8707100ACE25D /* Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605F21E8707100ACE25D /* Trigger.swift */; };
@@ -64,6 +65,7 @@
 		A140D94621F17F9E008963C1 /* SegmentedControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlViewController.swift; sourceTree = "<group>"; };
 		A140D94921F188B2008963C1 /* SignIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		A140D94B21F188F4008963C1 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		A140D94D21F40E30008963C1 /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
 		A1EA605A21E8270300ACE25D /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
 		A1EA605D21E85D5A00ACE25D /* LocalNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationHelper.swift; sourceTree = "<group>"; };
 		A1EA605F21E8707100ACE25D /* Trigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trigger.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1EA606321ECFD4E00ACE25D /* JWTDecode.framework in Frameworks */,
+				A140D94E21F40E30008963C1 /* Stripe.framework in Frameworks */,
 				0C99F989B5C76ECD3F5C3CD2 /* Pods_Sentiment_Bot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,6 +161,7 @@
 		A1EA606121ECFD4D00ACE25D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A140D94D21F40E30008963C1 /* Stripe.framework */,
 				A1EA606221ECFD4D00ACE25D /* JWTDecode.framework */,
 				F7C4288AE6B4B1B0B2C7069D /* Pods_Sentiment_Bot.framework */,
 			);
@@ -380,11 +384,13 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/JWTDecode.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Stripe.framework",
 			);
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/JWTDecode.framework",
+				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/Stripe.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

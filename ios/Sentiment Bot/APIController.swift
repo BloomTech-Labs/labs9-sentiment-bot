@@ -360,6 +360,39 @@ class APIController {
         }
     }
     
+    //Stripe Integration
+    //Create Unlimited Teams Subscription
+    func createCustomerKey(withAPIVersion apiVersion: String, completion: @escaping (Error?) -> Void) {
+        let url = baseUrl.appendingPathComponent("teams")
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = HTTPMethod.post.rawValue
+        let stripeParams = ["api_version": apiVersion] as [String: Any]
+        do {
+            let json = try JSONSerialization.data(withJSONObject: stripeParams, options: .prettyPrinted)
+            request.httpBody = json
+        } catch {
+            NSLog("Error encoding JSON")
+            completion(error)
+        }
+        URLSession.shared.dataTask(with: request) {(data, response, error) in
+            
+            if let error = error {
+                NSLog("There was an error sending stripe client credentials to server: \(error)")
+                completion(error)
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                NSLog("Error code(createCustomerKey) from the http request: \(httpResponse.statusCode)")
+                completion(error)
+                return
+            }
+            NSLog("User created Stripe Customer")
+            
+            }.resume()
+    }
+    
     //Get Image
     func getImage(url: URL, completion: @escaping (UIImage?, Error?) -> Void = {_,_ in}) {
         let request = URLRequest(url: url)

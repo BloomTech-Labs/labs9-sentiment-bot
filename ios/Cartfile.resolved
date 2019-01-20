@@ -1,1 +1,2 @@
 github "auth0/JWTDecode.swift" "2.2.0"
+github "stripe/stripe-ios" "v14.0.0"
