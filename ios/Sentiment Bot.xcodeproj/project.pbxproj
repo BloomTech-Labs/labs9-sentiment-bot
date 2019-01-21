@@ -27,6 +27,7 @@
 		A140D95021F41620008963C1 /* StripeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D94F21F41620008963C1 /* StripeController.swift */; };
 		A140D95221F419E3008963C1 /* PremiumCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D95121F419E3008963C1 /* PremiumCheckoutViewController.swift */; };
 		A140D95621F54B92008963C1 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D95521F54B92008963C1 /* ErrorMessage.swift */; };
+		A140D95821F5733B008963C1 /* DummyTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D95721F5733B008963C1 /* DummyTabBarViewController.swift */; };
 		A1EA605B21E8270300ACE25D /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605A21E8270300ACE25D /* LocationHelper.swift */; };
 		A1EA605E21E85D5A00ACE25D /* LocalNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605D21E85D5A00ACE25D /* LocalNotificationHelper.swift */; };
 		A1EA606021E8707100ACE25D /* Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605F21E8707100ACE25D /* Trigger.swift */; };
@@ -72,6 +73,7 @@
 		A140D94F21F41620008963C1 /* StripeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeController.swift; sourceTree = "<group>"; };
 		A140D95121F419E3008963C1 /* PremiumCheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumCheckoutViewController.swift; sourceTree = "<group>"; };
 		A140D95521F54B92008963C1 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		A140D95721F5733B008963C1 /* DummyTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyTabBarViewController.swift; sourceTree = "<group>"; };
 		A1EA605A21E8270300ACE25D /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
 		A1EA605D21E85D5A00ACE25D /* LocalNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationHelper.swift; sourceTree = "<group>"; };
 		A1EA605F21E8707100ACE25D /* Trigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trigger.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				A140D94421F17E31008963C1 /* SignUpViewController.swift */,
 				A140D94621F17F9E008963C1 /* SegmentedControlViewController.swift */,
 				A140D95121F419E3008963C1 /* PremiumCheckoutViewController.swift */,
+				A140D95721F5733B008963C1 /* DummyTabBarViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -451,6 +454,7 @@
 				F18865D221EEB306008F9D35 /* TestUser.swift in Sources */,
 				A13547C421E6D06D0045C5F0 /* Response.swift in Sources */,
 				A1EA605B21E8270300ACE25D /* LocationHelper.swift in Sources */,
+				A140D95821F5733B008963C1 /* DummyTabBarViewController.swift in Sources */,
 				A13547CC21E6DE620045C5F0 /* Response+Mapping.swift in Sources */,
 				A1EA606921ECFF9A00ACE25D /* UserDefaults+extension.swift in Sources */,
 				F1ECBCFD21E706B7005CDBE8 /* UserView.swift in Sources */,

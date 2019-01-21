@@ -60,9 +60,13 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
         guard let _ = GIDSignIn.sharedInstance()?.currentUser else {
             return
         }
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "ToHomeScreen", sender: self)
+        
+        if UserDefaults.standard.userId != 0 {
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "ToHomeScreen", sender: self)
+            }
         }
+
 
     }
     
