@@ -38,7 +38,7 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
             }
             //This will deleted once backend is complete
             //This is only for test
-            APIController.shared.getUser(userId: TestUser.userID) { (user, error) in
+            APIController.shared.getUser(userId: User.currentUserId) { (user, error) in
                 if let error = error {
                     NSLog("There was error retreiving current User: \(error)")
                 } else if let user = user {

@@ -15,7 +15,7 @@ class APIController {
     static let shared = APIController()
     
     //Signup User
-    func signUp(firstName: String, lastName: String, email: String, password: String, completion: @escaping (Error?) -> Void = {_ in }){
+    func signUp(firstName: String, lastName: String, email: String, password: String, completion: @escaping (ErrorMessage?) -> Void = {_  in }){
         let url = baseUrl.appendingPathComponent("users")
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -26,19 +26,23 @@ class APIController {
             request.httpBody = json
         } catch {
             NSLog("Error encoding JSON")
-            completion(error)
+            return
         }
         URLSession.shared.dataTask(with: request) {(data, response, error) in
             
             if let error = error {
                 NSLog("There was an error signup up the user: \(error)")
-                completion(error)
+                return
+            }
+            
+            guard let data = data else {
                 return
             }
             
             if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
                 NSLog("Error code from the http request: \(httpResponse.statusCode)")
-                completion(error)
+                let errorMessage = try! JSONDecoder().decode(ErrorMessage.self, from: data)
+                completion(errorMessage)
                 return
             }
             
