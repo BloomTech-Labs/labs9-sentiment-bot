@@ -35,7 +35,7 @@ import UIKit
         
         // TODO: - Should this be in awakeFromNib?
         
-        APIController.shared.getUser(userId: User.currentUserId) { (users, error) in
+        APIController.shared.getUser(userId: UserDefaults.standard.userId) { (users, error) in
             self.users = users
             DispatchQueue.main.async {
                 guard let firstName = users?.firstName, let lastName = users?.lastName, let userID = users?.id else { return }
@@ -55,7 +55,7 @@ import UIKit
             }
         }
         
-        APIController.shared.getUserResponses(userId: User.currentUserId) { (responses, error) in
+        APIController.shared.getUserResponses(userId: UserDefaults.standard.userId) { (responses, error) in
             self.responses = responses
             DispatchQueue.main.async {
                 self.feelzNumberLabel.text = "Feelz: \(self.responses?.count ?? 0)"

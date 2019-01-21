@@ -25,27 +25,23 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
                     NSLog("Email and Full Name wasn't returned from GoogleSignIn")
                     return
             }
+
             
-            performSegue(withIdentifier: "ToHomeScreen", sender: self)
-            
-            // TODO: - This will be implemented once the back-end is finished.
-            APIController.shared.googleSignIn(email: email, fullName: fullName) { (user, error) in
-                if let error = error {
-                    NSLog("Error: \(error)")
-                } else if let user = user {
-                    NSLog("User: \(user)")
+            APIController.shared.googleSignIn(email: email, fullName: fullName, imageUrl: profileImageUrl) { (errorMessage) in
+                if let errorMessage = errorMessage {
+                    NSLog("Error: \(errorMessage)")
+                } else {
+                    APIController.shared.getUser(userId: UserDefaults.standard.userId) { (user, error) in
+                        
+                        if let error = error {
+                            NSLog("There was error retreiving current User: \(error)")
+                        } else if let user = user {
+                            self.user = user
+                            self.viewDidAppear(true)
+                        }
+                    }
                 }
             }
-            //This will deleted once backend is complete
-            //This is only for test
-            APIController.shared.getUser(userId: User.currentUserId) { (user, error) in
-                if let error = error {
-                    NSLog("There was error retreiving current User: \(error)")
-                } else if let user = user {
-                    self.user = user
-                }
-            }
-            
         }
     }
     
@@ -64,7 +60,10 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
         guard let _ = GIDSignIn.sharedInstance()?.currentUser else {
             return
         }
-        performSegue(withIdentifier: "ToHomeScreen", sender: self)
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "ToHomeScreen", sender: self)
+        }
+
     }
     
     @objc func handleGoogle() {

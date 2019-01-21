@@ -262,44 +262,36 @@ class APIController {
     }
     
     //Google OAuth Sign In
-    func googleSignIn(email: String, fullName: String, completion: @escaping (User?, Error?) -> Void) {
+    func googleSignIn(email: String, fullName: String, imageUrl: URL, completion: @escaping (ErrorMessage?) -> Void) {
         let fullNameArr = fullName.components(separatedBy: " ")
         let url = baseUrl.appendingPathComponent("oauth")
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.post.rawValue
-        let googleSignInParams = ["email": email, "firstName": fullNameArr[0], "lastName": fullNameArr[1]] as [String: Any]
-        
-        guard let token = UserDefaults.standard.token else {
-            NSLog("No JWT Token Set to User Defaults")
-            return
-        }
-        
-        request.setValue(token, forHTTPHeaderField: "Authorization")
+        let googleSignInParams = ["email": email, "firstName": fullNameArr[0], "lastName": fullNameArr[1], "imageUrl": imageUrl.absoluteString] as [String: Any]
         
         do {
             let json = try JSONSerialization.data(withJSONObject: googleSignInParams, options: .prettyPrinted)
             request.httpBody = json
         } catch {
             NSLog("Error encoding JSON")
-            completion(nil, error)
+            return
         }
         URLSession.shared.dataTask(with: request) {(data, response, error) in
             
             if let error = error {
                 NSLog("There was an error sending Google Sign In Credentials to server: \(error)")
-                completion(nil, error)
                 return
             }
             
             guard let data = data else {
-                completion(nil, error)
                 return
             }
             
             if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
                 NSLog("Error code from the http request: \(httpResponse.statusCode)")
-                completion(nil, error)
+                let errorMessage = try! JSONDecoder().decode(ErrorMessage.self, from: data)
+                completion(errorMessage)
                 return
             }
             
@@ -311,12 +303,11 @@ class APIController {
                 self.saveCurrentUser(userId: userId, token: token)
             } catch {
                 NSLog("Error decoding JSON Web Token \(error)")
-                completion(nil, error)
                 return
             }
             
             NSLog("Successfully Google Signed in User")
-            
+            completion(nil)
             }.resume()
     }
     
