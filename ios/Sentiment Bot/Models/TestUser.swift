@@ -11,5 +11,5 @@ import Foundation
 // Global Variable to set a test user
 
 struct TestUser {
-    static var userID = 34
+    static var userID = 24
 }

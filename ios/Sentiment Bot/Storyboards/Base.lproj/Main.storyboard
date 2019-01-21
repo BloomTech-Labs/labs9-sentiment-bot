@@ -86,7 +86,7 @@
         <!--Tab Bar View Controller-->
         <scene sceneID="S8s-kq-Nba">
             <objects>
-                <tabBarController id="Ot3-Xi-1GB" customClass="TabBarViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarViewController" id="Ot3-Xi-1GB" customClass="TabBarViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jXY-Hd-Cmb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
