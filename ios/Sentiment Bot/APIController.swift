@@ -48,9 +48,7 @@ class APIController {
             
             NSLog("Successfully signed up User")
             
-            self.logIn(email: email, password: password, completion: { (_) in
-                completion(nil)
-            })
+            self.logIn(email: email, password: password, completion: completion)
             
             }.resume()
     }
@@ -81,8 +79,14 @@ class APIController {
             
             if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
                 NSLog("Error code from the http request: \(httpResponse.statusCode)")
-                let errorMessage = try! JSONDecoder().decode(ErrorMessage.self, from: data)
-                completion(errorMessage)
+                do {
+                    let errorMessage = try JSONDecoder().decode(ErrorMessage.self, from: data)
+                    completion(errorMessage)
+                } catch {
+                    NSLog("Error decoding ErrorMessage \(error)")
+                    return
+                }
+ 
                 return
             }
             
