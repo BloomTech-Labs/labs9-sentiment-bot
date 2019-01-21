@@ -76,7 +76,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2VK-lX-PCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="170" y="-185"/>
+            <point key="canvasLocation" x="187" y="-72"/>
         </scene>
         <!--Timeline-->
         <scene sceneID="zoX-nQ-l4c">
@@ -106,6 +106,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="343" height="419"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Ps6-I8-ETi"/>
                     </view>
                     <navigationItem key="navigationItem" id="dr5-x3-6xq">
                         <nil key="title"/>
