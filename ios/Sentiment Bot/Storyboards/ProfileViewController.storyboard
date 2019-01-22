@@ -78,7 +78,7 @@
                         <color key="backgroundColor" red="0.72584866751269028" green="0.72584866751269028" blue="0.72584866751269028" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="fcA-VK-hlf"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="plus" id="lz5-NM-N8d"/>
+                    <tabBarItem key="tabBarItem" title="" id="lz5-NM-N8d"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="profileView" destination="FR5-Yd-fpV" id="mHj-PS-eYp"/>
@@ -90,7 +90,4 @@
             <point key="canvasLocation" x="-68" y="162.5615763546798"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="plus" width="30" height="30"/>
-    </resources>
 </document>

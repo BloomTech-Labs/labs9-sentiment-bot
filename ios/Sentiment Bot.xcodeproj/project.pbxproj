@@ -109,6 +109,7 @@
 		A1EA607721EE56E300ACE25D /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
 		A1EA607921EE57B000ACE25D /* GoogleSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInViewController.swift; sourceTree = "<group>"; };
 		D5A27D069A6F1B1A0A158705 /* Pods-Sentiment Bot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sentiment Bot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sentiment Bot/Pods-Sentiment Bot.debug.xcconfig"; sourceTree = "<group>"; };
+		F138A56521F6172C0004334F /* Sentiment Bot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sentiment Bot.entitlements"; sourceTree = "<group>"; };
 		F18865D121EEB306008F9D35 /* TestUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUser.swift; sourceTree = "<group>"; };
 		F1B7E58721E547450096FC6F /* Sentiment Bot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sentiment Bot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B7E58A21E547450096FC6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -234,6 +235,7 @@
 		F1B7E58921E547450096FC6F /* Sentiment Bot */ = {
 			isa = PBXGroup;
 			children = (
+				F138A56521F6172C0004334F /* Sentiment Bot.entitlements */,
 				A140D93D21EFEAB7008963C1 /* Protocols */,
 				A1EA606721ECFF7800ACE25D /* Extensions */,
 				A1EA605C21E8274500ACE25D /* Helpers */,
@@ -340,6 +342,14 @@
 				TargetAttributes = {
 					F1B7E58621E547450096FC6F = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -675,8 +685,9 @@
 			baseConfigurationReference = D5A27D069A6F1B1A0A158705 /* Pods-Sentiment Bot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Sentiment Bot/Sentiment Bot.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5KBWP959TD;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -699,8 +710,9 @@
 			baseConfigurationReference = 3E65500EBE0280EA0839F9CF /* Pods-Sentiment Bot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Sentiment Bot/Sentiment Bot.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5KBWP959TD;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
