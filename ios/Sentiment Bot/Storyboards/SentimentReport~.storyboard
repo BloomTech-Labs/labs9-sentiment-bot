@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EYl-82-ZJG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7Fe-JU-Oqv">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,6 +10,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Report-->
+        <scene sceneID="z1V-5c-Xxc">
+            <objects>
+                <viewController id="GNf-G0-d6c" customClass="SenitmentReportViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9bv-tS-bqH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="8bO-dT-MaD"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Report" id="6bE-mY-fwf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I6U-XV-1a8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6979" y="-1845"/>
+        </scene>
         <!--Subscription-->
         <scene sceneID="9Ox-su-FBz">
             <objects>
@@ -38,7 +54,7 @@
                     <connections>
                         <segue destination="Qr7-w8-K7W" kind="relationship" relationship="viewControllers" id="8u9-fS-v5X"/>
                         <segue destination="wK4-pg-Anm" kind="relationship" relationship="viewControllers" id="WaC-a3-H5k"/>
-                        <segue destination="U3H-5B-IJD" kind="relationship" relationship="viewControllers" id="9mC-iS-XPX"/>
+                        <segue destination="GNf-G0-d6c" kind="relationship" relationship="viewControllers" id="9mC-iS-XPX"/>
                         <segue destination="Knc-PL-75y" kind="relationship" relationship="viewControllers" id="6lZ-sy-km1"/>
                         <segue destination="2mJ-j8-dug" kind="relationship" relationship="viewControllers" id="OOS-Jh-EG2"/>
                     </connections>
@@ -289,16 +305,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YlX-fb-nor" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-7144.8000000000002" y="-1125.3694581280788"/>
-        </scene>
-        <!--SentimentReport-->
-        <scene sceneID="QHf-qK-VES">
-            <objects>
-                <viewControllerPlaceholder storyboardName="SentimentReport" id="U3H-5B-IJD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="KkZ-Jj-z8k"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Y1r-EU-8EC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-6979" y="-1845"/>
         </scene>
     </scenes>
     <resources>

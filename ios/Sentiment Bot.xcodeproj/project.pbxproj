@@ -36,6 +36,11 @@
 		A140D96A21F6BE99008963C1 /* Feeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D96921F6BE99008963C1 /* Feeling.swift */; };
 		A140D96C21F6E127008963C1 /* ManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D96B21F6E127008963C1 /* ManagerProtocol.swift */; };
 		A140D97221F76DB2008963C1 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D97121F76DB2008963C1 /* InitialViewController.swift */; };
+		A140D97421F785FE008963C1 /* PremiumCheckout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A140D97321F785FE008963C1 /* PremiumCheckout.storyboard */; };
+		A140D97621F78646008963C1 /* ManagerTimeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A140D97521F78646008963C1 /* ManagerTimeline.storyboard */; };
+		A140D97821F7868D008963C1 /* TeamMembers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A140D97721F7868D008963C1 /* TeamMembers.storyboard */; };
+		A140D97A21F786BC008963C1 /* SendSurvey.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A140D97921F786BC008963C1 /* SendSurvey.storyboard */; };
+		A140D97C21F786E7008963C1 /* SentimentReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A140D97B21F786E7008963C1 /* SentimentReport.storyboard */; };
 		A1EA605B21E8270300ACE25D /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605A21E8270300ACE25D /* LocationHelper.swift */; };
 		A1EA605E21E85D5A00ACE25D /* LocalNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605D21E85D5A00ACE25D /* LocalNotificationHelper.swift */; };
 		A1EA606021E8707100ACE25D /* Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605F21E8707100ACE25D /* Trigger.swift */; };
@@ -90,6 +95,11 @@
 		A140D96921F6BE99008963C1 /* Feeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feeling.swift; sourceTree = "<group>"; };
 		A140D96B21F6E127008963C1 /* ManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerProtocol.swift; sourceTree = "<group>"; };
 		A140D97121F76DB2008963C1 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		A140D97321F785FE008963C1 /* PremiumCheckout.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PremiumCheckout.storyboard; sourceTree = "<group>"; };
+		A140D97521F78646008963C1 /* ManagerTimeline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ManagerTimeline.storyboard; sourceTree = "<group>"; };
+		A140D97721F7868D008963C1 /* TeamMembers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TeamMembers.storyboard; sourceTree = "<group>"; };
+		A140D97921F786BC008963C1 /* SendSurvey.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SendSurvey.storyboard; sourceTree = "<group>"; };
+		A140D97B21F786E7008963C1 /* SentimentReport.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SentimentReport.storyboard; sourceTree = "<group>"; };
 		A1EA605A21E8270300ACE25D /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
 		A1EA605D21E85D5A00ACE25D /* LocalNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationHelper.swift; sourceTree = "<group>"; };
 		A1EA605F21E8707100ACE25D /* Trigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trigger.swift; sourceTree = "<group>"; };
@@ -239,6 +249,11 @@
 		F1ECBCF821E70664005CDBE8 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				A140D97B21F786E7008963C1 /* SentimentReport.storyboard */,
+				A140D97921F786BC008963C1 /* SendSurvey.storyboard */,
+				A140D97721F7868D008963C1 /* TeamMembers.storyboard */,
+				A140D97521F78646008963C1 /* ManagerTimeline.storyboard */,
+				A140D97321F785FE008963C1 /* PremiumCheckout.storyboard */,
 				A140D94B21F188F4008963C1 /* SignUp.storyboard */,
 				A140D94921F188B2008963C1 /* SignIn.storyboard */,
 				F1B7E58E21E547450096FC6F /* Main.storyboard */,
@@ -351,15 +366,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A140D97A21F786BC008963C1 /* SendSurvey.storyboard in Resources */,
+				A140D97421F785FE008963C1 /* PremiumCheckout.storyboard in Resources */,
 				F1B7E59521E547460096FC6F /* LaunchScreen.storyboard in Resources */,
 				A1EA607821EE56E400ACE25D /* credentials.plist in Resources */,
 				F1CDD23F21ECFF36008E7A57 /* Map.storyboard in Resources */,
 				F1CDD23C21ECFF06008E7A57 /* Timeline.storyboard in Resources */,
 				A140D94C21F188F4008963C1 /* SignUp.storyboard in Resources */,
 				A140D94A21F188B2008963C1 /* SignIn.storyboard in Resources */,
+				A140D97821F7868D008963C1 /* TeamMembers.storyboard in Resources */,
+				A140D97621F78646008963C1 /* ManagerTimeline.storyboard in Resources */,
 				F1B7E59221E547460096FC6F /* Assets.xcassets in Resources */,
 				F1B7E59021E547450096FC6F /* Main.storyboard in Resources */,
 				F1CDD27121ED99D5008E7A57 /* ProfileViewController.storyboard in Resources */,
+				A140D97C21F786E7008963C1 /* SentimentReport.storyboard in Resources */,
 				F1ECBCFB21E706AA005CDBE8 /* UserView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
