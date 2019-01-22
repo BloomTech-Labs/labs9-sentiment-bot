@@ -35,6 +35,7 @@
 		A140D96821F6A549008963C1 /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D96721F6A549008963C1 /* SubscriptionViewController.swift */; };
 		A140D96A21F6BE99008963C1 /* Feeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D96921F6BE99008963C1 /* Feeling.swift */; };
 		A140D96C21F6E127008963C1 /* ManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D96B21F6E127008963C1 /* ManagerProtocol.swift */; };
+		A140D97221F76DB2008963C1 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D97121F76DB2008963C1 /* InitialViewController.swift */; };
 		A1EA605B21E8270300ACE25D /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605A21E8270300ACE25D /* LocationHelper.swift */; };
 		A1EA605E21E85D5A00ACE25D /* LocalNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605D21E85D5A00ACE25D /* LocalNotificationHelper.swift */; };
 		A1EA606021E8707100ACE25D /* Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605F21E8707100ACE25D /* Trigger.swift */; };
@@ -88,6 +89,7 @@
 		A140D96721F6A549008963C1 /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
 		A140D96921F6BE99008963C1 /* Feeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feeling.swift; sourceTree = "<group>"; };
 		A140D96B21F6E127008963C1 /* ManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerProtocol.swift; sourceTree = "<group>"; };
+		A140D97121F76DB2008963C1 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		A1EA605A21E8270300ACE25D /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
 		A1EA605D21E85D5A00ACE25D /* LocalNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationHelper.swift; sourceTree = "<group>"; };
 		A1EA605F21E8707100ACE25D /* Trigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trigger.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				A140D96321F6A2F7008963C1 /* ManagerTimelineViewController.swift */,
 				A140D96521F6A352008963C1 /* MembersTableViewController.swift */,
 				A140D96721F6A549008963C1 /* SubscriptionViewController.swift */,
+				A140D97121F76DB2008963C1 /* InitialViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 				A1EA605E21E85D5A00ACE25D /* LocalNotificationHelper.swift in Sources */,
 				A140D96421F6A2F7008963C1 /* ManagerTimelineViewController.swift in Sources */,
 				A140D95A21F69257008963C1 /* ManagerTabBarViewController.swift in Sources */,
+				A140D97221F76DB2008963C1 /* InitialViewController.swift in Sources */,
 				F1ECBD0821E70C33005CDBE8 /* ProfileViewController.swift in Sources */,
 				A140D96C21F6E127008963C1 /* ManagerProtocol.swift in Sources */,
 				A140D93A21EEEEED008963C1 /* ReversedGeoLocation.swift in Sources */,
