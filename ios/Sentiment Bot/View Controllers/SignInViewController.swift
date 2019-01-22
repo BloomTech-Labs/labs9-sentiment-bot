@@ -41,9 +41,28 @@ class SignInViewController: UIViewController{
                 // "Password field cannot be empty", etc.
                 NSLog("Error logging in \(error)")
             } else {
-                DispatchQueue.main.async {
-                    let authenticationViewController = self.parent?.parent?.parent as! GoogleSignInViewController
-                    authenticationViewController.performSegue(withIdentifier: "ToHomeScreen", sender: self)
+                
+                APIController.shared.getUser(userId: UserDefaults.standard.userId) { (user, error) in
+                    
+                    if let error = error {
+                        NSLog("There was error retreiving current User: \(error)")
+                    } else if let user = user {
+                        DispatchQueue.main.async {
+                            let authenticationViewController = self.parent?.parent?.parent as! GoogleSignInViewController
+                            if user.isAdmin {
+                                authenticationViewController.performSegue(withIdentifier: "ToManagerScreen", sender: self)
+                            } else if user.isTeamMember {
+                                authenticationViewController.performSegue(withIdentifier: "ToTeamMemberScreen", sender: self)
+                            } else {
+                                let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                                
+                                let intialVC = mainStoryBoard.instantiateViewController(withIdentifier: "InitialViewController") as! InitialViewController
+                                self.present(intialVC, animated: true) {
+                                    
+                                }
+                            }
+                        }
+                    }
                 }
 
             }

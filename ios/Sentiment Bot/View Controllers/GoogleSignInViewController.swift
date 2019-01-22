@@ -62,8 +62,15 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
         }
         
         if UserDefaults.standard.userId != 0 {
+            guard let user = user else { return }
             DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "ToHomeScreen", sender: self)
+                if user.isAdmin {
+                    self.performSegue(withIdentifier: "ToManagerScreen", sender: self)
+                } else if user.isTeamMember {
+                    self.performSegue(withIdentifier: "ToTeamMember", sender: self)
+                } else {
+                    print("show intial VC")
+                }
             }
         }
 
