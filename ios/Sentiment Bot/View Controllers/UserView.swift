@@ -89,10 +89,6 @@ import UIKit
         return view
     }
     
-    @IBAction func connectToSlack(_ sender: UIButton) {
-        NSLog("Connecting to Slack....")
-    }
-    
     lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .short

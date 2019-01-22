@@ -16,7 +16,6 @@
                 <outlet property="feelzNumberLabel" destination="2OP-DH-6tK" id="HmM-6e-vaA"/>
                 <outlet property="lastInLabel" destination="swV-ez-JgT" id="CSM-AJ-5dk"/>
                 <outlet property="nameLabel" destination="fV1-HW-Oa0" id="8tg-LN-Xiq"/>
-                <outlet property="slackButton" destination="y6z-gh-mBf" id="0Kh-4s-8QV"/>
                 <outlet property="userImage" destination="ela-2R-3qZ" id="K30-pE-5sF"/>
             </connections>
         </placeholder>
@@ -36,20 +35,11 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fV1-HW-Oa0">
-                            <rect key="frame" x="59" y="108" width="192" height="50"/>
+                            <rect key="frame" x="59" y="108" width="192" height="65.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6z-gh-mBf">
-                            <rect key="frame" x="96.5" y="166" width="117" height="7.5"/>
-                            <state key="normal" title="Connect to Slack">
-                                <color key="titleColor" red="0.51579731702804565" green="0.05245661735534668" blue="0.10447398573160172" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="connectToSlack:" destination="-1" eventType="touchUpInside" id="yBR-vx-t4l"/>
-                            </connections>
-                        </button>
                         <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="x1F-oZ-fa8">
                             <rect key="frame" x="16" y="181.5" width="278" height="20.5"/>
                             <subviews>
