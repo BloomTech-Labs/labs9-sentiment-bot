@@ -16,6 +16,8 @@ struct User: Codable {
     var teamId: Int?
     var imageUrl: URL?
     let subscribed: Bool
+    let isAdmin: Bool
+    let isTeamMember: Bool
     
     static var currentUserId = UserDefaults.standard.userId
     

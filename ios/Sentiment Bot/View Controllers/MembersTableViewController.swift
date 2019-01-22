@@ -56,5 +56,20 @@ extension MembersTableViewController: UITableViewDataSource, UITableViewDelegate
         return cell!
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if(editingStyle == .delete) {
+            let teamMember = teamMembers![indexPath.row]
+            APIController.shared.removeMemberFromTeam(teamId: team!.id, userId: teamMember.id) { (errorMessage) in
+                APIController.shared.getTeamMembers(teamId: self.team!.id, completion: { (users, errorMessage) in
+                    DispatchQueue.main.async {
+                        self.teamMembers = users
+                        self.teamMembersTableView.deleteRows(at: [indexPath], with: .automatic)
+                        self.teamMembersTableView.reloadData()
+                    }
+                })
+            }
+        }
+    }
+    
 }
 

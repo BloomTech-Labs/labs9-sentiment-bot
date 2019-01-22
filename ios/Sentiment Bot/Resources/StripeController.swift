@@ -47,7 +47,7 @@ class StripeController {
             }
             
             if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
-                NSLog("Error code(createCustomerKey) from the http request: \(httpResponse.statusCode)")
+                NSLog("Error code(subscribeToPremium) from the http request: \(httpResponse.statusCode)")
                 completion(error)
                 return
             }
@@ -57,6 +57,41 @@ class StripeController {
             }.resume()
     }
     
-    //let baseUrl = URL(string: "https://sentimentbot-1.herokuapp.com/api")!
-    let baseUrl = URL(string: "http://localhost:3000/api")!
+    
+    //Cancel Subscription
+    func cancelPremiumSubscription(completion: @escaping (Error?) -> Void = {_ in }) {
+        let url = baseUrl.appendingPathComponent("subscriptions")
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = HTTPMethod.delete.rawValue
+        
+        guard let token = UserDefaults.standard.token else {
+            NSLog("No JWT Token Set to User Defaults")
+            return
+        }
+        
+        request.setValue(token, forHTTPHeaderField: "Authorization")
+        
+
+        URLSession.shared.dataTask(with: request) {(data, response, error) in
+            
+            if let error = error {
+                NSLog("There was an error sending delete subscription request to server: \(error)")
+                completion(error)
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                NSLog("Error code(cancelPremiumSubscription) from the http request: \(httpResponse.statusCode)")
+                completion(error)
+                return
+            }
+            
+            NSLog("User cancelled premium service")
+            
+            }.resume()
+    }
+    
+    let baseUrl = URL(string: "https://sentimentbot-1.herokuapp.com/api")!
+    //let baseUrl = URL(string: "http://localhost:3000/api")!
 }

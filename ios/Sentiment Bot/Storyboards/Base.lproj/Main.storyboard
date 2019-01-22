@@ -270,13 +270,23 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0R-c4-U2I">
+                                <rect key="frame" x="163" y="285" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelSubscription:" destination="ZHL-99-yqh" eventType="touchUpInside" id="L6R-Br-I3s"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="dlq-Uz-7YP"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Subscription" id="Ocy-bN-goB"/>
                     <connections>
+                        <outlet property="cancelButton" destination="T0R-c4-U2I" id="r8K-7K-DVY"/>
                         <outlet property="msgBox" destination="Tsu-aF-0fa" id="QzQ-RD-Zh8"/>
+                        <outlet property="subscribeButton" destination="TJl-7L-P87" id="Z80-ek-PVY"/>
                     </connections>
                 </viewController>
             </objects>

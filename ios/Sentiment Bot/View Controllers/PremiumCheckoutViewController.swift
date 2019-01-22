@@ -9,7 +9,17 @@
 import UIKit
 import Stripe
 
-class PremiumCheckoutViewController: UIViewController, STPAddCardViewControllerDelegate {
+class PremiumCheckoutViewController: UIViewController, STPAddCardViewControllerDelegate, ManagerProtocol {
+    var user: User?
+    
+    var teamResponses: [Response]?
+    
+    var team: Team?
+    
+    var survey: Survey?
+    
+    var teamMembers: [User]?
+    
     
     @IBOutlet weak var msgBox: UITextView!
     
@@ -18,9 +28,23 @@ class PremiumCheckoutViewController: UIViewController, STPAddCardViewControllerD
         super.viewDidLoad()
         //self.title = "Standard"
         msgBox.text = ""
-        
+        if (user?.subscribed)! {
+            subscribeButton.isHidden = true
+        } else {
+            cancelButton.isHidden = true
+        }
         // Do any additional setup after loading the view.
     }
+
+    
+    @IBAction func cancelSubscription(_ sender: Any) {
+        StripeController.shared.cancelPremiumSubscription { (errorMessage) in
+            
+        }
+    }
+    @IBOutlet weak var cancelButton: UIButton!
+    
+    @IBOutlet weak var subscribeButton: UIButton!
     
     @IBAction func subscribe(_ sender: UIButton) {
         // Setup add card view controller

@@ -21,7 +21,7 @@ class SendSurveyViewController: UIViewController, ManagerProtocol {
     
     var emojiSelection: [String] = ["😄" ,"😃","😢","😊","😞", "😡"]
     
-    var scheduleSelection: [String] = ["daily", "weekly", "monthly"]
+    var scheduleSelection: [String] = ["daily", "weekly", "monthly", "now"]
     
     var emojiSelectionIsHidden: Bool = true
     var scheduleSelectionIsHidden: Bool = true
@@ -32,9 +32,12 @@ class SendSurveyViewController: UIViewController, ManagerProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        selectScheduleButtonDrop.setTitle(survey?.schedule, for: .normal)
+        
         emojiSelectionTableView.isHidden = true
         scheduleSelectionTableView.isHidden = true
-        // Do any additional setup after loading the view.
+ 
         emojiSelectionTableView.dataSource = self
         scheduleSelectionTableView.dataSource = self
         surveyFeelingsTableView.dataSource = self
@@ -90,9 +93,12 @@ class SendSurveyViewController: UIViewController, ManagerProtocol {
     }
     
     //TODO: Make sure I can send out Survey to Users. Need to be
-    //Testedon iOS and Backend Server.
+    //Tested on iOS and Backend Server.
     @IBAction func sendOutSurvey(_ sender: Any) {
-        
+        let schedule = selectScheduleButtonDrop.titleLabel?.text
+        APIController.shared.changeSurveySchedule(surveyId: survey!.id, schedule: schedule!) { (errorMessage) in
+            print(errorMessage)
+        }
     }
     
     

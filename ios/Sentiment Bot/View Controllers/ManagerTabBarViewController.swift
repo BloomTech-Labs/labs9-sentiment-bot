@@ -24,6 +24,7 @@ class ManagerTabBarViewController: UITabBarController {
                 childVC.teamResponses = teamResponses
                 childVC.survey = team?.survey
                 childVC.teamMembers = team?.users
+                childVC.team = team
             }
             
         }
@@ -45,7 +46,10 @@ class ManagerTabBarViewController: UITabBarController {
                     if let error = error {
                         NSLog("There was error retreiving User's Team Responses: \(error)")
                     } else if let responses = responses {
-                        self.teamResponses = responses
+                        APIController.shared.getUser(userId: 1, completion: { (user, errorMessage) in
+                            self.user = user
+                            self.teamResponses = responses
+                        })
                     }
                 })
             }
