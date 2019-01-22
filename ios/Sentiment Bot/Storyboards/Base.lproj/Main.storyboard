@@ -42,10 +42,10 @@
             </objects>
             <point key="canvasLocation" x="-5060" y="-1843"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Manager Tab Bar View Controller-->
         <scene sceneID="Yte-kY-XrD">
             <objects>
-                <tabBarController id="V1O-6L-jIH" sceneMemberID="viewController">
+                <tabBarController id="V1O-6L-jIH" customClass="ManagerTabBarViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iSl-Px-Ra5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

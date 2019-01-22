@@ -1,14 +1,14 @@
 //
-//  DummyTabBarViewController.swift
+//  MembersTableViewController.swift
 //  Sentiment Bot
 //
-//  Created by Moin Uddin on 1/20/19.
+//  Created by Moin Uddin on 1/21/19.
 //  Copyright © 2019 Scott Bennett. All rights reserved.
 //
 
 import UIKit
 
-class DummyTabBarViewController: UITabBarController {
+class MembersTableViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
