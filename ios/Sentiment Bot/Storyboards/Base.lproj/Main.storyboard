@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7Fe-JU-Oqv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="V1O-6L-jIH">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,37 +10,105 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--Feelzys-->
         <scene sceneID="nnJ-L3-hYh">
             <objects>
-                <viewController id="ORk-8E-21q" sceneMemberID="viewController">
+                <viewController id="ORk-8E-21q" customClass="ManagerTimelineViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V6U-I9-cpD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YuG-n7-Dqv">
+                                <rect key="frame" x="0.0" y="100" width="375" height="629"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="yiI-p9-tmQ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="6MF-BK-gQa"/>
+                    <tabBarItem key="tabBarItem" title="Feelzys" id="6MF-BK-gQa"/>
+                    <connections>
+                        <outlet property="managerTimelineTableView" destination="YuG-n7-Dqv" id="vCg-xp-6Yl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uDv-Tb-bYo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5071" y="-1184"/>
+            <point key="canvasLocation" x="-5071.1999999999998" y="-1184.4827586206898"/>
         </scene>
-        <!--Item 1-->
+        <!--Members-->
         <scene sceneID="x1K-QJ-0IM">
             <objects>
-                <viewController id="jib-V5-urg" sceneMemberID="viewController">
+                <viewController id="jib-V5-urg" customClass="MembersTableViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0bY-tJ-5kM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cHa-Fn-77e">
+                                <rect key="frame" x="0.0" y="83" width="375" height="646"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="iRM-UD-dje"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="Fmb-iM-x1d"/>
+                    <tabBarItem key="tabBarItem" title="Members" id="Fmb-iM-x1d"/>
+                    <connections>
+                        <outlet property="teamMembersTableVIew" destination="cHa-Fn-77e" id="p7t-GU-hvY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lRE-bM-1tD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5060" y="-1843"/>
+            <point key="canvasLocation" x="-5060" y="-1843.5960591133005"/>
+        </scene>
+        <!--Report-->
+        <scene sceneID="z1V-5c-Xxc">
+            <objects>
+                <viewController id="GNf-G0-d6c" customClass="SenitmentReportViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9bv-tS-bqH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="8bO-dT-MaD"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Report" id="6bE-mY-fwf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I6U-XV-1a8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6979" y="-1845"/>
+        </scene>
+        <!--Survey-->
+        <scene sceneID="W5J-qD-Hfc">
+            <objects>
+                <viewController id="VNq-zh-ZWJ" customClass="SendSurveyViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="21r-fe-5nq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="QrK-GM-sO1"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Survey" id="HUe-I2-dcg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ChD-BK-13O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7144" y="-1125"/>
+        </scene>
+        <!--Subscription-->
+        <scene sceneID="9Ox-su-FBz">
+            <objects>
+                <viewController id="LZT-nd-c3j" customClass="SubscriptionViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qha-WB-KJV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="jmm-6p-fng"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Subscription" id="y74-eD-a6J"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kTM-Oq-gNt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6058" y="-777"/>
         </scene>
         <!--Manager Tab Bar View Controller-->
         <scene sceneID="Yte-kY-XrD">
@@ -54,6 +122,9 @@
                     <connections>
                         <segue destination="jib-V5-urg" kind="relationship" relationship="viewControllers" id="8u9-fS-v5X"/>
                         <segue destination="ORk-8E-21q" kind="relationship" relationship="viewControllers" id="WaC-a3-H5k"/>
+                        <segue destination="GNf-G0-d6c" kind="relationship" relationship="viewControllers" id="9mC-iS-XPX"/>
+                        <segue destination="VNq-zh-ZWJ" kind="relationship" relationship="viewControllers" id="6lZ-sy-km1"/>
+                        <segue destination="LZT-nd-c3j" kind="relationship" relationship="viewControllers" id="b3a-PT-HiM"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zUr-zk-yTM" userLabel="First Responder" sceneMemberID="firstResponder"/>
