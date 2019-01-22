@@ -503,8 +503,58 @@ class APIController {
     }
     
     //Get Survey
-    func getSurvey(teamId: Int, completion: @escaping ([Response]?, ErrorMessage?) -> Void) {
+    //Includes Associates Feelings
+    func getSurvey(teamId: Int, completion: @escaping (Survey?, ErrorMessage?) -> Void) {
+        let url = baseUrl.appendingPathComponent("teams")
+            .appendingPathComponent("\(teamId)")
+            .appendingPathComponent("surveys")
         
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = HTTPMethod.get.rawValue
+        
+        guard let token = UserDefaults.standard.token else {
+            NSLog("No JWT Token Set to User Defaults")
+            return
+        }
+        
+        request.setValue(token, forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                NSLog("Error with getting team survey: \(error)")
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("Error retrieving data from server(getSurvey)")
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                NSLog("Error code from the http request: \(httpResponse.statusCode)")
+                do {
+                    let errorMessage = try JSONDecoder().decode(ErrorMessage.self, from: data)
+                    completion(nil, errorMessage)
+                } catch {
+                    NSLog("Error decoding ErrorMessage(getSurvey) \(error)")
+                    return
+                }
+                return
+            }
+            
+            do {
+                let survey = try JSONDecoder().decode([Survey].self, from: data).first
+                completion(survey, nil)
+            } catch {
+                NSLog("Error with network request: \(error)")
+                return
+            }
+            
+            NSLog("Successfully fetched Team's Survey")
+            
+            
+            }.resume()
     }
     
     //Send Survey to Server -> APN -> User's Mobile Phone
