@@ -667,8 +667,61 @@ class APIController {
             }.resume()
     }
     
+    func getFeelingsForSurvey(surveyId: Int, completion: @escaping ([Feeling]?, ErrorMessage?) -> Void) {
+        let url = baseUrl.appendingPathComponent("surveys")
+            .appendingPathComponent("\(surveyId)")
+            .appendingPathComponent("feelings")
+        
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = HTTPMethod.get.rawValue
+        
+        guard let token = UserDefaults.standard.token else {
+            NSLog("No JWT Token Set to User Defaults")
+            return
+        }
+        
+        request.setValue(token, forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                NSLog("Error with getting team survey: \(error)")
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("Error retrieving data from server(getFeelingsForSurvey)")
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                NSLog("Error code from the http request: \(httpResponse.statusCode)")
+                do {
+                    let errorMessage = try JSONDecoder().decode(ErrorMessage.self, from: data)
+                    completion(nil, errorMessage)
+                } catch {
+                    NSLog("Error decoding ErrorMessage(getFeelingsForSurvey) \(error)")
+                    return
+                }
+                return
+            }
+            
+            do {
+                let feelings = try JSONDecoder().decode([Feeling].self, from: data)
+                completion(feelings, nil)
+            } catch {
+                NSLog("Error with network request: \(error)")
+                return
+            }
+            
+            NSLog("Successfully fetched Survey Feelings")
+            
+            
+            }.resume()
+    }
+    
     //Create a feeling option for Survey
-    func createFeelingForSurvey(surveyId: Int, completion: @escaping (ErrorMessage?) -> Void) {
+    func createFeelingForSurvey(mood: String, emoji: String, surveyId: Int, completion: @escaping (ErrorMessage?) -> Void) {
         let url = baseUrl.appendingPathComponent("surveys")
                          .appendingPathComponent("\(surveyId)")
                          .appendingPathComponent("feelings")
@@ -680,9 +733,16 @@ class APIController {
             NSLog("No JWT Token Set to User Defaults")
             return
         }
+        let params = ["mood": mood, "emoji": emoji] as [String: Any]
         
         request.setValue(token, forHTTPHeaderField: "Authorization")
-        
+        do {
+            let json = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
+            request.httpBody = json
+        } catch {
+            NSLog("Error encoding JSON")
+            return
+        }
         URLSession.shared.dataTask(with: request) {(data, response, error) in
             
             if let error = error {
@@ -708,6 +768,7 @@ class APIController {
             }
 
             NSLog("Manager successfully created Feeling for Survey")
+            completion(nil)
             
             }.resume()
     }

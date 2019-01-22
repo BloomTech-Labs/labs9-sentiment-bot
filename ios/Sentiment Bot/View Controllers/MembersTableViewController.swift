@@ -14,7 +14,6 @@ class MembersTableViewController: UIViewController, ManagerProtocol {
     var team: Team?
     
     var survey: Survey?
-    
 
     var user: User?
     
@@ -37,10 +36,11 @@ class MembersTableViewController: UIViewController, ManagerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
+        teamMembersTableView.dataSource = self
         teamMembersTableView.delegate = self
     }
 }
-
+//Todo: Implement remove team member on UI and Backend
 extension MembersTableViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,12 +48,12 @@ extension MembersTableViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MembersCell")
         let response = teamMembers![indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MembersCell") as! TimeLineTableViewCell
+
         //cell.setResponse(response: response)
-        cell.textLabel?.text = "\(response.firstName) \(response.lastName)"
-        return cell
+        cell?.textLabel?.text = "\(response.firstName) \(response.lastName)"
+        return cell!
     }
     
 }
