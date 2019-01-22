@@ -47,8 +47,12 @@ class SignUpViewController: UIViewController {
                 NSLog("Error signing up \(errorMessage)")
             } else {
                 DispatchQueue.main.async {
-                    let authenticationViewController = self.parent?.parent?.parent as! GoogleSignInViewController
-                    authenticationViewController.performSegue(withIdentifier: "ToHomeScreen", sender: self)
+                    let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                    
+                    let intialVC = mainStoryBoard.instantiateViewController(withIdentifier: "InitialViewController") as! InitialViewController
+                    self.present(intialVC, animated: true) {
+                        
+                    }
                 }
                 
             }
