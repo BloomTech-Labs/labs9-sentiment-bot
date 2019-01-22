@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class ProfileViewController: UIViewController {
 
@@ -26,6 +27,8 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func logOutButton(_ sender: UIButton) {
+        GIDSignIn.sharedInstance()?.signOut()
+        
         NSLog("Log Out")
         dismiss(animated: true)
     }

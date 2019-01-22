@@ -21,8 +21,8 @@ class TimeLineTableViewCell: UITableViewCell {
         dateLabel.text = response.date
         emojiLabel.text = response.emoji
         feelzNameLabel.text = response.mood
-        //feelzImageView.image = #imageLiteral(resourceName: "stevejobs.jpeg")
-        
+        locationLabel.text = "New York, NY"
+ 
         if let imageUrl = response.imageUrl {
             APIController.shared.getImage(url: imageUrl) { (image, error) in
                 if let error = error {
@@ -34,7 +34,6 @@ class TimeLineTableViewCell: UITableViewCell {
                 }
             }
         }
-        locationLabel.text = "New York, NY"
     }
     
     lazy var formatter: DateFormatter = {

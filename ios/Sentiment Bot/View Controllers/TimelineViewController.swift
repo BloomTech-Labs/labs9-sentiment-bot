@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class TimelineViewController: UIViewController, UserProtocol {
 
@@ -25,13 +26,24 @@ class TimelineViewController: UIViewController, UserProtocol {
         }
     }
     
-
     @IBOutlet weak var timelineTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
-    }    
+    }
+    
+    // TODO: - ViewDidAppear does not run after modal, fix
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        
+//        guard let userAuth = GIDSignIn.sharedInstance()?.hasAuthInKeychain() else { return }
+//        if !userAuth {
+//            NSLog("User not logged in")
+//        } else {
+//            NSLog("User still logged in")
+//        }
+//    }
 }
 
 extension TimelineViewController: UITableViewDataSource, UITableViewDelegate {

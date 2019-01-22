@@ -8,10 +8,17 @@
 
 import UIKit
 import GoogleSignIn
+import UserNotifications
+
+enum Identifiers {
+    static let viewAction = "VIEW_IDENTIFIER"
+    static let feelz = "FEELZ"
+}
+
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
     
-
     var window: UIWindow?
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -22,6 +29,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         GIDSignIn.sharedInstance()?.clientID = "803137383645-5pp4mgm804lbaeaur9p9en70usos2qrm.apps.googleusercontent.com"
+        
+        // Push Notification Code
+        registerForPushNotifications()
+        let notificationOption = launchOptions?[.remoteNotification]
+        if let notification = notificationOption as? [String: AnyObject], let aps = notification["aps"] as? [String: AnyObject] {
+            NSLog("Message Received: \(aps)")
+            (window?.rootViewController as? UITabBarController)?.selectedIndex = 3
+        }
+        
         return true
     }
     
@@ -58,6 +74,73 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         }
         return true
     }
+}
 
+// MARK: - Push Notifications
+
+extension AppDelegate {
+    
+    // Registers for Push Notifications
+    func registerForPushNotifications() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { [weak self] granted, error in
+            NSLog("Permission granted: \(granted)")
+            guard granted else { return }
+            
+            let viewAction = UNNotificationAction( identifier: Identifiers.viewAction, title: "😀  😐  ☹️", options: [.foreground])
+            let newsCategory = UNNotificationCategory(identifier: Identifiers.feelz, actions: [viewAction], intentIdentifiers: [], options: [])
+            UNUserNotificationCenter.current().setNotificationCategories([newsCategory])
+            
+            self?.getNotificationSettings()
+        }
+    }
+    
+    func getNotificationSettings() {
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            NSLog("Notification settings: \(settings)")
+            guard settings.authorizationStatus == .authorized else { return }
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        }
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let tokenParts = deviceToken.map { data in String(format: "%2.2hhx", data) }
+        let token = tokenParts.joined()
+        NSLog("Device Token: \(token)")
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        NSLog("Failed to register: \(error)")
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        guard let aps = userInfo["aps"] as? [String: AnyObject] else {
+            completionHandler(.failed)
+            return
+        }
+        NSLog("Message Received: \(aps)")
+    }
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        let userInfo = response.notification.request.content.userInfo
+        
+        if let aps = userInfo["aps"] as? [String: AnyObject] {
+            
+            NSLog("aps: \(aps)")
+            (window?.rootViewController as? UITabBarController)?.selectedIndex = 2
+            
+            if response.actionIdentifier == Identifiers.viewAction {
+                
+                NSLog("View Selected")
+                (window?.rootViewController as? UITabBarController)?.selectedIndex = 2
+            }
+        }
+        completionHandler()
+    }
 }
 

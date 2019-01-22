@@ -8,11 +8,13 @@
 
 import UIKit
 import GoogleSignIn
+
 class SignInViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear.withAlphaComponent(0.25)
+        view.layer.cornerRadius = 20
 
     }
     
