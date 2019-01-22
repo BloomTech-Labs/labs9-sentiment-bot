@@ -41,7 +41,7 @@ class TabBarViewController: UITabBarController {
     }
     
     func getUserData() {
-        APIController.shared.getUserResponses(userId: TestUser.userID, completion: { (responses, error) in
+        APIController.shared.getUserResponses(userId: UserDefaults.standard.userId, completion: { (responses, error) in
             if let error = error {
                 NSLog("There was error retreiving current User Responses: \(error)")
             } else if let responses = responses {

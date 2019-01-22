@@ -23,6 +23,24 @@
 		A140D94721F17F9E008963C1 /* SegmentedControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D94621F17F9E008963C1 /* SegmentedControlViewController.swift */; };
 		A140D94A21F188B2008963C1 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A140D94921F188B2008963C1 /* SignIn.storyboard */; };
 		A140D94C21F188F4008963C1 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A140D94B21F188F4008963C1 /* SignUp.storyboard */; };
+		A140D94E21F40E30008963C1 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A140D94D21F40E30008963C1 /* Stripe.framework */; };
+		A140D95021F41620008963C1 /* StripeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D94F21F41620008963C1 /* StripeController.swift */; };
+		A140D95221F419E3008963C1 /* PremiumCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D95121F419E3008963C1 /* PremiumCheckoutViewController.swift */; };
+		A140D95621F54B92008963C1 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D95521F54B92008963C1 /* ErrorMessage.swift */; };
+		A140D95A21F69257008963C1 /* ManagerTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D95921F69257008963C1 /* ManagerTabBarViewController.swift */; };
+		A140D95C21F69298008963C1 /* SendSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D95B21F69298008963C1 /* SendSurveyViewController.swift */; };
+		A140D95E21F693C2008963C1 /* SenitmentReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D95D21F693C2008963C1 /* SenitmentReportViewController.swift */; };
+		A140D96421F6A2F7008963C1 /* ManagerTimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D96321F6A2F7008963C1 /* ManagerTimelineViewController.swift */; };
+		A140D96621F6A352008963C1 /* MembersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D96521F6A352008963C1 /* MembersTableViewController.swift */; };
+		A140D96821F6A549008963C1 /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D96721F6A549008963C1 /* SubscriptionViewController.swift */; };
+		A140D96A21F6BE99008963C1 /* Feeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D96921F6BE99008963C1 /* Feeling.swift */; };
+		A140D96C21F6E127008963C1 /* ManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D96B21F6E127008963C1 /* ManagerProtocol.swift */; };
+		A140D97221F76DB2008963C1 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D97121F76DB2008963C1 /* InitialViewController.swift */; };
+		A140D97421F785FE008963C1 /* PremiumCheckout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A140D97321F785FE008963C1 /* PremiumCheckout.storyboard */; };
+		A140D97621F78646008963C1 /* ManagerTimeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A140D97521F78646008963C1 /* ManagerTimeline.storyboard */; };
+		A140D97821F7868D008963C1 /* TeamMembers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A140D97721F7868D008963C1 /* TeamMembers.storyboard */; };
+		A140D97A21F786BC008963C1 /* SendSurvey.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A140D97921F786BC008963C1 /* SendSurvey.storyboard */; };
+		A140D97C21F786E7008963C1 /* SentimentReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A140D97B21F786E7008963C1 /* SentimentReport.storyboard */; };
 		A1EA605B21E8270300ACE25D /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605A21E8270300ACE25D /* LocationHelper.swift */; };
 		A1EA605E21E85D5A00ACE25D /* LocalNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605D21E85D5A00ACE25D /* LocalNotificationHelper.swift */; };
 		A1EA606021E8707100ACE25D /* Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605F21E8707100ACE25D /* Trigger.swift */; };
@@ -64,6 +82,24 @@
 		A140D94621F17F9E008963C1 /* SegmentedControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlViewController.swift; sourceTree = "<group>"; };
 		A140D94921F188B2008963C1 /* SignIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		A140D94B21F188F4008963C1 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		A140D94D21F40E30008963C1 /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
+		A140D94F21F41620008963C1 /* StripeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeController.swift; sourceTree = "<group>"; };
+		A140D95121F419E3008963C1 /* PremiumCheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumCheckoutViewController.swift; sourceTree = "<group>"; };
+		A140D95521F54B92008963C1 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		A140D95921F69257008963C1 /* ManagerTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerTabBarViewController.swift; sourceTree = "<group>"; };
+		A140D95B21F69298008963C1 /* SendSurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendSurveyViewController.swift; sourceTree = "<group>"; };
+		A140D95D21F693C2008963C1 /* SenitmentReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenitmentReportViewController.swift; sourceTree = "<group>"; };
+		A140D96321F6A2F7008963C1 /* ManagerTimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerTimelineViewController.swift; sourceTree = "<group>"; };
+		A140D96521F6A352008963C1 /* MembersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersTableViewController.swift; sourceTree = "<group>"; };
+		A140D96721F6A549008963C1 /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
+		A140D96921F6BE99008963C1 /* Feeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feeling.swift; sourceTree = "<group>"; };
+		A140D96B21F6E127008963C1 /* ManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerProtocol.swift; sourceTree = "<group>"; };
+		A140D97121F76DB2008963C1 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		A140D97321F785FE008963C1 /* PremiumCheckout.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PremiumCheckout.storyboard; sourceTree = "<group>"; };
+		A140D97521F78646008963C1 /* ManagerTimeline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ManagerTimeline.storyboard; sourceTree = "<group>"; };
+		A140D97721F7868D008963C1 /* TeamMembers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TeamMembers.storyboard; sourceTree = "<group>"; };
+		A140D97921F786BC008963C1 /* SendSurvey.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SendSurvey.storyboard; sourceTree = "<group>"; };
+		A140D97B21F786E7008963C1 /* SentimentReport.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SentimentReport.storyboard; sourceTree = "<group>"; };
 		A1EA605A21E8270300ACE25D /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
 		A1EA605D21E85D5A00ACE25D /* LocalNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationHelper.swift; sourceTree = "<group>"; };
 		A1EA605F21E8707100ACE25D /* Trigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trigger.swift; sourceTree = "<group>"; };
@@ -99,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1EA606321ECFD4E00ACE25D /* JWTDecode.framework in Frameworks */,
+				A140D94E21F40E30008963C1 /* Stripe.framework in Frameworks */,
 				0C99F989B5C76ECD3F5C3CD2 /* Pods_Sentiment_Bot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -125,6 +162,8 @@
 				A13547CB21E6DE620045C5F0 /* Response+Mapping.swift */,
 				A13E4D1521E7104000E19E6D /* Survey.swift */,
 				A140D93921EEEEED008963C1 /* ReversedGeoLocation.swift */,
+				A140D95521F54B92008963C1 /* ErrorMessage.swift */,
+				A140D96921F6BE99008963C1 /* Feeling.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -143,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				A140D93E21EFEDC1008963C1 /* UserProtocol.swift */,
+				A140D96B21F6E127008963C1 /* ManagerProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -159,6 +199,7 @@
 		A1EA606121ECFD4D00ACE25D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A140D94D21F40E30008963C1 /* Stripe.framework */,
 				A1EA606221ECFD4D00ACE25D /* JWTDecode.framework */,
 				F7C4288AE6B4B1B0B2C7069D /* Pods_Sentiment_Bot.framework */,
 			);
@@ -210,6 +251,11 @@
 		F1ECBCF821E70664005CDBE8 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				A140D97B21F786E7008963C1 /* SentimentReport.storyboard */,
+				A140D97921F786BC008963C1 /* SendSurvey.storyboard */,
+				A140D97721F7868D008963C1 /* TeamMembers.storyboard */,
+				A140D97521F78646008963C1 /* ManagerTimeline.storyboard */,
+				A140D97321F785FE008963C1 /* PremiumCheckout.storyboard */,
 				A140D94B21F188F4008963C1 /* SignUp.storyboard */,
 				A140D94921F188B2008963C1 /* SignIn.storyboard */,
 				F1B7E58E21E547450096FC6F /* Main.storyboard */,
@@ -230,6 +276,7 @@
 				F1B7E59621E547460096FC6F /* Info.plist */,
 				F1B7E58A21E547450096FC6F /* AppDelegate.swift */,
 				A13547BD21E69C5D0045C5F0 /* APIController.swift */,
+				A140D94F21F41620008963C1 /* StripeController.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -247,6 +294,14 @@
 				A140D94221F17DE2008963C1 /* SignInViewController.swift */,
 				A140D94421F17E31008963C1 /* SignUpViewController.swift */,
 				A140D94621F17F9E008963C1 /* SegmentedControlViewController.swift */,
+				A140D95121F419E3008963C1 /* PremiumCheckoutViewController.swift */,
+				A140D95921F69257008963C1 /* ManagerTabBarViewController.swift */,
+				A140D95B21F69298008963C1 /* SendSurveyViewController.swift */,
+				A140D95D21F693C2008963C1 /* SenitmentReportViewController.swift */,
+				A140D96321F6A2F7008963C1 /* ManagerTimelineViewController.swift */,
+				A140D96521F6A352008963C1 /* MembersTableViewController.swift */,
+				A140D96721F6A549008963C1 /* SubscriptionViewController.swift */,
+				A140D97121F76DB2008963C1 /* InitialViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -321,15 +376,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A140D97A21F786BC008963C1 /* SendSurvey.storyboard in Resources */,
+				A140D97421F785FE008963C1 /* PremiumCheckout.storyboard in Resources */,
 				F1B7E59521E547460096FC6F /* LaunchScreen.storyboard in Resources */,
 				A1EA607821EE56E400ACE25D /* credentials.plist in Resources */,
 				F1CDD23F21ECFF36008E7A57 /* Map.storyboard in Resources */,
 				F1CDD23C21ECFF06008E7A57 /* Timeline.storyboard in Resources */,
 				A140D94C21F188F4008963C1 /* SignUp.storyboard in Resources */,
 				A140D94A21F188B2008963C1 /* SignIn.storyboard in Resources */,
+				A140D97821F7868D008963C1 /* TeamMembers.storyboard in Resources */,
+				A140D97621F78646008963C1 /* ManagerTimeline.storyboard in Resources */,
 				F1B7E59221E547460096FC6F /* Assets.xcassets in Resources */,
 				F1B7E59021E547450096FC6F /* Main.storyboard in Resources */,
 				F1CDD27121ED99D5008E7A57 /* ProfileViewController.storyboard in Resources */,
+				A140D97C21F786E7008963C1 /* SentimentReport.storyboard in Resources */,
 				F1ECBCFB21E706AA005CDBE8 /* UserView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -390,11 +450,13 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/JWTDecode.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Stripe.framework",
 			);
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/JWTDecode.framework",
+				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/Stripe.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -432,12 +494,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1E949A821EBB05F000634AD /* TimeLineTableViewCell.swift in Sources */,
+				A140D96821F6A549008963C1 /* SubscriptionViewController.swift in Sources */,
 				A140D94721F17F9E008963C1 /* SegmentedControlViewController.swift in Sources */,
 				A13E4D1621E7104000E19E6D /* Survey.swift in Sources */,
 				A13547C721E6D0C70045C5F0 /* Team.swift in Sources */,
+				A140D96621F6A352008963C1 /* MembersTableViewController.swift in Sources */,
 				A13547C021E69D160045C5F0 /* User.swift in Sources */,
 				A140D93C21EFA581008963C1 /* TabBarViewController.swift in Sources */,
 				A13547CA21E6D32B0045C5F0 /* HTTPMethod.swift in Sources */,
+				A140D95C21F69298008963C1 /* SendSurveyViewController.swift in Sources */,
 				F1B7E58B21E547450096FC6F /* AppDelegate.swift in Sources */,
 				A13547BE21E69C5D0045C5F0 /* APIController.swift in Sources */,
 				A140D94321F17DE2008963C1 /* SignInViewController.swift in Sources */,
@@ -446,16 +511,25 @@
 				F18865D221EEB306008F9D35 /* TestUser.swift in Sources */,
 				A13547C421E6D06D0045C5F0 /* Response.swift in Sources */,
 				A1EA605B21E8270300ACE25D /* LocationHelper.swift in Sources */,
+				A140D95E21F693C2008963C1 /* SenitmentReportViewController.swift in Sources */,
 				A13547CC21E6DE620045C5F0 /* Response+Mapping.swift in Sources */,
 				A1EA606921ECFF9A00ACE25D /* UserDefaults+extension.swift in Sources */,
 				F1ECBCFD21E706B7005CDBE8 /* UserView.swift in Sources */,
 				A1EA606621ECFF4800ACE25D /* UserDefaultKeys.swift in Sources */,
 				A1EA605E21E85D5A00ACE25D /* LocalNotificationHelper.swift in Sources */,
+				A140D96421F6A2F7008963C1 /* ManagerTimelineViewController.swift in Sources */,
+				A140D95A21F69257008963C1 /* ManagerTabBarViewController.swift in Sources */,
+				A140D97221F76DB2008963C1 /* InitialViewController.swift in Sources */,
 				F1ECBD0821E70C33005CDBE8 /* ProfileViewController.swift in Sources */,
+				A140D96C21F6E127008963C1 /* ManagerProtocol.swift in Sources */,
 				A140D93A21EEEEED008963C1 /* ReversedGeoLocation.swift in Sources */,
 				F1ECBD0221E70BF5005CDBE8 /* TimelineViewController.swift in Sources */,
 				A1EA606021E8707100ACE25D /* Trigger.swift in Sources */,
+				A140D96A21F6BE99008963C1 /* Feeling.swift in Sources */,
 				A140D94521F17E31008963C1 /* SignUpViewController.swift in Sources */,
+				A140D95021F41620008963C1 /* StripeController.swift in Sources */,
+				A140D95621F54B92008963C1 /* ErrorMessage.swift in Sources */,
+				A140D95221F419E3008963C1 /* PremiumCheckoutViewController.swift in Sources */,
 				F1ECBD0621E70C26005CDBE8 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

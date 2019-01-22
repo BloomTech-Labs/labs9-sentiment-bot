@@ -10,6 +10,43 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Subscription-->
+        <scene sceneID="9Ox-su-FBz">
+            <objects>
+                <viewController id="LZT-nd-c3j" customClass="SubscriptionViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qha-WB-KJV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="jmm-6p-fng"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Subscription" id="y74-eD-a6J"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kTM-Oq-gNt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7145" y="-396"/>
+        </scene>
+        <!--Manager Tab Bar View Controller-->
+        <scene sceneID="Yte-kY-XrD">
+            <objects>
+                <tabBarController storyboardIdentifier="ManagerTabBarViewController" id="V1O-6L-jIH" customClass="ManagerTabBarViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iSl-Px-Ra5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Qr7-w8-K7W" kind="relationship" relationship="viewControllers" id="8u9-fS-v5X"/>
+                        <segue destination="wK4-pg-Anm" kind="relationship" relationship="viewControllers" id="WaC-a3-H5k"/>
+                        <segue destination="U3H-5B-IJD" kind="relationship" relationship="viewControllers" id="9mC-iS-XPX"/>
+                        <segue destination="Knc-PL-75y" kind="relationship" relationship="viewControllers" id="6lZ-sy-km1"/>
+                        <segue destination="2mJ-j8-dug" kind="relationship" relationship="viewControllers" id="OOS-Jh-EG2"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zUr-zk-yTM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6058" y="-1518"/>
+        </scene>
         <!--Google Sign In View Controller-->
         <scene sceneID="8XS-ul-n5O">
             <objects>
@@ -50,17 +87,16 @@
         <!--Tab Bar View Controller-->
         <scene sceneID="S8s-kq-Nba">
             <objects>
-                <tabBarController id="Ot3-Xi-1GB" customClass="TabBarViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarViewController" id="Ot3-Xi-1GB" customClass="TabBarViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jXY-Hd-Cmb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="0.85609245300000003" green="0.80819660429999995" blue="0.77853614090000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="selectedImageTintColor" red="0.51579731699999998" green="0.052456617359999999" blue="0.10447398569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="Sfm-c5-uNS" kind="relationship" relationship="viewControllers" id="Ol7-AW-aCw"/>
-                        <segue destination="UzP-H7-Jsx" kind="relationship" relationship="viewControllers" id="OHd-Ya-nVd"/>
+                        <segue destination="UzP-H7-Jsx" kind="relationship" relationship="viewControllers" id="ocD-49-VfU"/>
                         <segue destination="i1S-C0-Yaz" kind="relationship" relationship="viewControllers" id="kcp-Vd-DRC"/>
                     </connections>
                 </tabBarController>
@@ -71,12 +107,12 @@
         <!--ProfileViewController-->
         <scene sceneID="XL4-Hi-M16">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="ProfileViewController" storyboardName="ProfileViewController" referencedIdentifier="ProfileViewController" id="UzP-H7-Jsx" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="ProfileViewController" storyboardName="ProfileViewController" id="UzP-H7-Jsx" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="ngy-4j-YH4"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2VK-lX-PCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="187" y="-72"/>
+            <point key="canvasLocation" x="187" y="-132"/>
         </scene>
         <!--Timeline-->
         <scene sceneID="zoX-nQ-l4c">
@@ -86,7 +122,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lRd-rq-AZC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="125" y="-131"/>
+            <point key="canvasLocation" x="125" y="-72"/>
         </scene>
         <!--Map-->
         <scene sceneID="91Y-3q-bbe">
@@ -106,7 +142,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="343" height="419"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Ps6-I8-ETi"/>
+                        <viewLayoutGuide key="safeArea" id="Jg4-Kg-9cY"/>
                     </view>
                     <navigationItem key="navigationItem" id="dr5-x3-6xq">
                         <nil key="title"/>
@@ -147,6 +183,57 @@
             </objects>
             <point key="canvasLocation" x="-623" y="-739"/>
         </scene>
+        <!--Initial View Controller-->
+        <scene sceneID="AgU-mL-fRV">
+            <objects>
+                <viewController id="EYl-82-ZJG" customClass="InitialViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="V5y-zA-LC7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="odJ-sb-4b8">
+                                <rect key="frame" x="152" y="283" width="70" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Join Team"/>
+                                <connections>
+                                    <action selector="joinTeam:" destination="EYl-82-ZJG" eventType="touchUpInside" id="G75-pr-ksH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xjb-68-ee2">
+                                <rect key="frame" x="138" y="371" width="99" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Create a Team"/>
+                                <connections>
+                                    <action selector="createTeam:" destination="EYl-82-ZJG" eventType="touchUpInside" id="09a-jH-3AY"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V01-u8-BYI">
+                                <rect key="frame" x="139" y="233" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tWB-1g-AEY">
+                                <rect key="frame" x="139" y="333" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="fWE-Ya-wAc"/>
+                    </view>
+                    <connections>
+                        <outlet property="teamCodeTextField" destination="V01-u8-BYI" id="uRL-6g-tUf"/>
+                        <outlet property="teamNameTextField" destination="tWB-1g-AEY" id="cLh-8l-5O6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fY0-Dd-QHt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="193" y="-2078"/>
+        </scene>
         <!--SignInViewController-->
         <scene sceneID="YbD-Ce-mNY">
             <objects>
@@ -162,6 +249,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WGT-WF-qib" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="831" y="-1255"/>
+        </scene>
+        <!--PremiumCheckout-->
+        <scene sceneID="bax-0a-lSP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PremiumCheckout" id="2mJ-j8-dug" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="mig-eo-0Yy"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9aM-1i-RAz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6058" y="-740"/>
+        </scene>
+        <!--ManagerTimeline-->
+        <scene sceneID="sst-LR-1mC">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ManagerTimeline" id="wK4-pg-Anm" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="A5z-Bb-cAB"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aWF-a7-8YD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5071.1999999999998" y="-1184.4827586206898"/>
+        </scene>
+        <!--TeamMembers-->
+        <scene sceneID="6pE-OF-240">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TeamMembers" id="Qr7-w8-K7W" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="iVW-Kr-LlP"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xd3-K7-6Zm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5060" y="-1843.5960591133005"/>
+        </scene>
+        <!--SendSurvey-->
+        <scene sceneID="B0d-gx-MJw">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SendSurvey" id="Knc-PL-75y" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="UaW-Oy-zx7"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YlX-fb-nor" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7144.8000000000002" y="-1125.3694581280788"/>
+        </scene>
+        <!--SentimentReport-->
+        <scene sceneID="QHf-qK-VES">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SentimentReport" id="U3H-5B-IJD" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="KkZ-Jj-z8k"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y1r-EU-8EC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6979" y="-1845"/>
         </scene>
     </scenes>
     <resources>

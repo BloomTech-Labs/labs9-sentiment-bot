@@ -14,4 +14,6 @@ struct Team: Codable {
     var teamName: String
     let code: Int
     let userId: Int?
+    let users: [User]?
+    let survey: Survey?
 }

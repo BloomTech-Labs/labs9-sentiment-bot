@@ -13,21 +13,23 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     
     @IBOutlet weak var mapView: MKMapView!
-    
-    var locationManager = CLLocationManager()
+    var locationManager: CLLocationManager?
     private var userTrackingButton = MKUserTrackingButton()
     
     override func viewDidLoad() {
+        DispatchQueue.main.async {
+            self.locationManager = CLLocationManager()
+        }
         super.viewDidLoad()
         mapView.showsUserLocation = true
         if CLLocationManager.locationServicesEnabled() == true {
             
             if CLLocationManager.authorizationStatus() == .restricted || CLLocationManager.authorizationStatus() == .denied ||  CLLocationManager.authorizationStatus() == .notDetermined {
-                locationManager.requestWhenInUseAuthorization()
+                locationManager?.requestWhenInUseAuthorization()
             }
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.delegate = self
-            locationManager.startUpdatingLocation()
+            locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager?.delegate = self
+            locationManager?.startUpdatingLocation()
         } else {
             print("PLease turn on location services or GPS")
         }
@@ -57,7 +59,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     //MARK:- CLLocationManager Delegates
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        self.locationManager.stopUpdatingLocation()
+        self.locationManager?.stopUpdatingLocation()
         
         enum location {
             static let pioneer = CLLocationCoordinate2D(latitude: 40.730610, longitude: -73.935242)

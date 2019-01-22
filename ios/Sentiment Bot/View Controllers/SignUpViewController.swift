@@ -22,6 +22,40 @@ class SignUpViewController: UIViewController {
         GIDSignIn.sharedInstance()?.signIn()
     }
     
+    @IBOutlet weak var firstNameTextField: UITextField!
+    
+    @IBOutlet weak var lastNameTextField: UITextField!
+    
+    @IBOutlet weak var emailTextField: UITextField!
+    
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    @IBAction func signUp(_ sender: Any) {
+        guard let firstName = firstNameTextField.text,
+            let lastName = lastNameTextField.text,
+            let email = emailTextField.text,
+            let password = passwordTextField.text else {
+                return
+        }
+        
+        APIController.shared.signUp(firstName: firstName, lastName: lastName, email: email, password: password) { (errorMessage) in
+            
+            if let errorMessage = errorMessage {
+                //Better Error handling would be to show user error
+                //becuase the error that is retreived here may say something like
+                // "Password field cannot be empty", etc.
+                NSLog("Error signing up \(errorMessage)")
+            } else {
+                DispatchQueue.main.async {
+                    let authenticationViewController = self.parent?.parent?.parent as! GoogleSignInViewController
+                    authenticationViewController.performSegue(withIdentifier: "ToHomeScreen", sender: self)
+                }
+                
+            }
+        }
+    }
+    
+    
     /*
     // MARK: - Navigation
 

@@ -46,11 +46,14 @@
                                                 <rect key="frame" x="0.0" y="105" width="275" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oRz-gH-edp">
                                                 <rect key="frame" x="111.5" y="140" width="52" height="30"/>
                                                 <state key="normal" title="Sign up"/>
+                                                <connections>
+                                                    <action selector="signUp:" destination="WVk-6u-oyR" eventType="touchUpInside" id="ZHh-IT-32r"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -89,6 +92,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EPM-0E-lKp"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="AUv-IP-EqK" id="xPK-EZ-App"/>
+                        <outlet property="firstNameTextField" destination="Zxi-wd-Fxx" id="yWv-Qp-62U"/>
+                        <outlet property="lastNameTextField" destination="egZ-Yo-l4d" id="3So-K3-efU"/>
+                        <outlet property="passwordTextField" destination="msl-44-4fm" id="Zie-VB-UYO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X23-Pn-vUq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

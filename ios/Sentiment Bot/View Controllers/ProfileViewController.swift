@@ -28,7 +28,7 @@ class ProfileViewController: UIViewController {
     
     @IBAction func logOutButton(_ sender: UIButton) {
         GIDSignIn.sharedInstance()?.signOut()
-        
+        APIController.shared.logout()
         NSLog("Log Out")
         dismiss(animated: true)
     }
