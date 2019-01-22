@@ -10,6 +10,11 @@ import UIKit
 import GoogleSignIn
 import UserNotifications
 
+enum Identifiers {
+    static let viewAction = "VIEW_IDENTIFIER"
+    static let feelz = "FEELZ"
+}
+
 @UIApplicationMain
 
 class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
@@ -25,13 +30,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         GIDSignIn.sharedInstance()?.clientID = "803137383645-5pp4mgm804lbaeaur9p9en70usos2qrm.apps.googleusercontent.com"
         
+        // Push Notification Code
         registerForPushNotifications()
-        
         let notificationOption = launchOptions?[.remoteNotification]
         if let notification = notificationOption as? [String: AnyObject], let aps = notification["aps"] as? [String: AnyObject] {
-            
             NSLog("Message Received: \(aps)")
-            
             (window?.rootViewController as? UITabBarController)?.selectedIndex = 3
         }
         
@@ -71,12 +74,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         }
         return true
     }
+}
+
+// MARK: - Push Notifications
+
+extension AppDelegate {
     
     // Registers for Push Notifications
     func registerForPushNotifications() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { [weak self] granted, error in
             NSLog("Permission granted: \(granted)")
             guard granted else { return }
+            
+            let viewAction = UNNotificationAction( identifier: Identifiers.viewAction, title: "😀  😐  ☹️", options: [.foreground])
+            let newsCategory = UNNotificationCategory(identifier: Identifiers.feelz, actions: [viewAction], intentIdentifiers: [], options: [])
+            UNUserNotificationCenter.current().setNotificationCategories([newsCategory])
+            
             self?.getNotificationSettings()
         }
     }
@@ -108,6 +121,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         }
         NSLog("Message Received: \(aps)")
     }
+}
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        let userInfo = response.notification.request.content.userInfo
+        
+        if let aps = userInfo["aps"] as? [String: AnyObject] {
+            
+            NSLog("aps: \(aps)")
+            (window?.rootViewController as? UITabBarController)?.selectedIndex = 2
+            
+            if response.actionIdentifier == Identifiers.viewAction {
+                
+                NSLog("View Selected")
+                (window?.rootViewController as? UITabBarController)?.selectedIndex = 2
+            }
+        }
+        completionHandler()
+    }
 }
 
