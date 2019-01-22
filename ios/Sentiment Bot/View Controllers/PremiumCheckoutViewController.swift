@@ -16,7 +16,7 @@ class PremiumCheckoutViewController: UIViewController, STPAddCardViewControllerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Standard"
+        //self.title = "Standard"
         msgBox.text = ""
         
         // Do any additional setup after loading the view.

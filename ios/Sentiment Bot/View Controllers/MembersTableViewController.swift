@@ -8,7 +8,13 @@
 
 import UIKit
 
-class MembersTableViewController: UIViewController {
+class MembersTableViewController: UIViewController, ManagerProtocol {
+    var teamResponses: [Response]?
+    
+    var team: Team?
+    
+    var survey: Survey?
+    
 
     var user: User?
     
@@ -19,6 +25,7 @@ class MembersTableViewController: UIViewController {
     }
     
     private func updateViews() {
+        
         DispatchQueue.main.async {
             self.teamMembersTableView?.reloadData()
         }
@@ -30,6 +37,7 @@ class MembersTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
+        teamMembersTableView.delegate = self
     }
 }
 
@@ -40,6 +48,7 @@ extension MembersTableViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let response = teamMembers![indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "MembersCell") as! TimeLineTableViewCell
         //cell.setResponse(response: response)

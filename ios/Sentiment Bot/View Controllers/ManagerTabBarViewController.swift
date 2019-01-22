@@ -17,31 +17,46 @@ class ManagerTabBarViewController: UITabBarController {
     
     func passToVCs() {
         for childVC in children {
-            guard let userResponses = userResponses
-                else { return }
             
-            if var childVC = childVC as? UserProtocol {
+            if var childVC = childVC as? ManagerProtocol {
+                
                 childVC.user = user
-                childVC.userResponses = userResponses
+                childVC.teamResponses = teamResponses
+                childVC.survey = team?.survey
+                childVC.teamMembers = team?.users
             }
             
         }
     }
     
     func getUserData() {
-        APIController.shared.getUserResponses(userId: UserDefaults.standard.userId, completion: { (responses, error) in
-            if let error = error {
-                NSLog("There was error retreiving current User Responses: \(error)")
-            } else if let responses = responses {
-                self.userResponses = responses
+        
+        APIController.shared.getManagingTeam(userId: 1) { (team, errorMessage) in
+            if let errorMessage = errorMessage {
+                print(errorMessage)
+            } else {
+                self.team = team
+                guard let team = team else {
+                    NSLog("Problem unwrapping team in ManagerTabBarViewController")
+                    return
+                }
+                
+                APIController.shared.getTeamResponses(teamId: team.id, completion: { (responses, error) in
+                    if let error = error {
+                        NSLog("There was error retreiving User's Team Responses: \(error)")
+                    } else if let responses = responses {
+                        self.teamResponses = responses
+                    }
+                })
             }
-        })
+        }
         
     }
     
     var user: User?
+    var team: Team?
     
-    var userResponses: [Response]? {
+    var teamResponses: [Response]? {
         didSet {
             passToVCs()
         }

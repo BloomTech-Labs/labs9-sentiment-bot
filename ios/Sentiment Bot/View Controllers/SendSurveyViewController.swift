@@ -8,7 +8,17 @@
 
 import UIKit
 
-class SendSurveyViewController: UIViewController {
+class SendSurveyViewController: UIViewController, ManagerProtocol {
+    var teamMembers: [User]?
+    
+    var user: User?
+    
+    var teamResponses: [Response]?
+    
+    var team: Team?
+    
+    var survey: Survey?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

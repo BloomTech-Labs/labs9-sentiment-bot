@@ -8,17 +8,26 @@
 
 import UIKit
 
-class ManagerTimelineViewController: UIViewController {
+class ManagerTimelineViewController: UIViewController , ManagerProtocol{
+    var teamMembers: [User]?
+    
+    
+    
+    var team: Team?
+    
+    var survey: Survey?
+    
 
     var user: User?
     
-    var teamMembersResponses: [Response]? {
+    var teamResponses: [Response]? {
         didSet {
             updateViews()
         }
     }
     
     private func updateViews() {
+        
         DispatchQueue.main.async {
             self.managerTimelineTableView?.reloadData()
         }
@@ -36,11 +45,11 @@ class ManagerTimelineViewController: UIViewController {
 extension ManagerTimelineViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return teamMembersResponses?.count ?? 0
+        return teamResponses?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let response = teamMembersResponses![indexPath.row]
+        let response = teamResponses![indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "TeamMemberFeelzCell") as! TimeLineTableViewCell
         //cell.setResponse(response: response)
         cell.textLabel?.text = response.emoji
