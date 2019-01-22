@@ -22,6 +22,16 @@
                                 <rect key="frame" x="0.0" y="100" width="375" height="629"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TeamMemberFeelzCell" id="2HC-oT-yrO">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2HC-oT-yrO" id="42h-xz-CCN">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -48,6 +58,16 @@
                                 <rect key="frame" x="0.0" y="83" width="375" height="646"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MembersCell" id="P4O-QZ-94h">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P4O-QZ-94h" id="jtR-Cd-EuW">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -55,7 +75,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Members" id="Fmb-iM-x1d"/>
                     <connections>
-                        <outlet property="teamMembersTableVIew" destination="cHa-Fn-77e" id="p7t-GU-hvY"/>
+                        <outlet property="teamMembersTableView" destination="cHa-Fn-77e" id="9k5-oA-tdc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lRE-bM-1tD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -108,7 +128,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kTM-Oq-gNt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6058" y="-777"/>
+            <point key="canvasLocation" x="-7145" y="-396"/>
         </scene>
         <!--Manager Tab Bar View Controller-->
         <scene sceneID="Yte-kY-XrD">
@@ -124,14 +144,14 @@
                         <segue destination="ORk-8E-21q" kind="relationship" relationship="viewControllers" id="WaC-a3-H5k"/>
                         <segue destination="GNf-G0-d6c" kind="relationship" relationship="viewControllers" id="9mC-iS-XPX"/>
                         <segue destination="VNq-zh-ZWJ" kind="relationship" relationship="viewControllers" id="6lZ-sy-km1"/>
-                        <segue destination="LZT-nd-c3j" kind="relationship" relationship="viewControllers" id="b3a-PT-HiM"/>
+                        <segue destination="ZHL-99-yqh" kind="relationship" relationship="viewControllers" id="OOS-Jh-EG2"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zUr-zk-yTM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-6058" y="-1518"/>
         </scene>
-        <!--Premium Checkout View Controller-->
+        <!--Subscription-->
         <scene sceneID="mzB-9K-f0j">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N0h-ya-8nP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -160,12 +180,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="dlq-Uz-7YP"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Subscription" id="Ocy-bN-goB"/>
                     <connections>
                         <outlet property="msgBox" destination="Tsu-aF-0fa" id="QzQ-RD-Zh8"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-2834.4000000000001" y="-653.20197044334975"/>
+            <point key="canvasLocation" x="-6058" y="-740"/>
         </scene>
         <!--Google Sign In View Controller-->
         <scene sceneID="8XS-ul-n5O">

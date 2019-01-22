@@ -12,5 +12,6 @@ struct Survey: Codable {
     let id: Int
     let schedule: String
     let question: String
+    var feelings: [Feeling]
     let teamId: Int
 }

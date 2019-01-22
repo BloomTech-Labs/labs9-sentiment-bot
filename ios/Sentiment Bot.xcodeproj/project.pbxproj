@@ -33,6 +33,7 @@
 		A140D96421F6A2F7008963C1 /* ManagerTimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D96321F6A2F7008963C1 /* ManagerTimelineViewController.swift */; };
 		A140D96621F6A352008963C1 /* MembersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D96521F6A352008963C1 /* MembersTableViewController.swift */; };
 		A140D96821F6A549008963C1 /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D96721F6A549008963C1 /* SubscriptionViewController.swift */; };
+		A140D96A21F6BE99008963C1 /* Feeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D96921F6BE99008963C1 /* Feeling.swift */; };
 		A1EA605B21E8270300ACE25D /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605A21E8270300ACE25D /* LocationHelper.swift */; };
 		A1EA605E21E85D5A00ACE25D /* LocalNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605D21E85D5A00ACE25D /* LocalNotificationHelper.swift */; };
 		A1EA606021E8707100ACE25D /* Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605F21E8707100ACE25D /* Trigger.swift */; };
@@ -84,6 +85,7 @@
 		A140D96321F6A2F7008963C1 /* ManagerTimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerTimelineViewController.swift; sourceTree = "<group>"; };
 		A140D96521F6A352008963C1 /* MembersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersTableViewController.swift; sourceTree = "<group>"; };
 		A140D96721F6A549008963C1 /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
+		A140D96921F6BE99008963C1 /* Feeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feeling.swift; sourceTree = "<group>"; };
 		A1EA605A21E8270300ACE25D /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
 		A1EA605D21E85D5A00ACE25D /* LocalNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationHelper.swift; sourceTree = "<group>"; };
 		A1EA605F21E8707100ACE25D /* Trigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trigger.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				A13E4D1521E7104000E19E6D /* Survey.swift */,
 				A140D93921EEEEED008963C1 /* ReversedGeoLocation.swift */,
 				A140D95521F54B92008963C1 /* ErrorMessage.swift */,
+				A140D96921F6BE99008963C1 /* Feeling.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				A140D93A21EEEEED008963C1 /* ReversedGeoLocation.swift in Sources */,
 				F1ECBD0221E70BF5005CDBE8 /* TimelineViewController.swift in Sources */,
 				A1EA606021E8707100ACE25D /* Trigger.swift in Sources */,
+				A140D96A21F6BE99008963C1 /* Feeling.swift in Sources */,
 				A140D94521F17E31008963C1 /* SignUpViewController.swift in Sources */,
 				A140D95021F41620008963C1 /* StripeController.swift in Sources */,
 				A140D95621F54B92008963C1 /* ErrorMessage.swift in Sources */,

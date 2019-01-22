@@ -10,22 +10,42 @@ import UIKit
 
 class MembersTableViewController: UIViewController {
 
+    var user: User?
+    
+    var teamMembers: [User]? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    private func updateViews() {
+        DispatchQueue.main.async {
+            self.teamMembersTableView?.reloadData()
+        }
+    }
+    
+    
+    @IBOutlet weak var teamMembersTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
     }
-    
-    @IBOutlet weak var teamMembersTableVIew: UITableView!
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+extension MembersTableViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return teamMembers?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let response = teamMembers![indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MembersCell") as! TimeLineTableViewCell
+        //cell.setResponse(response: response)
+        cell.textLabel?.text = "\(response.firstName) \(response.lastName)"
+        return cell
+    }
+    
+}
+

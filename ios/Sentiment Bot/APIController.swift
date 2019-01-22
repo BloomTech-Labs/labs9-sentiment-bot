@@ -9,7 +9,8 @@
 import UIKit
 import JWTDecode
 
-
+//This will be refactored one day
+//For now use code folding to make scrolling managable
 class APIController {
     
     static let shared = APIController()
@@ -36,13 +37,19 @@ class APIController {
             }
             
             guard let data = data else {
+                NSLog("Error retrieving data from server(signUp)")
                 return
             }
             
             if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
                 NSLog("Error code from the http request: \(httpResponse.statusCode)")
-                let errorMessage = try! JSONDecoder().decode(ErrorMessage.self, from: data)
-                completion(errorMessage)
+                do {
+                    let errorMessage = try JSONDecoder().decode(ErrorMessage.self, from: data)
+                    completion(errorMessage)
+                } catch {
+                    NSLog("Error decoding ErrorMessage(signUp) \(error)")
+                    return
+                }
                 return
             }
             
@@ -74,6 +81,7 @@ class APIController {
             }
             
             guard let data = data else {
+                NSLog("Error retrieving data from server(logIn)")
                 return
             }
             
@@ -83,7 +91,7 @@ class APIController {
                     let errorMessage = try JSONDecoder().decode(ErrorMessage.self, from: data)
                     completion(errorMessage)
                 } catch {
-                    NSLog("Error decoding ErrorMessage \(error)")
+                    NSLog("Error decoding ErrorMessage(logIn) \(error)")
                     return
                 }
  
@@ -108,7 +116,7 @@ class APIController {
     }
     
     //Get User through userId
-    func getUser(userId: Int, completion: @escaping (User?, Error?) -> Void) {
+    func getUser(userId: Int, completion: @escaping (User?, ErrorMessage?) -> Void) {
         let url = baseUrl.appendingPathComponent("users")
                          .appendingPathComponent("\(userId)")
         
@@ -127,28 +135,32 @@ class APIController {
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 NSLog("Error with getting user: \(error)")
-                completion(nil, error)
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("Error retrieving data from server(getUser)")
                 return
             }
             
             if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
                 NSLog("Error code from the http request: \(httpResponse.statusCode)")
-                completion(nil, error)
+                do {
+                    let errorMessage = try JSONDecoder().decode(ErrorMessage.self, from: data)
+                    completion(nil, errorMessage)
+                } catch {
+                    NSLog("Error decoding ErrorMessage(getUser) \(error)")
+                    return
+                }
                 return
             }
             
-            
-            guard let data = data else {
-                completion(nil, error)
-                return
-            }
             
             do {
                 let user = try JSONDecoder().decode(User.self, from: data)
                 completion(user, nil)
             } catch {
                 NSLog("Error with network request: \(error)")
-                completion(nil, error)
                 return
             }
             
@@ -160,7 +172,7 @@ class APIController {
     }
     
     //Join a Team
-    func joinTeam(code: Int, completion: @escaping (Team?, Error?) -> Void) {
+    func joinTeam(code: Int, completion: @escaping (Team?, ErrorMessage?) -> Void) {
         let url = baseUrl.appendingPathComponent("join")
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -179,24 +191,29 @@ class APIController {
             request.httpBody = json
         } catch {
             NSLog("Error encoding JSON")
-            completion(nil, error)
+            return
         }
         URLSession.shared.dataTask(with: request) {(data, response, error) in
             
             if let error = error {
                 NSLog("There was an error sending team code to server: \(error)")
-                completion(nil, error)
                 return
             }
             
             guard let data = data else {
-                completion(nil, error)
+                NSLog("Error retrieving data from server(joinTeam)")
                 return
             }
             
             if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
                 NSLog("Error code from the http request: \(httpResponse.statusCode)")
-                completion(nil, error)
+                do {
+                    let errorMessage = try JSONDecoder().decode(ErrorMessage.self, from: data)
+                    completion(nil, errorMessage)
+                } catch {
+                    NSLog("Error decoding ErrorMessage(joinTeam) \(error)")
+                    return
+                }
                 return
             }
             
@@ -205,7 +222,6 @@ class APIController {
                 completion(team, nil)
             } catch {
                 NSLog("Error decoding team \(error)")
-                completion(nil, error)
                 return
             }
             
@@ -215,7 +231,7 @@ class APIController {
     }
     
     //Get User Survey Responses
-    func getUserResponses(userId: Int, completion: @escaping ([Response]?, Error?) -> Void) {
+    func getUserResponses(userId: Int, completion: @escaping ([Response]?, ErrorMessage?) -> Void) {
         let url = baseUrl.appendingPathComponent("users")
                          .appendingPathComponent("\(userId)")
                          .appendingPathComponent("responses")
@@ -234,19 +250,23 @@ class APIController {
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 NSLog("Error with getting user responses: \(error)")
-                completion(nil, error)
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("Error retrieving data from server(getUserResponses)")
                 return
             }
             
             if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
                 NSLog("Error code from the http request: \(httpResponse.statusCode)")
-                completion(nil, error)
-                return
-            }
-            
-            
-            guard let data = data else {
-                completion(nil, error)
+                do {
+                    let errorMessage = try JSONDecoder().decode(ErrorMessage.self, from: data)
+                    completion(nil, errorMessage)
+                } catch {
+                    NSLog("Error decoding ErrorMessage(getUserResponses) \(error)")
+                    return
+                }
                 return
             }
             
@@ -255,7 +275,6 @@ class APIController {
                 completion(responses, nil)
             } catch {
                 NSLog("Error with network request: \(error)")
-                completion(nil, error)
                 return
             }
             
@@ -289,13 +308,19 @@ class APIController {
             }
             
             guard let data = data else {
+                NSLog("Error retrieving data from server(googleSignIn)")
                 return
             }
             
             if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
                 NSLog("Error code from the http request: \(httpResponse.statusCode)")
-                let errorMessage = try! JSONDecoder().decode(ErrorMessage.self, from: data)
-                completion(errorMessage)
+                do {
+                    let errorMessage = try JSONDecoder().decode(ErrorMessage.self, from: data)
+                    completion(errorMessage)
+                } catch {
+                    NSLog("Error decoding ErrorMessage(googleSignIn) \(error)")
+                    return
+                }
                 return
             }
             
@@ -316,7 +341,7 @@ class APIController {
     }
     
     // Get Team Members of a team
-    func getTeamMembers(teamId: Int, completion: @escaping ([User]?, Error?) -> Void) {
+    func getTeamMembers(teamId: Int, completion: @escaping ([User]?, ErrorMessage?) -> Void) {
         let url = baseUrl.appendingPathComponent("teams")
             .appendingPathComponent("\(teamId)")
             .appendingPathComponent("users")
@@ -335,28 +360,31 @@ class APIController {
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 NSLog("Error with getting team members: \(error)")
-                completion(nil, error)
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("Error retrieving data from server(getTeamMembers)")
                 return
             }
             
             if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
                 NSLog("Error code from the http request: \(httpResponse.statusCode)")
-                completion(nil, error)
+                do {
+                    let errorMessage = try JSONDecoder().decode(ErrorMessage.self, from: data)
+                    completion(nil, errorMessage)
+                } catch {
+                    NSLog("Error decoding ErrorMessage(getTeamMembers) \(error)")
+                    return
+                }
                 return
             }
-            
-            
-            guard let data = data else {
-                completion(nil, error)
-                return
-            }
-            
+
             do {
                 let users = try JSONDecoder().decode([User].self, from: data)
                 completion(users, nil)
             } catch {
                 NSLog("Error with network request: \(error)")
-                completion(nil, error)
                 return
             }
             
@@ -367,7 +395,7 @@ class APIController {
     }
     
     //Get Managing Team as Manager
-    func getManagingTeam(userId: Int, completion: @escaping (Team?, Error?) -> Void) {
+    func getManagingTeam(userId: Int, completion: @escaping (Team?, ErrorMessage?) -> Void) {
         let url = baseUrl.appendingPathComponent("users")
             .appendingPathComponent("\(userId)")
             .appendingPathComponent("teams")
@@ -386,19 +414,23 @@ class APIController {
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 NSLog("Error with getting user team: \(error)")
-                completion(nil, error)
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("Error retreiving data from server(getManagingTeam)")
                 return
             }
             
             if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
                 NSLog("Error code from the http request: \(httpResponse.statusCode)")
-                completion(nil, error)
-                return
-            }
-            
-            
-            guard let data = data else {
-                completion(nil, error)
+                do {
+                    let errorMessage = try JSONDecoder().decode(ErrorMessage.self, from: data)
+                    completion(nil, errorMessage)
+                } catch {
+                    NSLog("Error decoding ErrorMessage(getTeamMembers) \(error)")
+                    return
+                }
                 return
             }
             
@@ -407,14 +439,72 @@ class APIController {
                 completion(team, nil)
             } catch {
                 NSLog("Error with network request: \(error)")
-                completion(nil, error)
                 return
             }
             
-            NSLog("Successfully fetched User Team")
+            NSLog("Successfully fetched Manager's Team")
             
             
             }.resume()
+    }
+    
+    //Get Team Responses
+    func getTeamResponses(teamId: Int, completion: @escaping ([Response]?, ErrorMessage?) -> Void) {
+        let url = baseUrl.appendingPathComponent("teams")
+            .appendingPathComponent("\(teamId)")
+            .appendingPathComponent("responses")
+        
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = HTTPMethod.get.rawValue
+        
+        guard let token = UserDefaults.standard.token else {
+            NSLog("No JWT Token Set to User Defaults")
+            return
+        }
+        
+        request.setValue(token, forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                NSLog("Error with getting team responses: \(error)")
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("Error retrieving data from server(getTeamResponses)")
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                NSLog("Error code from the http request: \(httpResponse.statusCode)")
+                do {
+                    let errorMessage = try JSONDecoder().decode(ErrorMessage.self, from: data)
+                    completion(nil, errorMessage)
+                } catch {
+                    NSLog("Error decoding ErrorMessage(getTeamResponses) \(error)")
+                    return
+                }
+                return
+            }
+            
+            do {
+                let responses = try JSONDecoder().decode([Response].self, from: data)
+                completion(responses, nil)
+            } catch {
+                NSLog("Error with network request: \(error)")
+                return
+            }
+            
+            NSLog("Successfully fetched all Team Responses")
+            
+            
+            }.resume()
+    }
+    
+    //Get Survey
+    func getSurvey(teamId: Int, completion: @escaping ([Response]?, ErrorMessage?) -> Void) {
+        
     }
     
     //Send Survey to Server -> APN -> User's Mobile Phone
