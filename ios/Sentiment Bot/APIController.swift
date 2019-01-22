@@ -177,7 +177,7 @@ class APIController {
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.post.rawValue
-        let teamCredentials = ["code": code] as [String: Any]
+        let teamParams = ["code": code] as [String: Any]
         
         guard let token = UserDefaults.standard.token else {
             NSLog("No JWT Token Set to User Defaults")
@@ -187,7 +187,7 @@ class APIController {
         request.setValue(token, forHTTPHeaderField: "Authorization")
         
         do {
-            let json = try JSONSerialization.data(withJSONObject: teamCredentials, options: .prettyPrinted)
+            let json = try JSONSerialization.data(withJSONObject: teamParams, options: .prettyPrinted)
             request.httpBody = json
         } catch {
             NSLog("Error encoding JSON")
@@ -557,6 +557,110 @@ class APIController {
             }.resume()
     }
     
+    func createTeam(userId: Int, teamName: String, completion: @escaping (ErrorMessage?) -> Void) {
+        let url = baseUrl.appendingPathComponent("users")
+            .appendingPathComponent("\(userId)")
+            .appendingPathComponent("teams")
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = HTTPMethod.post.rawValue
+        let params = ["teamName": teamName, "userId": userId] as [String: Any]
+        
+        guard let token = UserDefaults.standard.token else {
+            NSLog("No JWT Token Set to User Defaults")
+            return
+        }
+        
+        request.setValue(token, forHTTPHeaderField: "Authorization")
+        
+        do {
+            let json = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
+            request.httpBody = json
+        } catch {
+            NSLog("Error encoding JSON")
+            return
+        }
+        URLSession.shared.dataTask(with: request) {(data, response, error) in
+            
+            if let error = error {
+                NSLog("There was an error sending params to server: \(error)")
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("Error retrieving data from server(createTeam)")
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                NSLog("Error code from the http request: \(httpResponse.statusCode)")
+                do {
+                    let errorMessage = try JSONDecoder().decode(ErrorMessage.self, from: data)
+                    completion(errorMessage)
+                } catch {
+                    NSLog("Error decoding ErrorMessage(createTeam) \(error)")
+                    return
+                }
+                return
+            }
+            
+            NSLog("Manager successfully created team")
+            
+            }.resume()
+    }
+    
+    func createFeelingForSurvey(surveyId: Int, completion: @escaping (ErrorMessage?) -> Void) {
+        let url = baseUrl.appendingPathComponent("surveys")
+                         .appendingPathComponent("\(surveyId)")
+                         .appendingPathComponent("feelings")
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = HTTPMethod.post.rawValue
+        let surveyParams = ["surveyId": surveyId] as [String: Any]
+        
+        guard let token = UserDefaults.standard.token else {
+            NSLog("No JWT Token Set to User Defaults")
+            return
+        }
+        
+        request.setValue(token, forHTTPHeaderField: "Authorization")
+        
+        do {
+            let json = try JSONSerialization.data(withJSONObject: surveyParams, options: .prettyPrinted)
+            request.httpBody = json
+        } catch {
+            NSLog("Error encoding JSON")
+            return
+        }
+        URLSession.shared.dataTask(with: request) {(data, response, error) in
+            
+            if let error = error {
+                NSLog("There was an error sending surveyParams to server: \(error)")
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("Error retrieving data from server(createFeelingForSurvey)")
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                NSLog("Error code from the http request: \(httpResponse.statusCode)")
+                do {
+                    let errorMessage = try JSONDecoder().decode(ErrorMessage.self, from: data)
+                    completion(errorMessage)
+                } catch {
+                    NSLog("Error decoding ErrorMessage(createFeelingForSurvey) \(error)")
+                    return
+                }
+                return
+            }
+
+            NSLog("Manager successfully created Feeling for Survey")
+            
+            }.resume()
+    }
+    
     //Send Survey to Server -> APN -> User's Mobile Phone
     func sendSurveyNotification() {
         //This will be inside
@@ -617,7 +721,6 @@ class APIController {
     
     
     let localNotificationHelper = LocalNotificationHelper()
-    //let baseUrl = URL(string: "http://localhost:3000/api")!
     //let baseUrl = URL(string: "https://sentimentbot-1.herokuapp.com/api")!
     let baseUrl = URL(string: "http://localhost:3000/api")!
 }
