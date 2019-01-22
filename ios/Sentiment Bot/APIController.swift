@@ -9,7 +9,8 @@
 import UIKit
 import JWTDecode
 
-//This will be refactored one day
+//This will be modularized and refactored one day
+// MVP is prioritized
 //For now use code folding to make scrolling managable
 class APIController {
     
@@ -557,6 +558,63 @@ class APIController {
             }.resume()
     }
     
+    //Change Survey Schedule
+    func changeSurveySchedule(surveyId: Int, schedule: String, completion: @escaping (ErrorMessage?) -> Void) {
+        let url = baseUrl.appendingPathComponent("surveys")
+            .appendingPathComponent("\(surveyId)")
+
+        
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = HTTPMethod.put.rawValue
+        
+        let params = ["schedule": schedule] as [String : Any]
+        
+        guard let token = UserDefaults.standard.token else {
+            NSLog("No JWT Token Set to User Defaults")
+            return
+        }
+        
+        request.setValue(token, forHTTPHeaderField: "Authorization")
+        
+        do {
+            let json = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
+            request.httpBody = json
+        } catch {
+            NSLog("Error encoding JSON")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) {(data, response, error) in
+            
+            if let error = error {
+                NSLog("There was an error sending update survey's schedule request to server: \(error)")
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("Error retrieving data from server(changeSurveySchedule)")
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                NSLog("Error code from the http request: \(httpResponse.statusCode)")
+                do {
+                    let errorMessage = try JSONDecoder().decode(ErrorMessage.self, from: data)
+                    completion(errorMessage)
+                } catch {
+                    NSLog("Error decoding ErrorMessage(changeSurveySchedule) \(error)")
+                    return
+                }
+                return
+            }
+            
+            NSLog("Manager successfully changed schedule of survey to \(schedule)")
+            
+            }.resume()
+    }
+    
+    //Create a team if one doesn't exist
     func createTeam(userId: Int, teamName: String, completion: @escaping (ErrorMessage?) -> Void) {
         let url = baseUrl.appendingPathComponent("users")
             .appendingPathComponent("\(userId)")
@@ -564,7 +622,7 @@ class APIController {
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.post.rawValue
-        let params = ["teamName": teamName, "userId": userId] as [String: Any]
+        let params = ["teamName": teamName] as [String: Any]
         
         guard let token = UserDefaults.standard.token else {
             NSLog("No JWT Token Set to User Defaults")
@@ -609,6 +667,7 @@ class APIController {
             }.resume()
     }
     
+    //Create a feeling option for Survey
     func createFeelingForSurvey(surveyId: Int, completion: @escaping (ErrorMessage?) -> Void) {
         let url = baseUrl.appendingPathComponent("surveys")
                          .appendingPathComponent("\(surveyId)")
@@ -616,7 +675,6 @@ class APIController {
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.post.rawValue
-        let surveyParams = ["surveyId": surveyId] as [String: Any]
         
         guard let token = UserDefaults.standard.token else {
             NSLog("No JWT Token Set to User Defaults")
@@ -625,13 +683,6 @@ class APIController {
         
         request.setValue(token, forHTTPHeaderField: "Authorization")
         
-        do {
-            let json = try JSONSerialization.data(withJSONObject: surveyParams, options: .prettyPrinted)
-            request.httpBody = json
-        } catch {
-            NSLog("Error encoding JSON")
-            return
-        }
         URLSession.shared.dataTask(with: request) {(data, response, error) in
             
             if let error = error {
@@ -657,6 +708,98 @@ class APIController {
             }
 
             NSLog("Manager successfully created Feeling for Survey")
+            
+            }.resume()
+    }
+    
+    //Remove Feeling option from Survey
+    func removeFeelingFromSurvey(feelingId: Int, completion: @escaping (ErrorMessage?) -> Void) {
+        let url = baseUrl.appendingPathComponent("feelings")
+            .appendingPathComponent("\(feelingId)")
+
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = HTTPMethod.delete.rawValue
+        
+        guard let token = UserDefaults.standard.token else {
+            NSLog("No JWT Token Set to User Defaults")
+            return
+        }
+        
+        request.setValue(token, forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) {(data, response, error) in
+            
+            if let error = error {
+                NSLog("There was an error sending delete feeling request to server: \(error)")
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("Error retrieving data from server(removeFeelingFromSurvey)")
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                NSLog("Error code from the http request: \(httpResponse.statusCode)")
+                do {
+                    let errorMessage = try JSONDecoder().decode(ErrorMessage.self, from: data)
+                    completion(errorMessage)
+                } catch {
+                    NSLog("Error decoding ErrorMessage(removeFeelingFromSurvey) \(error)")
+                    return
+                }
+                return
+            }
+            
+            NSLog("Manager successfully deleted Feeling from Survey")
+            
+            }.resume()
+    }
+    
+    //Remove Team Member or Leave Team
+    func removeMemberFromTeam(teamId: Int, userId: Int, completion: @escaping (ErrorMessage?) -> Void) {
+        let url = baseUrl.appendingPathComponent("teams")
+            .appendingPathComponent("\(teamId)")
+            .appendingPathComponent("users")
+            .appendingPathComponent("\(userId)")
+        
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = HTTPMethod.delete.rawValue
+        
+        guard let token = UserDefaults.standard.token else {
+            NSLog("No JWT Token Set to User Defaults")
+            return
+        }
+        
+        request.setValue(token, forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) {(data, response, error) in
+            
+            if let error = error {
+                NSLog("There was an error sending delete team member request to server: \(error)")
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("Error retrieving data from server(removeMemberFromTeam)")
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                NSLog("Error code from the http request: \(httpResponse.statusCode)")
+                do {
+                    let errorMessage = try JSONDecoder().decode(ErrorMessage.self, from: data)
+                    completion(errorMessage)
+                } catch {
+                    NSLog("Error decoding ErrorMessage(removeMemberFromTeam) \(error)")
+                    return
+                }
+                return
+            }
+            
+            NSLog("Manager successfully deleted team member from team")
             
             }.resume()
     }
