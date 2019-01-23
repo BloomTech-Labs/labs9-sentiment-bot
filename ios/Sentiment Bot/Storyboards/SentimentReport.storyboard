@@ -20,11 +20,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="8bO-dT-MaD"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Report" id="6bE-mY-fwf"/>
+                    <tabBarItem key="tabBarItem" title="Report" image="report_card" id="6bE-mY-fwf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I6U-XV-1a8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-6979" y="-1845"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="report_card" width="30" height="30"/>
+    </resources>
 </document>

@@ -20,11 +20,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="jmm-6p-fng"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Subscription" id="y74-eD-a6J"/>
+                    <tabBarItem key="tabBarItem" title="Subscription" image="bank_card_back_side" id="y74-eD-a6J"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kTM-Oq-gNt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3543" y="-1567"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bank_card_back_side" width="30" height="30"/>
+    </resources>
 </document>
