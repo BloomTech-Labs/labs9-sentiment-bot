@@ -663,6 +663,7 @@ class APIController {
             }
             
             NSLog("Manager successfully created team")
+            completion(nil)
             
             }.resume()
     }
@@ -715,7 +716,7 @@ class APIController {
             }
             
             NSLog("Successfully fetched Survey Feelings")
-            
+          
             
             }.resume()
     }
@@ -877,7 +878,7 @@ class APIController {
     //        APIController.shared.updateProfileImage(imageData: imageData!) { (errorMessage) in
     //
     //        }
-    func updateProfileImage(imageData: Data, completion: @escaping (ErrorMessage?) -> Void) {
+    func uploadProfilePicture(imageData: Data, completion: @escaping (ErrorMessage?) -> Void) {
         let encodedImageData = imageData.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
         let url = baseUrl.appendingPathComponent("upload")
         var request = URLRequest(url: url)
@@ -917,6 +918,10 @@ class APIController {
             completion(nil)
         }
         task.resume()
+    }
+    
+    func uploadResponseSelfie() {
+        
     }
     
     //Send Survey to Server -> APN -> User's Mobile Phone

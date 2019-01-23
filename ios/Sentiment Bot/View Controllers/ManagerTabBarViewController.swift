@@ -32,7 +32,7 @@ class ManagerTabBarViewController: UITabBarController {
     
     func getUserData() {
         
-        APIController.shared.getManagingTeam(userId: 1) { (team, errorMessage) in
+        APIController.shared.getManagingTeam(userId: UserDefaults.standard.userId) { (team, errorMessage) in
             if let errorMessage = errorMessage {
                 print(errorMessage)
             } else {
