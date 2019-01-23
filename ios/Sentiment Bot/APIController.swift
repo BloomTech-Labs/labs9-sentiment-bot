@@ -663,6 +663,7 @@ class APIController {
             }
             
             NSLog("Manager successfully created team")
+            completion(nil)
             
             }.resume()
     }
@@ -715,7 +716,7 @@ class APIController {
             }
             
             NSLog("Successfully fetched Survey Feelings")
-            
+          
             
             }.resume()
     }
@@ -866,6 +867,63 @@ class APIController {
             }.resume()
     }
     
+    
+    //Update Profile Image
+    //Example:
+    //let capturePhotoImage = self.capturePhotoView.image
+    //let imageData = capturePhotoImage!.pngData()
+    //Another Example:
+    //       let image = UIImage(named: "GoogleSignIn")
+    //        let imageData = image!.pngData()
+    //        APIController.shared.updateProfileImage(imageData: imageData!) { (errorMessage) in
+    //
+    //        }
+    func uploadProfilePicture(imageData: Data, completion: @escaping (ErrorMessage?) -> Void) {
+        let encodedImageData = imageData.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
+        let url = baseUrl.appendingPathComponent("upload")
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.post.rawValue
+        
+        guard let token = UserDefaults.standard.token else {
+            NSLog("No JWT Token Set to User Defaults")
+            return
+        }
+        
+        request.setValue(token, forHTTPHeaderField: "Authorization")
+        let postString = "image=\(encodedImageData)"
+        request.httpBody = postString.data(using: .utf8)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+             if let error = error {
+                NSLog("There was an error sending image data to server: \(error)")
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("Error retrieving data from server(updateProfileImage)")
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                NSLog("Error code from the http request: \(httpResponse.statusCode)")
+                do {
+                    let errorMessage = try JSONDecoder().decode(ErrorMessage.self, from: data)
+                    completion(errorMessage)
+                } catch {
+                    NSLog("Error decoding ErrorMessage(updateProfileImage) \(error)")
+                    return
+                }
+                return
+            }
+            NSLog("Successfully Changed Profile Picture")
+            completion(nil)
+        }
+        task.resume()
+    }
+    
+    func uploadResponseSelfie() {
+        
+    }
+    
     //Send Survey to Server -> APN -> User's Mobile Phone
     func sendSurveyNotification() {
         //This will be inside
@@ -886,6 +944,11 @@ class APIController {
             }
         }
     }
+    
+    
+    
+    
+    
     
     //Helper Functions
 

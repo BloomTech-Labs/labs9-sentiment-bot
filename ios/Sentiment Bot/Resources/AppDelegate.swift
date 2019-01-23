@@ -39,7 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             NSLog("Message Received: \(aps)")
             (window?.rootViewController as? UITabBarController)?.selectedIndex = 3
         }
-        
         return true
     }
     

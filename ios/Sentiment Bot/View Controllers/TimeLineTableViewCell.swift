@@ -21,7 +21,7 @@ class TimeLineTableViewCell: UITableViewCell {
         dateLabel.text = response.date
         emojiLabel.text = response.emoji
         feelzNameLabel.text = response.mood
-        locationLabel.text = "New York, NY"
+        locationLabel.text = response.place
  
         if let imageUrl = response.imageUrl {
             APIController.shared.getImage(url: imageUrl) { (image, error) in
