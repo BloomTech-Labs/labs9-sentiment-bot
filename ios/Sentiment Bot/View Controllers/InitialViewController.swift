@@ -22,18 +22,26 @@ class InitialViewController: UIViewController {
     
     
     @IBAction func joinTeam(_ sender: Any) {
-//        guard let teamCode: Int = Int(teamCodeTextField.text!) else { return }
+        //guard let teamCode: Int = Int(teamCodeTextField.text!) else { return }
         
+        
+//        APIController.shared.joinTeam(code: teamCode) { (_, errorMessage) in
+//        }
         
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
         
         let teamMemberTVC = mainStoryBoard.instantiateViewController(withIdentifier: "TabBarViewController") as! TabBarViewController
-        present(teamMemberTVC, animated: false) {
+        self.present(teamMemberTVC, animated: false) {
             
         }
+        
     }
     
     @IBAction func createTeam(_ sender: Any) {
+        
+        //guard let teamName = teamNameTextField.text else { return }
+        
+        
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
         
         let managerTVC = mainStoryBoard.instantiateViewController(withIdentifier: "ManagerTabBarViewController") as! ManagerTabBarViewController

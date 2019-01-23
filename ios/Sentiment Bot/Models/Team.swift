@@ -12,6 +12,7 @@ import Foundation
 struct Team: Codable {
     let id: Int
     var teamName: String
+    var teamCode: Int
     let code: Int
     let userId: Int?
     let users: [User]?
