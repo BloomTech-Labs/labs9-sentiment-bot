@@ -9,7 +9,7 @@
 import UIKit
 import GoogleSignIn
 
-class TimelineViewController: UIViewController, UserProtocol {
+class TimelineViewController: UIViewController, UserProtocol, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     var user: User?
     
@@ -18,6 +18,8 @@ class TimelineViewController: UIViewController, UserProtocol {
             updateViews()
         }
     }
+    
+    var feelzImage: UIImage?
     
     private func updateViews() {
         DispatchQueue.main.async {
@@ -44,6 +46,33 @@ class TimelineViewController: UIViewController, UserProtocol {
 //            NSLog("User still logged in")
 //        }
 //    }
+    
+    @IBAction func imagePickerButton(_ sender: UIButton) {
+        let vc = UIImagePickerController()
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            vc.sourceType = .camera
+        } else {
+            vc.sourceType = .photoLibrary
+        }
+        vc.allowsEditing = true
+        vc.delegate = self
+        present(vc, animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let image = info[.editedImage] as? UIImage else {
+            NSLog("No image found")
+            return
+        }
+        // TODO: - put image in Response array
+        print(image.size)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 extension TimelineViewController: UITableViewDataSource, UITableViewDelegate {
@@ -59,4 +88,7 @@ extension TimelineViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
 }

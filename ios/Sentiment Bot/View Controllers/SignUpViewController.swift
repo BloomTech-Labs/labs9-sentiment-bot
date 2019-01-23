@@ -15,7 +15,6 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear.withAlphaComponent(0.25)
         view.layer.cornerRadius = 20
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func googleSignUp(_ sender: Any) {
@@ -71,3 +70,5 @@ class SignUpViewController: UIViewController {
     */
 
 }
+
+

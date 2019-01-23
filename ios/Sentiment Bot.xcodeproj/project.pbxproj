@@ -49,6 +49,8 @@
 		A1EA606921ECFF9A00ACE25D /* UserDefaults+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA606821ECFF9A00ACE25D /* UserDefaults+extension.swift */; };
 		A1EA607821EE56E400ACE25D /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1EA607721EE56E300ACE25D /* credentials.plist */; };
 		A1EA607A21EE57B000ACE25D /* GoogleSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA607921EE57B000ACE25D /* GoogleSignInViewController.swift */; };
+		F10B4A8421F8CE2B00597DC8 /* Subscription.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F10B4A8321F8CE2B00597DC8 /* Subscription.storyboard */; };
+		F10B4A8621F8CE7F00597DC8 /* InitialViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F10B4A8521F8CE7F00597DC8 /* InitialViewController.storyboard */; };
 		F18865D221EEB306008F9D35 /* TestUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18865D121EEB306008F9D35 /* TestUser.swift */; };
 		F1B7E58B21E547450096FC6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B7E58A21E547450096FC6F /* AppDelegate.swift */; };
 		F1B7E59021E547450096FC6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E58E21E547450096FC6F /* Main.storyboard */; };
@@ -109,6 +111,8 @@
 		A1EA607721EE56E300ACE25D /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
 		A1EA607921EE57B000ACE25D /* GoogleSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInViewController.swift; sourceTree = "<group>"; };
 		D5A27D069A6F1B1A0A158705 /* Pods-Sentiment Bot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sentiment Bot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sentiment Bot/Pods-Sentiment Bot.debug.xcconfig"; sourceTree = "<group>"; };
+		F10B4A8321F8CE2B00597DC8 /* Subscription.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Subscription.storyboard; sourceTree = "<group>"; };
+		F10B4A8521F8CE7F00597DC8 /* InitialViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = InitialViewController.storyboard; sourceTree = "<group>"; };
 		F138A56521F6172C0004334F /* Sentiment Bot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sentiment Bot.entitlements"; sourceTree = "<group>"; };
 		F18865D121EEB306008F9D35 /* TestUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUser.swift; sourceTree = "<group>"; };
 		F1B7E58721E547450096FC6F /* Sentiment Bot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sentiment Bot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -251,16 +255,18 @@
 		F1ECBCF821E70664005CDBE8 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				F1B7E58E21E547450096FC6F /* Main.storyboard */,
+				A140D94921F188B2008963C1 /* SignIn.storyboard */,
+				A140D94B21F188F4008963C1 /* SignUp.storyboard */,
+				F10B4A8521F8CE7F00597DC8 /* InitialViewController.storyboard */,
+				F1CDD23B21ECFF06008E7A57 /* Timeline.storyboard */,
+				A140D97521F78646008963C1 /* ManagerTimeline.storyboard */,
+				F1CDD23D21ECFF36008E7A57 /* Map.storyboard */,
+				F10B4A8321F8CE2B00597DC8 /* Subscription.storyboard */,
 				A140D97B21F786E7008963C1 /* SentimentReport.storyboard */,
 				A140D97921F786BC008963C1 /* SendSurvey.storyboard */,
 				A140D97721F7868D008963C1 /* TeamMembers.storyboard */,
-				A140D97521F78646008963C1 /* ManagerTimeline.storyboard */,
 				A140D97321F785FE008963C1 /* PremiumCheckout.storyboard */,
-				A140D94B21F188F4008963C1 /* SignUp.storyboard */,
-				A140D94921F188B2008963C1 /* SignIn.storyboard */,
-				F1B7E58E21E547450096FC6F /* Main.storyboard */,
-				F1CDD23B21ECFF06008E7A57 /* Timeline.storyboard */,
-				F1CDD23D21ECFF36008E7A57 /* Map.storyboard */,
 				F1CDD27021ED99D5008E7A57 /* ProfileViewController.storyboard */,
 				F1ECBCFA21E706AA005CDBE8 /* UserView.xib */,
 				F1B7E59321E547460096FC6F /* LaunchScreen.storyboard */,
@@ -379,6 +385,8 @@
 				A140D97A21F786BC008963C1 /* SendSurvey.storyboard in Resources */,
 				A140D97421F785FE008963C1 /* PremiumCheckout.storyboard in Resources */,
 				F1B7E59521E547460096FC6F /* LaunchScreen.storyboard in Resources */,
+				F10B4A8621F8CE7F00597DC8 /* InitialViewController.storyboard in Resources */,
+				F10B4A8421F8CE2B00597DC8 /* Subscription.storyboard in Resources */,
 				A1EA607821EE56E400ACE25D /* credentials.plist in Resources */,
 				F1CDD23F21ECFF36008E7A57 /* Map.storyboard in Resources */,
 				F1CDD23C21ECFF06008E7A57 /* Timeline.storyboard in Resources */,

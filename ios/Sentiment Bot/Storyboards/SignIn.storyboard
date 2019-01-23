@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="NSF-tK-Ltl">
-                                <rect key="frame" x="50" y="257" width="275" height="173"/>
+                                <rect key="frame" x="50" y="172" width="275" height="173"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8hh-di-BY6">
                                         <rect key="frame" x="0.0" y="0.0" width="275" height="100"/>
@@ -28,13 +28,13 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="275" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ous-VM-M5b">
                                                 <rect key="frame" x="0.0" y="35" width="275" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEx-R4-cPz">
                                                 <rect key="frame" x="114" y="70" width="47" height="30"/>
@@ -71,7 +71,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="NSF-tK-Ltl" firstAttribute="leading" secondItem="qWw-OV-Lqt" secondAttribute="leading" constant="50" id="1mW-rs-Lew"/>
-                            <constraint firstItem="NSF-tK-Ltl" firstAttribute="centerY" secondItem="qWw-OV-Lqt" secondAttribute="centerY" id="jlB-Q6-18W"/>
+                            <constraint firstItem="NSF-tK-Ltl" firstAttribute="centerY" secondItem="qWw-OV-Lqt" secondAttribute="centerY" constant="-85" id="jlB-Q6-18W"/>
                             <constraint firstAttribute="trailing" secondItem="NSF-tK-Ltl" secondAttribute="trailing" constant="50" id="ler-Us-VxQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qWw-OV-Lqt"/>
