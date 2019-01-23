@@ -45,7 +45,7 @@
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Sentiment Bot would like to access you location.</string>
+	<string>Sentiment Bot would like to access your location.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
@@ -69,5 +69,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Sentiment Bot would like to access your camera.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Sentiment Bot would like to access your photo library.</string>
 </dict>
 </plist>

@@ -9,13 +9,15 @@
 import UIKit
 import GoogleSignIn
 
-class SignInViewController: UIViewController{
+class SignInViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear.withAlphaComponent(0.25)
         view.layer.cornerRadius = 20
-
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        
     }
     
     @IBAction func googleSignIn(_ sender: Any) {
@@ -69,4 +71,23 @@ class SignInViewController: UIViewController{
         }
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            passwordTextField.becomeFirstResponder()
+        } else {
+           view.endEditing(true)
+        }
+        
+        return false
+    }
+    
+}
+
+// Dismiss Keyboard
+extension UIViewController
+{
+    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+        super.touchesBegan(touches, with: event)
+    }
 }

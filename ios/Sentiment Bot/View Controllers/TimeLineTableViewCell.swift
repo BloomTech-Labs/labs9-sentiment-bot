@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimeLineTableViewCell: UITableViewCell {
+class TimeLineTableViewCell: UITableViewCell, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!

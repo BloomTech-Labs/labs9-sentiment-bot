@@ -8,13 +8,13 @@
 
 import UIKit
 
-@IBDesignable class UserView: UIView {
+@IBDesignable class UserView: UIView, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var slackButton: UIButton!
     @IBOutlet weak var feelzNumberLabel: UILabel!
     @IBOutlet weak var lastInLabel: UILabel!
+    @IBOutlet weak var imageButton: UIButton!
     
     var view: UIView!
     var responses: [Response]? = []
@@ -48,6 +48,7 @@ import UIKit
                         } else if let image = image {
                             DispatchQueue.main.async {
                                 self.userImage.image = image
+                                
                             }
                         }
                     }
@@ -98,4 +99,22 @@ import UIKit
         return formatter
     }()
 
+    @IBAction func selectImage(_ sender: UIButton) {
+        NSLog("Select Image")
+        
+//        let vc = UIImagePickerController()
+//        vc.sourceType = .camera
+//        vc.allowsEditing = true
+//        vc.delegate = self
+//        present(vc, animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let image = info[.editedImage] as? UIImage else {
+            NSLog("No image found")
+            return
+        }
+        userImage.image = image
+    }
 }
