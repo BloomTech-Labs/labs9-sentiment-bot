@@ -920,8 +920,48 @@ class APIController {
         task.resume()
     }
     
-    func uploadResponseSelfie() {
+    func uploadResponseSelfie(imageData: Data, completion: @escaping (ErrorMessage?) -> Void) {
+        let encodedImageData = imageData.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
+        let url = baseUrl.appendingPathComponent("responses")
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.put.rawValue
         
+        guard let token = UserDefaults.standard.token else {
+            NSLog("No JWT Token Set to User Defaults")
+            return
+        }
+        
+        request.setValue(token, forHTTPHeaderField: "Authorization")
+        let postString = "image=\(encodedImageData)"
+        request.httpBody = postString.data(using: .utf8)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                NSLog("There was an error sending image data to server: \(error)")
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("Error retrieving data from server(updateProfileImage)")
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                NSLog("Error code from the http request: \(httpResponse.statusCode)")
+                do {
+                    let errorMessage = try JSONDecoder().decode(ErrorMessage.self, from: data)
+                    completion(errorMessage)
+                } catch {
+                    NSLog("Error decoding ErrorMessage(updateProfileImage) \(error)")
+                    return
+                }
+                return
+            }
+            
+            NSLog("Successfully Changed Response(Feelzy) Selfie")
+            
+            completion(nil)
+        }
+        task.resume()
     }
     
     //Send Survey to Server -> APN -> User's Mobile Phone
