@@ -128,7 +128,7 @@ extension SendSurveyViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let response = teamResponses![indexPath.row]
+        //let response = teamResponses![indexPath.row]
         if tableView == emojiSelectionTableView {
              let cell = tableView.dequeueReusableCell(withIdentifier: "EmojiSelectionCell")!
             cell.textLabel?.text = emojiSelection[indexPath.row]

@@ -22,22 +22,39 @@ class InitialViewController: UIViewController {
     
     
     @IBAction func joinTeam(_ sender: Any) {
-//        guard let teamCode: Int = Int(teamCodeTextField.text!) else { return }
+        guard let teamCode: Int = Int(teamCodeTextField.text!) else { return }
         
         
-        let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        
-        let teamMemberTVC = mainStoryBoard.instantiateViewController(withIdentifier: "TabBarViewController") as! TabBarViewController
-        present(teamMemberTVC, animated: false) {
-            
+        APIController.shared.joinTeam(code: teamCode) { (_, errorMessage) in
+            if let errorMessage = errorMessage {
+                print(errorMessage)
+            } else {
+                DispatchQueue.main.async {
+                    let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                    let teamMemberTVC = mainStoryBoard.instantiateViewController(withIdentifier: "TabBarViewController") as! TabBarViewController
+                    self.present(teamMemberTVC, animated: false)
+                }
+            }
         }
+        
     }
     
     @IBAction func createTeam(_ sender: Any) {
-        let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
         
-        let managerTVC = mainStoryBoard.instantiateViewController(withIdentifier: "ManagerTabBarViewController") as! ManagerTabBarViewController
-        present(managerTVC, animated: false) {
+        guard let teamName = teamNameTextField.text else { return }
+        
+        APIController.shared.createTeam(userId: UserDefaults.standard.userId, teamName: teamName) { (errorMessage) in
+            
+            if let errorMessage = errorMessage {
+                print(errorMessage)
+            } else {
+                
+                DispatchQueue.main.async {
+                    let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                    let managerTVC = mainStoryBoard.instantiateViewController(withIdentifier: "ManagerTabBarViewController") as! ManagerTabBarViewController
+                    self.present(managerTVC, animated: false)
+                }
+            }
         }
     }
     
