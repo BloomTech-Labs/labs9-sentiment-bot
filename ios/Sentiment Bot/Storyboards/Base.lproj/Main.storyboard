@@ -10,22 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Subscription-->
-        <scene sceneID="9Ox-su-FBz">
-            <objects>
-                <viewController id="LZT-nd-c3j" customClass="SubscriptionViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Qha-WB-KJV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="jmm-6p-fng"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Subscription" id="y74-eD-a6J"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kTM-Oq-gNt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3537" y="-1547"/>
-        </scene>
         <!--Manager Tab Bar View Controller-->
         <scene sceneID="Yte-kY-XrD">
             <objects>
@@ -184,57 +168,6 @@
             </objects>
             <point key="canvasLocation" x="-2492" y="-783"/>
         </scene>
-        <!--Initial View Controller-->
-        <scene sceneID="AgU-mL-fRV">
-            <objects>
-                <viewController storyboardIdentifier="InitialViewController" id="EYl-82-ZJG" customClass="InitialViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="V5y-zA-LC7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="odJ-sb-4b8">
-                                <rect key="frame" x="152" y="283" width="70" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Join Team"/>
-                                <connections>
-                                    <action selector="joinTeam:" destination="EYl-82-ZJG" eventType="touchUpInside" id="G75-pr-ksH"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xjb-68-ee2">
-                                <rect key="frame" x="138" y="371" width="99" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Create a Team"/>
-                                <connections>
-                                    <action selector="createTeam:" destination="EYl-82-ZJG" eventType="touchUpInside" id="09a-jH-3AY"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V01-u8-BYI">
-                                <rect key="frame" x="139" y="233" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tWB-1g-AEY">
-                                <rect key="frame" x="139" y="333" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="fWE-Ya-wAc"/>
-                    </view>
-                    <connections>
-                        <outlet property="teamCodeTextField" destination="V01-u8-BYI" id="uRL-6g-tUf"/>
-                        <outlet property="teamNameTextField" destination="tWB-1g-AEY" id="cLh-8l-5O6"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fY0-Dd-QHt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2492" y="-1546"/>
-        </scene>
         <!--SignInViewController-->
         <scene sceneID="YbD-Ce-mNY">
             <objects>
@@ -300,6 +233,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y1r-EU-8EC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-826" y="-459"/>
+        </scene>
+        <!--InitialViewController-->
+        <scene sceneID="ad8-GV-nMt">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="InitialViewController" storyboardName="InitialViewController" referencedIdentifier="InitialViewController" id="rjd-cB-Y35" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bdf-HJ-EfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2699" y="-1255"/>
         </scene>
     </scenes>
     <resources>
