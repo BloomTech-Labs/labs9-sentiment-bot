@@ -20,18 +20,7 @@ class Response: NSObject, Decodable {
     let surveyId: Int?
     var imageUrl: URL?
     var place: String?
-    
-    enum CodingKeys: String, CodingKey {
-        case id
-        case date
-        case longitude
-        case latitude
-        case userId
-        case surveyId
-        case mood
-        case emoji
-        case imageUrl
-    }
+
     
     var title: String? {
         return self.place

@@ -67,7 +67,7 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
                 if user.isAdmin {
                     self.performSegue(withIdentifier: "ToManagerScreen", sender: self)
                 } else if user.isTeamMember {
-                    self.performSegue(withIdentifier: "ToTeamMember", sender: self)
+                    self.performSegue(withIdentifier: "ToTeamMemberScreen", sender: self)
                 } else {
                     let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
                     
