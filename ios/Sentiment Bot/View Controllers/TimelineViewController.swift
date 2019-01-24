@@ -48,6 +48,31 @@ class TimelineViewController: UIViewController, UserProtocol, UINavigationContro
 //    }
     
     @IBAction func imagePickerButton(_ sender: UIButton) {
+        
+        let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (_) in
+            self.openCamera()
+        }))
+        alert.addAction(UIAlertAction(title: "Photos", style: .default, handler: { (_) in
+            self.openGallary()
+        }))
+        
+        alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
+        
+        // For iPad
+        switch UIDevice.current.userInterfaceIdiom {
+        case .pad:
+            alert.popoverPresentationController?.sourceView = sender
+            alert.popoverPresentationController?.sourceRect = sender.bounds
+            alert.popoverPresentationController?.permittedArrowDirections = .up
+        default:
+            break
+        }
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func openCamera() {
         let vc = UIImagePickerController()
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             vc.sourceType = .camera
@@ -55,6 +80,14 @@ class TimelineViewController: UIViewController, UserProtocol, UINavigationContro
         } else {
             vc.sourceType = .photoLibrary
         }
+        vc.allowsEditing = true
+        vc.delegate = self
+        present(vc, animated: true)
+    }
+    
+    func openGallary() {
+        let vc = UIImagePickerController()
+        vc.sourceType = .photoLibrary
         vc.allowsEditing = true
         vc.delegate = self
         present(vc, animated: true)
