@@ -30,8 +30,20 @@ class SendSurveyViewController: UIViewController, ManagerProtocol {
         return survey?.feelings ?? []
     }
     
+    private var datePicker: UIDatePicker?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        datePicker = UIDatePicker()
+        datePicker?.datePickerMode = .time
+        datePicker?.addTarget(self, action: #selector(SendSurveyViewController.dateChanged(datePicker:)), for: .valueChanged)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SendSurveyViewController.viewTapped(gestureRecognizer:)))
+        
+        view.addGestureRecognizer(tapGesture)
+        
+        timeTextField.inputView = datePicker
         
         selectScheduleButtonDrop.setTitle(survey?.schedule, for: .normal)
         
@@ -66,7 +78,6 @@ class SendSurveyViewController: UIViewController, ManagerProtocol {
     
     @IBOutlet weak var selectScheduleButtonDrop: UIButton!
     
-    
     @IBOutlet weak var emojiSelectionTableView: UITableView!
     
     @IBOutlet weak var scheduleSelectionTableView: UITableView!
@@ -75,6 +86,7 @@ class SendSurveyViewController: UIViewController, ManagerProtocol {
     
     @IBOutlet weak var moodTextField: UITextField!
     
+    @IBOutlet weak var timeTextField: UITextField!
     
     @IBAction func addToFeelings(_ sender: Any) {
         guard let mood = moodTextField.text else { return }
@@ -85,32 +97,34 @@ class SendSurveyViewController: UIViewController, ManagerProtocol {
                     self.survey?.feelings = feelings
                     self.surveyFeelingsTableView.reloadData()
                 }
-  
             })
         }
-        
-        
     }
     
     //TODO: Make sure I can send out Survey to Users. Need to be
     //Tested on iOS and Backend Server.
     @IBAction func sendOutSurvey(_ sender: Any) {
         let schedule = selectScheduleButtonDrop.titleLabel?.text
-        APIController.shared.changeSurveySchedule(deviceToken: UserDefaults.standard.deviceToken!, surveyId: survey!.id, schedule: schedule!) { (errorMessage) in
-            print(errorMessage)
+        APIController.shared.changeSurveySchedule(surveyId: survey!.id, schedule: schedule!) { (errorMessage) in
+            if let errorMessage = errorMessage {
+                NSLog("Error sending survey: \(errorMessage)")
+            }
         }
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - DatePicker
+    @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
-    */
+    
+    @objc func dateChanged(datePicker: UIDatePicker) {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .short
+        timeTextField.text = dateFormatter.string(from: datePicker.date)
+        print(timeTextField.text!)
+        //        view.endEditing(true)
+    }
 
 }
 //Todo: Implement delete on UI and Backend of Feeling

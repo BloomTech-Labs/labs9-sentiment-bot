@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZHL-99-yqh">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +15,7 @@
             <objects>
                 <viewController id="ZHL-99-yqh" customClass="PremiumCheckoutViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jm0-wY-oO9">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJl-7L-P87">
@@ -42,7 +46,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="dlq-Uz-7YP"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Subscription" id="Ocy-bN-goB"/>
+                    <tabBarItem key="tabBarItem" title="Subscription" image="bank_card_back_side" id="Ocy-bN-goB"/>
                     <connections>
                         <outlet property="cancelButton" destination="T0R-c4-U2I" id="r8K-7K-DVY"/>
                         <outlet property="msgBox" destination="Tsu-aF-0fa" id="QzQ-RD-Zh8"/>
@@ -54,4 +58,7 @@
             <point key="canvasLocation" x="-6058" y="-740"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bank_card_back_side" width="30" height="30"/>
+    </resources>
 </document>

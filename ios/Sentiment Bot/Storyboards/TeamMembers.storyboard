@@ -23,8 +23,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="786"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4MX-0K-he9" customClass="UserView" customModule="Sentiment_Bot" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4MX-0K-he9">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                        <subviews>
+                                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Jb-fZ-FmV">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                <connections>
+                                                    <segue destination="szI-S3-3fN" kind="embed" id="uez-GH-uOO"/>
+                                                </connections>
+                                            </containerView>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="uyi-y9-0pn"/>
@@ -61,6 +70,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lRE-bM-1tD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-5060" y="-1844.3349753694581"/>
+        </scene>
+        <!--UserContainerViewController-->
+        <scene sceneID="8da-Pe-akT">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserContainerViewController" id="szI-S3-3fN" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3ot-JP-8rn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4348" y="-1918"/>
         </scene>
     </scenes>
     <resources>

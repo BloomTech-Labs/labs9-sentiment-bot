@@ -15,10 +15,12 @@ import UIKit
     @IBOutlet weak var feelzNumberLabel: UILabel!
     @IBOutlet weak var lastInLabel: UILabel!
     @IBOutlet weak var imageButton: UIButton!
+    @IBOutlet weak var teamIDLabel: UILabel!
     
     var view: UIView!
     var responses: [Response]? = []
     var users: User?
+    var team: Team?
     
     // Gives storyboard access to outlets
     @IBInspectable var userImageImage: UIImage? {
@@ -62,6 +64,20 @@ import UIKit
                 self.feelzNumberLabel.text = "Feelz: \(self.responses?.count ?? 0)"
                 self.lastInLabel.text = "Last In: \(responses?.last?.date ?? " ")"
             }
+        }
+        
+        APIController.shared.getManagingTeam(userId: UserDefaults.standard.userId) { (team, error) in
+            self.team = team
+            
+            DispatchQueue.main.async {
+                guard let admin = self.users?.isAdmin else { return }
+                if admin {
+                    self.teamIDLabel.text = "Team ID: \(team?.code ?? 0)"
+                } else {
+                    self.teamIDLabel.text = ""
+                }
+            }
+            
         }
     }
     
