@@ -322,12 +322,12 @@ class APIController {
         URLSession.shared.dataTask(with: request) {(data, response, error) in
             
             if let error = error {
-                NSLog("There was an error sending team code to server: \(error)")
+                NSLog("There was an error sending device token to server: \(error)")
                 return
             }
             
             guard let data = data else {
-                NSLog("Error retrieving data from server(joinTeam)")
+                NSLog("Error retrieving data from server(saveDeviceToken)")
                 return
             }
             
@@ -337,7 +337,7 @@ class APIController {
                     let errorMessage = try JSONDecoder().decode(ErrorMessage.self, from: data)
                     completion(errorMessage)
                 } catch {
-                    NSLog("Error decoding ErrorMessage(joinTeam) \(error)")
+                    NSLog("Error decoding ErrorMessage(saveDeviceToken) \(error)")
                     return
                 }
                 return
@@ -1038,7 +1038,7 @@ class APIController {
         task.resume()
     }
     
-    func uploadResponseSelfie(imageData: Data, completion: @escaping (ErrorMessage?) -> Void) {
+    func uploadResponseSelfie(responseId: Int, imageData: Data, completion: @escaping (ErrorMessage?) -> Void) {
         let encodedImageData = imageData.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
         let url = baseUrl.appendingPathComponent("responses")
         var request = URLRequest(url: url)
@@ -1059,7 +1059,7 @@ class APIController {
             }
             
             guard let data = data else {
-                NSLog("Error retrieving data from server(updateProfileImage)")
+                NSLog("Error retrieving data from server(uploadResponseSelfie)")
                 return
             }
             
@@ -1069,7 +1069,7 @@ class APIController {
                     let errorMessage = try JSONDecoder().decode(ErrorMessage.self, from: data)
                     completion(errorMessage)
                 } catch {
-                    NSLog("Error decoding ErrorMessage(updateProfileImage) \(error)")
+                    NSLog("Error decoding ErrorMessage(uploadResponseSelfie) \(error)")
                     return
                 }
                 return
@@ -1198,6 +1198,6 @@ class APIController {
     
     let locationHelper = LocationHelper()
     let localNotificationHelper = LocalNotificationHelper()
-    //let baseUrl = URL(string: "https://sentimentbot-1.herokuapp.com/api")!
-    let baseUrl = URL(string: "http://192.168.1.152:3000/api")!
+    let baseUrl = URL(string: "https://sentimentbot-1.herokuapp.com/api")!
+    //let baseUrl = URL(string: "http://localhost:3000/api")!
 }
