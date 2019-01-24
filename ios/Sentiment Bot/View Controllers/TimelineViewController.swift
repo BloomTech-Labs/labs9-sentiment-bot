@@ -9,7 +9,7 @@
 import UIKit
 import GoogleSignIn
 
-class TimelineViewController: UIViewController, UserProtocol, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class TimelineViewController: UIViewController, UserProtocol {
 
     var user: User?
     
@@ -47,6 +47,29 @@ class TimelineViewController: UIViewController, UserProtocol, UINavigationContro
 //        }
 //    }
     
+
+}
+
+extension TimelineViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return userResponses?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let response = userResponses![indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FeelzCell") as! TimeLineTableViewCell
+        cell.setResponse(response: response)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+}
+
+extension TimelineViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
     @IBAction func imagePickerButton(_ sender: UIButton) {
         
         let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
@@ -78,7 +101,9 @@ class TimelineViewController: UIViewController, UserProtocol, UINavigationContro
             vc.sourceType = .camera
             vc.cameraDevice = .front
         } else {
-            vc.sourceType = .photoLibrary
+            let alert  = UIAlertController(title: "Warning", message: "You don't have a camera", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
         vc.allowsEditing = true
         vc.delegate = self
@@ -110,23 +135,5 @@ class TimelineViewController: UIViewController, UserProtocol, UINavigationContro
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
-    }
-}
-
-extension TimelineViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userResponses?.count ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let response = userResponses![indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FeelzCell") as! TimeLineTableViewCell
-        cell.setResponse(response: response)
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
     }
 }

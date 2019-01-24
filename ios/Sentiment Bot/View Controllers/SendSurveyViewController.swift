@@ -39,9 +39,9 @@ class SendSurveyViewController: UIViewController, ManagerProtocol {
         datePicker?.datePickerMode = .time
         datePicker?.addTarget(self, action: #selector(SendSurveyViewController.dateChanged(datePicker:)), for: .valueChanged)
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SendSurveyViewController.viewTapped(gestureRecognizer:)))
-        
-        view.addGestureRecognizer(tapGesture)
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SendSurveyViewController.viewTapped(gestureRecognizer:)))
+//
+//        view.addGestureRecognizer(tapGesture)
         
         timeTextField.inputView = datePicker
         
@@ -75,17 +75,11 @@ class SendSurveyViewController: UIViewController, ManagerProtocol {
     
     
     @IBOutlet weak var emojiSelectionButtonDrop: UIButton!
-    
     @IBOutlet weak var selectScheduleButtonDrop: UIButton!
-    
     @IBOutlet weak var emojiSelectionTableView: UITableView!
-    
     @IBOutlet weak var scheduleSelectionTableView: UITableView!
-    
     @IBOutlet weak var surveyFeelingsTableView: UITableView!
-    
-    @IBOutlet weak var moodTextField: UITextField!
-    
+    @IBOutlet weak var moodTextField: UITextField!    
     @IBOutlet weak var timeTextField: UITextField!
     
     @IBAction func addToFeelings(_ sender: Any) {
@@ -116,6 +110,10 @@ class SendSurveyViewController: UIViewController, ManagerProtocol {
         }
     }
     
+    @IBAction func sendNow(_ sender: UIButton) {
+        print("Send Now")
+    }
+    
     // MARK: - DatePicker
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
         view.endEditing(true)
@@ -127,10 +125,11 @@ class SendSurveyViewController: UIViewController, ManagerProtocol {
         dateFormatter.timeStyle = .short
         timeTextField.text = dateFormatter.string(from: datePicker.date)
         print(timeTextField.text!)
-        //        view.endEditing(true)
+        view.endEditing(true)
     }
 
 }
+
 //Todo: Implement delete on UI and Backend of Feeling
 extension SendSurveyViewController: UITableViewDataSource, UITableViewDelegate {
     
