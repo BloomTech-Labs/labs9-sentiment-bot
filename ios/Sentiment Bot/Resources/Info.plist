@@ -44,10 +44,15 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Sentiment Bot would like to access your camera.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Sentiment Bot would like to access your location.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Sentiment Bot would like to access your photo library.</string>
 	<key>UIBackgroundModes</key>
 	<array>
+		<string>fetch</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
@@ -69,9 +74,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSCameraUsageDescription</key>
-	<string>Sentiment Bot would like to access your camera.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Sentiment Bot would like to access your photo library.</string>
 </dict>
 </plist>

@@ -18,6 +18,7 @@ struct User: Codable {
     let subscribed: Bool
     let isAdmin: Bool
     let isTeamMember: Bool
+    let deviceToken: String?
     
     static var currentUserId = UserDefaults.standard.userId
     
