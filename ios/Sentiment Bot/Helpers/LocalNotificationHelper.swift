@@ -47,12 +47,30 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
     
     //Repond to selected emoji from survey
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
         print(response.actionIdentifier)
+        var mood = response.actionIdentifier
+        let emoji = String(mood.remove(at: mood.startIndex))
+        currentSurveyId = Int(response.notification.request.identifier)
+        guard let currentSurveyId = currentSurveyId else {
+            NSLog("surveyId wasn't set when user responsed to survey through remote push notifcations")
+            return
+        }
+        
+        APIController.shared.createFeelzyResponse(userId: UserDefaults.standard.userId, surveyId: currentSurveyId, mood: mood, emoji: emoji) { (respone, errorMessage) in
+            
+        }
+       
         
         completionHandler()
     }
     
-    func sendSurveyNotification(emojis: [String], schedule: String) {
+    var currentSurveyId: Int?
+    
+    func sendSurveyNotification(feelingsDictionaryArray: [[String: Any]], schedule: String, surveyId: Int, time: String) {
+        currentSurveyId = surveyId
+        let emojis = feelingsDictionaryArray.compactMap { "\($0["emoji"] as! String) \($0["mood"] as! String)" }
+        
         let emojiActions = emojis.map({UNNotificationAction(identifier: $0, title: $0, options: [])})
         
         let category = UNNotificationCategory(identifier: "emojiCategory", actions: emojiActions, intentIdentifiers: [], options: [])
@@ -63,19 +81,46 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
         content.title = "How do you feel?"
         //content.sound = UNNotificationSound.default
         content.categoryIdentifier = "emojiCategory"
+        var trigger: DateComponents?
+        var triggerNow: UNTimeIntervalNotificationTrigger?
+        
+        switch schedule {
+        case Trigger.daily.rawValue:
+            trigger = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
+            trigger?.hour = 14
+            trigger?.minute = 0
+        case Trigger.monthly.rawValue:
+            trigger = Calendar.current.dateComponents([.day], from: Date())
+            trigger?.hour = 14
+            trigger?.minute = 0
+        case Trigger.weekly.rawValue:
+            trigger = Calendar.current.dateComponents([.weekday,.hour,.minute,.second,], from: Date())
+            trigger?.hour = 14
+            trigger?.minute = 0
+        default:
+            triggerNow = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        }
+        
+        var request: UNNotificationRequest?
+        
+        if let trigger = trigger {
+            let calendarTrigger = UNCalendarNotificationTrigger(dateMatching: trigger, repeats: true)
+            request = UNNotificationRequest(identifier: String(surveyId), content: content, trigger: calendarTrigger)
+        } else if let trigger = triggerNow {
+            UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+            request = UNNotificationRequest(identifier: String(surveyId), content: content, trigger: trigger)
+        }
         
         
-        let triggerWeekly = Calendar.current.dateComponents([.weekday,.hour,.minute,.second,], from: Date())
-//        let triggerDaily = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
-//        let triggerMonthly = Calendar.current.dateComponents([.day], from: Date())
+        guard let theRequest = request else {
+            NSLog("UNNotifcationRequest wasn't set to send survey to user through push notifcations")
+            return
+        }
         
-        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerWeekly, repeats: true)
+
+ 
         
-        //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        
-        let request = UNNotificationRequest(identifier: "NotificationID", content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request) {error in
+        UNUserNotificationCenter.current().add(theRequest) {error in
             if let error = error {
                 NSLog("There was an error scheduling a notification: \(error)")
                 return

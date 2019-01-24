@@ -13,6 +13,7 @@ enum UserDefaultsKeys: String {
     case username
     case userId
     case token
+    case deviceToken
     case isLoggedIn
 }
 

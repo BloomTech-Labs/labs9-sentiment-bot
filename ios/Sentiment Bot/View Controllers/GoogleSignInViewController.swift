@@ -88,6 +88,7 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        locationHelper.requestLocationAuthorization()
         GIDSignIn.sharedInstance()?.uiDelegate = self
         GIDSignIn.sharedInstance()?.delegate = self
         containerView.backgroundColor = UIColor.clear.withAlphaComponent(0.0)
@@ -103,7 +104,7 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
     }
     
     var user: User?
-    
+    let locationHelper = LocationHelper()
     
     @IBOutlet weak var containerView: UIView!
     

@@ -68,6 +68,10 @@ class TimelineViewController: UIViewController, UserProtocol, UINavigationContro
         }
         // TODO: - put image in Response array
         print(image.size)
+        let imageData = image.pngData()!
+        APIController.shared.uploadResponseSelfie(responseId: 1, imageData: imageData) { (errorMessage) in
+            
+        }
         dismiss(animated: true, completion: nil)
     }
     
