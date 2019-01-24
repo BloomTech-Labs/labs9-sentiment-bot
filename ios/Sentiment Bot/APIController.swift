@@ -1040,9 +1040,9 @@ class APIController {
     
     func uploadResponseSelfie(responseId: Int, imageData: Data, completion: @escaping (ErrorMessage?) -> Void) {
         let encodedImageData = imageData.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
-        let url = baseUrl.appendingPathComponent("responses")
+        let url = baseUrl.appendingPathComponent("upload_response_image")
         var request = URLRequest(url: url)
-        request.httpMethod = HTTPMethod.put.rawValue
+        request.httpMethod = HTTPMethod.post.rawValue
         
         guard let token = UserDefaults.standard.token else {
             NSLog("No JWT Token Set to User Defaults")
@@ -1050,7 +1050,7 @@ class APIController {
         }
         
         request.setValue(token, forHTTPHeaderField: "Authorization")
-        let postString = "image=\(encodedImageData)"
+        let postString = "image=\(encodedImageData)&responseId=\(responseId)"
         request.httpBody = postString.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {

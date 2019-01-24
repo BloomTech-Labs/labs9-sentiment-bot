@@ -105,7 +105,11 @@ class SendSurveyViewController: UIViewController, ManagerProtocol {
     //Tested on iOS and Backend Server.
     @IBAction func sendOutSurvey(_ sender: Any) {
         let schedule = selectScheduleButtonDrop.titleLabel?.text
-        APIController.shared.changeSurveySchedule(surveyId: survey!.id, schedule: schedule!) { (errorMessage) in
+        guard let deviceToken = UserDefaults.standard.deviceToken else {
+            NSLog("Devie token wasn't set to User's defaults")
+            return
+        }
+        APIController.shared.changeSurveySchedule(deviceToken: deviceToken, surveyId: survey!.id, schedule: schedule!) { (errorMessage) in
             if let errorMessage = errorMessage {
                 NSLog("Error sending survey: \(errorMessage)")
             }
