@@ -49,7 +49,6 @@
 		A1EA606921ECFF9A00ACE25D /* UserDefaults+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA606821ECFF9A00ACE25D /* UserDefaults+extension.swift */; };
 		A1EA607821EE56E400ACE25D /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1EA607721EE56E300ACE25D /* credentials.plist */; };
 		A1EA607A21EE57B000ACE25D /* GoogleSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA607921EE57B000ACE25D /* GoogleSignInViewController.swift */; };
-		F10B4A8421F8CE2B00597DC8 /* Subscription.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F10B4A8321F8CE2B00597DC8 /* Subscription.storyboard */; };
 		F10B4A8621F8CE7F00597DC8 /* InitialViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F10B4A8521F8CE7F00597DC8 /* InitialViewController.storyboard */; };
 		F158581421F9482400035CBF /* UserContainerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F158581321F9482400035CBF /* UserContainerViewController.storyboard */; };
 		F18865D221EEB306008F9D35 /* TestUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18865D121EEB306008F9D35 /* TestUser.swift */; };
@@ -113,7 +112,6 @@
 		A1EA607721EE56E300ACE25D /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
 		A1EA607921EE57B000ACE25D /* GoogleSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInViewController.swift; sourceTree = "<group>"; };
 		D5A27D069A6F1B1A0A158705 /* Pods-Sentiment Bot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sentiment Bot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sentiment Bot/Pods-Sentiment Bot.debug.xcconfig"; sourceTree = "<group>"; };
-		F10B4A8321F8CE2B00597DC8 /* Subscription.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Subscription.storyboard; sourceTree = "<group>"; };
 		F10B4A8521F8CE7F00597DC8 /* InitialViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = InitialViewController.storyboard; sourceTree = "<group>"; };
 		F138A56521F6172C0004334F /* Sentiment Bot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sentiment Bot.entitlements"; sourceTree = "<group>"; };
 		F158581321F9482400035CBF /* UserContainerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserContainerViewController.storyboard; sourceTree = "<group>"; };
@@ -267,7 +265,6 @@
 				F158581321F9482400035CBF /* UserContainerViewController.storyboard */,
 				A140D97521F78646008963C1 /* ManagerTimeline.storyboard */,
 				F1CDD23D21ECFF36008E7A57 /* Map.storyboard */,
-				F10B4A8321F8CE2B00597DC8 /* Subscription.storyboard */,
 				A140D97B21F786E7008963C1 /* SentimentReport.storyboard */,
 				A140D97921F786BC008963C1 /* SendSurvey.storyboard */,
 				A140D97721F7868D008963C1 /* TeamMembers.storyboard */,
@@ -392,7 +389,6 @@
 				A140D97421F785FE008963C1 /* PremiumCheckout.storyboard in Resources */,
 				F1B7E59521E547460096FC6F /* LaunchScreen.storyboard in Resources */,
 				F10B4A8621F8CE7F00597DC8 /* InitialViewController.storyboard in Resources */,
-				F10B4A8421F8CE2B00597DC8 /* Subscription.storyboard in Resources */,
 				A1EA607821EE56E400ACE25D /* credentials.plist in Resources */,
 				F158581421F9482400035CBF /* UserContainerViewController.storyboard in Resources */,
 				F1CDD23F21ECFF36008E7A57 /* Map.storyboard in Resources */,
