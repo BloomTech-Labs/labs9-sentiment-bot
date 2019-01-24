@@ -87,10 +87,16 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
         switch schedule {
         case Trigger.daily.rawValue:
             trigger = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
+            trigger?.hour = 14
+            trigger?.minute = 0
         case Trigger.monthly.rawValue:
             trigger = Calendar.current.dateComponents([.day], from: Date())
+            trigger?.hour = 14
+            trigger?.minute = 0
         case Trigger.weekly.rawValue:
             trigger = Calendar.current.dateComponents([.weekday,.hour,.minute,.second,], from: Date())
+            trigger?.hour = 14
+            trigger?.minute = 0
         default:
             triggerNow = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         }

@@ -13,6 +13,13 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getUserData()
+        guard let deviceToken = UserDefaults.standard.deviceToken else {
+            NSLog("Device Token wasn't set to User's Defaults")
+            return
+        }
+        APIController.shared.saveDeviceToken(userId: UserDefaults.standard.userId, deviceToken: deviceToken) { (errorMessage) in
+            
+        }
         
         // Custom Button for center tab
         let window = UIApplication.shared.keyWindow

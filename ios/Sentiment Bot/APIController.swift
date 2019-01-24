@@ -298,6 +298,57 @@ class APIController {
             }.resume()
     }
     
+    func saveDeviceToken(userId: Int, deviceToken: String, completion: @escaping (ErrorMessage?) -> Void ) {
+        let url = baseUrl.appendingPathComponent("saveDeviceToken")
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = HTTPMethod.post.rawValue
+        let teamParams = ["deviceToken": deviceToken, "id": userId] as [String: Any]
+        
+        guard let token = UserDefaults.standard.token else {
+            NSLog("No JWT Token Set to User Defaults")
+            return
+        }
+        
+        request.setValue(token, forHTTPHeaderField: "Authorization")
+        
+        do {
+            let json = try JSONSerialization.data(withJSONObject: teamParams, options: .prettyPrinted)
+            request.httpBody = json
+        } catch {
+            NSLog("Error encoding JSON")
+            return
+        }
+        URLSession.shared.dataTask(with: request) {(data, response, error) in
+            
+            if let error = error {
+                NSLog("There was an error sending team code to server: \(error)")
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("Error retrieving data from server(joinTeam)")
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                NSLog("Error code from the http request: \(httpResponse.statusCode)")
+                do {
+                    let errorMessage = try JSONDecoder().decode(ErrorMessage.self, from: data)
+                    completion(errorMessage)
+                } catch {
+                    NSLog("Error decoding ErrorMessage(joinTeam) \(error)")
+                    return
+                }
+                return
+            }
+            
+            
+            NSLog("User successfully saved device token for future push notifcations")
+            
+            }.resume()
+    }
+    
     //Get User Survey Responses
     func getUserResponses(userId: Int, completion: @escaping ([Response]?, ErrorMessage?) -> Void) {
         let url = baseUrl.appendingPathComponent("users")
