@@ -11,7 +11,6 @@ import UserNotifications
 
 class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
     
-    
     override init() {
         super.init()
         let center = UNUserNotificationCenter.current()
