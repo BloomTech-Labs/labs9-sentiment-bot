@@ -12,6 +12,15 @@ class ManagerTabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let deviceToken = UserDefaults.standard.deviceToken else {
+            NSLog("Device Token wasn't set to User's Defaults")
+            return
+        }
+        APIController.shared.saveDeviceToken(userId: UserDefaults.standard.userId, deviceToken: deviceToken) { (errorMessage) in
+            
+        }
+        
         getUserData()
     }
     
