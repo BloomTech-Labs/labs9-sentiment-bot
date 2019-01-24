@@ -66,18 +66,6 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
             }
         }
         
-        APIController.shared.getUserResponses(userId: UserDefaults.standard.userId) { (responses, error) in
-            self.responses = responses
-            if let error = error {
-                NSLog("Error getting user responses: \(error)")
-            } else {
-                DispatchQueue.main.async {
-                    self.feelzNumberLabel.text = "Feelz: \(self.responses?.count ?? 0)"
-                    self.lastInLabel.text = "Last In: \(responses?.last?.date ?? " ")"
-                }
-            }
-        }
-        
         APIController.shared.getManagingTeam(userId: UserDefaults.standard.userId) { (team, error) in
             self.team = team
             if let error = error {
@@ -89,6 +77,17 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
                         self.teamIDLabel.text = "Team ID: \(team?.code ?? 0)"
                     } else {
                         self.teamIDLabel.text = ""
+                        APIController.shared.getUserResponses(userId: UserDefaults.standard.userId) { (responses, error) in
+                            self.responses = responses
+                            if let error = error {
+                                NSLog("Error getting user responses: \(error)")
+                            } else {
+                                DispatchQueue.main.async {
+                                    self.feelzNumberLabel.text = "Feelz: \(self.responses?.count ?? 0)"
+                                    self.lastInLabel.text = "Last In: \(responses?.last?.date ?? " ")"
+                                }
+                            }
+                        }
                     }
                 }
             }

@@ -122,6 +122,7 @@ class SendSurveyViewController: UIViewController, ManagerProtocol {
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .short
         timeTextField.text = dateFormatter.string(from: datePicker.date)
+        print(timeTextField.text!)
         //        view.endEditing(true)
     }
 
