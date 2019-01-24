@@ -16,6 +16,7 @@
                 <outlet property="feelzNumberLabel" destination="2OP-DH-6tK" id="HmM-6e-vaA"/>
                 <outlet property="lastInLabel" destination="swV-ez-JgT" id="CSM-AJ-5dk"/>
                 <outlet property="nameLabel" destination="fV1-HW-Oa0" id="8tg-LN-Xiq"/>
+                <outlet property="teamIDLabel" destination="YDs-b8-zJm" id="TW0-pA-mDO"/>
                 <outlet property="userImage" destination="ela-2R-3qZ" id="K30-pE-5sF"/>
             </connections>
         </placeholder>
@@ -28,28 +29,33 @@
                     <rect key="frame" x="0.0" y="0.0" width="310" height="202"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2hW-zP-IRq">
-                            <rect key="frame" x="105" y="0.0" width="100" height="100"/>
+                            <rect key="frame" x="115" y="0.0" width="80" height="80"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ela-2R-3qZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kkA-B4-KeM">
-                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kkA-B4-KeM">
+                                    <rect key="frame" x="0.0" y="50" width="80" height="30"/>
                                     <connections>
                                         <action selector="selectImage:" destination="-1" eventType="touchUpInside" id="cqJ-ez-8RT"/>
                                     </connections>
                                 </button>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ela-2R-3qZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="100" id="Ynm-Zd-G4O"/>
-                                <constraint firstAttribute="height" constant="100" id="fVb-ah-JUS"/>
+                                <constraint firstAttribute="width" constant="80" id="Ynm-Zd-G4O"/>
+                                <constraint firstAttribute="height" constant="80" id="fVb-ah-JUS"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fV1-HW-Oa0">
-                            <rect key="frame" x="132.5" y="108" width="45" height="65.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fV1-HW-Oa0">
+                            <rect key="frame" x="132.5" y="88" width="45" height="57"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TeamID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDs-b8-zJm">
+                            <rect key="frame" x="126" y="153" width="58" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -72,6 +78,10 @@
                             </subviews>
                         </stackView>
                     </subviews>
+                    <constraints>
+                        <constraint firstItem="YDs-b8-zJm" firstAttribute="top" secondItem="fV1-HW-Oa0" secondAttribute="bottom" constant="8" id="FmY-YS-ofT"/>
+                        <constraint firstItem="fV1-HW-Oa0" firstAttribute="top" secondItem="kkA-B4-KeM" secondAttribute="bottom" constant="8" id="NrB-rC-IoZ"/>
+                    </constraints>
                 </stackView>
             </subviews>
             <color key="backgroundColor" red="0.70786565542221069" green="0.89420825242996216" blue="0.92840433120727539" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

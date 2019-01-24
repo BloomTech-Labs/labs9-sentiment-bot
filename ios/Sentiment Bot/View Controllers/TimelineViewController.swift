@@ -51,6 +51,7 @@ class TimelineViewController: UIViewController, UserProtocol, UINavigationContro
         let vc = UIImagePickerController()
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             vc.sourceType = .camera
+            vc.cameraDevice = .front
         } else {
             vc.sourceType = .photoLibrary
         }

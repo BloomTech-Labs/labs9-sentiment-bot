@@ -21,8 +21,17 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="V0j-HS-H7T">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6yW-Rl-vGt" customClass="UserView" customModule="Sentiment_Bot" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6yW-Rl-vGt">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                        <subviews>
+                                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7EH-6K-mXN">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                <connections>
+                                                    <segue destination="aez-Nm-Whb" kind="embed" id="U9Y-mV-YNu"/>
+                                                </connections>
+                                            </containerView>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="qnP-PH-qdY"/>
@@ -65,6 +74,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uDv-Tb-bYo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-5071.1999999999998" y="-1185.2216748768474"/>
+        </scene>
+        <!--UserContainerViewController-->
+        <scene sceneID="1yC-1j-arh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserContainerViewController" id="aez-Nm-Whb" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rSz-L2-oqh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4329" y="-1282"/>
         </scene>
     </scenes>
     <resources>

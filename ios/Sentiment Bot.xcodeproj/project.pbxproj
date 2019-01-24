@@ -51,6 +51,7 @@
 		A1EA607A21EE57B000ACE25D /* GoogleSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA607921EE57B000ACE25D /* GoogleSignInViewController.swift */; };
 		F10B4A8421F8CE2B00597DC8 /* Subscription.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F10B4A8321F8CE2B00597DC8 /* Subscription.storyboard */; };
 		F10B4A8621F8CE7F00597DC8 /* InitialViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F10B4A8521F8CE7F00597DC8 /* InitialViewController.storyboard */; };
+		F158581421F9482400035CBF /* UserContainerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F158581321F9482400035CBF /* UserContainerViewController.storyboard */; };
 		F18865D221EEB306008F9D35 /* TestUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18865D121EEB306008F9D35 /* TestUser.swift */; };
 		F1B7E58B21E547450096FC6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B7E58A21E547450096FC6F /* AppDelegate.swift */; };
 		F1B7E59021E547450096FC6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E58E21E547450096FC6F /* Main.storyboard */; };
@@ -59,6 +60,7 @@
 		F1CDD23C21ECFF06008E7A57 /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1CDD23B21ECFF06008E7A57 /* Timeline.storyboard */; };
 		F1CDD23F21ECFF36008E7A57 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1CDD23D21ECFF36008E7A57 /* Map.storyboard */; };
 		F1CDD27121ED99D5008E7A57 /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1CDD27021ED99D5008E7A57 /* ProfileViewController.storyboard */; };
+		F1DFA0C121F924290078B8C5 /* UserContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DFA0C021F924290078B8C5 /* UserContainerViewController.swift */; };
 		F1E949A821EBB05F000634AD /* TimeLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E949A721EBB05F000634AD /* TimeLineTableViewCell.swift */; };
 		F1ECBCFB21E706AA005CDBE8 /* UserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1ECBCFA21E706AA005CDBE8 /* UserView.xib */; };
 		F1ECBCFD21E706B7005CDBE8 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECBCFC21E706B7005CDBE8 /* UserView.swift */; };
@@ -114,6 +116,7 @@
 		F10B4A8321F8CE2B00597DC8 /* Subscription.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Subscription.storyboard; sourceTree = "<group>"; };
 		F10B4A8521F8CE7F00597DC8 /* InitialViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = InitialViewController.storyboard; sourceTree = "<group>"; };
 		F138A56521F6172C0004334F /* Sentiment Bot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sentiment Bot.entitlements"; sourceTree = "<group>"; };
+		F158581321F9482400035CBF /* UserContainerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserContainerViewController.storyboard; sourceTree = "<group>"; };
 		F18865D121EEB306008F9D35 /* TestUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUser.swift; sourceTree = "<group>"; };
 		F1B7E58721E547450096FC6F /* Sentiment Bot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sentiment Bot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B7E58A21E547450096FC6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +127,7 @@
 		F1CDD23B21ECFF06008E7A57 /* Timeline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
 		F1CDD23E21ECFF36008E7A57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Sentiment Bot/Storyboards/Base.lproj/Map.storyboard"; sourceTree = "<group>"; };
 		F1CDD27021ED99D5008E7A57 /* ProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileViewController.storyboard; sourceTree = "<group>"; };
+		F1DFA0C021F924290078B8C5 /* UserContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContainerViewController.swift; sourceTree = "<group>"; };
 		F1E949A721EBB05F000634AD /* TimeLineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineTableViewCell.swift; sourceTree = "<group>"; };
 		F1ECBCFA21E706AA005CDBE8 /* UserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserView.xib; sourceTree = "<group>"; };
 		F1ECBCFC21E706B7005CDBE8 /* UserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
@@ -260,6 +264,7 @@
 				A140D94B21F188F4008963C1 /* SignUp.storyboard */,
 				F10B4A8521F8CE7F00597DC8 /* InitialViewController.storyboard */,
 				F1CDD23B21ECFF06008E7A57 /* Timeline.storyboard */,
+				F158581321F9482400035CBF /* UserContainerViewController.storyboard */,
 				A140D97521F78646008963C1 /* ManagerTimeline.storyboard */,
 				F1CDD23D21ECFF36008E7A57 /* Map.storyboard */,
 				F10B4A8321F8CE2B00597DC8 /* Subscription.storyboard */,
@@ -308,6 +313,7 @@
 				A140D96521F6A352008963C1 /* MembersTableViewController.swift */,
 				A140D96721F6A549008963C1 /* SubscriptionViewController.swift */,
 				A140D97121F76DB2008963C1 /* InitialViewController.swift */,
+				F1DFA0C021F924290078B8C5 /* UserContainerViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -388,6 +394,7 @@
 				F10B4A8621F8CE7F00597DC8 /* InitialViewController.storyboard in Resources */,
 				F10B4A8421F8CE2B00597DC8 /* Subscription.storyboard in Resources */,
 				A1EA607821EE56E400ACE25D /* credentials.plist in Resources */,
+				F158581421F9482400035CBF /* UserContainerViewController.storyboard in Resources */,
 				F1CDD23F21ECFF36008E7A57 /* Map.storyboard in Resources */,
 				F1CDD23C21ECFF06008E7A57 /* Timeline.storyboard in Resources */,
 				A140D94C21F188F4008963C1 /* SignUp.storyboard in Resources */,
@@ -513,6 +520,7 @@
 				A140D95C21F69298008963C1 /* SendSurveyViewController.swift in Sources */,
 				F1B7E58B21E547450096FC6F /* AppDelegate.swift in Sources */,
 				A13547BE21E69C5D0045C5F0 /* APIController.swift in Sources */,
+				F1DFA0C121F924290078B8C5 /* UserContainerViewController.swift in Sources */,
 				A140D94321F17DE2008963C1 /* SignInViewController.swift in Sources */,
 				A140D93F21EFEDC1008963C1 /* UserProtocol.swift in Sources */,
 				A1EA607A21EE57B000ACE25D /* GoogleSignInViewController.swift in Sources */,
