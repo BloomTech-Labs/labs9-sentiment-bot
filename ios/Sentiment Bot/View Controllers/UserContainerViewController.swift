@@ -24,8 +24,8 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        userImage.layer.cornerRadius = 20
-        imageButton.layer.cornerRadius = 20
+        userImage.layer.cornerRadius = userImage.frame.size.width / 2
+        userImage.clipsToBounds = true
         
         // TODO: - Should this be in awakeFromNib?
         
