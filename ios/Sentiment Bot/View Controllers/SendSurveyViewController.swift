@@ -96,7 +96,7 @@ class SendSurveyViewController: UIViewController, ManagerProtocol {
     //Tested on iOS and Backend Server.
     @IBAction func sendOutSurvey(_ sender: Any) {
         let schedule = selectScheduleButtonDrop.titleLabel?.text
-        APIController.shared.changeSurveySchedule(surveyId: survey!.id, schedule: schedule!) { (errorMessage) in
+        APIController.shared.changeSurveySchedule(deviceToken: UserDefaults.standard.deviceToken!, surveyId: survey!.id, schedule: schedule!) { (errorMessage) in
             print(errorMessage)
         }
     }

@@ -21,6 +21,8 @@ enum Identifiers {
 class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
     
     var window: UIWindow?
+    
+    let localNotifcationHelper: LocalNotificationHelper = LocalNotificationHelper()
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         return GIDSignIn.sharedInstance().handle(url as URL?,
@@ -110,8 +112,9 @@ extension AppDelegate {
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let tokenParts = deviceToken.map { data in String(format: "%2.2hhx", data) }
-        let token = tokenParts.joined()
-        NSLog("Device Token: \(token)")
+        let deviceToken = tokenParts.joined()
+        UserDefaults.standard.set(deviceToken, forKey: UserDefaultsKeys.deviceToken.rawValue)
+        NSLog("Device Token: \(deviceToken)")
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
@@ -119,18 +122,50 @@ extension AppDelegate {
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        print("Did Receive Notifcation is triggered")
         guard let aps = userInfo["aps"] as? [String: AnyObject] else {
             completionHandler(.failed)
             return
         }
+        
+        let state: UIApplication.State = application.applicationState
+        
+        switch state {
+        case UIApplication.State.active:
+            print("active")
+        default:
+            print("default")
+            
+        }
+        
+        //Let time be static for now until fixed in front end
+        let time = "14:00"
+        //Schedule
+        let schedule = userInfo["schedule"] as! String
+        let surveyId = userInfo["surveyId"] as! Int
+        guard let feelingsDictionaryArray = userInfo["feelings"] as? [[String: Any]] else {
+            NSLog("There's a problem retreving feelings from server for push notification")
+            return
+        }
+        
+        localNotifcationHelper.sendSurveyNotification(feelingsDictionaryArray: feelingsDictionaryArray, schedule: schedule, surveyId: surveyId, time: time)
+
         NSLog("Message Received: \(aps)")
+        completionHandler(UIBackgroundFetchResult.newData)
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        print("This is triggered")
+        completionHandler([.sound])
     }
 }
+
+
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        
+        print("Notification Received")
         let userInfo = response.notification.request.content.userInfo
         
         if let aps = userInfo["aps"] as? [String: AnyObject] {

@@ -19,4 +19,8 @@ extension UserDefaults {
         return string(forKey: UserDefaultsKeys.token.rawValue)
     }
     
+    var deviceToken: String? {
+        return string(forKey: UserDefaultsKeys.deviceToken.rawValue)
+    }
+    
 }

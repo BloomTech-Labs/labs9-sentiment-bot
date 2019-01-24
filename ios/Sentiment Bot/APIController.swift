@@ -231,6 +231,73 @@ class APIController {
             }.resume()
     }
     
+    func createFeelzyResponse(userId: Int, surveyId: Int, mood: String, emoji: String, completion: @escaping (Response?, ErrorMessage?) -> Void) {
+        let url = baseUrl.appendingPathComponent("users")
+                         .appendingPathComponent("\(userId)")
+                         .appendingPathComponent("responses")
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = HTTPMethod.post.rawValue
+        let longitude = locationHelper.getCurrentLocation()?.coordinate.longitude
+        let latitude = locationHelper.getCurrentLocation()?.coordinate.latitude
+        
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        let date = df.string(from: Date())
+        
+        let responseParams = ["emoji": emoji, "mood": mood, "longitude": longitude, "latitude": latitude, "date": date, "surveyId": surveyId] as [String: Any]
+        
+        guard let token = UserDefaults.standard.token else {
+            NSLog("No JWT Token Set to User Defaults")
+            return
+        }
+        
+        request.setValue(token, forHTTPHeaderField: "Authorization")
+        
+        do {
+            let json = try JSONSerialization.data(withJSONObject: responseParams, options: .prettyPrinted)
+            request.httpBody = json
+        } catch {
+            NSLog("Error encoding JSON")
+            return
+        }
+        URLSession.shared.dataTask(with: request) {(data, response, error) in
+            
+            if let error = error {
+                NSLog("There was an error sending response params to server: \(error)")
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("Error retrieving data from server(createFeelzyResponse)")
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                NSLog("Error code from the http request: \(httpResponse.statusCode)")
+                do {
+                    let errorMessage = try JSONDecoder().decode(ErrorMessage.self, from: data)
+                    completion(nil, errorMessage)
+                } catch {
+                    NSLog("Error decoding ErrorMessage(createFeelzyResponse) \(error)")
+                    return
+                }
+                return
+            }
+            
+            do {
+                let response = try JSONDecoder().decode(Response.self, from: data)
+                completion(response, nil)
+            } catch {
+                NSLog("Error decoding response \(error)")
+                return
+            }
+            
+            NSLog("User successfully created a response(feelzy)")
+            
+            }.resume()
+    }
+    
     //Get User Survey Responses
     func getUserResponses(userId: Int, completion: @escaping ([Response]?, ErrorMessage?) -> Void) {
         let url = baseUrl.appendingPathComponent("users")
@@ -559,7 +626,7 @@ class APIController {
     }
     
     //Change Survey Schedule
-    func changeSurveySchedule(surveyId: Int, schedule: String, completion: @escaping (ErrorMessage?) -> Void) {
+    func changeSurveySchedule(deviceToken: String, surveyId: Int, schedule: String, completion: @escaping (ErrorMessage?) -> Void) {
         let url = baseUrl.appendingPathComponent("surveys")
             .appendingPathComponent("\(surveyId)")
 
@@ -568,7 +635,7 @@ class APIController {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.put.rawValue
         
-        let params = ["schedule": schedule] as [String : Any]
+        let params = ["schedule": schedule, "deviceToken": deviceToken] as [String : Any]
         
         guard let token = UserDefaults.standard.token else {
             NSLog("No JWT Token Set to User Defaults")
@@ -965,24 +1032,75 @@ class APIController {
     }
     
     //Send Survey to Server -> APN -> User's Mobile Phone
-    func sendSurveyNotification() {
-        //This will be inside
-        let emojis = ["😄","😃"]
-        localNotificationHelper.getAuthorizationStatus { (status) in
-            switch status {
-            case .authorized:
-                self.localNotificationHelper.sendSurveyNotification(emojis: emojis, schedule: "Daily")
-            case .notDetermined:
-                self.localNotificationHelper.requestAuthorization(completion: { (granted) in
-                    
-                    if (granted) {
-                        self.localNotificationHelper.sendSurveyNotification(emojis: emojis, schedule: "Daily")
-                    }
-                })
-            default:
+    func sendSurveyNotification(token: String, completion: @escaping (ErrorMessage?) -> Void) {
+        let url = baseUrl.appendingPathComponent("push")
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = HTTPMethod.post.rawValue
+        let teamParams = ["token": token] as [String: Any]
+        
+        guard let token = UserDefaults.standard.token else {
+            NSLog("No JWT Token Set to User Defaults")
+            return
+        }
+        
+        request.setValue(token, forHTTPHeaderField: "Authorization")
+        
+        do {
+            let json = try JSONSerialization.data(withJSONObject: teamParams, options: .prettyPrinted)
+            request.httpBody = json
+        } catch {
+            NSLog("Error encoding JSON")
+            return
+        }
+        URLSession.shared.dataTask(with: request) {(data, response, error) in
+            
+            if let error = error {
+                NSLog("There was an error sending team code to server: \(error)")
                 return
             }
-        }
+            
+            guard let data = data else {
+                NSLog("Error retrieving data from server(joinTeam)")
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                NSLog("Error code from the http request: \(httpResponse.statusCode)")
+                do {
+                    let errorMessage = try JSONDecoder().decode(ErrorMessage.self, from: data)
+                    completion(errorMessage)
+                } catch {
+                    NSLog("Error decoding ErrorMessage(joinTeam) \(error)")
+                    return
+                }
+                return
+            }
+            
+            NSLog("User successfully joined Team")
+            
+            }.resume()
+        
+        
+        
+        
+        
+//        let emojis = ["😄","😃"]
+//        localNotificationHelper.getAuthorizationStatus { (status) in
+//            switch status {
+//            case .authorized:
+//                self.localNotificationHelper.sendSurveyNotification(emojis: emojis, schedule: "Daily")
+//            case .notDetermined:
+//                self.localNotificationHelper.requestAuthorization(completion: { (granted) in
+//
+//                    if (granted) {
+//                        self.localNotificationHelper.sendSurveyNotification(emojis: emojis, schedule: "Daily")
+//                    }
+//                })
+//            default:
+//                return
+//            }
+//        }
     }
     
     
@@ -1027,8 +1145,8 @@ class APIController {
     
     
     
-    
+    let locationHelper = LocationHelper()
     let localNotificationHelper = LocalNotificationHelper()
-    let baseUrl = URL(string: "https://sentimentbot-1.herokuapp.com/api")!
-    //let baseUrl = URL(string: "http://localhost:3000/api")!
+    //let baseUrl = URL(string: "https://sentimentbot-1.herokuapp.com/api")!
+    let baseUrl = URL(string: "http://192.168.1.152:3000/api")!
 }
