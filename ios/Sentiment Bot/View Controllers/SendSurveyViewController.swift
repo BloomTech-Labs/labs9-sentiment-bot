@@ -99,11 +99,8 @@ class SendSurveyViewController: UIViewController, ManagerProtocol {
     //Tested on iOS and Backend Server.
     @IBAction func sendOutSurvey(_ sender: Any) {
         let schedule = selectScheduleButtonDrop.titleLabel?.text
-        guard let militaryTime = militaryTime else {
-            NSLog("Date wasn't selected")
-            return
-        }
-        APIController.shared.changeSurveySchedule(surveyId: survey!.id, time: militaryTime, schedule: schedule!) { (errorMessage) in
+        
+        APIController.shared.changeSurveySchedule(surveyId: survey!.id, time: militaryTime ?? "14:00", schedule: schedule!) { (errorMessage) in
             if let errorMessage = errorMessage {
                 NSLog("Error sending survey: \(errorMessage)")
             }
