@@ -31,6 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        localNotifcationHelper.printNextTriggerDate()
         GIDSignIn.sharedInstance()?.clientID = "803137383645-5pp4mgm804lbaeaur9p9en70usos2qrm.apps.googleusercontent.com"
         STPPaymentConfiguration.shared().publishableKey = "pk_test_5HdL7hdN6ydVCZjKW7rgtVJo"
         
@@ -139,7 +141,7 @@ extension AppDelegate {
         }
         
         //Let time be static for now until fixed in front end
-        let time = "14:00"
+        let time = userInfo["time"] as! String
         //Schedule
         let schedule = userInfo["schedule"] as! String
         let surveyId = userInfo["surveyId"] as! Int
