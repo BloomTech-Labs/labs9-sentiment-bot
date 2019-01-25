@@ -99,8 +99,11 @@ class SendSurveyViewController: UIViewController, ManagerProtocol {
     //Tested on iOS and Backend Server.
     @IBAction func sendOutSurvey(_ sender: Any) {
         let schedule = selectScheduleButtonDrop.titleLabel?.text
-        let deviceToken = UserDefaults.standard.deviceToken ?? ""
-        APIController.shared.changeSurveySchedule(deviceToken: deviceToken, surveyId: survey!.id, schedule: schedule!) { (errorMessage) in
+        guard let militaryTime = militaryTime else {
+            NSLog("Date wasn't selected")
+            return
+        }
+        APIController.shared.changeSurveySchedule(surveyId: survey!.id, time: militaryTime, schedule: schedule!) { (errorMessage) in
             if let errorMessage = errorMessage {
                 NSLog("Error sending survey: \(errorMessage)")
             }
@@ -116,11 +119,15 @@ class SendSurveyViewController: UIViewController, ManagerProtocol {
         view.endEditing(true)
     }
     
+    var militaryTime: String?
+    
     @objc func dateChanged(datePicker: UIDatePicker) {
         
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .short
         timeTextField.text = dateFormatter.string(from: datePicker.date)
+        dateFormatter.dateFormat = "HH:mm"
+        militaryTime = dateFormatter.string(from: datePicker.date)
         print(timeTextField.text!)
         view.endEditing(true)
     }

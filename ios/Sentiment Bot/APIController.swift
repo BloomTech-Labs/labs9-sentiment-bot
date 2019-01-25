@@ -677,7 +677,7 @@ class APIController {
     }
     
     //Change Survey Schedule
-    func changeSurveySchedule(deviceToken: String, surveyId: Int, schedule: String, completion: @escaping (ErrorMessage?) -> Void) {
+    func changeSurveySchedule(surveyId: Int, time: String, schedule: String, completion: @escaping (ErrorMessage?) -> Void) {
         let url = baseUrl.appendingPathComponent("surveys")
             .appendingPathComponent("\(surveyId)")
 
@@ -686,7 +686,7 @@ class APIController {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.put.rawValue
         
-        let params = ["schedule": schedule, "deviceToken": deviceToken] as [String : Any]
+        let params = ["schedule": schedule, "time": time] as [String : Any]
         
         guard let token = UserDefaults.standard.token else {
             NSLog("No JWT Token Set to User Defaults")
@@ -1197,7 +1197,6 @@ class APIController {
     
     
     let locationHelper = LocationHelper()
-    let localNotificationHelper = LocalNotificationHelper()
-    let baseUrl = URL(string: "https://sentimentbot-1.herokuapp.com/api")!
-    //let baseUrl = URL(string: "http://192.168.1.152:3000/api")!
+    //let baseUrl = URL(string: "https://sentimentbot-1.herokuapp.com/api")!
+    let baseUrl = URL(string: "http://192.168.1.152:3000/api")!
 }

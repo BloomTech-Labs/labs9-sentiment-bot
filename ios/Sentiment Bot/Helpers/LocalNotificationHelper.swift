@@ -64,6 +64,24 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
         completionHandler()
     }
     
+    func printNextTriggerDate() {
+        
+        UNUserNotificationCenter.current().getPendingNotificationRequests {
+            (requests) in
+            var nextTriggerDates: [Date] = []
+            for request in requests {
+                if let trigger = request.trigger as? UNCalendarNotificationTrigger,
+                    let triggerDate = trigger.nextTriggerDate(){
+                    nextTriggerDates.append(triggerDate)
+                    print("TRIGGER DATES: \(nextTriggerDates)")
+                }
+            }
+            if let nextTriggerDate = nextTriggerDates.min() {
+                print("NEXT TRIGGER DATE: \(nextTriggerDate)")
+            }
+        }
+    }
+    
     var currentSurveyId: Int?
     
     func sendSurveyNotification(feelingsDictionaryArray: [[String: Any]], schedule: String, surveyId: Int, time: String) {
@@ -106,8 +124,8 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
             let calendarTrigger = UNCalendarNotificationTrigger(dateMatching: trigger, repeats: true)
             request = UNNotificationRequest(identifier: String(surveyId), content: content, trigger: calendarTrigger)
         } else if let trigger = triggerNow {
-            UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-            request = UNNotificationRequest(identifier: String(surveyId), content: content, trigger: trigger)
+            let instantTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+            request = UNNotificationRequest(identifier: String(surveyId), content: content, trigger: instantTrigger)
         }
         
         
@@ -116,8 +134,7 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
             return
         }
         
-
- 
+        
         
         UNUserNotificationCenter.current().add(theRequest) {error in
             if let error = error {
