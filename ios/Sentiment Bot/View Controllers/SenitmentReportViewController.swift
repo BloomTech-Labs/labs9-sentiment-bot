@@ -23,7 +23,7 @@ class SenitmentReportViewController: UIViewController, ManagerProtocol {
     
     @IBOutlet weak var pieChart: PieChartView!
     
-        var emojiSelection: [String] = ["😄" ,"😃","😢","😊","😞", "😡"]
+    var emojiSelection: [String] = ["😄" ,"😃","😢","😊","😞", "😡"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,18 @@ class SenitmentReportViewController: UIViewController, ManagerProtocol {
             return
         }
         
+        createChart(teamResponses)
         
+    }
+    
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        refreshChart()
+    }
+    
+    
+    func createChart(_ teamResponses: [Response]) {
         for emoji in emojiSelection {
             let filteredEmojis = teamResponses.filter({ $0.emoji == emoji})
             
@@ -45,15 +56,18 @@ class SenitmentReportViewController: UIViewController, ManagerProtocol {
         
         pieChart.chartDescription?.text = ""
         
-        
         updateChartData()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        pieChart.notifyDataSetChanged()
+    func refreshChart() {
+        sentimentEntries.removeAll()
+        APIController.shared.getTeamResponses(teamId: (team?.id)!) { (responses, errorMessage) in
+            DispatchQueue.main.async {
+                self.teamResponses = responses
+                self.createChart(self.teamResponses!)
+            }
+        }
     }
-    
-    
     
     var sentimentEntries: [PieChartDataEntry] = []
 

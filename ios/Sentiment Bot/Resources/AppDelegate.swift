@@ -141,7 +141,7 @@ extension AppDelegate {
         }
         
         //Let time be static for now until fixed in front end
-        let time = "14:00"
+        let time = userInfo["time"] as! String
         //Schedule
         let schedule = userInfo["schedule"] as! String
         let surveyId = userInfo["surveyId"] as! Int
