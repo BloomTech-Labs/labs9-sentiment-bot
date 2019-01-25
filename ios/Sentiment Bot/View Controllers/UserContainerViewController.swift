@@ -39,6 +39,7 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
         setupView()
     }
     
+    // MARK: - Setup View
     func setupView() {
         
         APIController.shared.getUser(userId: UserDefaults.standard.userId) { (users, error) in
@@ -121,26 +122,26 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
         }
         
         func openCamera() {
-            let vc = UIImagePickerController()
+            let picker = UIImagePickerController()
+            picker.delegate = self
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                vc.sourceType = .camera
-                vc.cameraDevice = .front
+                picker.sourceType = .camera
+                picker.cameraDevice = .front
             } else {
-                let alert  = UIAlertController(title: "Warning", message: "You don't have a camera", preferredStyle: .alert)
+                let alert  = UIAlertController(title: "Warning", message: "Your device does not have a camera", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-            vc.allowsEditing = true
-            vc.delegate = self
-            present(vc, animated: true)
+            picker.allowsEditing = true
+            present(picker, animated: true)
         }
         
         func openGallary() {
-            let vc = UIImagePickerController()
-            vc.sourceType = .photoLibrary
-            vc.allowsEditing = true
-            vc.delegate = self
-            present(vc, animated: true)
+            let picker = UIImagePickerController()
+            picker.delegate = self
+            picker.sourceType = .photoLibrary
+            picker.allowsEditing = true
+            present(picker, animated: true)
         }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

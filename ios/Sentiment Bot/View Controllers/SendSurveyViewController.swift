@@ -107,10 +107,6 @@ class SendSurveyViewController: UIViewController, ManagerProtocol {
         }
     }
     
-    @IBAction func sendNow(_ sender: UIButton) {
-        print("Send Now")
-    }
-    
     // MARK: - DatePicker
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
         view.endEditing(true)

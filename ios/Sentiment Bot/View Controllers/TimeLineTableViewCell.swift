@@ -8,20 +8,21 @@
 
 import UIKit
 
-class TimeLineTableViewCell: UITableViewCell, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class TimeLineTableViewCell: UITableViewCell {
 
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var emojiLabel: UILabel!
     @IBOutlet weak var feelzNameLabel: UILabel!
     @IBOutlet weak var feelzImageView: UIImageView!
+    @IBOutlet weak var responseID: UILabel!
     
     func setResponse(response: Response) {
-        //dateLabel.text = formatter.string(from: response.date)
         dateLabel.text = response.date
         emojiLabel.text = response.emoji
         feelzNameLabel.text = response.mood
         locationLabel.text = response.place
+        responseID.text = String(response.id)
  
         if let imageUrl = response.imageUrl {
             APIController.shared.getImage(url: imageUrl) { (image, error) in
@@ -35,11 +36,5 @@ class TimeLineTableViewCell: UITableViewCell, UINavigationControllerDelegate, UI
             }
         }
     }
-    
-    lazy var formatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        return formatter
-    }()
+
 }

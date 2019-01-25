@@ -79,9 +79,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     var userResponses: [Response]? 
-    
-    var user: User?
-    
+    var user: User?    
     let locationHelper = LocationHelper()
 
 }

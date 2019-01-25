@@ -111,14 +111,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ECU-Pe-KYW">
-                                <rect key="frame" x="152" y="376" width="70" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Send Now"/>
-                                <connections>
-                                    <action selector="sendNow:" destination="VNq-zh-ZWJ" eventType="touchUpInside" id="Hmb-Jo-cFZ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.70786565540000002" green="0.89420825240000001" blue="0.92840433119999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.51579731699999998" green="0.052456617359999999" blue="0.10447398569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
