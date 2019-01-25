@@ -20,6 +20,7 @@ class TimelineViewController: UIViewController, UserProtocol {
     }
     
     var feelzImage: UIImage?
+    var responseID: Int?
     
     private func updateViews() {
         DispatchQueue.main.async {
@@ -35,20 +36,9 @@ class TimelineViewController: UIViewController, UserProtocol {
         self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
     }
     
-    // TODO: - ViewDidAppear does not run after modal, fix
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        
-//        guard let userAuth = GIDSignIn.sharedInstance()?.hasAuthInKeychain() else { return }
-//        if !userAuth {
-//            NSLog("User not logged in")
-//        } else {
-//            NSLog("User still logged in")
-//        }
-//    }
-    
-
 }
+
+// MARK: - TableView DataSourse and Delegate
 
 extension TimelineViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -59,18 +49,30 @@ extension TimelineViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let response = userResponses![indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeelzCell") as! TimeLineTableViewCell
+        cell.feelzImageView.layer.cornerRadius = 10
+        cell.feelzImageView.layer.masksToBounds = true
         cell.setResponse(response: response)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        responseID = userResponses?[indexPath.row].id
+        takeSelfie()
+        
+        
     }
 }
+
+// MARK: - Image Picker
 
 extension TimelineViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBAction func imagePickerButton(_ sender: UIButton) {
+        takeSelfie()
+    }
+    
+    func takeSelfie() {
         
         let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (_) in
@@ -83,39 +85,39 @@ extension TimelineViewController: UINavigationControllerDelegate, UIImagePickerC
         alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
         
         // For iPad
-        switch UIDevice.current.userInterfaceIdiom {
-        case .pad:
-            alert.popoverPresentationController?.sourceView = sender
-            alert.popoverPresentationController?.sourceRect = sender.bounds
-            alert.popoverPresentationController?.permittedArrowDirections = .up
-        default:
-            break
-        }
+//        switch UIDevice.current.userInterfaceIdiom {
+//        case .pad:
+//            alert.popoverPresentationController?.sourceView = sender
+//            alert.popoverPresentationController?.sourceRect = sender.bounds
+//            alert.popoverPresentationController?.permittedArrowDirections = .up
+//        default:
+//            break
+//        }
         
         self.present(alert, animated: true, completion: nil)
     }
     
     func openCamera() {
-        let vc = UIImagePickerController()
+        let picker = UIImagePickerController()
+        picker.delegate = self
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            vc.sourceType = .camera
-            vc.cameraDevice = .front
+            picker.sourceType = .camera
+            picker.cameraDevice = .front
         } else {
-            let alert  = UIAlertController(title: "Warning", message: "You don't have a camera", preferredStyle: .alert)
+            let alert  = UIAlertController(title: "Warning", message: "Your device does not have a camera", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-        vc.allowsEditing = true
-        vc.delegate = self
-        present(vc, animated: true)
+        picker.allowsEditing = true
+        present(picker, animated: true)
     }
     
     func openGallary() {
-        let vc = UIImagePickerController()
-        vc.sourceType = .photoLibrary
-        vc.allowsEditing = true
-        vc.delegate = self
-        present(vc, animated: true)
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        picker.allowsEditing = true
+        present(picker, animated: true)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -124,12 +126,26 @@ extension TimelineViewController: UINavigationControllerDelegate, UIImagePickerC
             NSLog("No image found")
             return
         }
+        
         // TODO: - put image in Response array
-        print(image.size)
-        let imageData = image.pngData()!
-        APIController.shared.uploadResponseSelfie(responseId: 1, imageData: imageData) { (errorMessage) in
+        
+        guard let imageData = image.pngData(), let responseID = responseID else {
+            dismiss(animated: true, completion: nil)
+            return
             
         }
+        APIController.shared.uploadResponseSelfie(responseId: responseID, imageData: imageData) { (errorMessage) in
+            if let errorMessage = errorMessage {
+                NSLog("Error uploading response selfie: \(errorMessage)")
+            }
+            APIController.shared.getUserResponses(userId: UserDefaults.standard.userId, completion: { (responses, error) in
+                DispatchQueue.main.async {
+                    self.userResponses = responses
+                    self.timelineTableView.reloadData()
+                }
+            })
+        }
+        
         dismiss(animated: true, completion: nil)
     }
     
