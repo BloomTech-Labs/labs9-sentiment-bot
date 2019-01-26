@@ -64,20 +64,22 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
         completionHandler()
     }
     
-    func printNextTriggerDate() {
+    func logNextTriggerDate() {
         
         UNUserNotificationCenter.current().getPendingNotificationRequests {
             (requests) in
             var nextTriggerDates: [Date] = []
             for request in requests {
-                if let trigger = request.trigger as? UNCalendarNotificationTrigger,
-                    let triggerDate = trigger.nextTriggerDate(){
-                    nextTriggerDates.append(triggerDate)
-                    print("TRIGGER DATES: \(nextTriggerDates)")
+                if let trigger = request.trigger as? UNCalendarNotificationTrigger {
+                    let components = trigger.dateComponents
+                    let date = Calendar.current.date(from: components)!
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+                    let stringDate = dateFormatter.string(from: date)
+                    NSLog("TRIGGER DATE: \(stringDate)")
                 }
-            }
-            if let nextTriggerDate = nextTriggerDates.min() {
-                print("NEXT TRIGGER DATE: \(nextTriggerDate)")
+
+                
             }
         }
     }
@@ -103,7 +105,7 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
         
         let hourMinutesArr = time.components(separatedBy: ":")
         
-        let hour = Int(hourMinutesArr.first!)
+        let hour = Int(hourMinutesArr.first!)!
         
         let minute = Int(hourMinutesArr.last!)
         
@@ -148,6 +150,8 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
                 NSLog("There was an error scheduling a notification: \(error)")
                 return
             }
+            
+            self.logNextTriggerDate()
             
         }
         
