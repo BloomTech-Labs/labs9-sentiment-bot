@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VNq-zh-ZWJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YWh-d0-cmZ">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Survey-->
+        <!--Send Survey View Controller-->
         <scene sceneID="W5J-qD-Hfc">
             <objects>
                 <viewController id="VNq-zh-ZWJ" customClass="SendSurveyViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
@@ -116,18 +116,28 @@
                         <color key="tintColor" red="0.51579731699999998" green="0.052456617359999999" blue="0.10447398569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="QrK-GM-sO1"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Survey" image="pencil" id="HUe-I2-dcg"/>
-                    <connections>
-                        <outlet property="emojiSelectionButtonDrop" destination="p31-cR-p2t" id="rYw-nh-fBS"/>
-                        <outlet property="emojiSelectionTableView" destination="yHv-Oq-09X" id="mKF-7t-atI"/>
-                        <outlet property="moodTextField" destination="bz5-ig-pjb" id="5FF-RO-zLv"/>
-                        <outlet property="scheduleSelectionTableView" destination="KIg-0C-dx0" id="ATa-Dv-xJq"/>
-                        <outlet property="selectScheduleButtonDrop" destination="Np7-u3-OR9" id="OQR-d1-pQE"/>
-                        <outlet property="surveyFeelingsTableView" destination="xwN-ul-t6a" id="h9Q-v8-PYd"/>
-                        <outlet property="timeTextField" destination="Sx0-Ht-AIC" id="7Sb-Ef-Fe2"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="auK-R2-uIY"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ChD-BK-13O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6202.3999999999996" y="-1125.3694581280788"/>
+        </scene>
+        <!--Survey-->
+        <scene sceneID="nLj-c0-irM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YWh-d0-cmZ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Survey" image="pencil" id="HUe-I2-dcg"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JRH-6c-bCv">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="VNq-zh-ZWJ" kind="relationship" relationship="rootViewController" id="sZN-KW-hlV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f80-7T-3X6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-7144.8000000000002" y="-1125.3694581280788"/>
         </scene>

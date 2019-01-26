@@ -68,7 +68,7 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
         
         UNUserNotificationCenter.current().getPendingNotificationRequests {
             (requests) in
-            var nextTriggerDates: [Date] = []
+       
             for request in requests {
                 if let trigger = request.trigger as? UNCalendarNotificationTrigger {
                     let components = trigger.dateComponents
@@ -110,19 +110,19 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
         let minute = Int(hourMinutesArr.last!)
         
         switch schedule {
-        case Trigger.daily.rawValue:
+        case Trigger.Daily.rawValue:
             trigger = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
             trigger?.hour = hour
             trigger?.minute = minute
-        case Trigger.monthly.rawValue:
+        case Trigger.Monthly.rawValue:
             trigger = Calendar.current.dateComponents([.day], from: Date())
             trigger?.hour = hour
             trigger?.minute = minute
-        case Trigger.weekly.rawValue:
+        case Trigger.Weekly.rawValue:
             trigger = Calendar.current.dateComponents([.weekday,.hour,.minute,.second,], from: Date())
             trigger?.hour = hour
             trigger?.minute = minute
-        case Trigger.now.rawValue:
+        case Trigger.Now.rawValue:
             triggerNow = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         default:
             NSLog("Schedule wasn't set to change Triggers of Push Notifcation")

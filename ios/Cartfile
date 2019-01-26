@@ -1,3 +1,5 @@
 github "auth0/JWTDecode.swift" ~> 2.2
 github "stripe/stripe-ios"
 github "danielgindi/Charts" == 3.2.1
+github "xmartlabs/Eureka" ~> 4.3
+github "EurekaCommunity/SplitRow" ~> 1.3
