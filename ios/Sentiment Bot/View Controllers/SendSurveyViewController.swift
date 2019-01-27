@@ -8,73 +8,103 @@
 
 import UIKit
 import Eureka
-class SendSurveyViewController: FormViewController, ManagerProtocol {
-    var teamMembers: [User]?
-    
+class SendSurveyViewController: UITableViewController, ManagerProtocol {
     var user: User?
     
     var teamResponses: [Response]?
     
     var team: Team?
     
-    var survey: Survey?
-    
-    var emojiSelection: [String] = ["😄" ,"😃","😢","😊","😞", "😡"]
-    
-    var scheduleSelection: [String] = ["Daily", "Weekly", "Monthly", "Now"]
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        form +++ Section("Select Schedule")
-            <<< PickerInputRow<String>("Picker Input Row"){
-                $0.title = "Schedule"
-                $0.options = scheduleSelection
-                $0.value = survey?.schedule.capitalized
-            }
-            <<< TimeRow(){
-                $0.title = "Time"
-                $0.value = Date(timeIntervalSinceReferenceDate: 0)
-            }
-            
-            
-            +++ Section("Add a Feeling")
-            <<< TextRow(){ row in
-                row.title = "Feeling:"
-                row.placeholder = "Enter text here"
-            }
-//            <<< SegmentedRow<String>(){
-//                $0.title = "Choose an Emoji"
-//                $0.options = ["😄" ,"😃","😢","😊","😞", "😡"]
-//                $0.value = "😄"
-//                }.cellSetup { cell, row in
-//                    cell.segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor:UIColor.white], for:.selected)
-//            }
-            <<< PushRow<String>() {
-                $0.title = "Select Emoji"
-                $0.options = ["😄" ,"😃","😢","😊","😞", "😡"]
-                $0.value = "😄"
-                $0.selectorTitle = "Emojis"
-                }.onPresent { from, to in
-                    to.dismissOnSelection = true
-                    to.dismissOnChange = false
-                    to.enableDeselection = false
-                    to.selectableRowSetup = { row in
-                        row.cell.height = ({ return self.view.frame.height/5 })
-                        row.cell.textLabel?.font =  UIFont(name:"Avenir", size: self.view.frame.height/10)
-                    }
-            }
-        
-            <<< ButtonRow() { (row: ButtonRow) -> Void in
-                row.title = "Add a Feeling"
-                }
-                .onCellSelection { [weak self] (cell, row) in
-                    //self?.showAlert()
+    var survey: Survey? {
+        didSet {
+            feelings = survey?.feelings
         }
     }
     
+    var feelings: [Feeling]?
     
+    var teamMembers: [User]?
     
 
-
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    // MARK: - Table view data source
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return feelings?.count ?? 0
+    }
+    
+    
+     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FeelingCell", for: indexPath) as! FeelingTableViewCell
+        let feeling = feelings?[indexPath.row]
+        cell.setFeeling(feeling: feeling)
+        return cell
+     }
+    
+    
+    /*
+     // Override to support conditional editing of the table view.
+     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
+    
+    /*
+     // Override to support editing the table view.
+     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+     if editingStyle == .delete {
+     // Delete the row from the data source
+     tableView.deleteRows(at: [indexPath], with: .fade)
+     } else if editingStyle == .insert {
+     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+     }
+     }
+     */
+    
+    /*
+     // Override to support rearranging the table view.
+     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+     
+     }
+     */
+    
+    /*
+     // Override to support conditional rearranging of the table view.
+     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
+//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let vw = UIView()
+//        vw.backgroundColor = UIColor.red
+//
+//        return vw
+//    }
+    
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Feelings"
+    }
 }
