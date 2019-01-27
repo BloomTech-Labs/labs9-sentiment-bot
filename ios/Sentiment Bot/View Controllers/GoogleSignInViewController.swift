@@ -99,10 +99,10 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
                         self.performSegue(withIdentifier: "ToTeamMemberScreen", sender: self)
                     } else {
                         let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                        
+
                         let intialVC = mainStoryBoard.instantiateViewController(withIdentifier: "InitialViewController") as! InitialViewController
                         self.present(intialVC, animated: true) {
-                            
+
                         }
                     }
                 }

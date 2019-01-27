@@ -21,53 +21,55 @@ class SendSurveyViewController: FormViewController, ManagerProtocol {
     
     var emojiSelection: [String] = ["😄" ,"😃","😢","😊","😞", "😡"]
     
-    var scheduleSelection: [String] = ["daily", "weekly", "monthly", "now"]
+    var scheduleSelection: [String] = ["Daily", "Weekly", "Monthly", "Now"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        form +++ Section("Add a Feeling")
+        
+        form +++ Section("Select Schedule")
+            <<< PickerInputRow<String>("Picker Input Row"){
+                $0.title = "Schedule"
+                $0.options = scheduleSelection
+                $0.value = survey?.schedule.capitalized
+            }
+            <<< TimeRow(){
+                $0.title = "Time"
+                $0.value = Date(timeIntervalSinceReferenceDate: 0)
+            }
+            
+            
+            +++ Section("Add a Feeling")
             <<< TextRow(){ row in
                 row.title = "Feeling:"
                 row.placeholder = "Enter text here"
             }
-            <<< SegmentedRow<String>(){
-                $0.title = "Choose an Emoji"
-                $0.options = ["😄" ,"😃","😢","😊","😞", "😡"]
-                $0.value = "😄"
-                }.cellSetup { cell, row in
-                    cell.segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor:UIColor.white], for:.selected)
-            }
-            
+//            <<< SegmentedRow<String>(){
+//                $0.title = "Choose an Emoji"
+//                $0.options = ["😄" ,"😃","😢","😊","😞", "😡"]
+//                $0.value = "😄"
+//                }.cellSetup { cell, row in
+//                    cell.segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor:UIColor.white], for:.selected)
+//            }
             <<< PushRow<String>() {
                 $0.title = "Select Emoji"
                 $0.options = ["😄" ,"😃","😢","😊","😞", "😡"]
                 $0.value = "😄"
-                $0.selectorTitle = "Emoji"
+                $0.selectorTitle = "Emojis"
                 }.onPresent { from, to in
                     to.dismissOnSelection = true
                     to.dismissOnChange = false
+                    to.enableDeselection = false
                     to.selectableRowSetup = { row in
                         row.cell.height = ({ return self.view.frame.height/5 })
                         row.cell.textLabel?.font =  UIFont(name:"Avenir", size: self.view.frame.height/10)
                     }
             }
-            
-            +++ Section("Select Schedule")
-            <<< AlertRow<String>() {
-                $0.title = "Schedule"
-                //$0.cancelTitle = "Cancel"
-                //$0.selectorTitle = "When should the survey be sent?"
-                $0.options = ["Daily", "Weekly", "Monthly", "Now"]
-                $0.value = survey?.schedule.capitalized
-                }.onChange { row in
-                    print(row.value ?? "No Value")
+        
+            <<< ButtonRow() { (row: ButtonRow) -> Void in
+                row.title = "Add a Feeling"
                 }
-                .onPresent{ _, to in
-                    to.view.tintColor = .purple
-            }
-            <<< TimeRow(){
-                $0.title = "Time"
-                $0.value = Date(timeIntervalSinceReferenceDate: 0)
+                .onCellSelection { [weak self] (cell, row) in
+                    //self?.showAlert()
         }
     }
     
