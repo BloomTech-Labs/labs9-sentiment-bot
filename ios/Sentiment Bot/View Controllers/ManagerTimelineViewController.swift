@@ -51,6 +51,7 @@ extension ManagerTimelineViewController: UITableViewDataSource, UITableViewDeleg
         //cell.setResponse(response: response)
         cell?.textLabel?.text = "\(response.emoji)  \(response.mood)"
         cell?.detailTextLabel?.text = "\(response.date)"
+        cell?.isUserInteractionEnabled = false
         return cell ?? UITableViewCell()
 
     }
