@@ -34,7 +34,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="CXh-bk-fUA">
-                                            <rect key="frame" x="96.333333333333329" y="25" width="182.66666666666669" height="37"/>
+                                            <rect key="frame" x="96.333333333333329" y="19" width="182.66666666666669" height="37"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zUA-9n-26L">
                                                     <rect key="frame" x="0.0" y="0.0" width="73.333333333333329" height="37"/>
@@ -81,13 +81,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="mtA-n6-4Xg"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4uU-4h-UCT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-4436" y="-990.51724137931035"/>
         </scene>
-        <!--Management View Controller-->
+        <!--Survey-->
         <scene sceneID="KzF-fA-R68">
             <objects>
                 <viewController id="qTV-Sr-02o" customClass="ManagementViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
@@ -95,56 +96,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="ldW-Jx-Wu1">
-                                <rect key="frame" x="79" y="386" width="217" height="175.66666666666663"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="axN-GY-Qso">
+                                <rect key="frame" x="0.0" y="208" width="375" height="521"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Schedule: TBD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qvk-Id-qhD">
-                                        <rect key="frame" x="20.333333333333329" y="0.0" width="176.33333333333337" height="20.333333333333332"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5e4-iH-MuU">
-                                        <rect key="frame" x="65" y="45.333333333333314" width="87" height="30"/>
-                                        <state key="normal" title="Send Survey"/>
-                                        <connections>
-                                            <segue destination="cUk-wY-Djm" kind="show" identifier="ToSendSurveyViewController" id="P4J-Zg-xbU"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlimited Teams $50/month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMR-9w-yan">
-                                        <rect key="frame" x="0.0" y="100.33333333333331" width="217" height="20.333333333333329"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1xG-0z-ZY7">
-                                        <rect key="frame" x="74" y="145.66666666666663" width="69" height="30"/>
-                                        <state key="normal" title="Subscribe"/>
-                                        <connections>
-                                            <action selector="toggleSubscription:" destination="qTV-Sr-02o" eventType="touchUpInside" id="UCu-xh-oa8"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="ldW-Jx-Wu1">
+                                        <rect key="frame" x="79" y="129" width="217" height="175.66666666666666"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Schedule: TBD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qvk-Id-qhD">
+                                                <rect key="frame" x="20.333333333333329" y="0.0" width="176.33333333333337" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5e4-iH-MuU">
+                                                <rect key="frame" x="65" y="45.333333333333336" width="87" height="30.000000000000007"/>
+                                                <state key="normal" title="Send Survey"/>
+                                                <connections>
+                                                    <segue destination="cUk-wY-Djm" kind="show" identifier="ToSendSurveyViewController" id="P4J-Zg-xbU"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlimited Teams $50/month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMR-9w-yan">
+                                                <rect key="frame" x="0.0" y="100.33333333333333" width="217" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1xG-0z-ZY7">
+                                                <rect key="frame" x="74" y="145.66666666666666" width="69" height="30"/>
+                                                <state key="normal" title="Subscribe"/>
+                                                <connections>
+                                                    <action selector="toggleSubscription:" destination="qTV-Sr-02o" eventType="touchUpInside" id="UCu-xh-oa8"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
-                            </stackView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NfR-MR-Kgm">
-                                <rect key="frame" x="0.0" y="69" width="375" height="200"/>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NfR-MR-Kgm">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <segue destination="nOv-45-r4H" kind="embed" identifier="" id="eRf-yN-enm"/>
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="ldW-Jx-Wu1" firstAttribute="top" secondItem="NfR-MR-Kgm" secondAttribute="bottom" constant="117" id="BbD-HJ-j7H"/>
-                            <constraint firstItem="ldW-Jx-Wu1" firstAttribute="centerY" secondItem="Bj5-UE-3KD" secondAttribute="centerY" constant="67.833333333333371" id="O3j-Px-cpB"/>
-                            <constraint firstItem="ldW-Jx-Wu1" firstAttribute="centerX" secondItem="Bj5-UE-3KD" secondAttribute="centerX" id="OM8-zg-BO2"/>
-                            <constraint firstItem="NfR-MR-Kgm" firstAttribute="leading" secondItem="zF9-nX-Meb" secondAttribute="leading" id="TZl-CB-nCP"/>
-                            <constraint firstItem="NfR-MR-Kgm" firstAttribute="trailing" secondItem="zF9-nX-Meb" secondAttribute="trailing" id="oIQ-i6-4bD"/>
-                            <constraint firstItem="NfR-MR-Kgm" firstAttribute="top" secondItem="zF9-nX-Meb" secondAttribute="top" constant="-19" id="uyd-fC-34L"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="zF9-nX-Meb"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Survey" image="pencil" id="vsO-gj-dTN"/>
                     <navigationItem key="navigationItem" id="70H-XE-fhq"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="currentScheduleLabel" destination="Qvk-Id-qhD" id="Tfi-qC-9O8"/>
                         <outlet property="subscriptionButton" destination="1xG-0z-ZY7" id="DmX-Kk-YzB"/>
@@ -181,4 +183,7 @@
             <point key="canvasLocation" x="-7849" y="-1001"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pencil" width="30" height="30"/>
+    </resources>
 </document>
