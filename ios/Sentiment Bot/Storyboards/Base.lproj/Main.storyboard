@@ -18,7 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" red="0.51579731699999998" green="0.052456617359999999" blue="0.10447398569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="Qr7-w8-K7W" kind="relationship" relationship="viewControllers" id="8u9-fS-v5X"/>
@@ -51,7 +50,6 @@
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ub4-b1-1mJ" firstAttribute="top" secondItem="0Xk-Fr-YFD" secondAttribute="top" id="Nc8-4F-UEJ"/>
                             <constraint firstItem="ub4-b1-1mJ" firstAttribute="trailing" secondItem="Hv2-ea-9Vs" secondAttribute="trailing" id="anp-Wu-3Xi"/>
@@ -77,8 +75,6 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jXY-Hd-Cmb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" red="0.51579731699999998" green="0.052456617359999999" blue="0.10447398569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="Sfm-c5-uNS" kind="relationship" relationship="viewControllers" id="Ol7-AW-aCw"/>
