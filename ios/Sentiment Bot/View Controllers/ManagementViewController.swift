@@ -38,14 +38,6 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.title = "Standard"
-        //msgBox.text = ""
-//        if (user?.subscribed)! {
-//            subscribeButton.isHidden = true
-//        } else {
-//            cancelButton.isHidden = true
-//        }
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,7 +81,7 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
         
         
         // Present add card view controller
-        let navigationController = UINavigationController(rootViewController: addCardViewController)
+        //let navigationController = UINavigationController(rootViewController: addCardViewController)
         self.navigationController?.pushViewController(addCardViewController, animated: true)
         //present(navigationController, animated: true)
     }

@@ -123,7 +123,6 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
                     }
                 }.onChange({ (row) in
                     self.feelingName = row.value
-                    NSLog("\(self.feelingName)")
                 })
             <<< PushRow<String>() {
                 $0.title = "Select Emoji"
@@ -137,11 +136,10 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
                     to.selectableRowSetup = { row in
                         row.cell.height = ({ return (self.parent?.view.frame.height)!/5 })
                         row.cell.textLabel?.font =  UIFont(name:"Avenir", size: (self.parent?.view.frame.height)!/10)
-                    }
-                }.onChange({ (row) in
+                }}
+                .onChange{ (row) in
                     self.selectedEmoji = row.value
-                         NSLog("\(self.selectedEmoji)")
-                })
+                }
             <<< ButtonRow() { (row: ButtonRow) -> Void in
                 row.title = "Add a Feeling"
                 }
