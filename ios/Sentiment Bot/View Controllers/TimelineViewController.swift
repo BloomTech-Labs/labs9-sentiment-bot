@@ -10,9 +10,12 @@ import UIKit
 import GoogleSignIn
 
 class TimelineViewController: UIViewController, UserProtocol {
-
-    var user: User?
     
+    // MARK: - Outlets
+    @IBOutlet weak var timelineTableView: UITableView!
+
+    // MARK: - Properties
+    var user: User?
     var userResponses: [Response]? {
         didSet {
             updateViews()
@@ -22,24 +25,23 @@ class TimelineViewController: UIViewController, UserProtocol {
     var feelzImage: UIImage?
     var responseID: Int?
     
+    // MARK: - View Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
+        updateViews()
+    }
+    
+    // MARK: - Private Functions
     private func updateViews() {
         DispatchQueue.main.async {
             //self.timelineTableView.isHidden = false
             self.timelineTableView?.reloadData()
         }
     }
-    
-    @IBOutlet weak var timelineTableView: UITableView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
-    }
-    
 }
 
 // MARK: - TableView DataSourse and Delegate
-
 extension TimelineViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,7 +67,6 @@ extension TimelineViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 // MARK: - Image Picker
-
 extension TimelineViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBAction func imagePickerButton(_ sender: UIButton) {

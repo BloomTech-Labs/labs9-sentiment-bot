@@ -38,7 +38,9 @@
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEx-R4-cPz">
                                                 <rect key="frame" x="114" y="70" width="47" height="30"/>
-                                                <state key="normal" title="Sign in"/>
+                                                <state key="normal" title="Sign in">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="signIn:" destination="HIM-GF-J76" eventType="touchUpInside" id="oMG-YG-JUk"/>
                                                 </connections>

@@ -13,18 +13,23 @@ class ProfileViewController: UIViewController {
 
     @IBOutlet weak var profileView: UIView!
     @IBOutlet weak var teamId: UITextField!
+    @IBOutlet weak var themeSelector: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         profileView.layer.cornerRadius = 10
+        
+        themeSelector.selectedSegmentIndex = Theme.current.rawValue
     }
     
-    // TODO: - Hook up outlets
-    @IBAction func joinTeamButton(_ sender: UIButton) {
-        NSLog("Team ID: \(teamId.text ?? "")")
+    @IBAction func applyTheme(_ sender: UIButton) {
+        if let selectedTheme = Theme(rawValue: themeSelector.selectedSegmentIndex) {
+            selectedTheme.apply()
+        }
         dismiss(animated: true)
     }
+    
     
     @IBAction func logOutButton(_ sender: UIButton) {
         GIDSignIn.sharedInstance()?.signOut()

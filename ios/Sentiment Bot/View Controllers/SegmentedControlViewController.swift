@@ -15,7 +15,6 @@ class SegmentedControlViewController: UIViewController {
         view.backgroundColor = UIColor.clear.withAlphaComponent(0.0)
         setNavigationBarClear()
         setupView()
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     func setNavigationBarClear() {
