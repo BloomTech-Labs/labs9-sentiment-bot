@@ -35,6 +35,14 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     
     @IBAction func cancelSubscription(_ sender: Any) {
         StripeController.shared.cancelPremiumSubscription { (errorMessage) in
@@ -84,8 +92,13 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
     
     
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
+        if segue.identifier == "ToSendSurveyForm" {
+            let destination = segue.destination as! SendSurveyViewController
+            destination.teamResponses = teamResponses
+            destination.survey = survey
+            destination.user = user
+            destination.team = team
+        }
      }
 
 

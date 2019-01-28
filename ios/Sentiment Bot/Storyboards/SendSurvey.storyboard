@@ -14,12 +14,12 @@
         <scene sceneID="U8A-MX-kpB">
             <objects>
                 <tableViewController id="cUk-wY-Djm" customClass="SendSurveyViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="87" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="UfB-MS-3Lx">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="UfB-MS-3Lx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <containerView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" id="NfI-jY-MYl">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="331"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="390"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <connections>
                                 <segue destination="vdx-JC-vXc" kind="embed" id="RJy-kd-BNN"/>
@@ -27,10 +27,10 @@
                         </containerView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeelingCell" id="lD1-4j-xGS" customClass="FeelingTableViewCell" customModule="Sentiment_Bot" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="359" width="375" height="87"/>
+                                <rect key="frame" x="0.0" y="418" width="375" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lD1-4j-xGS" id="CcF-z4-Qau">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="86.666666666666671"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="74.666666666666671"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="CXh-bk-fUA">
@@ -78,7 +78,7 @@
             <objects>
                 <viewController id="vdx-JC-vXc" customClass="SendSurveyFormViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZTE-hc-r0l">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="331"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
@@ -87,7 +87,7 @@
             </objects>
             <point key="canvasLocation" x="-4436" y="-990.51724137931035"/>
         </scene>
-        <!--Management-->
+        <!--Management View Controller-->
         <scene sceneID="KzF-fA-R68">
             <objects>
                 <viewController id="qTV-Sr-02o" customClass="ManagementViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
@@ -95,34 +95,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5e4-iH-MuU">
-                                <rect key="frame" x="144" y="206" width="87" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Send Survey"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="ldW-Jx-Wu1">
+                                <rect key="frame" x="79" y="386" width="217" height="175.66666666666663"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Schedule: TBD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qvk-Id-qhD">
+                                        <rect key="frame" x="20.333333333333329" y="0.0" width="176.33333333333337" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5e4-iH-MuU">
+                                        <rect key="frame" x="65" y="45.333333333333314" width="87" height="30"/>
+                                        <state key="normal" title="Send Survey"/>
+                                        <connections>
+                                            <segue destination="cUk-wY-Djm" kind="show" identifier="ToSendSurveyForm" id="P4J-Zg-xbU"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlimited Teams $50/month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMR-9w-yan">
+                                        <rect key="frame" x="0.0" y="100.33333333333331" width="217" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1xG-0z-ZY7">
+                                        <rect key="frame" x="74" y="145.66666666666663" width="69" height="30"/>
+                                        <state key="normal" title="Subscribe"/>
+                                        <connections>
+                                            <action selector="toggleSubscription:" destination="qTV-Sr-02o" eventType="touchUpInside" id="UCu-xh-oa8"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NfR-MR-Kgm">
+                                <rect key="frame" x="0.0" y="69" width="375" height="200"/>
                                 <connections>
-                                    <segue destination="cUk-wY-Djm" kind="show" id="P4J-Zg-xbU"/>
+                                    <segue destination="nOv-45-r4H" kind="embed" identifier="" id="eRf-yN-enm"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1xG-0z-ZY7">
-                                <rect key="frame" x="164" y="503" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="toggleSubscription:" destination="qTV-Sr-02o" eventType="touchUpInside" id="UCu-xh-oa8"/>
-                                </connections>
-                            </button>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ldW-Jx-Wu1" firstAttribute="top" secondItem="NfR-MR-Kgm" secondAttribute="bottom" constant="117" id="BbD-HJ-j7H"/>
+                            <constraint firstItem="ldW-Jx-Wu1" firstAttribute="centerY" secondItem="Bj5-UE-3KD" secondAttribute="centerY" constant="67.833333333333371" id="O3j-Px-cpB"/>
+                            <constraint firstItem="ldW-Jx-Wu1" firstAttribute="centerX" secondItem="Bj5-UE-3KD" secondAttribute="centerX" id="OM8-zg-BO2"/>
+                            <constraint firstItem="NfR-MR-Kgm" firstAttribute="leading" secondItem="zF9-nX-Meb" secondAttribute="leading" id="TZl-CB-nCP"/>
+                            <constraint firstItem="NfR-MR-Kgm" firstAttribute="trailing" secondItem="zF9-nX-Meb" secondAttribute="trailing" id="oIQ-i6-4bD"/>
+                            <constraint firstItem="NfR-MR-Kgm" firstAttribute="top" secondItem="zF9-nX-Meb" secondAttribute="top" constant="-19" id="uyd-fC-34L"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="zF9-nX-Meb"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Management" id="70H-XE-fhq"/>
+                    <navigationItem key="navigationItem" id="70H-XE-fhq"/>
                     <connections>
                         <outlet property="subscriptionButton" destination="1xG-0z-ZY7" id="DmX-Kk-YzB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AAA-Gd-9NW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6737" y="-1001"/>
+            <point key="canvasLocation" x="-6738.3999999999996" y="-1001.2315270935961"/>
+        </scene>
+        <!--UserContainerViewController-->
+        <scene sceneID="vvw-mC-ALR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserContainerViewController" id="nOv-45-r4H" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KfG-f9-dlT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6144" y="-1325"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EpR-3R-l4l">

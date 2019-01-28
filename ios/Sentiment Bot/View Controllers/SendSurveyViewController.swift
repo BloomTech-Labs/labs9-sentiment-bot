@@ -28,8 +28,9 @@ class SendSurveyViewController: UITableViewController, ManagerProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        //title = "Schedule: Daily"
     }
-    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
