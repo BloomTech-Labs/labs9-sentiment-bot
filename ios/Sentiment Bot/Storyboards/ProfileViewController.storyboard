@@ -62,7 +62,6 @@
                                 </subviews>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="fcA-VK-hlf"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" id="lz5-NM-N8d"/>

@@ -39,6 +39,13 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
         setupView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+            self.setupView()
+
+    }
+    
     // MARK: - Setup View
     func setupView() {
         
@@ -158,6 +165,9 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
                 NSLog("Error uploading profile picture: \(error)")
                 return
             }
+//            DispatchQueue.main.async {
+//                self.setupView()
+//            }
         }
         dismiss(animated: true, completion: nil)
     }
