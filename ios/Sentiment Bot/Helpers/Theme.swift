@@ -47,7 +47,7 @@ enum Theme: Int {
         case .light:
             return UIColor.white
         case .dark:
-            return UIColor(white: 0.4, alpha: 1.0)
+            return UIColor(red: 34.0/255.0, green: 34.0/255.0, blue: 34.0/255.0, alpha: 1.0)
         }
     }
     
@@ -77,7 +77,8 @@ enum Theme: Int {
         UIView.appearance(whenContainedInInstancesOf: [UserContainerViewController.self]).backgroundColor = backgroundColor
         
         UIButton.appearance(whenContainedInInstancesOf: [UserContainerViewController.self]).tintColor = mainColor
-        
+        UIButton.appearance().backgroundColor = backgroundColor
+        UIButton.appearance().tintColor = textColor
 
     }
 }
