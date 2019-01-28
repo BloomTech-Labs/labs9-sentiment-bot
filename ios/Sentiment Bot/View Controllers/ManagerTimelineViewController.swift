@@ -9,15 +9,10 @@
 import UIKit
 
 class ManagerTimelineViewController: UIViewController , ManagerProtocol{
-    var teamMembers: [User]?
-    
-    
-    
-    var team: Team?
-    
-    var survey: Survey?
-    
 
+    var teamMembers: [User]?
+    var team: Team?
+    var survey: Survey?
     var user: User?
     
     var teamResponses: [Response]? {
@@ -32,7 +27,6 @@ class ManagerTimelineViewController: UIViewController , ManagerProtocol{
             self.managerTimelineTableView?.reloadData()
         }
     }
-    
     
     @IBOutlet weak var managerTimelineTableView: UITableView!
     
@@ -55,8 +49,10 @@ extension ManagerTimelineViewController: UITableViewDataSource, UITableViewDeleg
         let response = teamResponses![indexPath.row]
         
         //cell.setResponse(response: response)
-        cell?.textLabel?.text = "\(response.mood) \(response.emoji)"
+        cell?.textLabel?.text = "\(response.emoji)  \(response.mood)"
+        cell?.detailTextLabel?.text = "\(response.date)"
         return cell ?? UITableViewCell()
+
     }
     
 }

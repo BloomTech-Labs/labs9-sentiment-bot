@@ -50,7 +50,9 @@
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oRz-gH-edp">
                                                 <rect key="frame" x="111.5" y="140" width="52" height="30"/>
-                                                <state key="normal" title="Sign up"/>
+                                                <state key="normal" title="Sign up">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="signUp:" destination="WVk-6u-oyR" eventType="touchUpInside" id="ZHh-IT-32r"/>
                                                 </connections>

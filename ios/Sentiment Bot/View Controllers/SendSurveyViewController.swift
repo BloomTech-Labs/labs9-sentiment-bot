@@ -155,7 +155,7 @@ extension SendSurveyViewController: UITableViewDataSource, UITableViewDelegate {
              let cell = tableView.dequeueReusableCell(withIdentifier: "SurveyFeelingCell")!
              let feeling = survey?.feelings?[indexPath.row]
             
-             cell.textLabel?.text = "\(feeling!.mood) \(feeling!.emoji)"
+             cell.textLabel?.text = "\(feeling!.emoji)  \(feeling!.mood)"
             return cell
         }
         return UITableViewCell()

@@ -39,7 +39,9 @@ class MembersTableViewController: UIViewController, ManagerProtocol {
         teamMembersTableView.dataSource = self
         teamMembersTableView.delegate = self
     }
+    
 }
+
 //Todo: Implement remove team member on UI and Backend
 extension MembersTableViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -53,6 +55,7 @@ extension MembersTableViewController: UITableViewDataSource, UITableViewDelegate
 
         //cell.setResponse(response: response)
         cell?.textLabel?.text = "\(response.firstName) \(response.lastName)"
+        cell?.imageView?.image = #imageLiteral(resourceName: "missing-image-5")
         return cell!
     }
     
