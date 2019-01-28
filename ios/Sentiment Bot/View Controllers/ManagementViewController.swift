@@ -19,9 +19,22 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
     
     var teamMembers: [User]?
     
+    private func setSchedule() {
+        guard let survey = survey else {
+            NSLog("Survey wasn't set on ManagementViewController")
+            return
+        }
+        currentScheduleLabel.text = "Current Schedule: \(survey.schedule.capitalized)"
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        setSchedule()
+    }
+    
     
     //@IBOutlet weak var msgBox: UITextView!
     
+    @IBOutlet weak var currentScheduleLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +49,15 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if (user?.subscribed)! {
+            subscriptionButton.setTitle("Cancel", for: .normal)
+        } else if !(user?.subscribed)! {
+            subscriptionButton.setTitle("Subscribe", for: .normal)
+        }
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -49,11 +69,19 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
             
         }
     }
-    @IBOutlet weak var cancelButton: UIButton!
     
     @IBOutlet weak var subscriptionButton: UIButton!
     
     @IBAction func toggleSubscription(_ sender: UIButton) {
+        if (user?.subscribed)! {
+            StripeController.shared.cancelPremiumSubscription { (error) in
+                DispatchQueue.main.async {
+                    self.subscriptionButton.setTitle("Subscribe", for: .normal)
+                }
+                self.user?.subscribed = false
+            }
+            return
+        }
         // Setup add card view controller
         let addCardViewController = STPAddCardViewController()
         addCardViewController.delegate = self
@@ -61,8 +89,9 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
         
         
         // Present add card view controller
-        //let navigationController = UINavigationController(rootViewController: addCardViewController)
+        let navigationController = UINavigationController(rootViewController: addCardViewController)
         self.navigationController?.pushViewController(addCardViewController, animated: true)
+        //present(navigationController, animated: true)
     }
     
     // MARK: STPAddCardViewControllerDelegate
@@ -73,16 +102,22 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
         self.navigationController?.popViewController(animated: true)
     }
     
+    var stripeToken: String?
+    
     func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken, completion: @escaping STPErrorBlock) {
+        addCardViewController.title = "Subscribe to Premium"
+        stripeToken = token.tokenId
         dismiss(animated: true)
-        title = "Subscribe to Premium"
-        print("Printing Strip response:\(token.allResponseFields)\n\n")
-        print("Printing Strip Token:\(token.tokenId)")
-        
-        //msgBox.text = "Transaction success! \n\nHere is the Token: \(token.tokenId)\nCard Type: \(token.card!.funding.rawValue)\n\nSend this token or detail to your backend server to complete this payment."
-        
-        StripeController.shared.subscribeToPremium(token: token.tokenId)
-        
+    }
+    
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        StripeController.shared.subscribeToPremium(token: stripeToken!) { (error) in
+            DispatchQueue.main.async {
+                self.subscriptionButton.setTitle("Cancel", for: .normal)
+                self.navigationController?.popViewController(animated: true)
+            }
+            self.user?.subscribed = true
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -92,7 +127,7 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
     
     
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ToSendSurveyForm" {
+        if segue.identifier == "ToSendSurveyViewController" {
             let destination = segue.destination as! SendSurveyViewController
             destination.teamResponses = teamResponses
             destination.survey = survey

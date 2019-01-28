@@ -38,6 +38,10 @@ class SendSurveyViewController: UITableViewController, ManagerProtocol {
         return 1
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return feelings?.count ?? 0
@@ -87,22 +91,19 @@ class SendSurveyViewController: UITableViewController, ManagerProtocol {
      }
      */
     
-    /*
+  
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let vw = UIView()
-//        vw.backgroundColor = UIColor.red
-//
-//        return vw
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ToSendSurveyForm" {
+            let destination = segue.destination as! SendSurveyFormViewController
+            destination.teamResponses = teamResponses
+            destination.survey = survey
+            destination.user = user
+            destination.team = team
+        }
+    }
     
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

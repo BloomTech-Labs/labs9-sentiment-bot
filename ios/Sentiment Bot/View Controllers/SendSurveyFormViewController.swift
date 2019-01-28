@@ -18,7 +18,12 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
     
     var team: Team?
     
-    var survey: Survey?
+    var survey: Survey? {
+        didSet {
+            selectedSchedule = survey?.schedule
+            selectedTime = convertStringToTime(time: (survey?.time)!)
+        }
+    }
     
     var emojiSelection: [String] = ["😄" ,"😃","😢","😊","😞", "😡"]
     
@@ -28,15 +33,26 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
     
     var selectedTime: Date?
     
+    var feelingName: String?
+    
     var scheduleSelection: [String] = ["Daily", "Weekly", "Monthly", "Now"]
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    func convertStringToTime(time: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        
+        guard let date = dateFormatter.date(from: time) else {
+            NSLog("Invalid Military Time Format in String")
+            return Date()
+        }
+        return date
     }
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,16 +61,40 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
                 $0.title = "Schedule"
                 $0.options = scheduleSelection
                 $0.value = survey?.schedule.capitalized
-            }
+                }.onChange({ row in
+                    self.selectedSchedule = row.value
+                })
             <<< TimeRow(){
+                guard let time = survey?.time else {
+                    NSLog("Time wasn't set on survey in SendSurveyFormViewController")
+                    return
+                }
                 $0.title = "Time"
-                $0.value = Date(timeIntervalSinceReferenceDate: 0)
-            }
+                $0.value = convertStringToTime(time: time)
+                }.onChange({ (row) in
+                    self.selectedTime = row.value
+                })
             <<< ButtonRow() { (row: ButtonRow) -> Void in
-                row.title = "Send"
+                row.title = "Schedule"
                 }
                 .onCellSelection { [weak self] (cell, row) in
-                    NSLog("Pressed Send")
+                    guard let selectedTime = self?.selectedTime,
+                        let selectedSchedule = self?.selectedSchedule,
+                        let survey = self?.survey else {
+                            NSLog("selectedTime and selectedSchedule weren't set on SendSurveyFormViewController")
+                            return
+                    }
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "HH:mm"
+                    let timeString = dateFormatter.string(from: selectedTime)
+                    
+                    APIController.shared.changeSurveySchedule(surveyId: survey.id, time: timeString, schedule: selectedSchedule, completion: { (errorMessage) in
+                        
+                        let managementViewController = self?.parent?.parent?.children.first as! ManagementViewController
+                        
+                        managementViewController.survey?.schedule = selectedSchedule
+                        
+                    })
             }
             +++ Section("Add a Feeling")
             <<< TextRow(){ row in
@@ -81,7 +121,10 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
                             row.section?.insert(labelRow, at: row.indexPath!.row + index + 1)
                         }
                     }
-            }
+                }.onChange({ (row) in
+                    self.feelingName = row.value
+                    NSLog("\(self.feelingName)")
+                })
             <<< PushRow<String>() {
                 $0.title = "Select Emoji"
                 $0.options = ["😄" ,"😃","😢","😊","😞", "😡"]
@@ -95,13 +138,35 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
                         row.cell.height = ({ return (self.parent?.view.frame.height)!/5 })
                         row.cell.textLabel?.font =  UIFont(name:"Avenir", size: (self.parent?.view.frame.height)!/10)
                     }
-            }
+                }.onChange({ (row) in
+                    self.selectedEmoji = row.value
+                         NSLog("\(self.selectedEmoji)")
+                })
             <<< ButtonRow() { (row: ButtonRow) -> Void in
                 row.title = "Add a Feeling"
                 }
                 .onCellSelection { [weak self] (cell, row) in
-                    NSLog("Pressed Add a Feeling")
                     row.section?.form?.validate()
+                    guard let mood = self?.feelingName,
+                        let emoji = self?.selectedEmoji,
+                        let survey = self?.survey else {
+                            NSLog("Mood and Emoji weren't entered on Form")
+                            return
+                    }
+                    APIController.shared.createFeelingForSurvey(mood: mood, emoji: emoji, surveyId: survey.id, completion: { (feeling, errorMessage) in
+                        if let feeling = feeling {
+                            let sendSurveyViewController = self?.parent as! SendSurveyViewController
+                            DispatchQueue.main.async {
+                                sendSurveyViewController.feelings?.append(feeling)
+                                let managementViewController = sendSurveyViewController.parent?.children.first as! ManagementViewController
+                                managementViewController.survey?.feelings?.append(feeling)
+                                sendSurveyViewController.tableView.reloadData()
+                            }
+                        } else if let errorMessage = errorMessage {
+                            
+                        }
+
+                    })
         }
     }
     

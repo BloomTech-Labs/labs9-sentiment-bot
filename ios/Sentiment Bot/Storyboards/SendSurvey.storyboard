@@ -22,7 +22,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="390"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <connections>
-                                <segue destination="vdx-JC-vXc" kind="embed" id="RJy-kd-BNN"/>
+                                <segue destination="vdx-JC-vXc" kind="embed" identifier="ToSendSurveyForm" id="RJy-kd-BNN"/>
                             </connections>
                         </containerView>
                         <prototypes>
@@ -108,7 +108,7 @@
                                         <rect key="frame" x="65" y="45.333333333333314" width="87" height="30"/>
                                         <state key="normal" title="Send Survey"/>
                                         <connections>
-                                            <segue destination="cUk-wY-Djm" kind="show" identifier="ToSendSurveyForm" id="P4J-Zg-xbU"/>
+                                            <segue destination="cUk-wY-Djm" kind="show" identifier="ToSendSurveyViewController" id="P4J-Zg-xbU"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlimited Teams $50/month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMR-9w-yan">
@@ -146,6 +146,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="70H-XE-fhq"/>
                     <connections>
+                        <outlet property="currentScheduleLabel" destination="Qvk-Id-qhD" id="Tfi-qC-9O8"/>
                         <outlet property="subscriptionButton" destination="1xG-0z-ZY7" id="DmX-Kk-YzB"/>
                     </connections>
                 </viewController>

@@ -15,7 +15,7 @@ struct User: Codable {
     var lastName: String
     var teamId: Int?
     var imageUrl: URL?
-    let subscribed: Bool
+    var subscribed: Bool
     let isAdmin: Bool
     let isTeamMember: Bool
     let deviceToken: String?

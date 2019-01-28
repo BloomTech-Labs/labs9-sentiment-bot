@@ -728,6 +728,7 @@ class APIController {
             }
             
             NSLog("Manager successfully changed schedule of survey to \(schedule)")
+            completion(nil)
             
             }.resume()
     }
@@ -840,7 +841,7 @@ class APIController {
     }
     
     //Create a feeling option for Survey
-    func createFeelingForSurvey(mood: String, emoji: String, surveyId: Int, completion: @escaping (ErrorMessage?) -> Void) {
+    func createFeelingForSurvey(mood: String, emoji: String, surveyId: Int, completion: @escaping (Feeling?, ErrorMessage?) -> Void) {
         let url = baseUrl.appendingPathComponent("surveys")
                          .appendingPathComponent("\(surveyId)")
                          .appendingPathComponent("feelings")
@@ -878,16 +879,25 @@ class APIController {
                 NSLog("Error code from the http request: \(httpResponse.statusCode)")
                 do {
                     let errorMessage = try JSONDecoder().decode(ErrorMessage.self, from: data)
-                    completion(errorMessage)
+                    completion(nil, errorMessage)
                 } catch {
                     NSLog("Error decoding ErrorMessage(createFeelingForSurvey) \(error)")
                     return
                 }
                 return
             }
+            
+            
+            do {
+                let feeling = try JSONDecoder().decode(Feeling.self, from: data)
+                completion(feeling, nil)
+            } catch {
+                NSLog("Error with network request: \(error)")
+                return
+            }
 
             NSLog("Manager successfully created Feeling for Survey")
-            completion(nil)
+            
             
             }.resume()
     }
