@@ -10,8 +10,8 @@ import Foundation
 
 
 enum Trigger: String {
-    case weekly
-    case monthly
-    case daily
-    case now
+    case Weekly
+    case Monthly
+    case Daily
+    case Now
 }

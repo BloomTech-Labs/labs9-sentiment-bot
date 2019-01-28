@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VNq-zh-ZWJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qb7-mJ-4d9">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,125 +10,175 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Survey-->
-        <scene sceneID="W5J-qD-Hfc">
+        <!--Send Survey View Controller-->
+        <scene sceneID="U8A-MX-kpB">
             <objects>
-                <viewController id="VNq-zh-ZWJ" customClass="SendSurveyViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="21r-fe-5nq">
+                <tableViewController id="cUk-wY-Djm" customClass="SendSurveyViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="UfB-MS-3Lx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <containerView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" id="NfI-jY-MYl">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="390"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <connections>
+                                <segue destination="vdx-JC-vXc" kind="embed" identifier="ToSendSurveyForm" id="RJy-kd-BNN"/>
+                            </connections>
+                        </containerView>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeelingCell" id="lD1-4j-xGS" customClass="FeelingTableViewCell" customModule="Sentiment_Bot" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="418" width="375" height="75"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lD1-4j-xGS" id="CcF-z4-Qau">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="74.666666666666671"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="CXh-bk-fUA">
+                                            <rect key="frame" x="96.333333333333329" y="25" width="182.66666666666669" height="37"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zUA-9n-26L">
+                                                    <rect key="frame" x="0.0" y="0.0" width="73.333333333333329" height="37"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAn-nT-sLe">
+                                                    <rect key="frame" x="109.33333333333334" y="0.0" width="73.333333333333343" height="37"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="CXh-bk-fUA" firstAttribute="centerY" secondItem="CcF-z4-Qau" secondAttribute="centerY" id="1jf-bV-Znv"/>
+                                        <constraint firstItem="CXh-bk-fUA" firstAttribute="centerX" secondItem="CcF-z4-Qau" secondAttribute="centerX" id="MvY-H6-UvI"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="emojiLabel" destination="zUA-9n-26L" id="9JD-2J-BXg"/>
+                                    <outlet property="feelingLabel" destination="jAn-nT-sLe" id="ifS-BU-zZd"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="cUk-wY-Djm" id="MRF-ob-HRG"/>
+                            <outlet property="delegate" destination="cUk-wY-Djm" id="Jr1-rw-ccF"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="HSY-9L-SYZ"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XRg-nE-0NQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5544.8000000000002" y="-990.14778325123154"/>
+        </scene>
+        <!--Send Survey Form View Controller-->
+        <scene sceneID="sqE-EK-kES">
+            <objects>
+                <viewController id="vdx-JC-vXc" customClass="SendSurveyFormViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZTE-hc-r0l">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="390"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4uU-4h-UCT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4436" y="-990.51724137931035"/>
+        </scene>
+        <!--Management View Controller-->
+        <scene sceneID="KzF-fA-R68">
+            <objects>
+                <viewController id="qTV-Sr-02o" customClass="ManagementViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bj5-UE-3KD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yHv-Oq-09X">
-                                <rect key="frame" x="16" y="175" width="133" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EmojiSelectionCell" id="GWg-sl-ahQ">
-                                        <rect key="frame" x="0.0" y="28" width="133" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GWg-sl-ahQ" id="QKv-72-JM8">
-                                            <rect key="frame" x="0.0" y="0.0" width="133" height="43.666666666666664"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xwN-ul-t6a">
-                                <rect key="frame" x="0.0" y="414" width="375" height="373"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SurveyFeelingCell" id="lSM-6a-ksv">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lSM-6a-ksv" id="4we-68-XMC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SdU-1N-6Mt">
-                                <rect key="frame" x="67" y="99" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="ldW-Jx-Wu1">
+                                <rect key="frame" x="79" y="386" width="217" height="175.66666666666663"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Schedule: TBD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qvk-Id-qhD">
+                                        <rect key="frame" x="20.333333333333329" y="0.0" width="176.33333333333337" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5e4-iH-MuU">
+                                        <rect key="frame" x="65" y="45.333333333333314" width="87" height="30"/>
+                                        <state key="normal" title="Send Survey"/>
+                                        <connections>
+                                            <segue destination="cUk-wY-Djm" kind="show" identifier="ToSendSurveyViewController" id="P4J-Zg-xbU"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlimited Teams $50/month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMR-9w-yan">
+                                        <rect key="frame" x="0.0" y="100.33333333333331" width="217" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1xG-0z-ZY7">
+                                        <rect key="frame" x="74" y="145.66666666666663" width="69" height="30"/>
+                                        <state key="normal" title="Subscribe"/>
+                                        <connections>
+                                            <action selector="toggleSubscription:" destination="qTV-Sr-02o" eventType="touchUpInside" id="UCu-xh-oa8"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NfR-MR-Kgm">
+                                <rect key="frame" x="0.0" y="69" width="375" height="200"/>
                                 <connections>
-                                    <action selector="addToFeelings:" destination="VNq-zh-ZWJ" eventType="touchUpInside" id="V6Y-zE-rxd"/>
+                                    <segue destination="nOv-45-r4H" kind="embed" identifier="" id="eRf-yN-enm"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ook-8i-uTg">
-                                <rect key="frame" x="254" y="99" width="64" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Schedule"/>
-                                <connections>
-                                    <action selector="sendOutSurvey:" destination="VNq-zh-ZWJ" eventType="touchUpInside" id="Ifn-l5-L70"/>
-                                </connections>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KIg-0C-dx0">
-                                <rect key="frame" x="214" y="175" width="145" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleSelectionCell" id="kCz-93-QDt">
-                                        <rect key="frame" x="0.0" y="28" width="145" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kCz-93-QDt" id="f62-m2-gw5">
-                                            <rect key="frame" x="0.0" y="0.0" width="145" height="43.666666666666664"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p31-cR-p2t">
-                                <rect key="frame" x="16" y="137" width="133" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Select Emoji"/>
-                                <connections>
-                                    <action selector="onClickEmojiSelectionDropButton:" destination="VNq-zh-ZWJ" eventType="touchUpInside" id="CF5-U1-amK"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Np7-u3-OR9">
-                                <rect key="frame" x="214" y="137" width="145" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Select Schedule"/>
-                                <connections>
-                                    <action selector="onClickScheduleSelectionDropButton:" destination="VNq-zh-ZWJ" eventType="touchUpInside" id="SWe-ZB-8Pn"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name:" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bz5-ig-pjb">
-                                <rect key="frame" x="69" y="44" width="237" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select Time" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sx0-Ht-AIC">
-                                <rect key="frame" x="238" y="311" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            </containerView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="QrK-GM-sO1"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ldW-Jx-Wu1" firstAttribute="top" secondItem="NfR-MR-Kgm" secondAttribute="bottom" constant="117" id="BbD-HJ-j7H"/>
+                            <constraint firstItem="ldW-Jx-Wu1" firstAttribute="centerY" secondItem="Bj5-UE-3KD" secondAttribute="centerY" constant="67.833333333333371" id="O3j-Px-cpB"/>
+                            <constraint firstItem="ldW-Jx-Wu1" firstAttribute="centerX" secondItem="Bj5-UE-3KD" secondAttribute="centerX" id="OM8-zg-BO2"/>
+                            <constraint firstItem="NfR-MR-Kgm" firstAttribute="leading" secondItem="zF9-nX-Meb" secondAttribute="leading" id="TZl-CB-nCP"/>
+                            <constraint firstItem="NfR-MR-Kgm" firstAttribute="trailing" secondItem="zF9-nX-Meb" secondAttribute="trailing" id="oIQ-i6-4bD"/>
+                            <constraint firstItem="NfR-MR-Kgm" firstAttribute="top" secondItem="zF9-nX-Meb" secondAttribute="top" constant="-19" id="uyd-fC-34L"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zF9-nX-Meb"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Survey" image="pencil" id="HUe-I2-dcg"/>
+                    <navigationItem key="navigationItem" id="70H-XE-fhq"/>
                     <connections>
-                        <outlet property="emojiSelectionButtonDrop" destination="p31-cR-p2t" id="rYw-nh-fBS"/>
-                        <outlet property="emojiSelectionTableView" destination="yHv-Oq-09X" id="mKF-7t-atI"/>
-                        <outlet property="moodTextField" destination="bz5-ig-pjb" id="5FF-RO-zLv"/>
-                        <outlet property="scheduleSelectionTableView" destination="KIg-0C-dx0" id="ATa-Dv-xJq"/>
-                        <outlet property="selectScheduleButtonDrop" destination="Np7-u3-OR9" id="OQR-d1-pQE"/>
-                        <outlet property="surveyFeelingsTableView" destination="xwN-ul-t6a" id="h9Q-v8-PYd"/>
-                        <outlet property="timeTextField" destination="Sx0-Ht-AIC" id="7Sb-Ef-Fe2"/>
+                        <outlet property="currentScheduleLabel" destination="Qvk-Id-qhD" id="Tfi-qC-9O8"/>
+                        <outlet property="subscriptionButton" destination="1xG-0z-ZY7" id="DmX-Kk-YzB"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ChD-BK-13O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AAA-Gd-9NW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7144.8000000000002" y="-1125.3694581280788"/>
+            <point key="canvasLocation" x="-6738.3999999999996" y="-1001.2315270935961"/>
+        </scene>
+        <!--UserContainerViewController-->
+        <scene sceneID="vvw-mC-ALR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserContainerViewController" id="nOv-45-r4H" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KfG-f9-dlT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6144" y="-1325"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EpR-3R-l4l">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Qb7-mJ-4d9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7gw-Jr-I8i">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qTV-Sr-02o" kind="relationship" relationship="rootViewController" id="DAH-nL-mIA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gSA-Es-za0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7849" y="-1001"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="pencil" width="30" height="30"/>
-    </resources>
 </document>

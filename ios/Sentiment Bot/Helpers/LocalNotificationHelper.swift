@@ -64,20 +64,22 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
         completionHandler()
     }
     
-    func printNextTriggerDate() {
+    func logNextTriggerDate() {
         
         UNUserNotificationCenter.current().getPendingNotificationRequests {
             (requests) in
-            var nextTriggerDates: [Date] = []
+       
             for request in requests {
-                if let trigger = request.trigger as? UNCalendarNotificationTrigger,
-                    let triggerDate = trigger.nextTriggerDate(){
-                    nextTriggerDates.append(triggerDate)
-                    print("TRIGGER DATES: \(nextTriggerDates)")
+                if let trigger = request.trigger as? UNCalendarNotificationTrigger {
+                    let components = trigger.dateComponents
+                    let date = Calendar.current.date(from: components)!
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+                    let stringDate = dateFormatter.string(from: date)
+                    NSLog("TRIGGER DATE: \(stringDate)")
                 }
-            }
-            if let nextTriggerDate = nextTriggerDates.min() {
-                print("NEXT TRIGGER DATE: \(nextTriggerDate)")
+
+                
             }
         }
     }
@@ -103,28 +105,25 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
         
         let hourMinutesArr = time.components(separatedBy: ":")
         
-        let hour = Int(hourMinutesArr.first!)
+        let hour = Int(hourMinutesArr.first!)!
         
         let minute = Int(hourMinutesArr.last!)
         
         switch schedule {
-        case Trigger.daily.rawValue:
+        case Trigger.Daily.rawValue:
             trigger = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
-            trigger?.hour = hour
-            trigger?.minute = minute
-        case Trigger.monthly.rawValue:
+        case Trigger.Monthly.rawValue:
             trigger = Calendar.current.dateComponents([.day], from: Date())
-            trigger?.hour = hour
-            trigger?.minute = minute
-        case Trigger.weekly.rawValue:
+        case Trigger.Weekly.rawValue:
             trigger = Calendar.current.dateComponents([.weekday,.hour,.minute,.second,], from: Date())
-            trigger?.hour = hour
-            trigger?.minute = minute
-        case Trigger.now.rawValue:
+        case Trigger.Now.rawValue:
             triggerNow = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         default:
             NSLog("Schedule wasn't set to change Triggers of Push Notifcation")
         }
+        
+        trigger?.hour = hour
+        trigger?.minute = minute
         
         var request: UNNotificationRequest?
         
@@ -148,6 +147,8 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
                 NSLog("There was an error scheduling a notification: \(error)")
                 return
             }
+            
+            self.logNextTriggerDate()
             
         }
         

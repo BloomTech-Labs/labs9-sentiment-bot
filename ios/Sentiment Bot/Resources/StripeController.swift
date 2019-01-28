@@ -53,6 +53,7 @@ class StripeController {
             }
             
             NSLog("User subscribed to unlimited premium service")
+            completion(nil)
             
             }.resume()
     }
@@ -88,10 +89,11 @@ class StripeController {
             }
             
             NSLog("User cancelled premium service")
+            completion(nil)
             
             }.resume()
     }
     
     let baseUrl = URL(string: "https://sentimentbot-1.herokuapp.com/api")!
-    //let baseUrl = URL(string: "http://localhost:3000/api")!
+    //let baseUrl =  URL(string: "http://192.168.1.152:3000/api")!
 }

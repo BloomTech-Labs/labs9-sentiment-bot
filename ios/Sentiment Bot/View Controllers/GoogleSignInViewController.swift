@@ -88,6 +88,27 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        APIController.shared.getUser(userId: UserDefaults.standard.userId) { (user, errorMessage) in
+            if let errorMessage = errorMessage {
+                NSLog(errorMessage.message.joined())
+            } else if let user = user {
+                DispatchQueue.main.async {
+                    if user.isAdmin {
+                        self.performSegue(withIdentifier: "ToManagerScreen", sender: self)
+                    } else if user.isTeamMember {
+                        self.performSegue(withIdentifier: "ToTeamMemberScreen", sender: self)
+                    } else {
+                        let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+
+                        let intialVC = mainStoryBoard.instantiateViewController(withIdentifier: "InitialViewController") as! InitialViewController
+                        self.present(intialVC, animated: true) {
+
+                        }
+                    }
+                }
+            }
+        }
+        
         locationHelper.requestLocationAuthorization()
         GIDSignIn.sharedInstance()?.uiDelegate = self
         GIDSignIn.sharedInstance()?.delegate = self
