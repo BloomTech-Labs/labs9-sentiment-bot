@@ -78,6 +78,10 @@ enum Theme: Int {
         
         UIButton.appearance(whenContainedInInstancesOf: [UserContainerViewController.self]).tintColor = mainColor
         
+        UIButton.appearance().backgroundColor = backgroundColor
+        
+        UIButton.appearance().tintColor = textColor
+        
 
     }
 }
