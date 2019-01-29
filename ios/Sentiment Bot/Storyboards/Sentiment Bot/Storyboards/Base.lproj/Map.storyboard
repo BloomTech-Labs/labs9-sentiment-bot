@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Map View Controller-->
+        <!--Map-->
         <scene sceneID="9nG-8x-e1Z">
             <objects>
                 <viewController id="KfZ-l2-Y4p" customClass="MapViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,9 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="07a-fI-wJZ">
-                                <rect key="frame" x="0.0" y="244" width="375" height="534"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="07a-fI-wJZ">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <connections>
                                     <outlet property="delegate" destination="KfZ-l2-Y4p" id="0pc-fU-cb2"/>
                                 </connections>
@@ -28,20 +27,17 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6gO-xJ-FCC">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="246"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NJi-mK-Qms">
-                                        <rect key="frame" x="0.0" y="-2" width="375" height="250"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                        <connections>
-                                            <segue destination="fgN-eK-JnC" kind="embed" id="zh5-bh-pDS"/>
-                                        </connections>
-                                    </containerView>
-                                </subviews>
                             </view>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="07a-fI-wJZ" firstAttribute="bottom" secondItem="B4B-dP-059" secondAttribute="bottom" id="0mP-hz-jkA"/>
+                            <constraint firstItem="07a-fI-wJZ" firstAttribute="top" secondItem="B4B-dP-059" secondAttribute="top" id="8xk-Sf-641"/>
+                            <constraint firstItem="07a-fI-wJZ" firstAttribute="trailing" secondItem="B4B-dP-059" secondAttribute="trailing" id="exm-mQ-pbP"/>
+                            <constraint firstItem="07a-fI-wJZ" firstAttribute="leading" secondItem="B4B-dP-059" secondAttribute="leading" id="xlz-sn-K3f"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="B4B-dP-059"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="map_marker" id="Bpf-ta-bZE"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map_marker" id="Bpf-ta-bZE"/>
                     <connections>
                         <outlet property="mapView" destination="07a-fI-wJZ" id="7GV-FE-Xsf"/>
                     </connections>
@@ -49,14 +45,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sUe-RM-ZTp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="384.80000000000001" y="290.39408866995075"/>
-        </scene>
-        <!--UserContainerViewController-->
-        <scene sceneID="5cB-su-9Ep">
-            <objects>
-                <viewControllerPlaceholder storyboardName="UserContainerViewController" id="fgN-eK-JnC" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vJw-WA-Y6e" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1173" y="177"/>
         </scene>
     </scenes>
     <resources>

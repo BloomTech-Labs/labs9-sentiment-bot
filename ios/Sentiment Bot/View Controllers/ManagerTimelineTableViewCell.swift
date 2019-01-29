@@ -19,7 +19,7 @@ class ManagerTimelineTableViewCell: UITableViewCell {
     func setResponse(response: Response) {
         dateLabel.text = response.date
         emojiLabel.text = response.emoji
-        feelzNameLabel.text = response.mood
+        feelzNameLabel.text = response.mood.capitalized
         
         APIController.shared.getUser(userId: response.userId) { (user, error) in
             if let error = error {
