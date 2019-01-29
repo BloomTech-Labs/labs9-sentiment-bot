@@ -57,7 +57,7 @@
 		A1EA607A21EE57B000ACE25D /* GoogleSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA607921EE57B000ACE25D /* GoogleSignInViewController.swift */; };
 		F10B4A8621F8CE7F00597DC8 /* InitialViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F10B4A8521F8CE7F00597DC8 /* InitialViewController.storyboard */; };
 		F15713C421FD775100F6A62F /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15713C321FD775100F6A62F /* Theme.swift */; };
-		F15713C621FEB98E00F6A62F /* ManagerTimeineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15713C521FEB98E00F6A62F /* ManagerTimeineTableViewCell.swift */; };
+		F15713C82200337F00F6A62F /* ManagerTimelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15713C72200337F00F6A62F /* ManagerTimelineTableViewCell.swift */; };
 		F158581421F9482400035CBF /* UserContainerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F158581321F9482400035CBF /* UserContainerViewController.storyboard */; };
 		F18865D221EEB306008F9D35 /* TestUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18865D121EEB306008F9D35 /* TestUser.swift */; };
 		F1B7E58B21E547450096FC6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B7E58A21E547450096FC6F /* AppDelegate.swift */; };
@@ -69,7 +69,6 @@
 		F1CDD27121ED99D5008E7A57 /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1CDD27021ED99D5008E7A57 /* ProfileViewController.storyboard */; };
 		F1DFA0C121F924290078B8C5 /* UserContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DFA0C021F924290078B8C5 /* UserContainerViewController.swift */; };
 		F1E949A821EBB05F000634AD /* TimeLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E949A721EBB05F000634AD /* TimeLineTableViewCell.swift */; };
-		F1ECBCFB21E706AA005CDBE8 /* UserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1ECBCFA21E706AA005CDBE8 /* UserView.xib */; };
 		F1ECBCFD21E706B7005CDBE8 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECBCFC21E706B7005CDBE8 /* UserView.swift */; };
 		F1ECBD0221E70BF5005CDBE8 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECBD0121E70BF5005CDBE8 /* TimelineViewController.swift */; };
 		F1ECBD0621E70C26005CDBE8 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECBD0521E70C26005CDBE8 /* MapViewController.swift */; };
@@ -129,7 +128,7 @@
 		F10B4A8521F8CE7F00597DC8 /* InitialViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = InitialViewController.storyboard; sourceTree = "<group>"; };
 		F138A56521F6172C0004334F /* Sentiment Bot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sentiment Bot.entitlements"; sourceTree = "<group>"; };
 		F15713C321FD775100F6A62F /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		F15713C521FEB98E00F6A62F /* ManagerTimeineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerTimeineTableViewCell.swift; sourceTree = "<group>"; };
+		F15713C72200337F00F6A62F /* ManagerTimelineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerTimelineTableViewCell.swift; sourceTree = "<group>"; };
 		F158581321F9482400035CBF /* UserContainerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserContainerViewController.storyboard; sourceTree = "<group>"; };
 		F18865D121EEB306008F9D35 /* TestUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUser.swift; sourceTree = "<group>"; };
 		F1B7E58721E547450096FC6F /* Sentiment Bot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sentiment Bot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,7 +142,6 @@
 		F1CDD27021ED99D5008E7A57 /* ProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileViewController.storyboard; sourceTree = "<group>"; };
 		F1DFA0C021F924290078B8C5 /* UserContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContainerViewController.swift; sourceTree = "<group>"; };
 		F1E949A721EBB05F000634AD /* TimeLineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineTableViewCell.swift; sourceTree = "<group>"; };
-		F1ECBCFA21E706AA005CDBE8 /* UserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserView.xib; sourceTree = "<group>"; };
 		F1ECBCFC21E706B7005CDBE8 /* UserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		F1ECBD0121E70BF5005CDBE8 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		F1ECBD0521E70C26005CDBE8 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -279,11 +277,11 @@
 			isa = PBXGroup;
 			children = (
 				F1B7E58E21E547450096FC6F /* Main.storyboard */,
+				F158581321F9482400035CBF /* UserContainerViewController.storyboard */,
 				A140D94921F188B2008963C1 /* SignIn.storyboard */,
 				A140D94B21F188F4008963C1 /* SignUp.storyboard */,
 				F10B4A8521F8CE7F00597DC8 /* InitialViewController.storyboard */,
 				F1CDD23B21ECFF06008E7A57 /* Timeline.storyboard */,
-				F158581321F9482400035CBF /* UserContainerViewController.storyboard */,
 				A140D97521F78646008963C1 /* ManagerTimeline.storyboard */,
 				F1CDD23D21ECFF36008E7A57 /* Map.storyboard */,
 				A140D97B21F786E7008963C1 /* SentimentReport.storyboard */,
@@ -291,7 +289,6 @@
 				A140D97721F7868D008963C1 /* TeamMembers.storyboard */,
 				A140D97321F785FE008963C1 /* PremiumCheckout.storyboard */,
 				F1CDD27021ED99D5008E7A57 /* ProfileViewController.storyboard */,
-				F1ECBCFA21E706AA005CDBE8 /* UserView.xib */,
 				F1B7E59321E547460096FC6F /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -329,7 +326,7 @@
 				A1DA7AE721FD51630006F7A7 /* TableViewController.swift */,
 				A140D95D21F693C2008963C1 /* SenitmentReportViewController.swift */,
 				A140D96321F6A2F7008963C1 /* ManagerTimelineViewController.swift */,
-				F15713C521FEB98E00F6A62F /* ManagerTimeineTableViewCell.swift */,
+				F15713C72200337F00F6A62F /* ManagerTimelineTableViewCell.swift */,
 				A140D96521F6A352008963C1 /* MembersTableViewController.swift */,
 				A140D96721F6A549008963C1 /* SubscriptionViewController.swift */,
 				A140D97121F76DB2008963C1 /* InitialViewController.swift */,
@@ -427,7 +424,6 @@
 				F1B7E59021E547450096FC6F /* Main.storyboard in Resources */,
 				F1CDD27121ED99D5008E7A57 /* ProfileViewController.storyboard in Resources */,
 				A140D97C21F786E7008963C1 /* SentimentReport.storyboard in Resources */,
-				F1ECBCFB21E706AA005CDBE8 /* UserView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,7 +539,6 @@
 				A13547C721E6D0C70045C5F0 /* Team.swift in Sources */,
 				A140D96621F6A352008963C1 /* MembersTableViewController.swift in Sources */,
 				A13547C021E69D160045C5F0 /* User.swift in Sources */,
-				F15713C621FEB98E00F6A62F /* ManagerTimeineTableViewCell.swift in Sources */,
 				A140D93C21EFA581008963C1 /* TabBarViewController.swift in Sources */,
 				A13547CA21E6D32B0045C5F0 /* HTTPMethod.swift in Sources */,
 				A140D95C21F69298008963C1 /* SendSurveyViewController.swift in Sources */,
@@ -553,6 +548,7 @@
 				F1DFA0C121F924290078B8C5 /* UserContainerViewController.swift in Sources */,
 				A140D94321F17DE2008963C1 /* SignInViewController.swift in Sources */,
 				A1DA7AEA21FD56200006F7A7 /* FeelingTableViewCell.swift in Sources */,
+				F15713C82200337F00F6A62F /* ManagerTimelineTableViewCell.swift in Sources */,
 				A140D93F21EFEDC1008963C1 /* UserProtocol.swift in Sources */,
 				A1EA607A21EE57B000ACE25D /* GoogleSignInViewController.swift in Sources */,
 				F18865D221EEB306008F9D35 /* TestUser.swift in Sources */,

@@ -18,34 +18,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAu-cX-zkz" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="48" y="260" width="279" height="427"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Esj-xK-MvI">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
-                                <connections>
-                                    <segue destination="xtz-sY-PwT" kind="embed" id="ZG9-De-skv"/>
-                                </connections>
-                            </containerView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Hry-9J-ez2">
+                                <rect key="frame" x="0.0" y="44" width="375" height="735"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Esj-xK-MvI">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+                                        <connections>
+                                            <segue destination="xtz-sY-PwT" kind="embed" id="ZG9-De-skv"/>
+                                        </connections>
+                                    </containerView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAu-cX-zkz" customClass="PieChartView" customModule="Charts">
+                                        <rect key="frame" x="0.0" y="250" width="375" height="485"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="qAu-cX-zkz" firstAttribute="top" secondItem="Hry-9J-ez2" secondAttribute="top" constant="250" id="6D0-ch-y3c"/>
+                                    <constraint firstAttribute="bottom" secondItem="qAu-cX-zkz" secondAttribute="bottom" id="K2g-K5-s1Q"/>
+                                    <constraint firstItem="Esj-xK-MvI" firstAttribute="leading" secondItem="Hry-9J-ez2" secondAttribute="leading" id="SGN-ED-1Hn"/>
+                                    <constraint firstAttribute="trailing" secondItem="qAu-cX-zkz" secondAttribute="trailing" id="Tjd-hm-0fN"/>
+                                    <constraint firstItem="Esj-xK-MvI" firstAttribute="top" secondItem="Hry-9J-ez2" secondAttribute="top" id="Tr1-Sl-1X8"/>
+                                    <constraint firstItem="qAu-cX-zkz" firstAttribute="top" secondItem="Esj-xK-MvI" secondAttribute="bottom" id="aOg-oq-ELZ"/>
+                                    <constraint firstItem="qAu-cX-zkz" firstAttribute="top" secondItem="Esj-xK-MvI" secondAttribute="bottom" id="u7k-Z3-mtM"/>
+                                    <constraint firstAttribute="trailing" secondItem="Esj-xK-MvI" secondAttribute="trailing" id="wIH-KU-CQ0"/>
+                                    <constraint firstItem="qAu-cX-zkz" firstAttribute="leading" secondItem="Hry-9J-ez2" secondAttribute="leading" id="zxY-PU-5RS"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="8bO-dT-MaD" firstAttribute="bottom" secondItem="qAu-cX-zkz" secondAttribute="bottom" constant="91" id="1dV-IJ-THP"/>
-                            <constraint firstItem="Esj-xK-MvI" firstAttribute="top" secondItem="9bv-tS-bqH" secondAttribute="top" id="3Mg-vp-Sx4"/>
-                            <constraint firstItem="qAu-cX-zkz" firstAttribute="centerY" secondItem="8bO-dT-MaD" secondAttribute="centerY" constant="62.5" id="59F-L8-Ber"/>
-                            <constraint firstItem="qAu-cX-zkz" firstAttribute="leading" secondItem="8bO-dT-MaD" secondAttribute="leading" constant="48" id="7ia-nn-5y8"/>
-                            <constraint firstItem="qAu-cX-zkz" firstAttribute="centerX" secondItem="8bO-dT-MaD" secondAttribute="centerX" id="C4l-p6-Mfr"/>
-                            <constraint firstItem="Esj-xK-MvI" firstAttribute="trailing" secondItem="8bO-dT-MaD" secondAttribute="trailing" id="EqP-in-eJe"/>
-                            <constraint firstItem="qAu-cX-zkz" firstAttribute="top" secondItem="Esj-xK-MvI" secondAttribute="bottom" constant="60" id="I0n-uw-uvv"/>
-                            <constraint firstItem="Esj-xK-MvI" firstAttribute="leading" secondItem="8bO-dT-MaD" secondAttribute="leading" id="uhN-D0-wlo"/>
+                            <constraint firstItem="Hry-9J-ez2" firstAttribute="leading" secondItem="8bO-dT-MaD" secondAttribute="leading" id="Ozk-LC-yZj"/>
+                            <constraint firstAttribute="bottom" secondItem="Hry-9J-ez2" secondAttribute="bottom" constant="33" id="SKY-CW-P5y"/>
+                            <constraint firstItem="Hry-9J-ez2" firstAttribute="top" secondItem="8bO-dT-MaD" secondAttribute="top" id="rRY-Ve-zEd"/>
+                            <constraint firstItem="Hry-9J-ez2" firstAttribute="trailing" secondItem="8bO-dT-MaD" secondAttribute="trailing" id="y0S-oV-NGz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8bO-dT-MaD"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Report" image="report_card" id="6bE-mY-fwf"/>
                     <connections>
                         <outlet property="pieChart" destination="qAu-cX-zkz" id="tFk-ln-B3Z"/>
-                        <outlet property="userContainerView" destination="Esj-xK-MvI" id="ORP-6I-vfb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I6U-XV-1a8" userLabel="First Responder" sceneMemberID="firstResponder"/>

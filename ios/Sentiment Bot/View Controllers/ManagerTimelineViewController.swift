@@ -33,6 +33,8 @@ class ManagerTimelineViewController: UIViewController , ManagerProtocol{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
+        managerTimelineTableView.layoutMargins = UIEdgeInsets.zero
+        managerTimelineTableView.separatorInset = UIEdgeInsets.zero
         managerTimelineTableView.dataSource = self
         managerTimelineTableView.delegate = self
     }
@@ -45,14 +47,13 @@ extension ManagerTimelineViewController: UITableViewDataSource, UITableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TeamMemberFeelzCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TeamMemberFeelzCell") as! ManagerTimelineTableViewCell
+        cell.layoutMargins = UIEdgeInsets.zero
         let response = teamResponses![indexPath.row]
         
-        //cell.setResponse(response: response)
-        cell?.textLabel?.text = "\(response.emoji)  \(response.mood)"
-        cell?.detailTextLabel?.text = "\(response.date)"
-        cell?.isUserInteractionEnabled = false
-        return cell ?? UITableViewCell()
+        cell.setResponse(response: response)
+        
+        return cell
 
     }
     

@@ -12,8 +12,8 @@ class TabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupButton()
+        tabBar.unselectedItemTintColor = .white
+//        setupButton()
         
         getUserData()
         guard let deviceToken = UserDefaults.standard.deviceToken else {

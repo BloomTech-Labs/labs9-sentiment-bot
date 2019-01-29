@@ -18,39 +18,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ye9-cC-HmU">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="07a-fI-wJZ">
+                                <rect key="frame" x="0.0" y="288" width="375" height="490"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="KfZ-l2-Y4p" id="0pc-fU-cb2"/>
+                                </connections>
+                            </mapView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6gO-xJ-FCC">
+                                <rect key="frame" x="0.0" y="44" width="375" height="246"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6gO-xJ-FCC">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
-                                        <subviews>
-                                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NJi-mK-Qms">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                <connections>
-                                                    <segue destination="fgN-eK-JnC" kind="embed" id="zh5-bh-pDS"/>
-                                                </connections>
-                                            </containerView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="200" id="lJ4-Kq-7dk"/>
-                                        </constraints>
-                                    </view>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="07a-fI-wJZ">
-                                        <rect key="frame" x="0.0" y="208" width="375" height="570"/>
+                                    <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NJi-mK-Qms">
+                                        <rect key="frame" x="0.0" y="-4" width="375" height="250"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <connections>
-                                            <outlet property="delegate" destination="KfZ-l2-Y4p" id="0pc-fU-cb2"/>
+                                            <segue destination="fgN-eK-JnC" kind="embed" id="zh5-bh-pDS"/>
                                         </connections>
-                                    </mapView>
+                                    </containerView>
                                 </subviews>
-                            </stackView>
+                            </view>
                         </subviews>
-                        <constraints>
-                            <constraint firstItem="Ye9-cC-HmU" firstAttribute="leading" secondItem="B4B-dP-059" secondAttribute="leading" id="SvH-I8-il8"/>
-                            <constraint firstItem="Ye9-cC-HmU" firstAttribute="bottom" secondItem="B4B-dP-059" secondAttribute="bottom" id="T5D-5l-r3o"/>
-                            <constraint firstItem="Ye9-cC-HmU" firstAttribute="trailing" secondItem="B4B-dP-059" secondAttribute="trailing" id="yOt-u3-OS5"/>
-                            <constraint firstItem="Ye9-cC-HmU" firstAttribute="top" secondItem="DkY-vH-Sqq" secondAttribute="top" id="zRd-W0-Yjv"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="B4B-dP-059"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="map_marker" id="Bpf-ta-bZE"/>

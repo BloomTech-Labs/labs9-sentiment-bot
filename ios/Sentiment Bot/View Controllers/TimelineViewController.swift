@@ -29,6 +29,8 @@ class TimelineViewController: UIViewController, UserProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
+        timelineTableView.layoutMargins = UIEdgeInsets.zero
+        timelineTableView.separatorInset = UIEdgeInsets.zero
         updateViews()
     }
     
@@ -51,7 +53,8 @@ extension TimelineViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let response = userResponses![indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeelzCell") as! TimeLineTableViewCell
-        cell.feelzImageView.layer.cornerRadius = 10
+        cell.layoutMargins = UIEdgeInsets.zero
+        cell.feelzImageView.layer.cornerRadius = cell.feelzImageView.frame.size.width / 2
         cell.feelzImageView.layer.masksToBounds = true
         cell.setResponse(response: response)
         return cell

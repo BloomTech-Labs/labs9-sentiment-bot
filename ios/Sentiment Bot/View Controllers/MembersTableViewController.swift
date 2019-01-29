@@ -55,6 +55,8 @@ extension MembersTableViewController: UITableViewDataSource, UITableViewDelegate
 
         //cell.setResponse(response: response)
         cell?.textLabel?.text = "\(response.firstName) \(response.lastName)"
+        cell?.imageView?.layer.cornerRadius = 45 //(cell?.imageView?.frame.size.width)! / 2
+        cell?.imageView?.clipsToBounds = true
         cell?.imageView?.image = #imageLiteral(resourceName: "missing-image-5")
         return cell!
     }
