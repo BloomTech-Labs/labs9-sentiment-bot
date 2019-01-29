@@ -10,15 +10,14 @@ import UIKit
 
 class MembersTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    @IBOutlet weak var memberImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func setResponse(response: Response) {
+//        nameLabel.text = "\(response.firstName) \(response.lastName)"
+//        cell?.imageView?.layer.cornerRadius = 45 //(cell?.imageView?.frame.size.width)! / 2
+//        cell?.imageView?.clipsToBounds = true
+//        cell?.imageView?.image = #imageLiteral(resourceName: "missing-image-5")
     }
 
 }

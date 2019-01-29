@@ -64,6 +64,7 @@
 		F1B7E59021E547450096FC6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E58E21E547450096FC6F /* Main.storyboard */; };
 		F1B7E59221E547460096FC6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E59121E547460096FC6F /* Assets.xcassets */; };
 		F1B7E59521E547460096FC6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E59321E547460096FC6F /* LaunchScreen.storyboard */; };
+		F1C3CBDB2200D3A000CE2A31 /* MembersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3CBDA2200D3A000CE2A31 /* MembersTableViewCell.swift */; };
 		F1CDD23C21ECFF06008E7A57 /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1CDD23B21ECFF06008E7A57 /* Timeline.storyboard */; };
 		F1CDD23F21ECFF36008E7A57 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1CDD23D21ECFF36008E7A57 /* Map.storyboard */; };
 		F1CDD27121ED99D5008E7A57 /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1CDD27021ED99D5008E7A57 /* ProfileViewController.storyboard */; };
@@ -137,6 +138,7 @@
 		F1B7E59121E547460096FC6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1B7E59421E547460096FC6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F1B7E59621E547460096FC6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1C3CBDA2200D3A000CE2A31 /* MembersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersTableViewCell.swift; sourceTree = "<group>"; };
 		F1CDD23B21ECFF06008E7A57 /* Timeline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
 		F1CDD23E21ECFF36008E7A57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Sentiment Bot/Storyboards/Base.lproj/Map.storyboard"; sourceTree = "<group>"; };
 		F1CDD27021ED99D5008E7A57 /* ProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileViewController.storyboard; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 				A140D96321F6A2F7008963C1 /* ManagerTimelineViewController.swift */,
 				F15713C72200337F00F6A62F /* ManagerTimelineTableViewCell.swift */,
 				A140D96521F6A352008963C1 /* MembersTableViewController.swift */,
+				F1C3CBDA2200D3A000CE2A31 /* MembersTableViewCell.swift */,
 				A140D96721F6A549008963C1 /* SubscriptionViewController.swift */,
 				A140D97121F76DB2008963C1 /* InitialViewController.swift */,
 				F1DFA0C021F924290078B8C5 /* UserContainerViewController.swift */,
@@ -569,6 +572,7 @@
 				A140D93A21EEEEED008963C1 /* ReversedGeoLocation.swift in Sources */,
 				F1ECBD0221E70BF5005CDBE8 /* TimelineViewController.swift in Sources */,
 				A1EA606021E8707100ACE25D /* Trigger.swift in Sources */,
+				F1C3CBDB2200D3A000CE2A31 /* MembersTableViewCell.swift in Sources */,
 				A140D96A21F6BE99008963C1 /* Feeling.swift in Sources */,
 				A140D94521F17E31008963C1 /* SignUpViewController.swift in Sources */,
 				A140D95021F41620008963C1 /* StripeController.swift in Sources */,

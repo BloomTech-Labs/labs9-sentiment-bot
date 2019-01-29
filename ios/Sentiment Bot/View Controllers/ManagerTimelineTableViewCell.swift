@@ -13,15 +13,13 @@ class ManagerTimelineTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var emojiLabel: UILabel!
     @IBOutlet weak var feelzNameLabel: UILabel!
-    @IBOutlet weak var placeLabel: UILabel!
     @IBOutlet weak var userIdLabel: UILabel!
+    @IBOutlet weak var feelzImageView: UIImageView!
     
     func setResponse(response: Response) {
         dateLabel.text = response.date
         emojiLabel.text = response.emoji
         feelzNameLabel.text = response.mood
-        placeLabel.text = response.place
-        userIdLabel.text = "\(response.userId)"
         
         APIController.shared.getUser(userId: response.userId) { (user, error) in
             if let error = error {
@@ -29,6 +27,18 @@ class ManagerTimelineTableViewCell: UITableViewCell {
             } else if let user = user {
                 DispatchQueue.main.async {
                     self.userIdLabel.text = "\(user.firstName) \(user.lastName)"
+                }
+            }
+        }
+        
+        if let imageUrl = response.imageUrl {
+            APIController.shared.getImage(url: imageUrl) { (image, error) in
+                if let error = error {
+                    NSLog("Error getting image \(error)")
+                } else if let image = image {
+                    DispatchQueue.main.async {
+                        self.feelzImageView.image = image
+                    }
                 }
             }
         }
