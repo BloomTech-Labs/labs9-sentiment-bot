@@ -31,13 +31,19 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func logOutButton(_ sender: UIButton) {
+        self.view.window!.rootViewController?.dismiss(animated: true)
         GIDSignIn.sharedInstance()?.signOut()
         APIController.shared.logout()
-        self.view.window!.rootViewController?.dismiss(animated: true)
     }
     
     @IBAction func cancelButton(_ sender: UIButton) {
         dismiss(animated: true)
     }
+    
+    @IBOutlet weak var subscriptionButton: UIButton!
+    
+    @IBAction func toggleSubscription(_ sender: Any) {
+    }
+    
     
 }

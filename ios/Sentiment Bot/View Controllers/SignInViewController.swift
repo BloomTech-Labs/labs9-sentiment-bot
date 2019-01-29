@@ -17,7 +17,15 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         view.layer.cornerRadius = 20
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        setPlaceHolders()
+    }
+    
+    func setPlaceHolders() {
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email:",
+                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password:",
+                                                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
     }
     
     @IBAction func googleSignIn(_ sender: Any) {
@@ -35,8 +43,16 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                 return
         }
         
+        func clearFields() {
+            DispatchQueue.main.async {
+                self.emailTextField.text = ""
+                self.passwordTextField.text = ""
+            }
+        }
+        
         APIController.shared.logIn(email: email, password: password) { (error) in
-            
+            clearFields()
+
             if let error = error {
                 //Better Error handling would be to show user error
                 //becuase the error that is retreived here may say something like

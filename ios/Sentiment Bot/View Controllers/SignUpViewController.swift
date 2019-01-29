@@ -15,6 +15,22 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear.withAlphaComponent(0.25)
         view.layer.cornerRadius = 20
+        setPlaceHolders()
+    }
+    
+    
+    func setPlaceHolders() {
+        firstNameTextField.attributedPlaceholder = NSAttributedString(string: "First Name:",
+                                                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        
+        lastNameTextField.attributedPlaceholder = NSAttributedString(string: "Last Name:",
+                                                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email:",
+                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password:",
+                                                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
     }
     
     @IBAction func googleSignUp(_ sender: Any) {
@@ -37,6 +53,15 @@ class SignUpViewController: UIViewController {
                 return
         }
         
+        func clearFields() {
+            DispatchQueue.main.async {
+                self.firstNameTextField.text = ""
+                self.lastNameTextField.text = ""
+                self.emailTextField.text = ""
+                self.passwordTextField.text = ""
+            }
+        }
+        
         APIController.shared.signUp(firstName: firstName, lastName: lastName, email: email, password: password) { (errorMessage) in
             
             if let errorMessage = errorMessage {
@@ -50,7 +75,7 @@ class SignUpViewController: UIViewController {
                     
                     let intialVC = mainStoryBoard.instantiateViewController(withIdentifier: "InitialViewController") as! InitialViewController
                     self.present(intialVC, animated: true) {
-                        
+                        clearFields()
                     }
                 }
                 
