@@ -15,14 +15,13 @@ class TimeLineTableViewCell: UITableViewCell {
     @IBOutlet weak var emojiLabel: UILabel!
     @IBOutlet weak var feelzNameLabel: UILabel!
     @IBOutlet weak var feelzImageView: UIImageView!
-    @IBOutlet weak var responseID: UILabel!
+    
     
     func setResponse(response: Response) {
         dateLabel.text = response.date
         emojiLabel.text = response.emoji
         feelzNameLabel.text = response.mood
         locationLabel.text = response.place
-        responseID.text = String(response.id)
  
         if let imageUrl = response.imageUrl {
             APIController.shared.getImage(url: imageUrl) { (image, error) in
