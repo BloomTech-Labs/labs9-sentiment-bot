@@ -36,7 +36,19 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
         //userImage.layer.borderWidth = 3.0
         //userImage.layer.borderColor = UIColor(displayP3Red: 132.0/255.0, green: 13.0/255.0, blue: 27.0/255.0, alpha: 0.5).cgColor
         
-        setupView()
+        //setupView()
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if userImage.image == nil {
+            setupView()
+        }
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        userImage.image = nil
     }
     
     
@@ -151,13 +163,15 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
             NSLog("No image found")
             return
         }
-        userImage.image = image
         let imageData = image.pngData()
         
         APIController.shared.uploadProfilePicture(imageData: imageData!) { (error) in
             if let error = error {
                 NSLog("Error uploading profile picture: \(error)")
                 return
+            }
+            DispatchQueue.main.async {
+                self.userImage.image = image
             }
         }
         dismiss(animated: true, completion: nil)
