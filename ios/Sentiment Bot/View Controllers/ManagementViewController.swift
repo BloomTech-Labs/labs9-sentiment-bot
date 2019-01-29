@@ -46,7 +46,7 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
 //        } else if !(user?.subscribed)! {
 //            subscriptionButton.setTitle("Subscribe", for: .normal)
 //        }
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     
