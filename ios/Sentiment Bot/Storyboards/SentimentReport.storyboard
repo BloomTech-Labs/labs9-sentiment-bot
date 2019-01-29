@@ -18,37 +18,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Hry-9J-ez2">
-                                <rect key="frame" x="0.0" y="44" width="375" height="735"/>
-                                <subviews>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Esj-xK-MvI">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
-                                        <connections>
-                                            <segue destination="xtz-sY-PwT" kind="embed" id="ZG9-De-skv"/>
-                                        </connections>
-                                    </containerView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAu-cX-zkz" customClass="PieChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="250" width="375" height="485"/>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="qAu-cX-zkz" firstAttribute="top" secondItem="Hry-9J-ez2" secondAttribute="top" constant="250" id="6D0-ch-y3c"/>
-                                    <constraint firstAttribute="bottom" secondItem="qAu-cX-zkz" secondAttribute="bottom" id="K2g-K5-s1Q"/>
-                                    <constraint firstItem="Esj-xK-MvI" firstAttribute="leading" secondItem="Hry-9J-ez2" secondAttribute="leading" id="SGN-ED-1Hn"/>
-                                    <constraint firstAttribute="trailing" secondItem="qAu-cX-zkz" secondAttribute="trailing" id="Tjd-hm-0fN"/>
-                                    <constraint firstItem="Esj-xK-MvI" firstAttribute="top" secondItem="Hry-9J-ez2" secondAttribute="top" id="Tr1-Sl-1X8"/>
-                                    <constraint firstItem="qAu-cX-zkz" firstAttribute="top" secondItem="Esj-xK-MvI" secondAttribute="bottom" id="aOg-oq-ELZ"/>
-                                    <constraint firstItem="qAu-cX-zkz" firstAttribute="top" secondItem="Esj-xK-MvI" secondAttribute="bottom" id="u7k-Z3-mtM"/>
-                                    <constraint firstAttribute="trailing" secondItem="Esj-xK-MvI" secondAttribute="trailing" id="wIH-KU-CQ0"/>
-                                    <constraint firstItem="qAu-cX-zkz" firstAttribute="leading" secondItem="Hry-9J-ez2" secondAttribute="leading" id="zxY-PU-5RS"/>
-                                </constraints>
-                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAu-cX-zkz" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="10" y="10" width="355" height="758"/>
+                            </view>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Hry-9J-ez2" firstAttribute="leading" secondItem="8bO-dT-MaD" secondAttribute="leading" id="Ozk-LC-yZj"/>
-                            <constraint firstAttribute="bottom" secondItem="Hry-9J-ez2" secondAttribute="bottom" constant="33" id="SKY-CW-P5y"/>
-                            <constraint firstItem="Hry-9J-ez2" firstAttribute="top" secondItem="8bO-dT-MaD" secondAttribute="top" id="rRY-Ve-zEd"/>
-                            <constraint firstItem="Hry-9J-ez2" firstAttribute="trailing" secondItem="8bO-dT-MaD" secondAttribute="trailing" id="y0S-oV-NGz"/>
+                            <constraint firstItem="8bO-dT-MaD" firstAttribute="bottom" secondItem="qAu-cX-zkz" secondAttribute="bottom" constant="10" id="Rgn-Pj-BeS"/>
+                            <constraint firstItem="qAu-cX-zkz" firstAttribute="leading" secondItem="8bO-dT-MaD" secondAttribute="leading" constant="10" id="h4R-bE-tzo"/>
+                            <constraint firstItem="qAu-cX-zkz" firstAttribute="trailing" secondItem="8bO-dT-MaD" secondAttribute="trailing" constant="-10" id="hvI-ts-4G7"/>
+                            <constraint firstItem="qAu-cX-zkz" firstAttribute="top" secondItem="9bv-tS-bqH" secondAttribute="top" constant="10" id="zRm-lD-DQH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8bO-dT-MaD"/>
                     </view>

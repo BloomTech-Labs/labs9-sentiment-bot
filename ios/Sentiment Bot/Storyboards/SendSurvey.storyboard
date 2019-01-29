@@ -102,10 +102,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="axN-GY-Qso">
-                                <rect key="frame" x="0.0" y="208" width="375" height="521"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="ldW-Jx-Wu1">
-                                        <rect key="frame" x="99.333333333333329" y="223.00000000000003" width="176.33333333333337" height="75.333333333333343"/>
+                                        <rect key="frame" x="99.333333333333329" y="283" width="176.33333333333337" height="75.333333333333314"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Schedule: TBD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qvk-Id-qhD">
                                                 <rect key="frame" x="0.0" y="0.0" width="176.33333333333334" height="20.333333333333332"/>
@@ -132,23 +132,12 @@
                                     <constraint firstItem="ldW-Jx-Wu1" firstAttribute="centerX" secondItem="axN-GY-Qso" secondAttribute="centerX" id="qKZ-ao-aSL"/>
                                 </constraints>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NfR-MR-Kgm">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
-                                <connections>
-                                    <segue destination="nOv-45-r4H" kind="embed" identifier="" id="eRf-yN-enm"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="axN-GY-Qso" firstAttribute="top" secondItem="NfR-MR-Kgm" secondAttribute="bottom" constant="8" id="2YC-iJ-fxP"/>
-                            <constraint firstItem="axN-GY-Qso" firstAttribute="top" secondItem="NfR-MR-Kgm" secondAttribute="bottom" constant="8" id="4Xe-x9-pw2"/>
-                            <constraint firstItem="NfR-MR-Kgm" firstAttribute="top" secondItem="Bj5-UE-3KD" secondAttribute="top" id="6QI-dG-iru"/>
-                            <constraint firstItem="axN-GY-Qso" firstAttribute="leading" secondItem="zF9-nX-Meb" secondAttribute="leading" id="JbP-dB-25q"/>
-                            <constraint firstItem="axN-GY-Qso" firstAttribute="top" secondItem="Bj5-UE-3KD" secondAttribute="top" constant="208" id="aud-md-Dvu"/>
-                            <constraint firstItem="NfR-MR-Kgm" firstAttribute="trailing" secondItem="zF9-nX-Meb" secondAttribute="trailing" id="b55-pb-5zo"/>
-                            <constraint firstItem="axN-GY-Qso" firstAttribute="bottom" secondItem="zF9-nX-Meb" secondAttribute="bottom" id="drS-bI-5OK"/>
-                            <constraint firstItem="axN-GY-Qso" firstAttribute="trailing" secondItem="zF9-nX-Meb" secondAttribute="trailing" id="jz3-HF-R6q"/>
-                            <constraint firstItem="NfR-MR-Kgm" firstAttribute="leading" secondItem="zF9-nX-Meb" secondAttribute="leading" id="pm7-FH-gXX"/>
+                            <constraint firstItem="axN-GY-Qso" firstAttribute="bottom" secondItem="zF9-nX-Meb" secondAttribute="bottom" id="9ni-NC-0Pm"/>
+                            <constraint firstItem="axN-GY-Qso" firstAttribute="leading" secondItem="zF9-nX-Meb" secondAttribute="leading" id="DBu-gB-tmF"/>
+                            <constraint firstItem="axN-GY-Qso" firstAttribute="trailing" secondItem="zF9-nX-Meb" secondAttribute="trailing" id="PC8-pK-hxH"/>
+                            <constraint firstItem="axN-GY-Qso" firstAttribute="top" secondItem="zF9-nX-Meb" secondAttribute="top" id="xHf-Lr-y7f"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zF9-nX-Meb"/>
                     </view>

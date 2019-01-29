@@ -95,13 +95,13 @@ enum Theme: Int {
         
         UIApplication.shared.delegate?.window??.tintColor = mainColor
         UIApplication.shared.delegate?.window??.backgroundColor = backgroundColor3
-        
         //UIApplication.shared.delegate?.window??.backgroundColor = mainColor
-        
         UITabBar.appearance().backgroundColor = backgroundColor1
         UITabBar.appearance().barStyle = barStyle
         UINavigationBar.appearance().barStyle = barStyle
         
+        guard let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else { return }
+        statusBar.backgroundColor = backgroundColor1
         UITableViewCell.appearance().backgroundColor = backgroundColor2
         UITableView.appearance().backgroundColor = backgroundColor2
         
@@ -130,7 +130,7 @@ enum Theme: Int {
         UISegmentedControl.appearance().setBackgroundImage(controlBackground, for: .normal, barMetrics: .default)
         UISegmentedControl.appearance().setBackgroundImage(controlSelectedBackground, for: .selected, barMetrics: .default)
         
-        
+        UIView.appearance(whenContainedInInstancesOf: [ManagementViewController.self]).backgroundColor = backgroundColor2
         UIButton.appearance(whenContainedInInstancesOf: [ManagementViewController.self]).backgroundColor = mainColor
         UIButton.appearance(whenContainedInInstancesOf: [ProfileViewController.self]).backgroundColor = mainColor
         UIButton.appearance().tintColor = textColor

@@ -36,19 +36,7 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
 //        userImage.layer.borderWidth = 3.0
 //        userImage.layer.borderColor = UIColor(displayP3Red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.5).cgColor
         
-        //setupView()
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        if userImage.image == nil {
-            setupView()
-        }
-
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        userImage.image = nil
+        setupView()
     }
     
     
