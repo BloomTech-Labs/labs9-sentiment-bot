@@ -41,11 +41,11 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if (user?.subscribed)! {
-            subscriptionButton.setTitle("Cancel", for: .normal)
-        } else if !(user?.subscribed)! {
-            subscriptionButton.setTitle("Subscribe", for: .normal)
-        }
+//        if (user?.subscribed)! {
+//            subscriptionButton.setTitle("Cancel", for: .normal)
+//        } else if !(user?.subscribed)! {
+//            subscriptionButton.setTitle("Subscribe", for: .normal)
+//        }
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     

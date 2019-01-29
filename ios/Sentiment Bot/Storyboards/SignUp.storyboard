@@ -49,7 +49,7 @@
                                                 <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oRz-gH-edp">
-                                                <rect key="frame" x="111.5" y="140" width="52" height="30"/>
+                                                <rect key="frame" x="90" y="140" width="95" height="30"/>
                                                 <state key="normal" title="Sign up">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -62,8 +62,10 @@
                                             <constraint firstAttribute="trailing" secondItem="Zxi-wd-Fxx" secondAttribute="trailing" id="Cds-mm-vpa"/>
                                             <constraint firstAttribute="trailing" secondItem="AUv-IP-EqK" secondAttribute="trailing" id="HQL-Td-c09"/>
                                             <constraint firstAttribute="trailing" secondItem="egZ-Yo-l4d" secondAttribute="trailing" id="MYW-JX-Uq1"/>
+                                            <constraint firstItem="oRz-gH-edp" firstAttribute="leading" secondItem="mAt-uP-Dpf" secondAttribute="leading" constant="90" id="NV6-c3-bdb"/>
                                             <constraint firstItem="egZ-Yo-l4d" firstAttribute="leading" secondItem="mAt-uP-Dpf" secondAttribute="leading" id="QRT-36-e7j"/>
                                             <constraint firstItem="msl-44-4fm" firstAttribute="leading" secondItem="mAt-uP-Dpf" secondAttribute="leading" id="ZnD-Yl-vyV"/>
+                                            <constraint firstAttribute="trailing" secondItem="oRz-gH-edp" secondAttribute="trailing" constant="90" id="aKD-AF-lC6"/>
                                             <constraint firstAttribute="trailing" secondItem="msl-44-4fm" secondAttribute="trailing" id="ae6-sC-VLB"/>
                                             <constraint firstItem="AUv-IP-EqK" firstAttribute="leading" secondItem="mAt-uP-Dpf" secondAttribute="leading" id="yvo-O6-cKl"/>
                                             <constraint firstItem="Zxi-wd-Fxx" firstAttribute="leading" secondItem="mAt-uP-Dpf" secondAttribute="leading" id="zTX-SB-qbf"/>

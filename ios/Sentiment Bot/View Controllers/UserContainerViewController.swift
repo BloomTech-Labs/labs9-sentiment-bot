@@ -30,21 +30,27 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        imageButton.backgroundColor = .clear
         userImage.layer.cornerRadius = userImage.frame.size.width / 2
         userImage.clipsToBounds = true
-        userImage.layer.borderWidth = 3.0
-        userImage.layer.borderColor = UIColor(displayP3Red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.5).cgColor
+//        userImage.layer.borderWidth = 3.0
+//        userImage.layer.borderColor = UIColor(displayP3Red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.5).cgColor
         
-        setupView()
+        //setupView()
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-            self.setupView()
+        if userImage.image == nil {
+            setupView()
+        }
 
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        userImage.image = nil
+    }
+    
     
     // MARK: - Setup View
     func setupView() {
@@ -57,7 +63,6 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
                 DispatchQueue.main.async {
                     guard let firstName = users?.firstName, let lastName = users?.lastName else { return }
                     self.nameLabel.text = "\(firstName) \(lastName)"
-                    
                     if let imageUrl = users?.imageUrl {
                         APIController.shared.getImage(url: imageUrl) { (image, error) in
                             if let error = error {
@@ -157,7 +162,6 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
             NSLog("No image found")
             return
         }
-        userImage.image = image
         let imageData = image.pngData()
         
         APIController.shared.uploadProfilePicture(imageData: imageData!) { (error) in
@@ -165,9 +169,9 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
                 NSLog("Error uploading profile picture: \(error)")
                 return
             }
-//            DispatchQueue.main.async {
-//                self.setupView()
-//            }
+            DispatchQueue.main.async {
+                self.userImage.image = image
+            }
         }
         dismiss(animated: true, completion: nil)
     }

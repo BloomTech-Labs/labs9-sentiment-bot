@@ -37,7 +37,7 @@
                                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEx-R4-cPz">
-                                                <rect key="frame" x="114" y="70" width="47" height="30"/>
+                                                <rect key="frame" x="90" y="70" width="95" height="30"/>
                                                 <state key="normal" title="Sign in">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -48,8 +48,10 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="Ous-VM-M5b" firstAttribute="leading" secondItem="8hh-di-BY6" secondAttribute="leading" id="2G7-kB-cQY"/>
+                                            <constraint firstAttribute="trailing" secondItem="xEx-R4-cPz" secondAttribute="trailing" constant="90" id="4iC-5I-q4h"/>
                                             <constraint firstAttribute="trailing" secondItem="Hh9-Rg-A2Q" secondAttribute="trailing" id="6v3-ko-42i"/>
                                             <constraint firstAttribute="trailing" secondItem="Ous-VM-M5b" secondAttribute="trailing" id="KSN-v5-Rt1"/>
+                                            <constraint firstItem="xEx-R4-cPz" firstAttribute="leading" secondItem="8hh-di-BY6" secondAttribute="leading" constant="90" id="TOQ-KK-hE3"/>
                                             <constraint firstItem="Hh9-Rg-A2Q" firstAttribute="leading" secondItem="8hh-di-BY6" secondAttribute="leading" id="WQ3-wM-eJk"/>
                                         </constraints>
                                     </stackView>
