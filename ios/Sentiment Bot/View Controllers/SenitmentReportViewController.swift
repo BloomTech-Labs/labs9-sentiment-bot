@@ -23,7 +23,7 @@ class SenitmentReportViewController: UIViewController, ManagerProtocol {
     
     @IBOutlet weak var pieChart: PieChartView!
     
-    var emojiSelection: [String] = ["😄" ,"😃","😢","😊","😞", "😡"]
+    var emojiSelection: [String] = ["😐" ,"😃","😢","😑","😞", "😡", "😊"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,7 +101,7 @@ class SenitmentReportViewController: UIViewController, ManagerProtocol {
         formatter.multiplier = 1.0
         chartData.setValueFormatter(DefaultValueFormatter(formatter:formatter))
         
-        let colors = [UIColor.blue, UIColor.orange, UIColor.red, UIColor.lightGray, UIColor.green, UIColor.magenta]
+        let colors = [UIColor.blue, UIColor.orange, UIColor.red, UIColor.lightGray, UIColor.green, UIColor.magenta, UIColor.purple]
         
         chartDataSet.colors = colors as! [NSUIColor]
         

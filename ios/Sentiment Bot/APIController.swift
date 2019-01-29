@@ -1208,6 +1208,6 @@ class APIController {
     
     
     let locationHelper = LocationHelper()
-    let baseUrl = URL(string: "https://sentimentbot-1.herokuapp.com/api")!
-    //let baseUrl = URL(string: "http://192.168.1.152:3000/api")!
+    //let baseUrl = URL(string: "https://sentimentbot-1.herokuapp.com/api")!
+    let baseUrl = URL(string: "http://192.168.1.152:3000/api")!
 }

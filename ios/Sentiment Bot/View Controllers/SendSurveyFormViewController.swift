@@ -25,7 +25,7 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
         }
     }
     
-    var emojiSelection: [String] = ["😄" ,"😃","😢","😊","😞", "😡"]
+    var emojiSelection: [String] = ["😐" ,"😃","😢","😑","😞", "😡", "😊"]
     
     var selectedEmoji: String?
     
@@ -126,8 +126,8 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
                 })
             <<< PushRow<String>() {
                 $0.title = "Select Emoji"
-                $0.options = ["😄" ,"😃","😢","😊","😞", "😡"]
-                $0.value = "😄"
+                $0.options = ["😐" ,"😃","😢","😑","😞", "😡", "😊"]
+                $0.value = "😐"
                 $0.selectorTitle = "Emojis"
                 }.onPresent { from, to in
                     to.dismissOnSelection = true

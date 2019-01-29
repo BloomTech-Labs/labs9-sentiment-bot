@@ -20,7 +20,7 @@ class TimeLineTableViewCell: UITableViewCell {
     func setResponse(response: Response) {
         dateLabel.text = response.date
         emojiLabel.text = response.emoji
-        feelzNameLabel.text = response.mood
+        feelzNameLabel.text = response.mood.capitalized
         locationLabel.text = response.place
         responseID.text = String(response.id)
  
