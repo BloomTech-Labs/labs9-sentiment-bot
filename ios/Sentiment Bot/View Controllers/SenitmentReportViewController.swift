@@ -47,14 +47,11 @@ class SenitmentReportViewController: UIViewController, ManagerProtocol {
             pieChart.holeColor = UIColor(red: 102.0/255.0, green: 102.0/255.0, blue: 102.0/255.0, alpha: 1.0)
         case 2:
             view.backgroundColor = UIColor.white
+            pieChart.holeColor = UIColor.white
         default:
             NSLog("Theme not picked")
         }
         
-        guard let teamResponses = teamResponses else {
-            NSLog("teamResponses wasn't set on SentimentReportViewController")
-            return
-        }
     }
     
     @IBOutlet weak var userContainerView: UIView!

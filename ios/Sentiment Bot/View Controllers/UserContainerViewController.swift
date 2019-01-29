@@ -33,8 +33,8 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
         imageButton.backgroundColor = .clear
         userImage.layer.cornerRadius = userImage.frame.size.width / 2
         userImage.clipsToBounds = true
-        userImage.layer.borderWidth = 3.0
-        userImage.layer.borderColor = UIColor(displayP3Red: 132.0/255.0, green: 13.0/255.0, blue: 27.0/255.0, alpha: 0.5).cgColor
+        //userImage.layer.borderWidth = 3.0
+        //userImage.layer.borderColor = UIColor(displayP3Red: 132.0/255.0, green: 13.0/255.0, blue: 27.0/255.0, alpha: 0.5).cgColor
         
         setupView()
     }
