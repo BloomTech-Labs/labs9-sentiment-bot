@@ -61,9 +61,8 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
                 NSLog("Error getting user: \(error)")
             } else {
                 DispatchQueue.main.async {
-                    guard let firstName = users?.firstName, let lastName = users?.lastName, let userID = users?.id else { return }
-                    self.nameLabel.text = "\(firstName) \(lastName)"
                     guard let firstName = users?.firstName, let lastName = users?.lastName else { return }
+                    self.nameLabel.text = "\(firstName) \(lastName)"
                     if let imageUrl = users?.imageUrl {
                         APIController.shared.getImage(url: imageUrl) { (image, error) in
                             if let error = error {

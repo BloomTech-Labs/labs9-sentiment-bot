@@ -64,6 +64,7 @@ enum Theme: Int {
             return UIColor(red: 102.0/255.0, green: 102.0/255.0, blue: 102.0/255.0, alpha: 1.0)
         case .light:
             return UIColor.white
+        }
     }
     
     var backgroundColor3: UIColor {
@@ -95,12 +96,10 @@ enum Theme: Int {
         UIApplication.shared.delegate?.window??.tintColor = mainColor
         UIApplication.shared.delegate?.window??.backgroundColor = backgroundColor3
         
+        //UIApplication.shared.delegate?.window??.backgroundColor = mainColor
         
-        UIApplication.shared.delegate?.window??.backgroundColor = backgroundColor3
-        
-        UIApplication.shared.delegate?.window??.backgroundColor = mainColor
         UITabBar.appearance().backgroundColor = backgroundColor1
-        
+        UITabBar.appearance().barStyle = barStyle
         UINavigationBar.appearance().barStyle = barStyle
         
         UITableViewCell.appearance().backgroundColor = backgroundColor2
@@ -114,7 +113,7 @@ enum Theme: Int {
         UILabel.appearance(whenContainedInInstancesOf: [ManagementViewController.self]).textColor = textColor
         UILabel.appearance(whenContainedInInstancesOf: [UserContainerViewController.self]).textColor = textColor
         UILabel.appearance().textColor = textColor
-        UILabel.appearance(whenContainedInInstancesOf: [UserContainerViewController.self]).textColor = .white
+        //UILabel.appearance(whenContainedInInstancesOf: [UserContainerViewController.self]).textColor = .white
         UIView.appearance(whenContainedInInstancesOf: [UserContainerViewController.self]).backgroundColor = backgroundColor1
 
         
@@ -133,6 +132,7 @@ enum Theme: Int {
         
         
         UIButton.appearance(whenContainedInInstancesOf: [ManagementViewController.self]).backgroundColor = mainColor
+        UIButton.appearance(whenContainedInInstancesOf: [ProfileViewController.self]).backgroundColor = mainColor
         UIButton.appearance().tintColor = textColor
     
         styleSignInVC()
