@@ -23,7 +23,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="RaY-8Y-fd8">
-                                        <rect key="frame" x="30" y="66" width="182" height="29"/>
+                                        <rect key="frame" x="8" y="66" width="225" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <segments>
                                             <segment title="Default"/>
@@ -64,7 +64,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fcA-VK-hlf"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" id="lz5-NM-N8d"/>
+                    <tabBarItem key="tabBarItem" title="" image="plus" id="lz5-NM-N8d"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="profileView" destination="FR5-Yd-fpV" id="mHj-PS-eYp"/>
@@ -76,4 +76,7 @@
             <point key="canvasLocation" x="-68" y="162.5615763546798"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="plus" width="30" height="30"/>
+    </resources>
 </document>

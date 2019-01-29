@@ -30,16 +30,13 @@ class ProfileViewController: UIViewController {
         dismiss(animated: true)
     }
     
-    
     @IBAction func logOutButton(_ sender: UIButton) {
-        dismiss(animated: true)
         GIDSignIn.sharedInstance()?.signOut()
         APIController.shared.logout()
-        NSLog("Log Out")
+        self.view.window!.rootViewController?.dismiss(animated: true)
     }
     
     @IBAction func cancelButton(_ sender: UIButton) {
-        NSLog("Cancel")
         dismiss(animated: true)
     }
     

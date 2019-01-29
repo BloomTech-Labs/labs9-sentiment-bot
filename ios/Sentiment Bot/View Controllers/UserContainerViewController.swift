@@ -34,7 +34,7 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
         userImage.layer.cornerRadius = userImage.frame.size.width / 2
         userImage.clipsToBounds = true
         userImage.layer.borderWidth = 3.0
-        userImage.layer.borderColor = UIColor(displayP3Red: 132.0/255.0, green: 13.0/255.0, blue: 27.0/255.0, alpha: 0.5).cgColor
+        userImage.layer.borderColor = UIColor(displayP3Red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.5).cgColor
         
         setupView()
     }
@@ -55,8 +55,8 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
                 NSLog("Error getting user: \(error)")
             } else {
                 DispatchQueue.main.async {
-                    guard let firstName = users?.firstName, let lastName = users?.lastName, let userID = users?.id else { return }
-                    self.nameLabel.text = "\(firstName) \(lastName) (\(userID))"
+                    guard let firstName = users?.firstName, let lastName = users?.lastName else { return }
+                    self.nameLabel.text = "\(firstName) \(lastName)"
                     
                     if let imageUrl = users?.imageUrl {
                         APIController.shared.getImage(url: imageUrl) { (image, error) in
