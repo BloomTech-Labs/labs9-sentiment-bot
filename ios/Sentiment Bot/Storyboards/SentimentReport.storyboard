@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAu-cX-zkz" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="237" width="375" height="575"/>
+                                <rect key="frame" x="48" y="260" width="279" height="427"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Esj-xK-MvI">
@@ -31,24 +31,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Esj-xK-MvI" firstAttribute="trailing" secondItem="qAu-cX-zkz" secondAttribute="trailing" id="1QY-pZ-Fnk"/>
-                            <constraint firstAttribute="bottom" secondItem="qAu-cX-zkz" secondAttribute="bottom" id="DCx-OC-FAa"/>
-                            <constraint firstItem="qAu-cX-zkz" firstAttribute="trailing" secondItem="8bO-dT-MaD" secondAttribute="trailing" id="RUc-y3-Nnw"/>
-                            <constraint firstItem="Esj-xK-MvI" firstAttribute="top" secondItem="9bv-tS-bqH" secondAttribute="top" id="UPJ-60-eAM"/>
-                            <constraint firstItem="qAu-cX-zkz" firstAttribute="top" secondItem="Esj-xK-MvI" secondAttribute="bottom" constant="37" id="WTB-3q-HWy"/>
-                            <constraint firstItem="qAu-cX-zkz" firstAttribute="leading" secondItem="8bO-dT-MaD" secondAttribute="leading" id="WX4-8j-amo"/>
-                            <constraint firstItem="qAu-cX-zkz" firstAttribute="leading" secondItem="8bO-dT-MaD" secondAttribute="leading" id="bZF-Gd-9uH"/>
-                            <constraint firstItem="Esj-xK-MvI" firstAttribute="leading" secondItem="qAu-cX-zkz" secondAttribute="leading" id="dcB-no-kBV"/>
-                            <constraint firstAttribute="bottom" secondItem="Esj-xK-MvI" secondAttribute="bottom" constant="612" id="nEB-VW-Cp9"/>
-                            <constraint firstItem="qAu-cX-zkz" firstAttribute="trailing" secondItem="8bO-dT-MaD" secondAttribute="trailing" id="qaw-gI-ny1"/>
-                            <constraint firstItem="qAu-cX-zkz" firstAttribute="top" secondItem="Esj-xK-MvI" secondAttribute="bottom" constant="37" id="rJs-R5-OsP"/>
-                            <constraint firstAttribute="bottom" secondItem="qAu-cX-zkz" secondAttribute="bottom" id="uhk-iq-k6l"/>
+                            <constraint firstItem="8bO-dT-MaD" firstAttribute="bottom" secondItem="qAu-cX-zkz" secondAttribute="bottom" constant="91" id="1dV-IJ-THP"/>
+                            <constraint firstItem="Esj-xK-MvI" firstAttribute="top" secondItem="9bv-tS-bqH" secondAttribute="top" id="3Mg-vp-Sx4"/>
+                            <constraint firstItem="qAu-cX-zkz" firstAttribute="centerY" secondItem="8bO-dT-MaD" secondAttribute="centerY" constant="62.5" id="59F-L8-Ber"/>
+                            <constraint firstItem="qAu-cX-zkz" firstAttribute="leading" secondItem="8bO-dT-MaD" secondAttribute="leading" constant="48" id="7ia-nn-5y8"/>
+                            <constraint firstItem="qAu-cX-zkz" firstAttribute="centerX" secondItem="8bO-dT-MaD" secondAttribute="centerX" id="C4l-p6-Mfr"/>
+                            <constraint firstItem="Esj-xK-MvI" firstAttribute="trailing" secondItem="8bO-dT-MaD" secondAttribute="trailing" id="EqP-in-eJe"/>
+                            <constraint firstItem="qAu-cX-zkz" firstAttribute="top" secondItem="Esj-xK-MvI" secondAttribute="bottom" constant="60" id="I0n-uw-uvv"/>
+                            <constraint firstItem="Esj-xK-MvI" firstAttribute="leading" secondItem="8bO-dT-MaD" secondAttribute="leading" id="uhN-D0-wlo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8bO-dT-MaD"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Report" image="report_card" id="6bE-mY-fwf"/>
                     <connections>
                         <outlet property="pieChart" destination="qAu-cX-zkz" id="tFk-ln-B3Z"/>
+                        <outlet property="userContainerView" destination="Esj-xK-MvI" id="ORP-6I-vfb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I6U-XV-1a8" userLabel="First Responder" sceneMemberID="firstResponder"/>

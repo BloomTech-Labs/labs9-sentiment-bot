@@ -30,7 +30,7 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        imageButton.backgroundColor = .clear
         userImage.layer.cornerRadius = userImage.frame.size.width / 2
         userImage.clipsToBounds = true
         userImage.layer.borderWidth = 3.0
@@ -39,12 +39,6 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
         setupView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-            self.setupView()
-
-    }
     
     // MARK: - Setup View
     func setupView() {
@@ -56,7 +50,7 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
             } else {
                 DispatchQueue.main.async {
                     guard let firstName = users?.firstName, let lastName = users?.lastName, let userID = users?.id else { return }
-                    self.nameLabel.text = "\(firstName) \(lastName) (\(userID))"
+                    self.nameLabel.text = "\(firstName) \(lastName)"
                     
                     if let imageUrl = users?.imageUrl {
                         APIController.shared.getImage(url: imageUrl) { (image, error) in
@@ -165,9 +159,6 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
                 NSLog("Error uploading profile picture: \(error)")
                 return
             }
-//            DispatchQueue.main.async {
-//                self.setupView()
-//            }
         }
         dismiss(animated: true, completion: nil)
     }

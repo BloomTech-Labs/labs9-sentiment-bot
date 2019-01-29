@@ -1198,9 +1198,10 @@ class APIController {
     }
     
     func logout() {
-        let domain = Bundle.main.bundleIdentifier!
-        UserDefaults.standard.removePersistentDomain(forName: domain)
-        UserDefaults.standard.synchronize()
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.isLoggedIn.rawValue)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.token.rawValue)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.isLoggedIn.rawValue)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.userId.rawValue)
     }
     
     

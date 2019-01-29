@@ -25,7 +25,7 @@ enum Theme: Int {
         case .default:
             return UIColor(red: 132.0/255.0, green: 13.0/255.0, blue: 27.0/255.0, alpha: 1.0)
         case .dark:
-            return UIColor(red: 255.0/255.0, green: 115.0/255.0, blue: 50.0/255.0, alpha: 1.0)
+            return UIColor(red: 132.0/255.0, green: 13.0/255.0, blue: 27.0/255.0, alpha: 1.0)
         case .light:
             return UIColor(red: 10.0/255.0, green: 10.0/255.0, blue: 10.0/255.0, alpha: 1.0)
         }
@@ -47,7 +47,8 @@ enum Theme: Int {
         case .light:
             return UIColor.white
         case .dark:
-            return UIColor(white: 0.4, alpha: 1.0)
+            //Dark Gray
+            return UIColor(red: 34.0/255.0, green: 34.0/255.0, blue: 34.0/255.0, alpha: 1.0)
         }
     }
     
@@ -58,7 +59,8 @@ enum Theme: Int {
         case .light:
             return UIColor.white
         case .dark:
-            return UIColor(white: 0.4, alpha: 1.0)
+            //Light Gray
+            return UIColor(red: 102.0/255.0, green: 102.0/255.0, blue: 102.0/255.0, alpha: 1.0)
         }
     }
     
@@ -95,6 +97,8 @@ enum Theme: Int {
         
         UITabBar.appearance().barStyle = barStyle
         
+        UITabBar.appearance().backgroundColor = backgroundColor1
+        
         UINavigationBar.appearance().barStyle = barStyle
         
         UITableViewCell.appearance().backgroundColor = backgroundColor2
@@ -104,9 +108,13 @@ enum Theme: Int {
         UILabel.appearance(whenContainedInInstancesOf: [UITableView.self]).textColor = textColor
         UILabel.appearance().textColor = textColor
         
-        UIView.appearance(whenContainedInInstancesOf: [UserContainerViewController.self]).backgroundColor = backgroundColor1
+        //UIView.appearance(whenContainedInInstancesOf: [SenitmentReportViewController.self]).backgroundColor = backgroundColor2
+        
         UIView.appearance(whenContainedInInstancesOf: [ProfileViewController.self]).backgroundColor = backgroundColor2
+        
+        UIView.appearance(whenContainedInInstancesOf: [UserContainerViewController.self]).backgroundColor = backgroundColor1
 //        UIView.appearance(whenContainedInInstancesOf: [ManagementViewController.self]).backgroundColor = backgroundColor2
+
         
         UIButton.appearance(whenContainedInInstancesOf: [UserContainerViewController.self]).tintColor = mainColor
         
@@ -122,9 +130,12 @@ enum Theme: Int {
         UISegmentedControl.appearance().setBackgroundImage(controlSelectedBackground, for: .selected, barMetrics: .default)
         
         
-//        UIButton.appearance().backgroundColor = backgroundColor1
+        UIButton.appearance(whenContainedInInstancesOf: [ManagementViewController.self]).backgroundColor = mainColor
+//        UIButton.appearance(whenContainedInInstancesOf: [ManagementViewController.self]).titleEdgeInsets = UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
+        //UIButton.appearance().contentEdgeInsets = UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
+        UIButton.appearance().tintColor = textColor
         
-//        UIButton.appearance().tintColor = textColor
+        //UITextField.appearance().
         
 //        UIView.appearance(whenContainedInInstancesOf: [SegmentedControlViewController.self, SignInViewController.self, SignUpViewController.self]).backgroundColor = UIColor.clear.withAlphaComponent(0.25)
 

@@ -74,28 +74,28 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
                 }.onChange({ (row) in
                     self.selectedTime = row.value
                 })
-            <<< ButtonRow() { (row: ButtonRow) -> Void in
-                row.title = "Schedule"
-                }
-                .onCellSelection { [weak self] (cell, row) in
-                    guard let selectedTime = self?.selectedTime,
-                        let selectedSchedule = self?.selectedSchedule,
-                        let survey = self?.survey else {
-                            NSLog("selectedTime and selectedSchedule weren't set on SendSurveyFormViewController")
-                            return
-                    }
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "HH:mm"
-                    let timeString = dateFormatter.string(from: selectedTime)
-                    
-                    APIController.shared.changeSurveySchedule(surveyId: survey.id, time: timeString, schedule: selectedSchedule, completion: { (errorMessage) in
-                        
-                        let managementViewController = self?.parent?.parent?.children.first as! ManagementViewController
-                        
-                        managementViewController.survey?.schedule = selectedSchedule
-                        
-                    })
-            }
+//            <<< ButtonRow() { (row: ButtonRow) -> Void in
+//                row.title = "Schedule"
+//                }
+//                .onCellSelection { [weak self] (cell, row) in
+//                    guard let selectedTime = self?.selectedTime,
+//                        let selectedSchedule = self?.selectedSchedule,
+//                        let survey = self?.survey else {
+//                            NSLog("selectedTime and selectedSchedule weren't set on SendSurveyFormViewController")
+//                            return
+//                    }
+//                    let dateFormatter = DateFormatter()
+//                    dateFormatter.dateFormat = "HH:mm"
+//                    let timeString = dateFormatter.string(from: selectedTime)
+//
+//                    APIController.shared.changeSurveySchedule(surveyId: survey.id, time: timeString, schedule: selectedSchedule, completion: { (errorMessage) in
+//
+//                        let managementViewController = self?.parent?.parent?.children.first as! ManagementViewController
+//
+//                        managementViewController.survey?.schedule = selectedSchedule
+//
+//                    })
+//            }
             +++ Section("Add a Feeling")
             <<< TextRow(){ row in
                 row.title = "Feeling:"
@@ -134,7 +134,7 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
                     to.dismissOnChange = false
                     to.enableDeselection = false
                     to.selectableRowSetup = { row in
-                        row.cell.height = ({ return (self.parent?.view.frame.height)!/5 })
+                        row.cell.height = ({ return (self.parent?.view.frame.height)!/8 })
                         row.cell.textLabel?.font =  UIFont(name:"Avenir", size: (self.parent?.view.frame.height)!/10)
                 }}
                 .onChange{ (row) in
