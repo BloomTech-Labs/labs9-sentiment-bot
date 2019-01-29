@@ -25,10 +25,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="241.33333333333334" height="226"/>
                                         <subviews>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="RaY-8Y-fd8">
-                                                <rect key="frame" x="8" y="66" width="225" height="29"/>
+                                                <rect key="frame" x="7.9999999999999858" y="66" width="225" height="29"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <segments>
-                                                    <segment title="Default"/>
                                                     <segment title="Dark"/>
                                                     <segment title="Light"/>
                                                 </segments>

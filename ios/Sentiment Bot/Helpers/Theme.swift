@@ -9,7 +9,7 @@
 import UIKit
 
 enum Theme: Int {
-    case `default`, dark, light
+    case dark, light
 
     private enum Keys {
         static let selectedTheme = "SelectedTheme"
@@ -17,13 +17,13 @@ enum Theme: Int {
 
     static var current: Theme {
         let storedTheme = UserDefaults.standard.integer(forKey: Keys.selectedTheme)
-        return Theme(rawValue: storedTheme) ?? .default
+        return Theme(rawValue: storedTheme) ?? .dark
     }
     
     var mainColor: UIColor {
         switch self {
-        case .default:
-            return UIColor(red: 132.0/255.0, green: 13.0/255.0, blue: 27.0/255.0, alpha: 1.0)
+//        case .default:
+//            return UIColor(red: 132.0/255.0, green: 13.0/255.0, blue: 27.0/255.0, alpha: 1.0)
         case .dark:
             return UIColor(red: 132.0/255.0, green: 13.0/255.0, blue: 27.0/255.0, alpha: 1.0)
         case .light:
@@ -33,8 +33,8 @@ enum Theme: Int {
     
     var barStyle: UIBarStyle {
         switch self {
-        case .default:
-            return .default
+//        case .default:
+//            return .default
         case .dark:
             return .black
         case .light:
@@ -45,8 +45,8 @@ enum Theme: Int {
     
     var backgroundColor1: UIColor {
         switch self {
-        case .default:
-            return UIColor(red: 181.0/255.0, green: 228.0/255.0, blue: 237.0/255.0, alpha: 1.0)
+//        case .default:
+//            return UIColor(red: 181.0/255.0, green: 228.0/255.0, blue: 237.0/255.0, alpha: 1.0)
         case .dark:
             //Dark Gray
             return UIColor(red: 34.0/255.0, green: 34.0/255.0, blue: 34.0/255.0, alpha: 1.0)
@@ -57,8 +57,8 @@ enum Theme: Int {
     
     var backgroundColor2: UIColor {
         switch self {
-        case .default:
-            return UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+//        case .default:
+//            return UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         case .dark:
             //Light Gray
             return UIColor(red: 102.0/255.0, green: 102.0/255.0, blue: 102.0/255.0, alpha: 1.0)
@@ -69,8 +69,8 @@ enum Theme: Int {
     
     var backgroundColor3: UIColor {
         switch self {
-        case .default:
-            return UIColor(red: 218.0/255.0, green: 206.0/255.0, blue: 199.0/255.0, alpha: 1.0)
+//        case .default:
+//            return UIColor(red: 218.0/255.0, green: 206.0/255.0, blue: 199.0/255.0, alpha: 1.0)
         case .dark:
             return UIColor(white: 0.4, alpha: 1.0)
         case .light:
@@ -80,8 +80,8 @@ enum Theme: Int {
     
     var textColor: UIColor {
         switch self {
-        case .default:
-            return UIColor.black
+//        case .default:
+//            return UIColor.black
         case .dark:
             return UIColor.white
         case .light:
