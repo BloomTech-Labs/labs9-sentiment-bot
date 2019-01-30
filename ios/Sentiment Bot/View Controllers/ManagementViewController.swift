@@ -24,12 +24,12 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
             NSLog("Survey wasn't set on ManagementViewController")
             return
         }
-        currentScheduleLabel.text = "Current Schedule: \(survey.schedule.capitalized)"
+        currentScheduleLabel.text = "Schedule: \(survey.schedule.capitalized)"
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        setSchedule()
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        setSchedule()
+//    }
     
     
     //@IBOutlet weak var msgBox: UITextView!
@@ -38,6 +38,7 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setSchedule()
     }
     
     override func viewWillAppear(_ animated: Bool) {

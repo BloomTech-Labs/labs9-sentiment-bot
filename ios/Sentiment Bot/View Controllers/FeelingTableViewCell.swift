@@ -22,7 +22,7 @@ class FeelingTableViewCell: UITableViewCell {
         }
         
         emojiLabel.text = feeling.emoji
-        feelingLabel.text = feeling.mood
+        feelingLabel.text = feeling.mood.capitalized
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -51,10 +51,31 @@ class SendSurveyViewController: UITableViewController, ManagerProtocol {
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeelingCell", for: indexPath) as! FeelingTableViewCell
         let feeling = feelings?[indexPath.row]
+        cell.selectionStyle = .none
+        cell.preservesSuperviewLayoutMargins = false
+        cell.separatorInset = UIEdgeInsets.zero
+        cell.layoutMargins = UIEdgeInsets.zero
         cell.setFeeling(feeling: feeling)
         return cell
      }
     
+    @IBAction func scheduleSurvey(_ sender: Any) {
+        let sendSurveyViewController = self.children.first as! SendSurveyFormViewController
+        let managementViewController = self.parent?.children.first as! ManagementViewController
+        let newSchedule = sendSurveyViewController.selectedSchedule!
+        managementViewController.survey?.schedule = newSchedule
+        managementViewController.currentScheduleLabel.text = "Schedule: \(newSchedule)"
+        let selectedTime = sendSurveyViewController.selectedTime!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let timeString = dateFormatter.string(from: selectedTime)
+        APIController.shared.changeSurveySchedule(surveyId: survey!.id, time: timeString, schedule: newSchedule, completion: { (errorMessage) in
+            DispatchQueue.main.async {
+                sendSurveyViewController.navigationController?.popViewController(animated: true)
+            }
+        })
+        
+    }
     
     /*
      // Override to support conditional editing of the table view.
@@ -64,17 +85,21 @@ class SendSurveyViewController: UITableViewController, ManagerProtocol {
      }
      */
     
-    /*
+    
      // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
      if editingStyle == .delete {
-     // Delete the row from the data source
+     let feeling = feelings?[indexPath.row]
+     feelings?.remove(at: indexPath.row)
+     APIController.shared.removeFeelingFromSurvey(feelingId: (feeling?.id)!) { (errorMessage) in
+            
+     }
      tableView.deleteRows(at: [indexPath], with: .fade)
      } else if editingStyle == .insert {
      // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
      }
      }
-     */
+    
     
     /*
      // Override to support rearranging the table view.

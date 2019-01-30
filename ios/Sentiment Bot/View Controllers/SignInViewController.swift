@@ -17,7 +17,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         view.layer.cornerRadius = 20
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        //setPlaceHolders()
+        setPlaceHolders()
     }
     
     func setPlaceHolders() {

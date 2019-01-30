@@ -56,11 +56,17 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        form +++ Section("Select Schedule")
+        
+        let selectScheduleSection = Section("Select Schedule")
+        form +++ selectScheduleSection
             <<< PickerInputRow<String>("Picker Input Row"){
                 $0.title = "Schedule"
                 $0.options = scheduleSelection
                 $0.value = survey?.schedule.capitalized
+                $0.cell.preservesSuperviewLayoutMargins = false
+                $0.cell.separatorInset = UIEdgeInsets.zero
+                $0.cell.layoutMargins = UIEdgeInsets.zero
+                self.selectedSchedule = $0.value
                 }.onChange({ row in
                     self.selectedSchedule = row.value
                 })
@@ -71,6 +77,7 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
                 }
                 $0.title = "Time"
                 $0.value = convertStringToTime(time: time)
+                self.selectedTime = $0.value
                 }.onChange({ (row) in
                     self.selectedTime = row.value
                 })
@@ -93,41 +100,53 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
 //                        let managementViewController = self?.parent?.parent?.children.first as! ManagementViewController
 //
 //                        managementViewController.survey?.schedule = selectedSchedule
+//                        DispatchQueue.main.async {
+//                            self?.navigationController?.popViewController(animated: true)
+//                        }
 //
 //                    })
 //            }
             +++ Section("Add a Feeling")
             <<< TextRow(){ row in
-                row.title = "Feeling:"
+                row.title = "  Feeling:"
                 row.placeholder = "Enter text here"
-                row.add(rule: RuleRequired())
+                row.add(rule: RuleMaxLength(maxLength: 10))
+                row.add(rule: RuleRequired(msg: "Feeling is Required"))
                 row.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
+                row.cell.preservesSuperviewLayoutMargins = false
+                row.cell.separatorInset = UIEdgeInsets.zero
+                row.cell.layoutMargins = UIEdgeInsets.zero
+                }.onChange{ (row) in
+                    self.feelingName = row.value
+                }
+                .cellUpdate { cell, row in
                     if !row.isValid {
                         cell.titleLabel?.textColor = .red
                     }
                 }
-                .onRowValidationChanged { cell, row in
-                    let rowIndex = row.indexPath!.row
-                    while row.section!.count > rowIndex + 1 && row.section?[rowIndex  + 1] is LabelRow {
-                        row.section?.remove(at: rowIndex + 1)
-                    }
-                    if !row.isValid {
-                        for (index, validationMsg) in row.validationErrors.map({ $0.msg }).enumerated() {
-                            let labelRow = LabelRow() {
-                                $0.title = validationMsg
-                                $0.cell.height = { 30 }
-                            }
-                            row.section?.insert(labelRow, at: row.indexPath!.row + index + 1)
-                        }
-                    }
-                }.onChange({ (row) in
-                    self.feelingName = row.value
-                })
+//                .onRowValidationChanged { cell, row in
+//                    let rowIndex = row.indexPath!.row
+//                    while row.section!.count > rowIndex + 1 && row.section?[rowIndex  + 1] is LabelRow {
+//                        row.section?.remove(at: rowIndex + 1)
+//                    }
+//                    if !row.isValid {
+//                        for (index, validationMsg) in row.validationErrors.map({ $0.msg }).enumerated() {
+//                            let labelRow = LabelRow() {
+//                                $0.title = validationMsg
+//                                $0.cell.height = { 30 }
+//                            }
+//                            row.section?.insert(labelRow, at: row.indexPath!.row + index + 1)
+//                        }
+//                    }
+//            }
             <<< PushRow<String>() {
                 $0.title = "Select Emoji"
                 $0.options = ["😐" ,"😃","😢","😑","😞", "😡", "😊"]
                 $0.value = "😐"
+                $0.cell.preservesSuperviewLayoutMargins = false
+                $0.cell.separatorInset = UIEdgeInsets.zero
+                $0.cell.layoutMargins = UIEdgeInsets.zero
+                self.selectedEmoji = $0.value
                 $0.selectorTitle = "Emojis"
                 }.onPresent { from, to in
                     to.dismissOnSelection = true
@@ -136,15 +155,19 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
                     to.selectableRowSetup = { row in
                         row.cell.height = ({ return (self.parent?.view.frame.height)!/8 })
                         row.cell.textLabel?.font =  UIFont(name:"Avenir", size: (self.parent?.view.frame.height)!/10)
+                        row.cell.preservesSuperviewLayoutMargins = false
+                        row.cell.separatorInset = UIEdgeInsets.zero
+                        row.cell.layoutMargins = UIEdgeInsets.zero
                 }}
                 .onChange{ (row) in
                     self.selectedEmoji = row.value
                 }
             <<< ButtonRow() { (row: ButtonRow) -> Void in
-                row.title = "Add a Feeling"
+                row.title = "Add"
                 }
                 .onCellSelection { [weak self] (cell, row) in
                     row.section?.form?.validate()
+                    
                     guard let mood = self?.feelingName,
                         let emoji = self?.selectedEmoji,
                         let survey = self?.survey else {
