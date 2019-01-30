@@ -76,16 +76,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     }
     
     // Lets tabBarController present a tab modally
-    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        if viewController is ProfileViewController {
-            if let newVC = tabBarController.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") {
-                newVC.modalPresentationStyle = .overFullScreen
-                tabBarController.present(newVC, animated: true)
-                return false
-            }
-        }
-        return true
-    }
+//    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+//        if viewController is ProfileViewController {
+//            if let newVC = tabBarController.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") {
+//                newVC.modalPresentationStyle = .overFullScreen
+//                tabBarController.present(newVC, animated: true)
+//                return false
+//            }
+//        }
+//        return true
+//    }
 }
 
 // MARK: - Push Notifications

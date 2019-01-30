@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Map View Controller-->
+        <!--Map-->
         <scene sceneID="9nG-8x-e1Z">
             <objects>
                 <viewController id="KfZ-l2-Y4p" customClass="MapViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
@@ -24,16 +24,20 @@
                                     <outlet property="delegate" destination="KfZ-l2-Y4p" id="0pc-fU-cb2"/>
                                 </connections>
                             </mapView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6gO-xJ-FCC">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="246"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </view>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="07a-fI-wJZ" firstAttribute="trailing" secondItem="B4B-dP-059" secondAttribute="trailing" id="DDQ-Rm-G5r"/>
-                            <constraint firstItem="07a-fI-wJZ" firstAttribute="top" secondItem="B4B-dP-059" secondAttribute="top" id="abg-7c-ePn"/>
-                            <constraint firstItem="07a-fI-wJZ" firstAttribute="leading" secondItem="B4B-dP-059" secondAttribute="leading" id="etv-Ah-YOD"/>
-                            <constraint firstItem="07a-fI-wJZ" firstAttribute="bottom" secondItem="B4B-dP-059" secondAttribute="bottom" id="rgo-G2-XTS"/>
+                            <constraint firstItem="07a-fI-wJZ" firstAttribute="bottom" secondItem="B4B-dP-059" secondAttribute="bottom" id="0mP-hz-jkA"/>
+                            <constraint firstItem="07a-fI-wJZ" firstAttribute="top" secondItem="B4B-dP-059" secondAttribute="top" id="8xk-Sf-641"/>
+                            <constraint firstItem="07a-fI-wJZ" firstAttribute="trailing" secondItem="B4B-dP-059" secondAttribute="trailing" id="exm-mQ-pbP"/>
+                            <constraint firstItem="07a-fI-wJZ" firstAttribute="leading" secondItem="B4B-dP-059" secondAttribute="leading" id="xlz-sn-K3f"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="B4B-dP-059"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="map_marker" id="Bpf-ta-bZE"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map_marker" id="Bpf-ta-bZE"/>
                     <connections>
                         <outlet property="mapView" destination="07a-fI-wJZ" id="7GV-FE-Xsf"/>
                     </connections>

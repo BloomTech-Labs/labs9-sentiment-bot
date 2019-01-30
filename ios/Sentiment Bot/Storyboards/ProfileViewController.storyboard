@@ -25,27 +25,28 @@
                                         <rect key="frame" x="0.0" y="0.0" width="241.33333333333334" height="226"/>
                                         <subviews>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="RaY-8Y-fd8">
-                                                <rect key="frame" x="8" y="66" width="225" height="29"/>
+                                                <rect key="frame" x="7.9999999999999858" y="66" width="225" height="29"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <segments>
-                                                    <segment title="Default"/>
                                                     <segment title="Dark"/>
                                                     <segment title="Light"/>
                                                 </segments>
                                             </segmentedControl>
                                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="122" translatesAutoresizingMaskIntoConstraints="NO" id="RLr-5E-vXe">
-                                                <rect key="frame" x="8" y="196" width="225" height="30"/>
+                                                <rect key="frame" x="8" y="196" width="237" height="32"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cf-CZ-zqd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="48" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="53" height="32"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                         <state key="normal" title="Cancel"/>
                                                         <connections>
                                                             <action selector="cancelButton:" destination="cyI-Mj-FGA" eventType="touchUpInside" id="j9j-tI-nSc"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWc-bP-ZM0">
-                                                        <rect key="frame" x="170" y="0.0" width="55" height="30"/>
+                                                        <rect key="frame" x="175" y="0.0" width="62" height="32"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                         <state key="normal" title="Log Out"/>
                                                         <connections>
                                                             <action selector="logOutButton:" destination="cyI-Mj-FGA" eventType="touchUpInside" id="Tyx-rV-brl"/>
@@ -54,8 +55,9 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpF-mE-mEW">
-                                                <rect key="frame" x="101" y="102" width="40" height="30"/>
+                                                <rect key="frame" x="99.999999999999986" y="102" width="44" height="32"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                 <state key="normal" title="Apply"/>
                                                 <connections>
                                                     <action selector="applyTheme:" destination="cyI-Mj-FGA" eventType="touchUpInside" id="eRe-Jg-Ajn"/>
@@ -67,13 +69,14 @@
                                         <rect key="frame" x="0.0" y="278" width="221.33333333333334" height="160"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlimited Teams $50/ month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJH-25-Wd3">
-                                                <rect key="frame" x="0.0" y="0.0" width="221.33333333333334" height="20.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="1.6666666666666714" y="0.0" width="218" height="20"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYM-PS-b0v">
-                                                <rect key="frame" x="76" y="41.333333333333321" width="69" height="118.66666666666669"/>
+                                                <rect key="frame" x="72" y="41" width="77" height="119"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                 <state key="normal" title="Subscribe"/>
                                                 <connections>
                                                     <action selector="toggleSubscription:" destination="cyI-Mj-FGA" eventType="touchUpInside" id="T6O-MB-OTo"/>
@@ -95,7 +98,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fcA-VK-hlf"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="plus" id="lz5-NM-N8d"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="profileView" destination="FR5-Yd-fpV" id="mHj-PS-eYp"/>
@@ -108,7 +110,4 @@
             <point key="canvasLocation" x="-68" y="162.5615763546798"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="plus" width="30" height="30"/>
-    </resources>
 </document>

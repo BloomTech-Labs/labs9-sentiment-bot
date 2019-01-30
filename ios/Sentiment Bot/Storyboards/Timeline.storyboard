@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Timeline View Controller-->
+        <!--Timeline-->
         <scene sceneID="k6G-0f-w5c">
             <objects>
                 <viewController id="81e-XF-B0B" customClass="TimelineViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9OM-2h-3Mz">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeelzCell" id="wxY-Qx-NcL" customClass="TimeLineTableViewCell" customModule="Sentiment_Bot" customModuleProvider="target">
@@ -32,7 +32,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kuu-o9-pkV">
                                                     <rect key="frame" x="63" y="31" width="148" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -42,7 +42,7 @@
                                                         <constraint firstAttribute="width" constant="148" id="4vh-a0-MWg"/>
                                                         <constraint firstAttribute="height" constant="21" id="ES2-ih-SDI"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -56,8 +56,8 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Agt-hs-xVP">
-                                                    <rect key="frame" x="15" y="74" width="52" height="15.666666666666671"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <rect key="frame" x="15" y="69.666666666666671" width="66" height="20"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -105,14 +105,14 @@
                             </tableView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="9OM-2h-3Mz" firstAttribute="top" secondItem="8uH-85-4zY" secondAttribute="top" id="3Qu-9R-qMm"/>
-                            <constraint firstItem="9OM-2h-3Mz" firstAttribute="trailing" secondItem="hBw-Bq-I4Q" secondAttribute="trailing" id="T9T-hg-0VD"/>
-                            <constraint firstItem="9OM-2h-3Mz" firstAttribute="leading" secondItem="hBw-Bq-I4Q" secondAttribute="leading" id="aq1-N0-Fso"/>
-                            <constraint firstItem="9OM-2h-3Mz" firstAttribute="bottom" secondItem="hBw-Bq-I4Q" secondAttribute="bottom" id="ywT-0t-guq"/>
+                            <constraint firstItem="9OM-2h-3Mz" firstAttribute="leading" secondItem="hBw-Bq-I4Q" secondAttribute="leading" id="8gY-gu-a7A"/>
+                            <constraint firstItem="9OM-2h-3Mz" firstAttribute="top" secondItem="hBw-Bq-I4Q" secondAttribute="top" id="MeR-57-vZ3"/>
+                            <constraint firstItem="9OM-2h-3Mz" firstAttribute="trailing" secondItem="hBw-Bq-I4Q" secondAttribute="trailing" id="VPj-lo-e4k"/>
+                            <constraint firstItem="9OM-2h-3Mz" firstAttribute="bottom" secondItem="hBw-Bq-I4Q" secondAttribute="bottom" id="l2c-AR-yuT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hBw-Bq-I4Q"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="memories" id="Umt-PU-tFc"/>
+                    <tabBarItem key="tabBarItem" title="Timeline" image="memories" id="Umt-PU-tFc"/>
                     <connections>
                         <outlet property="timelineTableView" destination="9OM-2h-3Mz" id="h9Q-Ad-am9"/>
                     </connections>
@@ -120,14 +120,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0kG-FD-yrw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="384.80000000000001" y="-399.01477832512319"/>
-        </scene>
-        <!--UserContainerViewController-->
-        <scene sceneID="4u5-R1-fil">
-            <objects>
-                <viewControllerPlaceholder storyboardName="UserContainerViewController" id="W2n-UZ-7C2" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qag-XW-Bqd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1276" y="-399.01477832512319"/>
         </scene>
     </scenes>
     <resources>

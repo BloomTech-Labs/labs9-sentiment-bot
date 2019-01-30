@@ -22,9 +22,8 @@
                                 <rect key="frame" x="0.0" y="281" width="375" height="250"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YuG-n7-Dqv">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="773"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YuG-n7-Dqv">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TeamMemberFeelzCell" id="2HC-oT-yrO" customClass="ManagerTimelineTableViewCell" customModule="Sentiment_Bot" customModuleProvider="target">
@@ -44,38 +43,35 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lgj-uQ-ldM">
                                                     <rect key="frame" x="15" y="0.0" width="116" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mood" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8RA-n4-58A">
                                                     <rect key="frame" x="61" y="34" width="161" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="userId" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75E-rx-tty">
-                                                    <rect key="frame" x="192" y="34" width="168" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="userId" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75E-rx-tty">
+                                                    <rect key="frame" x="15" y="68" width="168" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Place" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icP-Kx-Nk4">
-                                                    <rect key="frame" x="15" y="72" width="345" height="17"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="missing-image-5" translatesAutoresizingMaskIntoConstraints="NO" id="e6p-XK-Jam">
+                                                    <rect key="frame" x="290" y="9" width="70" height="70"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dateLabel" destination="Lgj-uQ-ldM" id="JYE-v6-ii3"/>
                                             <outlet property="emojiLabel" destination="Ud7-oR-1Ij" id="Dj1-28-gLW"/>
+                                            <outlet property="feelzImageView" destination="e6p-XK-Jam" id="t5T-IQ-gJl"/>
                                             <outlet property="feelzNameLabel" destination="8RA-n4-58A" id="l9l-kR-TKM"/>
-                                            <outlet property="placeLabel" destination="icP-Kx-Nk4" id="dWg-ST-qFz"/>
                                             <outlet property="userIdLabel" destination="75E-rx-tty" id="riN-Er-pEs"/>
                                         </connections>
                                     </tableViewCell>
@@ -83,6 +79,12 @@
                             </tableView>
                         </subviews>
                         <color key="tintColor" red="0.51579731699999998" green="0.052456617359999999" blue="0.10447398569999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="YuG-n7-Dqv" firstAttribute="trailing" secondItem="yiI-p9-tmQ" secondAttribute="trailing" id="dJo-0h-XfG"/>
+                            <constraint firstItem="YuG-n7-Dqv" firstAttribute="leading" secondItem="yiI-p9-tmQ" secondAttribute="leading" id="mbk-KY-Ggf"/>
+                            <constraint firstItem="YuG-n7-Dqv" firstAttribute="top" secondItem="yiI-p9-tmQ" secondAttribute="top" id="obT-DR-6U1"/>
+                            <constraint firstItem="yiI-p9-tmQ" firstAttribute="bottom" secondItem="YuG-n7-Dqv" secondAttribute="bottom" id="pJF-cC-Zer"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="yiI-p9-tmQ"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Feelzys" image="happy" id="6MF-BK-gQa"/>
@@ -97,5 +99,6 @@
     </scenes>
     <resources>
         <image name="happy" width="30" height="30"/>
+        <image name="missing-image-5" width="450" height="450"/>
     </resources>
 </document>

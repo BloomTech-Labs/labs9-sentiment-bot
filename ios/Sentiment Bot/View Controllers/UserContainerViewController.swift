@@ -50,7 +50,7 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
             } else {
                 DispatchQueue.main.async {
                     guard let firstName = users?.firstName, let lastName = users?.lastName else { return }
-                    self.nameLabel.text = "\(firstName) \(lastName)"
+                    self.nameLabel.text = "\(firstName.capitalized) \(lastName.capitalized)"
                     if let imageUrl = users?.imageUrl {
                         APIController.shared.getImage(url: imageUrl) { (image, error) in
                             if let error = error {

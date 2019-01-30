@@ -9,12 +9,12 @@
 import UIKit
 
 class MembersTableViewController: UIViewController, ManagerProtocol {
+    
+    // MARK: - Properties
+    
     var teamResponses: [Response]?
-    
     var team: Team?
-    
     var survey: Survey?
-
     var user: User?
     
     var teamMembers: [User]? {
@@ -36,6 +36,8 @@ class MembersTableViewController: UIViewController, ManagerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
+        teamMembersTableView.layoutMargins = UIEdgeInsets.zero
+        teamMembersTableView.separatorInset = UIEdgeInsets.zero
         teamMembersTableView.dataSource = self
         teamMembersTableView.delegate = self
     }
@@ -50,15 +52,26 @@ extension MembersTableViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MembersCell")
-        let response = teamMembers![indexPath.row]
-
-        //cell.setResponse(response: response)
-        cell?.textLabel?.text = "\(response.firstName) \(response.lastName)"
-        cell?.imageView?.layer.cornerRadius = 45 //(cell?.imageView?.frame.size.width)! / 2
-        cell?.imageView?.clipsToBounds = true
-        cell?.imageView?.image = #imageLiteral(resourceName: "missing-image-5")
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MembersCell") as! MembersTableViewCell
+        let teamMember = teamMembers![indexPath.row]
+        cell.layoutMargins = UIEdgeInsets.zero
+        cell.memberImageView.layer.cornerRadius = cell.memberImageView.frame.size.width / 2
+        cell.memberImageView.layer.masksToBounds = true
+        cell.nameLabel.text = "\(teamMember.firstName) \(teamMember.lastName)"
+        
+        if let imageUrl = teamMember.imageUrl {
+            APIController.shared.getImage(url: imageUrl) { (image, error) in
+                if let error = error {
+                    NSLog("Error getting image \(error)")
+                } else if let image = image {
+                    DispatchQueue.main.async {
+                        cell.memberImageView.image = image
+                    }
+                }
+            }
+        }
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

@@ -40,12 +40,9 @@ class SenitmentReportViewController: UIViewController, ManagerProtocol {
         
         switch themeInt {
         case 0:
-            view.backgroundColor = UIColor(red: 136.0/255.0, green: 196.0/255.0, blue: 213.0/255.0, alpha: 1.0)
-            pieChart.holeColor =  UIColor(red: 136.0/255.0, green: 196.0/255.0, blue: 213.0/255.0, alpha: 1.0)
-        case 1:
             view.backgroundColor = UIColor(red: 102.0/255.0, green: 102.0/255.0, blue: 102.0/255.0, alpha: 1.0)
-            pieChart.holeColor = UIColor(red: 102.0/255.0, green: 102.0/255.0, blue: 102.0/255.0, alpha: 1.0)
-        case 2:
+            pieChart.holeColor =  UIColor(red: 102.0/255.0, green: 102.0/255.0, blue: 102.0/255.0, alpha: 1.0)
+        case 1:
             view.backgroundColor = UIColor.white
             pieChart.holeColor = UIColor.white
         default:
