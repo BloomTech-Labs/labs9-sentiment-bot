@@ -45,23 +45,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="adult-background-beard-941693" translatesAutoresizingMaskIntoConstraints="NO" id="ub4-b1-1mJ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Robot" translatesAutoresizingMaskIntoConstraints="NO" id="ub4-b1-1mJ">
+                                <rect key="frame" x="87" y="62" width="200" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eQh-8c-bI2">
                                 <rect key="frame" x="16" y="270" width="343" height="419"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <segue destination="fiA-dN-8cf" kind="embed" id="Ty2-oI-CfV"/>
                                 </connections>
                             </containerView>
                         </subviews>
-                        <constraints>
-                            <constraint firstItem="ub4-b1-1mJ" firstAttribute="top" secondItem="0Xk-Fr-YFD" secondAttribute="top" id="Nc8-4F-UEJ"/>
-                            <constraint firstItem="ub4-b1-1mJ" firstAttribute="trailing" secondItem="Hv2-ea-9Vs" secondAttribute="trailing" id="anp-Wu-3Xi"/>
-                            <constraint firstItem="ub4-b1-1mJ" firstAttribute="leading" secondItem="Hv2-ea-9Vs" secondAttribute="leading" id="pFu-tf-P7S"/>
-                            <constraint firstItem="ub4-b1-1mJ" firstAttribute="bottom" secondItem="0Xk-Fr-YFD" secondAttribute="bottom" id="yDI-m6-G5x"/>
-                        </constraints>
+                        <color key="backgroundColor" red="0.96286981807996153" green="0.96394501891854689" blue="0.9638534547531441" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="Hv2-ea-9Vs"/>
                     </view>
                     <connections>
@@ -72,7 +69,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FpL-n3-PHF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3273" y="-67"/>
+            <point key="canvasLocation" x="-3274.4000000000001" y="-67.241379310344826"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="2hw-Xd-aiC">
@@ -314,6 +311,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="adult-background-beard-941693" width="5330" height="4610"/>
+        <image name="Robot" width="650" height="615"/>
     </resources>
 </document>

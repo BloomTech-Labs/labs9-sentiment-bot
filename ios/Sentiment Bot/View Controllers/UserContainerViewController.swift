@@ -84,8 +84,8 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
                                 NSLog("Error getting user responses: \(error)")
                             } else {
                                 DispatchQueue.main.async {
-                                    self.feelzNumberLabel.text = "Feelz: \(self.responses?.count ?? 0)"
-                                    self.lastInLabel.text = "Last In: \(responses?.last?.date ?? " ")"
+                                    self.feelzNumberLabel.text = "\(self.responses?.count ?? 0) Feelz"
+                                    self.lastInLabel.text = "Last in \(responses?.last?.date ?? " ")"
                                 }
                             }
                         }

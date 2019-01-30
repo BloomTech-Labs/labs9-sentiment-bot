@@ -49,6 +49,7 @@ extension ManagerTimelineViewController: UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TeamMemberFeelzCell") as! ManagerTimelineTableViewCell
         cell.layoutMargins = UIEdgeInsets.zero
+        cell.selectionStyle = .none
         cell.feelzImageView.layer.cornerRadius = cell.feelzImageView.frame.size.width / 2
         cell.feelzImageView.layer.masksToBounds = true
         let response = teamResponses![indexPath.row]
