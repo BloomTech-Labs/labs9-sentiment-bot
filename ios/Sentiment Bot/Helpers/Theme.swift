@@ -35,7 +35,6 @@ enum Theme: Int {
             return .black
         case .light:
             return .black
-
         }
     }
     
@@ -45,6 +44,7 @@ enum Theme: Int {
             //Dark Gray
             return UIColor(red: 34.0/255.0, green: 34.0/255.0, blue: 34.0/255.0, alpha: 1.0)
         case .light:
+            //Sky
             return UIColor(red: 118.0/255.0, green: 214.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         }
     }
@@ -83,12 +83,16 @@ enum Theme: Int {
         
         UIApplication.shared.delegate?.window??.tintColor = mainColor
         UIApplication.shared.delegate?.window??.backgroundColor = backgroundColor3
-        //UIApplication.shared.delegate?.window??.backgroundColor = mainColor
+//        UIApplication.shared.delegate?.window??.backgroundColor = mainColor
         
         UITabBar.appearance().barTintColor = backgroundColor1
         UITabBar.appearance().barStyle = barStyle
+
         //UINavigationBar.appearance().barStyle = barStyle
         UINavigationBar.appearance().barTintColor = backgroundColor1
+//        UINavigationBar.appearance().barStyle = barStyle
+        
+
         guard let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else { return }
         statusBar.backgroundColor = backgroundColor1
         
@@ -105,7 +109,6 @@ enum Theme: Int {
         
         UIButton.appearance(whenContainedInInstancesOf: [UserContainerViewController.self]).tintColor = .white
         UIButton.appearance(whenContainedInInstancesOf: [ManagementViewController.self]).backgroundColor = mainColor
-        UIButton.appearance(whenContainedInInstancesOf: [ProfileViewController.self]).backgroundColor = mainColor
         UIButton.appearance().tintColor = textColor
         
 //        let controlBackground = UIImage(named: "controlBackground")?

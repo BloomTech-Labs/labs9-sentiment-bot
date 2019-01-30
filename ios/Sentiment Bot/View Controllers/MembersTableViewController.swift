@@ -55,6 +55,7 @@ extension MembersTableViewController: UITableViewDataSource, UITableViewDelegate
         let cell = tableView.dequeueReusableCell(withIdentifier: "MembersCell") as! MembersTableViewCell
         let teamMember = teamMembers![indexPath.row]
         cell.layoutMargins = UIEdgeInsets.zero
+        cell.selectionStyle = .none
         cell.memberImageView.layer.cornerRadius = cell.memberImageView.frame.size.width / 2
         cell.memberImageView.layer.masksToBounds = true
         cell.nameLabel.text = "\(teamMember.firstName) \(teamMember.lastName)"

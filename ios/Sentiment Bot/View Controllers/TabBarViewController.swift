@@ -48,26 +48,26 @@ class TabBarViewController: UITabBarController {
     }
     
     // Manually selects the center button of tabbar
-    @IBAction func popup(sender: UIButton) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
-        vc.modalPresentationStyle = .overFullScreen
-        present(vc, animated: true, completion: nil)
+//    @IBAction func popup(sender: UIButton) {
+//        let vc = storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+//        vc.modalPresentationStyle = .overFullScreen
+//        present(vc, animated: true, completion: nil)
 //        selectedIndex = 1
-    }
+//    }
     
-    func setupButton() {
-        // Custom Button for center tab
-        let window = UIApplication.shared.keyWindow
-        let bottomPadding = window?.safeAreaInsets.bottom
-        let itemWidth = view.frame.size.width / 5
-        let itemHeight = tabBar.frame.size.height
-        let button = UIButton(frame: CGRect(origin: CGPoint(x: itemWidth * 2, y: view.frame.size.height - itemHeight - bottomPadding! - 10), size: CGSize(width: itemWidth, height: itemHeight)))
-        button.setBackgroundImage(#imageLiteral(resourceName: "plus-1"), for: .normal)
-        button.adjustsImageWhenHighlighted = false
-        button.sizeToFit()
-        button.addTarget(self, action: #selector(popup(sender:)), for: .touchUpInside)
-        view.addSubview(button)
-    }
+//    func setupButton() {
+//        // Custom Button for center tab
+//        let window = UIApplication.shared.keyWindow
+//        let bottomPadding = window?.safeAreaInsets.bottom
+//        let itemWidth = view.frame.size.width / 5
+//        let itemHeight = tabBar.frame.size.height
+//        let button = UIButton(frame: CGRect(origin: CGPoint(x: itemWidth * 2, y: view.frame.size.height - itemHeight - bottomPadding! - 10), size: CGSize(width: itemWidth, height: itemHeight)))
+//        button.setBackgroundImage(#imageLiteral(resourceName: "plus-1"), for: .normal)
+//        button.adjustsImageWhenHighlighted = false
+//        button.sizeToFit()
+//        button.addTarget(self, action: #selector(popup(sender:)), for: .touchUpInside)
+//        view.addSubview(button)
+//    }
     
     var user: User?
     
