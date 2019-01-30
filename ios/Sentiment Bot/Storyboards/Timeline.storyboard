@@ -74,6 +74,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <connections>
                                                                 <action selector="imagePickerButton:" destination="81e-XF-B0B" eventType="touchUpInside" id="oV7-4d-q3j"/>
+                                                                <action selector="selectImage:" destination="wxY-Qx-NcL" eventType="touchUpInside" id="863-ZK-Zx8"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>

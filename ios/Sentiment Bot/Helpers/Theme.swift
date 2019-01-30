@@ -74,8 +74,7 @@ enum Theme: Int {
             //Dark Gray
             return UIColor(red: 34.0/255.0, green: 34.0/255.0, blue: 34.0/255.0, alpha: 1.0)
         case .light:
-            //Dark Gray
-            return UIColor(red: 34.0/255.0, green: 34.0/255.0, blue: 34.0/255.0, alpha: 1.0)
+            return UIColor(red: 102.0/255.0, green: 102.0/255.0, blue: 102.0/255.0, alpha: 1.0)
         }
     }
     
@@ -96,22 +95,24 @@ enum Theme: Int {
         UIApplication.shared.delegate?.window??.backgroundColor = backgroundColor3
 //        UIApplication.shared.delegate?.window??.backgroundColor = mainColor
         
-//        UITabBar.appearance().backgroundColor = tabBarColor
-        UITabBar.appearance().barStyle = barStyle
-        
-        UINavigationBar.appearance().backgroundColor = backgroundColor1
+        UITabBar.appearance().barTintColor = tabBarColor
+       //UITabBar.appearance().barStyle = barStyle
+
+        //UINavigationBar.appearance().barStyle = barStyle
+        UINavigationBar.appearance().barTintColor = backgroundColor1
 //        UINavigationBar.appearance().barStyle = barStyle
         
+
         guard let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else { return }
         statusBar.backgroundColor = backgroundColor1
         
         UITableViewCell.appearance().backgroundColor = backgroundColor2
         UITableView.appearance().backgroundColor = backgroundColor2
         
-        UILabel.appearance().textColor = textColor
+        //UILabel.appearance().textColor = textColor
         UILabel.appearance(whenContainedInInstancesOf: [UserContainerViewController.self]).textColor = .white
-//        UILabel.appearance(whenContainedInInstancesOf: [UITableViewCell.self]).textColor = textColor
-//        UILabel.appearance(whenContainedInInstancesOf: [ManagementViewController.self]).textColor = textColor
+        UILabel.appearance(whenContainedInInstancesOf: [UITableViewCell.self]).textColor = textColor
+        UILabel.appearance(whenContainedInInstancesOf: [ManagementViewController.self]).textColor = textColor
        
         UIView.appearance(whenContainedInInstancesOf: [UserContainerViewController.self]).backgroundColor = backgroundColor1
         UIView.appearance(whenContainedInInstancesOf: [ManagementViewController.self]).backgroundColor = backgroundColor2

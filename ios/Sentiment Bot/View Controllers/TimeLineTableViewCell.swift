@@ -35,5 +35,10 @@ class TimeLineTableViewCell: UITableViewCell {
             }
         }
     }
+    
+    @IBAction func selectImage(_ sender: Any) {
+        print("Select Image")
+    }
+    
 
 }
