@@ -107,34 +107,37 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
             <<< TextRow(){ row in
                 row.title = "Feeling:"
                 row.placeholder = "Enter text here"
-                row.add(rule: RuleRequired())
+                row.add(rule: RuleMaxLength(maxLength: 10))
+                row.add(rule: RuleRequired(msg: "Feeling is Required"))
                 row.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
+                }.onChange{ (row) in
+                    self.feelingName = row.value
+                }
+                .cellUpdate { cell, row in
                     if !row.isValid {
                         cell.titleLabel?.textColor = .red
                     }
                 }
-                .onRowValidationChanged { cell, row in
-                    let rowIndex = row.indexPath!.row
-                    while row.section!.count > rowIndex + 1 && row.section?[rowIndex  + 1] is LabelRow {
-                        row.section?.remove(at: rowIndex + 1)
-                    }
-                    if !row.isValid {
-                        for (index, validationMsg) in row.validationErrors.map({ $0.msg }).enumerated() {
-                            let labelRow = LabelRow() {
-                                $0.title = validationMsg
-                                $0.cell.height = { 30 }
-                            }
-                            row.section?.insert(labelRow, at: row.indexPath!.row + index + 1)
-                        }
-                    }
-                }.onChange({ (row) in
-                    self.feelingName = row.value
-                })
+//                .onRowValidationChanged { cell, row in
+//                    let rowIndex = row.indexPath!.row
+//                    while row.section!.count > rowIndex + 1 && row.section?[rowIndex  + 1] is LabelRow {
+//                        row.section?.remove(at: rowIndex + 1)
+//                    }
+//                    if !row.isValid {
+//                        for (index, validationMsg) in row.validationErrors.map({ $0.msg }).enumerated() {
+//                            let labelRow = LabelRow() {
+//                                $0.title = validationMsg
+//                                $0.cell.height = { 30 }
+//                            }
+//                            row.section?.insert(labelRow, at: row.indexPath!.row + index + 1)
+//                        }
+//                    }
+//            }
             <<< PushRow<String>() {
                 $0.title = "Select Emoji"
                 $0.options = ["😐" ,"😃","😢","😑","😞", "😡", "😊"]
                 $0.value = "😐"
+                self.selectedEmoji = $0.value
                 $0.selectorTitle = "Emojis"
                 }.onPresent { from, to in
                     to.dismissOnSelection = true
@@ -148,10 +151,11 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
                     self.selectedEmoji = row.value
                 }
             <<< ButtonRow() { (row: ButtonRow) -> Void in
-                row.title = "Add a Feeling"
+                row.title = "Add"
                 }
                 .onCellSelection { [weak self] (cell, row) in
                     row.section?.form?.validate()
+                    
                     guard let mood = self?.feelingName,
                         let emoji = self?.selectedEmoji,
                         let survey = self?.survey else {
