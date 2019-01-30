@@ -63,6 +63,9 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
                 $0.title = "Schedule"
                 $0.options = scheduleSelection
                 $0.value = survey?.schedule.capitalized
+                $0.cell.preservesSuperviewLayoutMargins = false
+                $0.cell.separatorInset = UIEdgeInsets.zero
+                $0.cell.layoutMargins = UIEdgeInsets.zero
                 self.selectedSchedule = $0.value
                 }.onChange({ row in
                     self.selectedSchedule = row.value
@@ -105,11 +108,14 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
 //            }
             +++ Section("Add a Feeling")
             <<< TextRow(){ row in
-                row.title = "Feeling:"
+                row.title = "  Feeling:"
                 row.placeholder = "Enter text here"
                 row.add(rule: RuleMaxLength(maxLength: 10))
                 row.add(rule: RuleRequired(msg: "Feeling is Required"))
                 row.validationOptions = .validatesOnChange
+                row.cell.preservesSuperviewLayoutMargins = false
+                row.cell.separatorInset = UIEdgeInsets.zero
+                row.cell.layoutMargins = UIEdgeInsets.zero
                 }.onChange{ (row) in
                     self.feelingName = row.value
                 }
@@ -137,6 +143,9 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
                 $0.title = "Select Emoji"
                 $0.options = ["😐" ,"😃","😢","😑","😞", "😡", "😊"]
                 $0.value = "😐"
+                $0.cell.preservesSuperviewLayoutMargins = false
+                $0.cell.separatorInset = UIEdgeInsets.zero
+                $0.cell.layoutMargins = UIEdgeInsets.zero
                 self.selectedEmoji = $0.value
                 $0.selectorTitle = "Emojis"
                 }.onPresent { from, to in
@@ -146,6 +155,9 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
                     to.selectableRowSetup = { row in
                         row.cell.height = ({ return (self.parent?.view.frame.height)!/8 })
                         row.cell.textLabel?.font =  UIFont(name:"Avenir", size: (self.parent?.view.frame.height)!/10)
+                        row.cell.preservesSuperviewLayoutMargins = false
+                        row.cell.separatorInset = UIEdgeInsets.zero
+                        row.cell.layoutMargins = UIEdgeInsets.zero
                 }}
                 .onChange{ (row) in
                     self.selectedEmoji = row.value

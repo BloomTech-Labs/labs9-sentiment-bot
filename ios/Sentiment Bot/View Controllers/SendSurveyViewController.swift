@@ -52,6 +52,9 @@ class SendSurveyViewController: UITableViewController, ManagerProtocol {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeelingCell", for: indexPath) as! FeelingTableViewCell
         let feeling = feelings?[indexPath.row]
         cell.selectionStyle = .none
+        cell.preservesSuperviewLayoutMargins = false
+        cell.separatorInset = UIEdgeInsets.zero
+        cell.layoutMargins = UIEdgeInsets.zero
         cell.setFeeling(feeling: feeling)
         return cell
      }
