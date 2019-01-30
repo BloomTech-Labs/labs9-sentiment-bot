@@ -68,6 +68,17 @@ enum Theme: Int {
         }
     }
     
+    var tabBarColor: UIColor {
+        switch self {
+        case .dark:
+            //Dark Gray
+            return UIColor(red: 34.0/255.0, green: 34.0/255.0, blue: 34.0/255.0, alpha: 1.0)
+        case .light:
+            //Dark Gray
+            return UIColor(red: 34.0/255.0, green: 34.0/255.0, blue: 34.0/255.0, alpha: 1.0)
+        }
+    }
+    
     var textColor: UIColor {
         switch self {
         case .dark:
@@ -85,7 +96,7 @@ enum Theme: Int {
         UIApplication.shared.delegate?.window??.backgroundColor = backgroundColor3
 //        UIApplication.shared.delegate?.window??.backgroundColor = mainColor
         
-        UITabBar.appearance().backgroundColor = backgroundColor1
+//        UITabBar.appearance().backgroundColor = tabBarColor
         UITabBar.appearance().barStyle = barStyle
         
         UINavigationBar.appearance().backgroundColor = backgroundColor1

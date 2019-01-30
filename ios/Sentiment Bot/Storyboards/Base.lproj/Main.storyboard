@@ -22,7 +22,7 @@
         <scene sceneID="Yte-kY-XrD">
             <objects>
                 <tabBarController storyboardIdentifier="ManagerTabBarViewController" id="V1O-6L-jIH" customClass="ManagerTabBarViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="iSl-Px-Ra5">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iSl-Px-Ra5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tabBar>
@@ -123,7 +123,7 @@
         <scene sceneID="S8s-kq-Nba">
             <objects>
                 <tabBarController storyboardIdentifier="TabBarViewController" id="Ot3-Xi-1GB" customClass="TabBarViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="jXY-Hd-Cmb">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jXY-Hd-Cmb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tabBar>
