@@ -20,7 +20,7 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
 
             guard let email = user.profile.email,
                 let fullName = user.profile.name,
-                let idToken = user.authentication.idToken,
+//                let idToken = user.authentication.idToken,
                 let profileImageUrl = user.profile.imageURL(withDimension: 400) else {
                     NSLog("Email and Full Name wasn't returned from GoogleSignIn")
                     return

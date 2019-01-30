@@ -56,6 +56,7 @@
 		A1EA607821EE56E400ACE25D /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1EA607721EE56E300ACE25D /* credentials.plist */; };
 		A1EA607A21EE57B000ACE25D /* GoogleSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA607921EE57B000ACE25D /* GoogleSignInViewController.swift */; };
 		F10B4A8621F8CE7F00597DC8 /* InitialViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F10B4A8521F8CE7F00597DC8 /* InitialViewController.storyboard */; };
+		F14A520922012DE500274F6F /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A520822012DE500274F6F /* SettingsTableViewController.swift */; };
 		F15713C421FD775100F6A62F /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15713C321FD775100F6A62F /* Theme.swift */; };
 		F15713C82200337F00F6A62F /* ManagerTimelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15713C72200337F00F6A62F /* ManagerTimelineTableViewCell.swift */; };
 		F158581421F9482400035CBF /* UserContainerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F158581321F9482400035CBF /* UserContainerViewController.storyboard */; };
@@ -70,10 +71,8 @@
 		F1CDD27121ED99D5008E7A57 /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1CDD27021ED99D5008E7A57 /* ProfileViewController.storyboard */; };
 		F1DFA0C121F924290078B8C5 /* UserContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DFA0C021F924290078B8C5 /* UserContainerViewController.swift */; };
 		F1E949A821EBB05F000634AD /* TimeLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E949A721EBB05F000634AD /* TimeLineTableViewCell.swift */; };
-		F1ECBCFD21E706B7005CDBE8 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECBCFC21E706B7005CDBE8 /* UserView.swift */; };
 		F1ECBD0221E70BF5005CDBE8 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECBD0121E70BF5005CDBE8 /* TimelineViewController.swift */; };
 		F1ECBD0621E70C26005CDBE8 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECBD0521E70C26005CDBE8 /* MapViewController.swift */; };
-		F1ECBD0821E70C33005CDBE8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECBD0721E70C33005CDBE8 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +127,7 @@
 		D5A27D069A6F1B1A0A158705 /* Pods-Sentiment Bot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sentiment Bot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sentiment Bot/Pods-Sentiment Bot.debug.xcconfig"; sourceTree = "<group>"; };
 		F10B4A8521F8CE7F00597DC8 /* InitialViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = InitialViewController.storyboard; sourceTree = "<group>"; };
 		F138A56521F6172C0004334F /* Sentiment Bot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sentiment Bot.entitlements"; sourceTree = "<group>"; };
+		F14A520822012DE500274F6F /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		F15713C321FD775100F6A62F /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		F15713C72200337F00F6A62F /* ManagerTimelineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerTimelineTableViewCell.swift; sourceTree = "<group>"; };
 		F158581321F9482400035CBF /* UserContainerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserContainerViewController.storyboard; sourceTree = "<group>"; };
@@ -144,10 +144,8 @@
 		F1CDD27021ED99D5008E7A57 /* ProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileViewController.storyboard; sourceTree = "<group>"; };
 		F1DFA0C021F924290078B8C5 /* UserContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContainerViewController.swift; sourceTree = "<group>"; };
 		F1E949A721EBB05F000634AD /* TimeLineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineTableViewCell.swift; sourceTree = "<group>"; };
-		F1ECBCFC21E706B7005CDBE8 /* UserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		F1ECBD0121E70BF5005CDBE8 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		F1ECBD0521E70C26005CDBE8 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		F1ECBD0721E70C33005CDBE8 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F7C4288AE6B4B1B0B2C7069D /* Pods_Sentiment_Bot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sentiment_Bot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -179,15 +177,15 @@
 		A13547C521E6D0750045C5F0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F18865D121EEB306008F9D35 /* TestUser.swift */,
-				A13547BF21E69D160045C5F0 /* User.swift */,
-				A13547C321E6D06D0045C5F0 /* Response.swift */,
-				A13547C621E6D0C70045C5F0 /* Team.swift */,
-				A13547CB21E6DE620045C5F0 /* Response+Mapping.swift */,
-				A13E4D1521E7104000E19E6D /* Survey.swift */,
-				A140D93921EEEEED008963C1 /* ReversedGeoLocation.swift */,
 				A140D95521F54B92008963C1 /* ErrorMessage.swift */,
 				A140D96921F6BE99008963C1 /* Feeling.swift */,
+				A13547C321E6D06D0045C5F0 /* Response.swift */,
+				A13547CB21E6DE620045C5F0 /* Response+Mapping.swift */,
+				A140D93921EEEEED008963C1 /* ReversedGeoLocation.swift */,
+				A13E4D1521E7104000E19E6D /* Survey.swift */,
+				A13547C621E6D0C70045C5F0 /* Team.swift */,
+				F18865D121EEB306008F9D35 /* TestUser.swift */,
+				A13547BF21E69D160045C5F0 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -278,20 +276,20 @@
 		F1ECBCF821E70664005CDBE8 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				F1B7E58E21E547450096FC6F /* Main.storyboard */,
-				F158581321F9482400035CBF /* UserContainerViewController.storyboard */,
-				A140D94921F188B2008963C1 /* SignIn.storyboard */,
-				A140D94B21F188F4008963C1 /* SignUp.storyboard */,
 				F10B4A8521F8CE7F00597DC8 /* InitialViewController.storyboard */,
-				F1CDD23B21ECFF06008E7A57 /* Timeline.storyboard */,
+				F1B7E59321E547460096FC6F /* LaunchScreen.storyboard */,
+				F1B7E58E21E547450096FC6F /* Main.storyboard */,
 				A140D97521F78646008963C1 /* ManagerTimeline.storyboard */,
 				F1CDD23D21ECFF36008E7A57 /* Map.storyboard */,
-				A140D97B21F786E7008963C1 /* SentimentReport.storyboard */,
-				A140D97921F786BC008963C1 /* SendSurvey.storyboard */,
-				A140D97721F7868D008963C1 /* TeamMembers.storyboard */,
 				A140D97321F785FE008963C1 /* PremiumCheckout.storyboard */,
 				F1CDD27021ED99D5008E7A57 /* ProfileViewController.storyboard */,
-				F1B7E59321E547460096FC6F /* LaunchScreen.storyboard */,
+				A140D97921F786BC008963C1 /* SendSurvey.storyboard */,
+				A140D97B21F786E7008963C1 /* SentimentReport.storyboard */,
+				A140D94921F188B2008963C1 /* SignIn.storyboard */,
+				A140D94B21F188F4008963C1 /* SignUp.storyboard */,
+				A140D97721F7868D008963C1 /* TeamMembers.storyboard */,
+				F1CDD23B21ECFF06008E7A57 /* Timeline.storyboard */,
+				F158581321F9482400035CBF /* UserContainerViewController.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -314,29 +312,28 @@
 			children = (
 				A1DA7AE921FD56200006F7A7 /* FeelingTableViewCell.swift */,
 				A1EA607921EE57B000ACE25D /* GoogleSignInViewController.swift */,
-				F1ECBD0721E70C33005CDBE8 /* ProfileViewController.swift */,
-				F1ECBD0121E70BF5005CDBE8 /* TimelineViewController.swift */,
-				F1E949A721EBB05F000634AD /* TimeLineTableViewCell.swift */,
+				A140D97121F76DB2008963C1 /* InitialViewController.swift */,
+				A1DA7AEB21FD6D650006F7A7 /* ManagementViewController.swift */,
+				A140D95921F69257008963C1 /* ManagerTabBarViewController.swift */,
+				F15713C72200337F00F6A62F /* ManagerTimelineTableViewCell.swift */,
+				A140D96321F6A2F7008963C1 /* ManagerTimelineViewController.swift */,
 				F1ECBD0521E70C26005CDBE8 /* MapViewController.swift */,
-				F1ECBCFC21E706B7005CDBE8 /* UserView.swift */,
-				A140D93B21EFA581008963C1 /* TabBarViewController.swift */,
+				F1C3CBDA2200D3A000CE2A31 /* MembersTableViewCell.swift */,
+				A140D96521F6A352008963C1 /* MembersTableViewController.swift */,
+				A140D95121F419E3008963C1 /* PremiumCheckoutViewController.swift */,
+				A140D94621F17F9E008963C1 /* SegmentedControlViewController.swift */,
+				A1DA7AE521FD50910006F7A7 /* SendSurveyFormViewController.swift */,
+				A140D95B21F69298008963C1 /* SendSurveyViewController.swift */,
+				A140D95D21F693C2008963C1 /* SenitmentReportViewController.swift */,
+				F14A520822012DE500274F6F /* SettingsTableViewController.swift */,
 				A140D94221F17DE2008963C1 /* SignInViewController.swift */,
 				A140D94421F17E31008963C1 /* SignUpViewController.swift */,
-				A140D94621F17F9E008963C1 /* SegmentedControlViewController.swift */,
-				A140D95121F419E3008963C1 /* PremiumCheckoutViewController.swift */,
-				A140D95921F69257008963C1 /* ManagerTabBarViewController.swift */,
-				A1DA7AE721FD51630006F7A7 /* TableViewController.swift */,
-				A140D95D21F693C2008963C1 /* SenitmentReportViewController.swift */,
-				A140D96321F6A2F7008963C1 /* ManagerTimelineViewController.swift */,
-				F15713C72200337F00F6A62F /* ManagerTimelineTableViewCell.swift */,
-				A140D96521F6A352008963C1 /* MembersTableViewController.swift */,
-				F1C3CBDA2200D3A000CE2A31 /* MembersTableViewCell.swift */,
 				A140D96721F6A549008963C1 /* SubscriptionViewController.swift */,
-				A140D97121F76DB2008963C1 /* InitialViewController.swift */,
+				A140D93B21EFA581008963C1 /* TabBarViewController.swift */,
+				A1DA7AE721FD51630006F7A7 /* TableViewController.swift */,
+				F1E949A721EBB05F000634AD /* TimeLineTableViewCell.swift */,
+				F1ECBD0121E70BF5005CDBE8 /* TimelineViewController.swift */,
 				F1DFA0C021F924290078B8C5 /* UserContainerViewController.swift */,
-				A140D95B21F69298008963C1 /* SendSurveyViewController.swift */,
-				A1DA7AE521FD50910006F7A7 /* SendSurveyFormViewController.swift */,
-				A1DA7AEB21FD6D650006F7A7 /* ManagementViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -542,6 +539,7 @@
 				A13547C721E6D0C70045C5F0 /* Team.swift in Sources */,
 				A140D96621F6A352008963C1 /* MembersTableViewController.swift in Sources */,
 				A13547C021E69D160045C5F0 /* User.swift in Sources */,
+				F14A520922012DE500274F6F /* SettingsTableViewController.swift in Sources */,
 				A140D93C21EFA581008963C1 /* TabBarViewController.swift in Sources */,
 				A13547CA21E6D32B0045C5F0 /* HTTPMethod.swift in Sources */,
 				A140D95C21F69298008963C1 /* SendSurveyViewController.swift in Sources */,
@@ -561,13 +559,11 @@
 				A140D95E21F693C2008963C1 /* SenitmentReportViewController.swift in Sources */,
 				A13547CC21E6DE620045C5F0 /* Response+Mapping.swift in Sources */,
 				A1EA606921ECFF9A00ACE25D /* UserDefaults+extension.swift in Sources */,
-				F1ECBCFD21E706B7005CDBE8 /* UserView.swift in Sources */,
 				A1EA606621ECFF4800ACE25D /* UserDefaultKeys.swift in Sources */,
 				A1EA605E21E85D5A00ACE25D /* LocalNotificationHelper.swift in Sources */,
 				A140D96421F6A2F7008963C1 /* ManagerTimelineViewController.swift in Sources */,
 				A140D95A21F69257008963C1 /* ManagerTabBarViewController.swift in Sources */,
 				A140D97221F76DB2008963C1 /* InitialViewController.swift in Sources */,
-				F1ECBD0821E70C33005CDBE8 /* ProfileViewController.swift in Sources */,
 				A140D96C21F6E127008963C1 /* ManagerProtocol.swift in Sources */,
 				A140D93A21EEEEED008963C1 /* ReversedGeoLocation.swift in Sources */,
 				F1ECBD0221E70BF5005CDBE8 /* TimelineViewController.swift in Sources */,

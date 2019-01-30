@@ -54,6 +54,7 @@ extension TimelineViewController: UITableViewDataSource, UITableViewDelegate {
         let response = userResponses![indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeelzCell") as! TimeLineTableViewCell
         cell.layoutMargins = UIEdgeInsets.zero
+        cell.selectionStyle = .none
         cell.feelzImageView.layer.cornerRadius = cell.feelzImageView.frame.size.width / 2
         cell.feelzImageView.layer.masksToBounds = true
         cell.setResponse(response: response)

@@ -13,7 +13,6 @@ class InitialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
     @IBOutlet weak var teamCodeTextField: UITextField!
@@ -36,7 +35,6 @@ class InitialViewController: UIViewController {
                 }
             }
         }
-        
     }
     
     @IBAction func createTeam(_ sender: Any) {
@@ -57,15 +55,5 @@ class InitialViewController: UIViewController {
             }
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

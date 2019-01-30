@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 struct Feeling: Codable {
     let mood: String
     let emoji: String

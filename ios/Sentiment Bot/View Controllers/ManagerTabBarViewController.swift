@@ -14,6 +14,7 @@ class ManagerTabBarViewController: UITabBarController {
         super.viewDidLoad()
         
         tabBar.unselectedItemTintColor = .white
+        
         // I don't need this I just have it here just in case
         //for testing purposes
         
