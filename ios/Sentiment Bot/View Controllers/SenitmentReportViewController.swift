@@ -55,7 +55,9 @@ class SenitmentReportViewController: UIViewController, ManagerProtocol {
     
     
     override func viewDidAppear(_ animated: Bool) {
-        refreshChart()
+        UIView.animate(withDuration: 0.5) {
+            self.refreshChart()
+        }
     }
     
     

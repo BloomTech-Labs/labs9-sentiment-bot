@@ -24,7 +24,7 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
             NSLog("Survey wasn't set on ManagementViewController")
             return
         }
-        currentScheduleLabel.text = "Current Schedule: \(survey.schedule.capitalized)"
+        currentScheduleLabel.text = "Schedule: \(survey.schedule.capitalized)"
     }
     
 //    override func viewDidAppear(_ animated: Bool) {

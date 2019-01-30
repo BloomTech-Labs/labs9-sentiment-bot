@@ -61,7 +61,7 @@ class SendSurveyViewController: UITableViewController, ManagerProtocol {
         let managementViewController = self.parent?.children.first as! ManagementViewController
         let newSchedule = sendSurveyViewController.selectedSchedule!
         managementViewController.survey?.schedule = newSchedule
-        managementViewController.currentScheduleLabel.text = "Current Schedule: \(newSchedule)"
+        managementViewController.currentScheduleLabel.text = "Schedule: \(newSchedule)"
         let selectedTime = sendSurveyViewController.selectedTime!
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
