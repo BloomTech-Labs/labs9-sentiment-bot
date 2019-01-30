@@ -85,7 +85,7 @@ enum Theme: Int {
         UIApplication.shared.delegate?.window??.backgroundColor = backgroundColor3
         //UIApplication.shared.delegate?.window??.backgroundColor = mainColor
         
-        UITabBar.appearance().backgroundColor = backgroundColor1
+        UITabBar.appearance().barTintColor = backgroundColor1
         UITabBar.appearance().barStyle = barStyle
         UINavigationBar.appearance().barStyle = barStyle
         

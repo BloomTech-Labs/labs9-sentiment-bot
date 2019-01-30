@@ -71,7 +71,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="HSY-9L-SYZ">
-                        <barButtonItem key="rightBarButtonItem" title="Schedule" id="nRh-Yq-HRs"/>
+                        <barButtonItem key="rightBarButtonItem" title="Schedule" id="nRh-Yq-HRs">
+                            <connections>
+                                <action selector="scheduleSurvey:" destination="cUk-wY-Djm" id="aS2-tk-Inj"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XRg-nE-0NQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

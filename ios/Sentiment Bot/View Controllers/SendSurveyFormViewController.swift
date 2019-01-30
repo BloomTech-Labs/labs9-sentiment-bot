@@ -56,11 +56,14 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        form +++ Section("Select Schedule")
+        
+        let selectScheduleSection = Section("Select Schedule")
+        form +++ selectScheduleSection
             <<< PickerInputRow<String>("Picker Input Row"){
                 $0.title = "Schedule"
                 $0.options = scheduleSelection
                 $0.value = survey?.schedule.capitalized
+                self.selectedSchedule = $0.value
                 }.onChange({ row in
                     self.selectedSchedule = row.value
                 })
@@ -71,6 +74,7 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
                 }
                 $0.title = "Time"
                 $0.value = convertStringToTime(time: time)
+                self.selectedTime = $0.value
                 }.onChange({ (row) in
                     self.selectedTime = row.value
                 })
@@ -93,6 +97,9 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
 //                        let managementViewController = self?.parent?.parent?.children.first as! ManagementViewController
 //
 //                        managementViewController.survey?.schedule = selectedSchedule
+//                        DispatchQueue.main.async {
+//                            self?.navigationController?.popViewController(animated: true)
+//                        }
 //
 //                    })
 //            }

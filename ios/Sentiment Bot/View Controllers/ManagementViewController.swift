@@ -27,9 +27,9 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
         currentScheduleLabel.text = "Current Schedule: \(survey.schedule.capitalized)"
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        setSchedule()
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        setSchedule()
+//    }
     
     
     //@IBOutlet weak var msgBox: UITextView!
@@ -38,6 +38,7 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setSchedule()
     }
     
     override func viewWillAppear(_ animated: Bool) {

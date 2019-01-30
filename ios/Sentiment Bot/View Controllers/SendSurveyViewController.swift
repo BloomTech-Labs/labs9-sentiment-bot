@@ -51,10 +51,28 @@ class SendSurveyViewController: UITableViewController, ManagerProtocol {
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeelingCell", for: indexPath) as! FeelingTableViewCell
         let feeling = feelings?[indexPath.row]
+        cell.selectionStyle = .none
         cell.setFeeling(feeling: feeling)
         return cell
      }
     
+    @IBAction func scheduleSurvey(_ sender: Any) {
+        let sendSurveyViewController = self.children.first as! SendSurveyFormViewController
+        let managementViewController = self.parent?.children.first as! ManagementViewController
+        let newSchedule = sendSurveyViewController.selectedSchedule!
+        managementViewController.survey?.schedule = newSchedule
+        managementViewController.currentScheduleLabel.text = "Current Schedule: \(newSchedule)"
+        let selectedTime = sendSurveyViewController.selectedTime!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let timeString = dateFormatter.string(from: selectedTime)
+        APIController.shared.changeSurveySchedule(surveyId: survey!.id, time: timeString, schedule: newSchedule, completion: { (errorMessage) in
+            DispatchQueue.main.async {
+                sendSurveyViewController.navigationController?.popViewController(animated: true)
+            }
+        })
+        
+    }
     
     /*
      // Override to support conditional editing of the table view.
