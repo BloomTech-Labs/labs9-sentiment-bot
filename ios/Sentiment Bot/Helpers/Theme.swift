@@ -88,8 +88,8 @@ enum Theme: Int {
         UITabBar.appearance().backgroundColor = backgroundColor1
         UITabBar.appearance().barStyle = barStyle
         
-//        UINavigationBar.appearance().backgroundColor = backgroundColor1
-        UINavigationBar.appearance().barStyle = barStyle
+        UINavigationBar.appearance().backgroundColor = backgroundColor1
+//        UINavigationBar.appearance().barStyle = barStyle
         
         guard let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else { return }
         statusBar.backgroundColor = backgroundColor1

@@ -24,10 +24,6 @@
                                     <outlet property="delegate" destination="KfZ-l2-Y4p" id="0pc-fU-cb2"/>
                                 </connections>
                             </mapView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6gO-xJ-FCC">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="246"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </view>
                         </subviews>
                         <constraints>
                             <constraint firstItem="07a-fI-wJZ" firstAttribute="bottom" secondItem="B4B-dP-059" secondAttribute="bottom" id="0mP-hz-jkA"/>

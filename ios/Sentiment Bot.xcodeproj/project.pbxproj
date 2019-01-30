@@ -44,7 +44,6 @@
 		A140D97E21FA9DEB008963C1 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A140D97D21FA9DEA008963C1 /* Charts.framework */; };
 		A140D98021FC1DA2008963C1 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A140D97F21FC1DA1008963C1 /* Eureka.framework */; };
 		A1DA7AE621FD50910006F7A7 /* SendSurveyFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DA7AE521FD50910006F7A7 /* SendSurveyFormViewController.swift */; };
-		A1DA7AE821FD51630006F7A7 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DA7AE721FD51630006F7A7 /* TableViewController.swift */; };
 		A1DA7AEA21FD56200006F7A7 /* FeelingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DA7AE921FD56200006F7A7 /* FeelingTableViewCell.swift */; };
 		A1DA7AEC21FD6D650006F7A7 /* ManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DA7AEB21FD6D650006F7A7 /* ManagementViewController.swift */; };
 		A1EA605B21E8270300ACE25D /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA605A21E8270300ACE25D /* LocationHelper.swift */; };
@@ -68,7 +67,7 @@
 		F1C3CBDB2200D3A000CE2A31 /* MembersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3CBDA2200D3A000CE2A31 /* MembersTableViewCell.swift */; };
 		F1CDD23C21ECFF06008E7A57 /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1CDD23B21ECFF06008E7A57 /* Timeline.storyboard */; };
 		F1CDD23F21ECFF36008E7A57 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1CDD23D21ECFF36008E7A57 /* Map.storyboard */; };
-		F1CDD27121ED99D5008E7A57 /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1CDD27021ED99D5008E7A57 /* ProfileViewController.storyboard */; };
+		F1CDD27121ED99D5008E7A57 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1CDD27021ED99D5008E7A57 /* Settings.storyboard */; };
 		F1DFA0C121F924290078B8C5 /* UserContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DFA0C021F924290078B8C5 /* UserContainerViewController.swift */; };
 		F1E949A821EBB05F000634AD /* TimeLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E949A721EBB05F000634AD /* TimeLineTableViewCell.swift */; };
 		F1ECBD0221E70BF5005CDBE8 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECBD0121E70BF5005CDBE8 /* TimelineViewController.swift */; };
@@ -113,7 +112,6 @@
 		A140D97D21FA9DEA008963C1 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
 		A140D97F21FC1DA1008963C1 /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = Carthage/Build/iOS/Eureka.framework; sourceTree = "<group>"; };
 		A1DA7AE521FD50910006F7A7 /* SendSurveyFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendSurveyFormViewController.swift; sourceTree = "<group>"; };
-		A1DA7AE721FD51630006F7A7 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		A1DA7AE921FD56200006F7A7 /* FeelingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingTableViewCell.swift; sourceTree = "<group>"; };
 		A1DA7AEB21FD6D650006F7A7 /* ManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagementViewController.swift; sourceTree = "<group>"; };
 		A1EA605A21E8270300ACE25D /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
@@ -141,7 +139,7 @@
 		F1C3CBDA2200D3A000CE2A31 /* MembersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersTableViewCell.swift; sourceTree = "<group>"; };
 		F1CDD23B21ECFF06008E7A57 /* Timeline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
 		F1CDD23E21ECFF36008E7A57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Sentiment Bot/Storyboards/Base.lproj/Map.storyboard"; sourceTree = "<group>"; };
-		F1CDD27021ED99D5008E7A57 /* ProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileViewController.storyboard; sourceTree = "<group>"; };
+		F1CDD27021ED99D5008E7A57 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		F1DFA0C021F924290078B8C5 /* UserContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContainerViewController.swift; sourceTree = "<group>"; };
 		F1E949A721EBB05F000634AD /* TimeLineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineTableViewCell.swift; sourceTree = "<group>"; };
 		F1ECBD0121E70BF5005CDBE8 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
@@ -282,9 +280,9 @@
 				A140D97521F78646008963C1 /* ManagerTimeline.storyboard */,
 				F1CDD23D21ECFF36008E7A57 /* Map.storyboard */,
 				A140D97321F785FE008963C1 /* PremiumCheckout.storyboard */,
-				F1CDD27021ED99D5008E7A57 /* ProfileViewController.storyboard */,
 				A140D97921F786BC008963C1 /* SendSurvey.storyboard */,
 				A140D97B21F786E7008963C1 /* SentimentReport.storyboard */,
+				F1CDD27021ED99D5008E7A57 /* Settings.storyboard */,
 				A140D94921F188B2008963C1 /* SignIn.storyboard */,
 				A140D94B21F188F4008963C1 /* SignUp.storyboard */,
 				A140D97721F7868D008963C1 /* TeamMembers.storyboard */,
@@ -330,7 +328,6 @@
 				A140D94421F17E31008963C1 /* SignUpViewController.swift */,
 				A140D96721F6A549008963C1 /* SubscriptionViewController.swift */,
 				A140D93B21EFA581008963C1 /* TabBarViewController.swift */,
-				A1DA7AE721FD51630006F7A7 /* TableViewController.swift */,
 				F1E949A721EBB05F000634AD /* TimeLineTableViewCell.swift */,
 				F1ECBD0121E70BF5005CDBE8 /* TimelineViewController.swift */,
 				F1DFA0C021F924290078B8C5 /* UserContainerViewController.swift */,
@@ -422,7 +419,7 @@
 				A140D97621F78646008963C1 /* ManagerTimeline.storyboard in Resources */,
 				F1B7E59221E547460096FC6F /* Assets.xcassets in Resources */,
 				F1B7E59021E547450096FC6F /* Main.storyboard in Resources */,
-				F1CDD27121ED99D5008E7A57 /* ProfileViewController.storyboard in Resources */,
+				F1CDD27121ED99D5008E7A57 /* Settings.storyboard in Resources */,
 				A140D97C21F786E7008963C1 /* SentimentReport.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -545,7 +542,6 @@
 				A140D95C21F69298008963C1 /* SendSurveyViewController.swift in Sources */,
 				F1B7E58B21E547450096FC6F /* AppDelegate.swift in Sources */,
 				A13547BE21E69C5D0045C5F0 /* APIController.swift in Sources */,
-				A1DA7AE821FD51630006F7A7 /* TableViewController.swift in Sources */,
 				F1DFA0C121F924290078B8C5 /* UserContainerViewController.swift in Sources */,
 				A140D94321F17DE2008963C1 /* SignInViewController.swift in Sources */,
 				A1DA7AEA21FD56200006F7A7 /* FeelingTableViewCell.swift in Sources */,

@@ -93,10 +93,10 @@
             </objects>
             <point key="canvasLocation" x="1276" y="-399.85007496251876"/>
         </scene>
-        <!--ProfileViewController-->
+        <!--Settings-->
         <scene sceneID="96P-vt-PTm">
             <objects>
-                <viewControllerPlaceholder storyboardName="ProfileViewController" id="zPj-N1-Glv" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Settings" id="zPj-N1-Glv" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qtb-lK-LOl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1963" y="-594"/>

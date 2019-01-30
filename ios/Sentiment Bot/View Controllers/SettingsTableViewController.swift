@@ -12,7 +12,7 @@ import GoogleSignIn
 class SettingsTableViewController: UITableViewController {
     
     @IBOutlet weak var themeSelector: UISegmentedControl!
-    @IBOutlet weak var subscribeButton: UIButton!
+    @IBOutlet weak var subscriptionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,12 +21,15 @@ class SettingsTableViewController: UITableViewController {
 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
     @IBAction func themeSelector(_ sender: Any) {
         if let selectedTheme = Theme(rawValue: themeSelector.selectedSegmentIndex) {
             selectedTheme.apply()
 
-            self.view.setNeedsDisplay()
-            self.view.layoutIfNeeded()
         }
     }
 
@@ -34,15 +37,28 @@ class SettingsTableViewController: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func toggleSubscription(_ sender: UIButton) {
-        print("Subscribe")
-    }
-    
     @IBAction func logout(_ sender: UIBarButtonItem) {
         self.view.window!.rootViewController?.dismiss(animated: true)
         GIDSignIn.sharedInstance()?.signOut()
         APIController.shared.logout()
     }
+    
+    private func toggleSubscrption() {
+        print("Subscribed")
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        if indexPath.row == 0 && indexPath.section == 1 {
+            toggleSubscrption()
+        }
+        
+        if let index = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: index, animated: true)
+        }
+    }
+    
+    
 }
 
 //OLD CODE
