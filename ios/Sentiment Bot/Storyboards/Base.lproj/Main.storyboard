@@ -64,10 +64,10 @@
             </objects>
             <point key="canvasLocation" x="-3274.4000000000001" y="-67.241379310344826"/>
         </scene>
-        <!--View Controller-->
+        <!--Manager Tab Bar Container View Controller-->
         <scene sceneID="2hw-Xd-aiC">
             <objects>
-                <viewController id="pyG-uY-kzP" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ManagerTabBarContainerViewController" id="pyG-uY-kzP" customClass="ManagerTabBarContainerViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P0c-p3-brD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -249,10 +249,10 @@
             </objects>
             <point key="canvasLocation" x="1296" y="-347"/>
         </scene>
-        <!--View Controller-->
+        <!--User Tab Bar Container View Controller-->
         <scene sceneID="N6f-Fb-9oE">
             <objects>
-                <viewController id="th9-6K-Xgb" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserTabBarContainerViewController" id="th9-6K-Xgb" customClass="UserTabBarContainerViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3mS-Lf-Ksd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -397,6 +397,6 @@
         <image name="settings" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eRK-4w-mAR"/>
+        <segue reference="rSh-qa-Amz"/>
     </inferredMetricsTieBreakers>
 </document>

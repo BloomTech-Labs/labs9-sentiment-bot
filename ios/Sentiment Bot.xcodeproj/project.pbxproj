@@ -55,6 +55,9 @@
 		A1EA607821EE56E400ACE25D /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1EA607721EE56E300ACE25D /* credentials.plist */; };
 		A1EA607A21EE57B000ACE25D /* GoogleSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA607921EE57B000ACE25D /* GoogleSignInViewController.swift */; };
 		A1F953002202202900C3CC9C /* InitialVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1F952FF2202202900C3CC9C /* InitialVC.storyboard */; };
+		A1F953022202244000C3CC9C /* JoinCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F953012202244000C3CC9C /* JoinCreateViewController.swift */; };
+		A1F95304220278B000C3CC9C /* UserTabBarContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F95303220278B000C3CC9C /* UserTabBarContainerViewController.swift */; };
+		A1F95306220278CD00C3CC9C /* ManagerTabBarContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F95305220278CD00C3CC9C /* ManagerTabBarContainerViewController.swift */; };
 		F10B4A8621F8CE7F00597DC8 /* InitialViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F10B4A8521F8CE7F00597DC8 /* InitialViewController.storyboard */; };
 		F14A520922012DE500274F6F /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A520822012DE500274F6F /* SettingsTableViewController.swift */; };
 		F15713C421FD775100F6A62F /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15713C321FD775100F6A62F /* Theme.swift */; };
@@ -123,6 +126,9 @@
 		A1EA607721EE56E300ACE25D /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
 		A1EA607921EE57B000ACE25D /* GoogleSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInViewController.swift; sourceTree = "<group>"; };
 		A1F952FF2202202900C3CC9C /* InitialVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = InitialVC.storyboard; sourceTree = "<group>"; };
+		A1F953012202244000C3CC9C /* JoinCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinCreateViewController.swift; sourceTree = "<group>"; };
+		A1F95303220278B000C3CC9C /* UserTabBarContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTabBarContainerViewController.swift; sourceTree = "<group>"; };
+		A1F95305220278CD00C3CC9C /* ManagerTabBarContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerTabBarContainerViewController.swift; sourceTree = "<group>"; };
 		D5A27D069A6F1B1A0A158705 /* Pods-Sentiment Bot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sentiment Bot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sentiment Bot/Pods-Sentiment Bot.debug.xcconfig"; sourceTree = "<group>"; };
 		F10B4A8521F8CE7F00597DC8 /* InitialViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = InitialViewController.storyboard; sourceTree = "<group>"; };
 		F138A56521F6172C0004334F /* Sentiment Bot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sentiment Bot.entitlements"; sourceTree = "<group>"; };
@@ -308,6 +314,7 @@
 		F1ECBCFE21E708F2005CDBE8 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A1F95305220278CD00C3CC9C /* ManagerTabBarContainerViewController.swift */,
 				A1DA7AE921FD56200006F7A7 /* FeelingTableViewCell.swift */,
 				A1EA607921EE57B000ACE25D /* GoogleSignInViewController.swift */,
 				A140D97121F76DB2008963C1 /* InitialViewController.swift */,
@@ -331,6 +338,8 @@
 				F1E949A721EBB05F000634AD /* TimeLineTableViewCell.swift */,
 				F1ECBD0121E70BF5005CDBE8 /* TimelineViewController.swift */,
 				F1DFA0C021F924290078B8C5 /* UserContainerViewController.swift */,
+				A1F953012202244000C3CC9C /* JoinCreateViewController.swift */,
+				A1F95303220278B000C3CC9C /* UserTabBarContainerViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -531,6 +540,7 @@
 				F1E949A821EBB05F000634AD /* TimeLineTableViewCell.swift in Sources */,
 				A140D96821F6A549008963C1 /* SubscriptionViewController.swift in Sources */,
 				A1DA7AEC21FD6D650006F7A7 /* ManagementViewController.swift in Sources */,
+				A1F95306220278CD00C3CC9C /* ManagerTabBarContainerViewController.swift in Sources */,
 				A140D94721F17F9E008963C1 /* SegmentedControlViewController.swift in Sources */,
 				A13E4D1621E7104000E19E6D /* Survey.swift in Sources */,
 				A13547C721E6D0C70045C5F0 /* Team.swift in Sources */,
@@ -550,9 +560,11 @@
 				A1EA607A21EE57B000ACE25D /* GoogleSignInViewController.swift in Sources */,
 				F18865D221EEB306008F9D35 /* TestUser.swift in Sources */,
 				F15713C421FD775100F6A62F /* Theme.swift in Sources */,
+				A1F953022202244000C3CC9C /* JoinCreateViewController.swift in Sources */,
 				A13547C421E6D06D0045C5F0 /* Response.swift in Sources */,
 				A1EA605B21E8270300ACE25D /* LocationHelper.swift in Sources */,
 				A140D95E21F693C2008963C1 /* SenitmentReportViewController.swift in Sources */,
+				A1F95304220278B000C3CC9C /* UserTabBarContainerViewController.swift in Sources */,
 				A13547CC21E6DE620045C5F0 /* Response+Mapping.swift in Sources */,
 				A1EA606921ECFF9A00ACE25D /* UserDefaults+extension.swift in Sources */,
 				A1EA606621ECFF4800ACE25D /* UserDefaultKeys.swift in Sources */,

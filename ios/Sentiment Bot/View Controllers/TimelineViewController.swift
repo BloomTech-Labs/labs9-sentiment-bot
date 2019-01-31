@@ -9,8 +9,12 @@
 import UIKit
 import GoogleSignIn
 
-class TimelineViewController: UIViewController, UserProtocol {
-    
+class TimelineViewController: UIViewController, UserProtocol, TimeLineTableViewCellDelegate {
+    func selectImage(on cell: TimeLineTableViewCell) {
+        guard let indexPath = timelineTableView.indexPath(for: cell) else { return }
+        responseID = userResponses?[indexPath.row].id
+        takeSelfie()
+    }
     // MARK: - Outlets
     @IBOutlet weak var timelineTableView: UITableView!
 
@@ -53,21 +57,26 @@ extension TimelineViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let response = userResponses![indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeelzCell") as! TimeLineTableViewCell
+        cell.delegate = self
         cell.layoutMargins = UIEdgeInsets.zero
         cell.selectionStyle = .none
         cell.feelzImageView.layer.cornerRadius = cell.feelzImageView.frame.size.width / 2
         cell.feelzImageView.layer.masksToBounds = true
+        if let imageUrl = response.imageUrl {
+            APIController.shared.getImage(url: imageUrl) { (image, error) in
+                if let error = error {
+                    NSLog("Error getting image \(error)")
+                } else if let image = image {
+                    DispatchQueue.main.async {
+                        cell.feelzImageView.image = image
+                    }
+                }
+            }
+        }
         cell.setResponse(response: response)
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        responseID = userResponses?[indexPath.row].id
-        takeSelfie()
-        
-        
-    }
 }
 
 // MARK: - Image Picker
@@ -121,6 +130,8 @@ extension TimelineViewController: UINavigationControllerDelegate, UIImagePickerC
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.sourceType = .photoLibrary
+        picker.view.tintColor = .white
+        picker.view.backgroundColor = .white
         picker.allowsEditing = true
         present(picker, animated: true)
     }
