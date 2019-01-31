@@ -71,6 +71,7 @@ enum Theme: Int {
     var tabBarColor: UIColor {
         switch self {
         case .dark:
+            //Dark Gray
             return UIColor(red: 34.0/255.0, green: 34.0/255.0, blue: 34.0/255.0, alpha: 1.0)
         case .light:
             return UIColor(red: 102.0/255.0, green: 102.0/255.0, blue: 102.0/255.0, alpha: 1.0)
@@ -122,10 +123,10 @@ enum Theme: Int {
         UIView.appearance(whenContainedInInstancesOf: [ManagementViewController.self]).backgroundColor = backgroundColor2
         UIView.appearance(whenContainedInInstancesOf: [SettingsTableViewController.self]).backgroundColor = backgroundColor2
         
+        UIButton.appearance().tintColor = textColor
         UIButton.appearance(whenContainedInInstancesOf: [UserContainerViewController.self]).tintColor = .white
         UIButton.appearance(whenContainedInInstancesOf: [ManagementViewController.self]).backgroundColor = mainColor
-        UIButton.appearance().tintColor = textColor
-        
+               
 //        let controlBackground = UIImage(named: "controlBackground")?
 //            .withRenderingMode(.alwaysTemplate)
 //            .resizableImage(withCapInsets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
