@@ -184,7 +184,7 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
                                 sendSurveyViewController.tableView.reloadData()
                             }
                         } else if let errorMessage = errorMessage {
-                            
+                            NSLog("Error creating feeling survey \(errorMessage)")
                         }
 
                     })

@@ -152,19 +152,12 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="currentScheduleLabel" destination="Qvk-Id-qhD" id="Tfi-qC-9O8"/>
+                        <outlet property="sendSurveyButton" destination="5e4-iH-MuU" id="Bpg-xi-OZ8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AAA-Gd-9NW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-6738.3999999999996" y="-1001.2315270935961"/>
-        </scene>
-        <!--UserContainerViewController-->
-        <scene sceneID="vvw-mC-ALR">
-            <objects>
-                <viewControllerPlaceholder storyboardName="UserContainerViewController" id="nOv-45-r4H" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KfG-f9-dlT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-6144" y="-1325"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EpR-3R-l4l">
