@@ -10,12 +10,10 @@ import UIKit
 
 class UserContainerViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
-    @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var feelzNumberLabel: UILabel!
-    @IBOutlet weak var lastInLabel: UILabel!
-    @IBOutlet weak var imageButton: UIButton!
-    @IBOutlet weak var teamIDLabel: UILabel!
+    @IBOutlet weak var leftLabel: UILabel!
+    @IBOutlet weak var rightLabel: UILabel!
+    @IBOutlet weak var userImageButton: UIButton!
     
     var responses: [Response]? = []
     var users: User?
@@ -30,9 +28,9 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageButton.backgroundColor = .clear
-        userImage.layer.cornerRadius = userImage.frame.size.width / 2
-        userImage.clipsToBounds = true
+        userImageButton.layer.cornerRadius = userImageButton.frame.size.width / 2
+        userImageButton.clipsToBounds = true
+        
 //        userImage.layer.borderWidth = 3.0
 //        userImage.layer.borderColor = UIColor(displayP3Red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.5).cgColor
         
@@ -57,7 +55,7 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
                                 NSLog("Error getting image \(error)")
                             } else if let image = image {
                                 DispatchQueue.main.async {
-                                    self.userImage.image = image
+                                    self.userImageButton.setBackgroundImage(image, for: .normal)
                                     
                                 }
                             }
@@ -75,17 +73,16 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
                 DispatchQueue.main.async {
                     guard let admin = self.users?.isAdmin else { return }
                     if admin {
-                        self.teamIDLabel.text = "Team ID: \(team?.code ?? 0)"
+                        self.leftLabel.text = "Team ID: \(team?.code ?? 0)"
                     } else {
-                        self.teamIDLabel.text = ""
                         APIController.shared.getUserResponses(userId: UserDefaults.standard.userId) { (responses, error) in
                             self.responses = responses
                             if let error = error {
                                 NSLog("Error getting user responses: \(error)")
                             } else {
                                 DispatchQueue.main.async {
-                                    self.feelzNumberLabel.text = "\(self.responses?.count ?? 0) Feelz"
-                                    self.lastInLabel.text = "Last in \(responses?.last?.date ?? " ")"
+                                    self.leftLabel.text = "\(self.responses?.count ?? 0) Feelz"
+                                    self.rightLabel.text = "Last in \(responses?.last?.date ?? " ")"
                                 }
                             }
                         }
@@ -158,7 +155,7 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
                 return
             }
             DispatchQueue.main.async {
-                self.userImage.image = image
+                self.userImageButton.setBackgroundImage(image, for: .normal)
             }
         }
         dismiss(animated: true, completion: nil)

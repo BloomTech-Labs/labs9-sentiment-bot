@@ -48,15 +48,22 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G5X-20-FPC">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="211"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G5X-20-FPC">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="YIe-rb-dys"/>
+                                </constraints>
                                 <connections>
                                     <segue destination="DGL-1u-vtS" kind="embed" id="PzS-cP-Fl2"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.53296291829999998" green="0.7681911588" blue="0.83568340539999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="G5X-20-FPC" firstAttribute="trailing" secondItem="1vc-Xe-ZtZ" secondAttribute="trailing" id="IhX-Su-iJF"/>
+                            <constraint firstItem="G5X-20-FPC" firstAttribute="top" secondItem="Bae-tw-zcT" secondAttribute="top" id="V7j-q1-PWQ"/>
+                            <constraint firstItem="G5X-20-FPC" firstAttribute="leading" secondItem="1vc-Xe-ZtZ" secondAttribute="leading" id="eTd-aP-nd4"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="1vc-Xe-ZtZ"/>
                     </view>
                     <connections>

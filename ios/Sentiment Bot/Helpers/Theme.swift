@@ -106,7 +106,12 @@ enum Theme: Int {
         guard let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else { return }
         statusBar.backgroundColor = backgroundColor1
         
-        UITableViewCell.appearance().backgroundColor = backgroundColor2
+        UITableViewCell.appearance(whenContainedInInstancesOf: [TimelineViewController.self]).backgroundColor = backgroundColor2
+        UITableViewCell.appearance(whenContainedInInstancesOf: [ManagerTimelineViewController.self]).backgroundColor = backgroundColor2
+        UITableViewCell.appearance(whenContainedInInstancesOf: [MembersTableViewController.self]).backgroundColor = backgroundColor2
+        UITableViewCell.appearance(whenContainedInInstancesOf: [SettingsTableViewController.self]).backgroundColor = backgroundColor2
+        UITableViewCell.appearance(whenContainedInInstancesOf: [SendSurveyViewController.self]).backgroundColor = backgroundColor2
+        //UITableViewCell.appearance().backgroundColor = backgroundColor2
         UITableView.appearance().backgroundColor = backgroundColor2
         
         //UILabel.appearance().textColor = textColor
@@ -117,10 +122,10 @@ enum Theme: Int {
         UIView.appearance(whenContainedInInstancesOf: [UserContainerViewController.self]).backgroundColor = backgroundColor1
         UIView.appearance(whenContainedInInstancesOf: [ManagementViewController.self]).backgroundColor = backgroundColor2
         
+        UIButton.appearance().tintColor = textColor
         UIButton.appearance(whenContainedInInstancesOf: [UserContainerViewController.self]).tintColor = .white
         UIButton.appearance(whenContainedInInstancesOf: [ManagementViewController.self]).backgroundColor = mainColor
-        UIButton.appearance().tintColor = textColor
-        
+               
 //        let controlBackground = UIImage(named: "controlBackground")?
 //            .withRenderingMode(.alwaysTemplate)
 //            .resizableImage(withCapInsets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
