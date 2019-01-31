@@ -28,18 +28,14 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userImageButton.layer.cornerRadius = userImageButton.frame.size.width / 2
-        userImageButton.clipsToBounds = true
         
-//        userImage.layer.borderWidth = 3.0
-//        userImage.layer.borderColor = UIColor(displayP3Red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.5).cgColor
-        
+        userImageButton.applyDesign()
         setupView()
     }
     
     
     // MARK: - Setup View
-    func setupView() {
+    private func setupView() {
         
         APIController.shared.getUser(userId: UserDefaults.standard.userId) { (users, error) in
             self.users = users
@@ -56,7 +52,6 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
                             } else if let image = image {
                                 DispatchQueue.main.async {
                                     self.userImageButton.setBackgroundImage(image, for: .normal)
-                                    
                                 }
                             }
                         }
@@ -81,8 +76,11 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
                                 NSLog("Error getting user responses: \(error)")
                             } else {
                                 DispatchQueue.main.async {
-                                    self.leftLabel.text = "\(self.responses?.count ?? 0) Feelz"
-                                    self.rightLabel.text = "Last in \(responses?.last?.date ?? " ")"
+                                    if let number = self.responses?.count {
+                                        self.leftLabel.text = "\(number) Feelz"
+                                        self.rightLabel.text = "Last in \(responses?.last?.date ?? "N/A")"
+                                    }
+                                    
                                 }
                             }
                         }
@@ -173,5 +171,22 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
             }
 
         }
+    }
+}
+
+extension UIButton {
+    func applyDesign() {
+        // userImageButton Effects
+        self.layer.cornerRadius = self.frame.size.height / 2
+        self.clipsToBounds = true
+        // Put shadow on button
+//        self.backgroundColor = UIColor.darkGray
+//        self.layer.borderWidth = 2.0
+//        self.layer.shadowColor = UIColor.darkGray.cgColor
+//        self.layer.shadowOpacity = 1.0
+//        self.layer.shadowRadius = 4.0
+//        self.layer.shadowOffset = CGSize(width: 0, height: 0)
+        // Put frame around button
+        //        userImageButton.layer.borderColor = UIColor(displayP3Red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.5).cgColor
     }
 }

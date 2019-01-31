@@ -17,6 +17,9 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         view.layer.cornerRadius = 20
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        signInButton.layer.cornerRadius = signInButton.frame.size.height / 2
+        googleButton.layer.cornerRadius = 5
+        googleButton.clipsToBounds = true
         setPlaceHolders()
     }
     
@@ -35,6 +38,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var googleButton: UIButton!
     
     
     @IBAction func signIn(_ sender: Any) {
