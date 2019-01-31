@@ -132,14 +132,6 @@
                                             <constraint firstAttribute="trailing" secondItem="5e4-iH-MuU" secondAttribute="trailing" constant="40" id="wXI-DV-8v4"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fa-u3-fbh">
-                                        <rect key="frame" x="244" y="127" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                        <connections>
-                                            <segue destination="X8s-yq-3ia" kind="presentation" id="43B-7T-k6P"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="ldW-Jx-Wu1" firstAttribute="centerY" secondItem="axN-GY-Qso" secondAttribute="centerY" id="hnK-iD-v8T"/>
@@ -173,14 +165,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KfG-f9-dlT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-6144" y="-1325"/>
-        </scene>
-        <!--Settings-->
-        <scene sceneID="tp7-Bf-GkJ">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Settings" id="X8s-yq-3ia" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Oh5-B6-UzB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-6125" y="-1167"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EpR-3R-l4l">
