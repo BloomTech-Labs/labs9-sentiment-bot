@@ -76,7 +76,7 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
                     let stringDate = dateFormatter.string(from: date)
-                    NSLog("TRIGGER DATE: \(stringDate)")
+                    //NSLog("TRIGGER DATE: \(stringDate)")
                 }
 
                 

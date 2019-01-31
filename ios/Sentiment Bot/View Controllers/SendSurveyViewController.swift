@@ -69,6 +69,9 @@ class SendSurveyViewController: UITableViewController, ManagerProtocol {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         let timeString = dateFormatter.string(from: selectedTime)
+        managementViewController.survey?.time = timeString
+        self.survey?.time = timeString
+        sendSurveyViewController.survey?.time = timeString
         APIController.shared.changeSurveySchedule(surveyId: survey!.id, time: timeString, schedule: newSchedule, completion: { (errorMessage) in
             DispatchQueue.main.async {
                 sendSurveyViewController.navigationController?.popViewController(animated: true)
