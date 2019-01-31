@@ -158,6 +158,16 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
                         row.cell.preservesSuperviewLayoutMargins = false
                         row.cell.separatorInset = UIEdgeInsets.zero
                         row.cell.layoutMargins = UIEdgeInsets.zero
+                        let themeInt = UserDefaults.standard.integer(forKey: "SelectedTheme")
+                        
+                        switch themeInt {
+                        case 0:
+                            row.cell.backgroundColor = UIColor(red: 102.0/255.0, green: 102.0/255.0, blue: 102.0/255.0, alpha: 1.0)
+                        case 1:
+                            row.cell.backgroundColor = .white
+                        default:
+                            NSLog("Theme not picked")
+                        }
                 }}
                 .onChange{ (row) in
                     self.selectedEmoji = row.value

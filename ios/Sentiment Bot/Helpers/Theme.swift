@@ -114,6 +114,7 @@ enum Theme: Int {
         UITableViewCell.appearance(whenContainedInInstancesOf: [SettingsTableViewController.self]).backgroundColor = backgroundColor2
         UITableViewCell.appearance(whenContainedInInstancesOf: [SendSurveyViewController.self]).backgroundColor = backgroundColor2
         
+        
         //UITableViewCell.appearance().backgroundColor = backgroundColor2
         UITableView.appearance().backgroundColor = backgroundColor2
         
