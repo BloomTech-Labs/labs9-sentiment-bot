@@ -10,48 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Initial View Controller-->
-        <scene sceneID="i8j-RA-xee">
-            <objects>
-                <viewController storyboardIdentifier="InitialViewController" id="dfY-fl-nhs" customClass="InitialViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Bae-tw-zcT">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="39X-C3-9N9">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G5X-20-FPC">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
-                                        <connections>
-                                            <segue destination="DGL-1u-vtS" kind="embed" id="PzS-cP-Fl2"/>
-                                        </connections>
-                                    </containerView>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VAY-6n-d3L">
-                                        <rect key="frame" x="0.0" y="200" width="375" height="467"/>
-                                        <connections>
-                                            <segue destination="rKE-kX-w03" kind="embed" id="icY-ez-gBo"/>
-                                        </connections>
-                                    </containerView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="VAY-6n-d3L" firstAttribute="top" secondItem="39X-C3-9N9" secondAttribute="top" constant="200" id="6jQ-YC-kTd"/>
-                                </constraints>
-                            </stackView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="39X-C3-9N9" firstAttribute="bottom" secondItem="1vc-Xe-ZtZ" secondAttribute="bottom" id="2lE-Mc-gbx"/>
-                            <constraint firstItem="39X-C3-9N9" firstAttribute="leading" secondItem="1vc-Xe-ZtZ" secondAttribute="leading" id="7J6-RQ-F0Z"/>
-                            <constraint firstItem="39X-C3-9N9" firstAttribute="top" secondItem="Bae-tw-zcT" secondAttribute="top" id="Myf-KN-u62"/>
-                            <constraint firstItem="39X-C3-9N9" firstAttribute="trailing" secondItem="1vc-Xe-ZtZ" secondAttribute="trailing" id="vSu-dD-X72"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="1vc-Xe-ZtZ"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Hu3-eU-cKY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="797.60000000000002" y="300.89955022488761"/>
-        </scene>
         <!--UIViewController-pUm-IC-PF1-->
         <scene sceneID="Sq5-k4-FTs">
             <objects>
@@ -65,50 +23,86 @@
             <objects>
                 <viewController id="rKE-kX-w03" customClass="JoinCreateViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Hj-5E-LPH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="467"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="447"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5C-DW-pEJ">
-                                <rect key="frame" x="152" y="195" width="70" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Join Team"/>
-                                <connections>
-                                    <action selector="joinTeam:" destination="rKE-kX-w03" eventType="touchUpInside" id="UCr-TJ-exa"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JNj-UW-Def">
-                                <rect key="frame" x="138" y="283" width="99" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Create a Team"/>
-                                <connections>
-                                    <action selector="createTeam:" destination="rKE-kX-w03" eventType="touchUpInside" id="dLr-qP-d9u"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rI5-rB-xG1">
-                                <rect key="frame" x="139" y="145" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Zv-aC-PlR">
-                                <rect key="frame" x="139" y="245" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="41" translatesAutoresizingMaskIntoConstraints="NO" id="wcb-BS-UuE">
+                                <rect key="frame" x="105.5" y="147" width="164" height="153"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5C-DW-pEJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="164" height="56"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
+                                        <inset key="contentEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
+                                        <state key="normal" title="Join Team"/>
+                                        <connections>
+                                            <action selector="joinTeam:" destination="rKE-kX-w03" eventType="touchUpInside" id="UCr-TJ-exa"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JNj-UW-Def">
+                                        <rect key="frame" x="0.0" y="97" width="164" height="56"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
+                                        <inset key="contentEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
+                                        <state key="normal" title="Create a Team"/>
+                                        <connections>
+                                            <action selector="createTeam:" destination="rKE-kX-w03" eventType="touchUpInside" id="dLr-qP-d9u"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="wcb-BS-UuE" firstAttribute="centerY" secondItem="0Hj-5E-LPH" secondAttribute="centerY" id="45H-ox-joo"/>
+                            <constraint firstItem="wcb-BS-UuE" firstAttribute="centerX" secondItem="0Hj-5E-LPH" secondAttribute="centerX" id="7O3-ty-keH"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="udl-uH-aog"/>
                     </view>
-                    <connections>
-                        <outlet property="teamCodeTextField" destination="rI5-rB-xG1" id="193-J3-5z7"/>
-                        <outlet property="teamNameTextField" destination="7Zv-aC-PlR" id="JBN-e3-Sgr"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JAf-Qy-NVh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-252" y="736"/>
+            <point key="canvasLocation" x="-289" y="900"/>
+        </scene>
+        <!--Initial View Controller-->
+        <scene sceneID="dJw-cj-ZWJ">
+            <objects>
+                <viewController storyboardIdentifier="InitialViewController" id="G5A-Qu-YYy" customClass="InitialViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hyJ-qq-bpe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zvL-02-9YH">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h9G-KL-c5Q">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="Xfe-PV-JdF"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="DGL-1u-vtS" kind="embed" id="TEX-rg-UgD"/>
+                                        </connections>
+                                    </containerView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A0Z-AG-5NM">
+                                        <rect key="frame" x="0.0" y="200" width="375" height="447"/>
+                                        <connections>
+                                            <segue destination="rKE-kX-w03" kind="embed" id="HLe-Ac-S9X"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zvL-02-9YH" firstAttribute="leading" secondItem="f2V-zw-MNp" secondAttribute="leading" id="VgS-5d-kfJ"/>
+                            <constraint firstItem="zvL-02-9YH" firstAttribute="top" secondItem="f2V-zw-MNp" secondAttribute="top" id="WUG-2v-Rtz"/>
+                            <constraint firstAttribute="bottom" secondItem="zvL-02-9YH" secondAttribute="bottom" id="oUQ-SU-kxV"/>
+                            <constraint firstItem="zvL-02-9YH" firstAttribute="trailing" secondItem="f2V-zw-MNp" secondAttribute="trailing" id="vDD-iE-MFl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="f2V-zw-MNp"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xvh-gL-oFS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="591" y="157"/>
         </scene>
     </scenes>
 </document>

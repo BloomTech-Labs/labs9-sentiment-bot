@@ -17,24 +17,14 @@ class SettingsTableViewController: UITableViewController, STPAddCardViewControll
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        APIController.shared.getUser(userId: UserDefaults.standard.userId) { (user, errorMessage) in
-            if let errorMessage = errorMessage {
-                NSLog(errorMessage.message.joined())
-            } else if let user = user {
-                self.user = user
-                DispatchQueue.main.async {
-                    if user.subscribed {
-                        self.subscriptionLabel.text = "Cancel"
-                    } else if !user.subscribed {
-                       self.subscriptionLabel.text = "Subscribe"
-                    }
-                }
-            }
+        if (user?.subscribed)! {
+            self.subscriptionLabel.text = "Cancel"
+        } else if !user!.subscribed {
+           self.subscriptionLabel.text = "Subscribe"
         }
         themeSelector.selectedSegmentIndex = Theme.current.rawValue
         themeSelector.layer.cornerRadius = 5.0;
         themeSelector.clipsToBounds = true;
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -80,10 +70,31 @@ class SettingsTableViewController: UITableViewController, STPAddCardViewControll
         
     }
     
+    func reloadViewFromNib() {
+        let parent = view.superview
+        view.removeFromSuperview()
+        view = nil
+        parent?.addSubview(view) // This line causes the view to be reloaded
+    }
+    
     @IBAction func themeSelector(_ sender: Any) {
         if let selectedTheme = Theme(rawValue: themeSelector.selectedSegmentIndex) {
             selectedTheme.apply()
-            //self.tableView.reloadData()
+            reloadViewFromNib()
+            setNavigationBarTint()
+        }
+    }
+    
+    func setNavigationBarTint() {
+        let themeInt = UserDefaults.standard.integer(forKey: "SelectedTheme")
+        
+        switch themeInt {
+        case 0:
+            self.navigationController?.navigationBar.barTintColor = UIColor(red: 34.0/255.0, green: 34.0/255.0, blue: 34.0/255.0, alpha: 1.0)
+        case 1:
+            self.navigationController?.navigationBar.barTintColor = UIColor(red: 118.0/255.0, green: 214.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+        default:
+            NSLog("Theme not picked")
         }
     }
 
@@ -91,7 +102,7 @@ class SettingsTableViewController: UITableViewController, STPAddCardViewControll
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func logout(_ sender: UIBarButtonItem) {
+    @IBAction func logout(_ sender: Any) {
         self.view.window!.rootViewController?.dismiss(animated: true)
         GIDSignIn.sharedInstance()?.signOut()
         APIController.shared.logout()
@@ -119,10 +130,61 @@ class SettingsTableViewController: UITableViewController, STPAddCardViewControll
         present(navigationController, animated: true)
     }
     
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        guard let user = user else {
+            NSLog("User wasn't passed to SettingsViewController")
+            return 0
+        }
+        
+        if section == 0 {
+            return 1
+        }
+        if section == 1 && !user.isAdmin {
+            return 0
+        }
+        if section == 2 && user.isAdmin {
+            return 2
+        } else if section == 2 && !user.isAdmin{
+            return 3
+        }
+        return 1
+    }
+    
+    func leaveTeam() {
+        
+        guard let user = user else {
+            NSLog("User wasn't set on SettingsViewController")
+            return
+        }
+        let alert = UIAlertController(title: "Are You Sure?", message: nil, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { [weak alert] (_) in
+            APIController.shared.removeMemberFromTeam(teamId: user.teamId!, userId: user.id, completion: { (errorMessage) in
+                DispatchQueue.main.async {
+                    self.logout(self)
+                }
+
+            })
+        }))
+        
+        alert.addAction(UIAlertAction(title: "No", style: .default, handler: { [weak alert] (_) in
+            
+        }))
+        
+        present(alert, animated: true)
+    }
+    
+    
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (user?.isAdmin)! {
             if indexPath.row == 0 && indexPath.section == 1 {
                 toggleSubscrption()
+            }
+        } else if !(user?.isAdmin)! {
+            if indexPath.row == 2 && indexPath.section == 2 {
+                leaveTeam()
             }
         }
 
@@ -132,7 +194,16 @@ class SettingsTableViewController: UITableViewController, STPAddCardViewControll
         }
     }
     
-}
+ 
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section ==  1 && !(user?.isAdmin)! {
+           return 0
+        }
+        return tableView.sectionHeaderHeight
+    }
+
+   }
 
 //OLD CODE
 //

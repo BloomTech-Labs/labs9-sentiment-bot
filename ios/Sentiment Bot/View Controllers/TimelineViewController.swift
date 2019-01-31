@@ -156,7 +156,7 @@ extension TimelineViewController: UINavigationControllerDelegate, UIImagePickerC
             }
             APIController.shared.getUserResponses(userId: UserDefaults.standard.userId, completion: { (responses, error) in
                 DispatchQueue.main.async {
-                    self.userResponses = responses
+                    self.userResponses = responses?.reversed()
                     self.timelineTableView.reloadData()
                 }
             })

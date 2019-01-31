@@ -9,51 +9,84 @@
 import UIKit
 
 class JoinCreateViewController: UIViewController {
-    
+    var user: User?
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        APIController.shared.getUser(userId: UserDefaults.standard.userId) { (user, errorMessage) in
+            if let errorMessage = errorMessage {
+                
+            } else if let user = user {
+                self.user = user
+            }
+        }
+        
     }
     
-    @IBOutlet weak var teamCodeTextField: UITextField!
-    
-    @IBOutlet weak var teamNameTextField: UITextField!
+    var userInput: String?
     
     
     @IBAction func joinTeam(_ sender: Any) {
-        guard let teamCode: Int = Int(teamCodeTextField.text!) else { return }
         
         
-        APIController.shared.joinTeam(code: teamCode) { (_, errorMessage) in
-            if let errorMessage = errorMessage {
-                print(errorMessage)
-            } else {
-                DispatchQueue.main.async {
-                    let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                    let teamMemberTVC = mainStoryBoard.instantiateViewController(withIdentifier: "TabBarViewController") as! TabBarViewController
-                    self.present(teamMemberTVC, animated: false)
+        let alert = UIAlertController(title: "Team Code", message: "Enter Code", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Code:"
+            textField.keyboardType = .numberPad
+        }
+        
+        alert.addAction(UIAlertAction(title: "Enter", style: .default, handler: { [weak alert] (_) in
+            let textField = alert!.textFields![0] // Force unwrapping because we know it exists.
+            self.userInput = textField.text
+            let teamCode = Int(self.userInput!)!
+            APIController.shared.joinTeam(code: teamCode) { (_, errorMessage) in
+                if let errorMessage = errorMessage {
+                    print(errorMessage)
+                } else {
+                    DispatchQueue.main.async {
+                        let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                        let teamMemberTVC = mainStoryBoard.instantiateViewController(withIdentifier: "UserTabBarContainerViewController") as! UserTabBarContainerViewController
+                        self.present(teamMemberTVC, animated: false)
+                    }
                 }
             }
-        }
+        }))
+        
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { [weak alert] (_) in
+        }))
+        
+        present(alert, animated: true)
     }
     
     @IBAction func createTeam(_ sender: Any) {
-        
-        guard let teamName = teamNameTextField.text else { return }
-        
-        APIController.shared.createTeam(userId: UserDefaults.standard.userId, teamName: teamName) { (errorMessage) in
-            
-            if let errorMessage = errorMessage {
-                print(errorMessage)
-            } else {
-                
-                DispatchQueue.main.async {
-                    let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                    let managerTVC = mainStoryBoard.instantiateViewController(withIdentifier: "ManagerTabBarViewController") as! ManagerTabBarViewController
-                    self.present(managerTVC, animated: false)
-                }
-            }
+        let alert = UIAlertController(title: "Team Name", message: nil, preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Name:"
         }
+        
+        alert.addAction(UIAlertAction(title: "Enter", style: .default, handler: { [weak alert] (_) in
+            let textField = alert!.textFields![0] // Force unwrapping because we know it exists.
+            self.userInput = textField.text
+            APIController.shared.createTeam(userId: self.user!.id, teamName: self.userInput!, completion: { (errorMessage) in
+                if let errorMessage = errorMessage {
+                    print(errorMessage)
+                } else {
+                    DispatchQueue.main.async {
+                        let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                        let managerTVC = mainStoryBoard.instantiateViewController(withIdentifier: "ManagerTabBarContainerViewController") as! ManagerTabBarContainerViewController
+                        self.present(managerTVC, animated: false)
+                    }
+                }
+            })
+        }))
+        
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { [weak alert] (_) in
+        }))
+        
+        present(alert, animated: true)
+        
     }
     
 }

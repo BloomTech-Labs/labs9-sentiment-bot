@@ -35,5 +35,10 @@ class TimeLineTableViewCell: UITableViewCell {
     
     weak var delegate: TimeLineTableViewCellDelegate?
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        feelzImageView.image = UIImage(named: "plus-button")
+    }
+    
 
 }

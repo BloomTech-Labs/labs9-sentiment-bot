@@ -37,12 +37,17 @@ class ManagerTimelineTableViewCell: UITableViewCell {
                     NSLog("Error getting image \(error)")
                 } else if let image = image {
                     DispatchQueue.main.async {
-                        self.feelzImageView.image = image
+                            self.feelzImageView.image = image
                     }
                 }
             }
         }
         
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        feelzImageView.image = UIImage(named: "missing-image-5")
     }
 
 }
