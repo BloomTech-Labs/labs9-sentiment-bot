@@ -96,8 +96,6 @@ enum Theme: Int {
 //        UIApplication.shared.delegate?.window??.backgroundColor = mainColor
         UISegmentedControl.appearance().tintColor = mainColor
         UISegmentedControl.appearance().backgroundColor = .white
-        UISegmentedControl.appearance().layer.cornerRadius = 5.0;
-        UISegmentedControl.appearance().clipsToBounds = true;
         
         UITabBar.appearance().barTintColor = tabBarColor
        //UITabBar.appearance().barStyle = barStyle

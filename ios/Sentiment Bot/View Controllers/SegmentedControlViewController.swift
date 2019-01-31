@@ -34,6 +34,8 @@ class SegmentedControlViewController: UIViewController {
         segmentedControl.insertSegment(withTitle: "Sign In", at: 0, animated: false)
         segmentedControl.insertSegment(withTitle: "Sign Up", at: 1, animated: false)
         segmentedControl.addTarget(self, action: #selector(selectionDidChange(_:)), for: .valueChanged)
+        segmentedControl.layer.cornerRadius = 5.0;
+        segmentedControl.clipsToBounds = true;
         
         // Select First Segment
         segmentedControl.selectedSegmentIndex = 0
