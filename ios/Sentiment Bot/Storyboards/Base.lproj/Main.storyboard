@@ -38,20 +38,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Robot" translatesAutoresizingMaskIntoConstraints="NO" id="ub4-b1-1mJ">
-                                <rect key="frame" x="87" y="62" width="200" height="200"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eQh-8c-bI2">
-                                <rect key="frame" x="16" y="270" width="343" height="390"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <segue destination="fiA-dN-8cf" kind="embed" id="Ty2-oI-CfV"/>
-                                </connections>
-                            </containerView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LjF-th-bkc">
+                                <rect key="frame" x="37.666666666666657" y="69" width="300" height="483"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Robot" translatesAutoresizingMaskIntoConstraints="NO" id="ub4-b1-1mJ">
+                                        <rect key="frame" x="75" y="0.0" width="150" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="1gT-om-Dhf"/>
+                                            <constraint firstAttribute="height" constant="150" id="gsY-61-gF9"/>
+                                        </constraints>
+                                    </imageView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eQh-8c-bI2">
+                                        <rect key="frame" x="0.0" y="158" width="300" height="325"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="325" id="0rz-2Q-WIv"/>
+                                            <constraint firstAttribute="width" constant="300" id="XDg-cZ-Yv3"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="fiA-dN-8cf" kind="embed" id="Ty2-oI-CfV"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.96286981807996153" green="0.96394501891854689" blue="0.9638534547531441" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="LjF-th-bkc" firstAttribute="centerX" secondItem="0Xk-Fr-YFD" secondAttribute="centerX" id="1a0-JL-aBi"/>
+                            <constraint firstItem="LjF-th-bkc" firstAttribute="top" secondItem="Hv2-ea-9Vs" secondAttribute="top" constant="25" id="gZC-aR-Zhg"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Hv2-ea-9Vs"/>
                     </view>
                     <connections>
@@ -149,7 +164,7 @@
             <objects>
                 <viewController id="kWS-Ix-7rY" customClass="SegmentedControlViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aaB-ye-4fc">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="390"/>
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="325"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Jg4-Kg-9cY"/>
@@ -157,7 +172,7 @@
                     <navigationItem key="navigationItem" id="dr5-x3-6xq">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="pgY-gJ-cqj">
-                            <rect key="frame" x="80" y="7.6666666666666679" width="183" height="29.000000000000004"/>
+                            <rect key="frame" x="89.666666666666686" y="7.6666666666666679" width="121" height="29.000000000000004"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <segments>
@@ -181,7 +196,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fiA-dN-8cf" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="G9r-O0-Vyf">
-                        <rect key="frame" x="0.0" y="44" width="343" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="300" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -327,13 +342,13 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBO-BH-3Lf">
                                                 <rect key="frame" x="0.0" y="0.0" width="195.66666666666666" height="59"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNd-I3-dr4">
                                                 <rect key="frame" x="196.66666666666663" y="0.0" width="162.33333333333337" height="59"/>
-                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -350,7 +365,7 @@
                                 <rect key="frame" x="337" y="52" width="30" height="30"/>
                                 <state key="normal" image="settings"/>
                                 <connections>
-                                    <segue destination="Iab-Me-R8X" kind="presentation" id="vba-Y3-vsT"/>
+                                    <segue destination="Iab-Me-R8X" kind="presentation" identifier="ToSettingsScreen" id="vba-Y3-vsT"/>
                                 </connections>
                             </button>
                         </subviews>
