@@ -51,7 +51,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         }
         
         APIController.shared.logIn(email: email, password: password) { (error) in
-            clearFields()
+            
 
             if let error = error {
                 //Better Error handling would be to show user error
@@ -65,6 +65,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                     if let error = error {
                         NSLog("There was error retreiving current User: \(error)")
                     } else if let user = user {
+                        clearFields()
                         DispatchQueue.main.async {
                             let authenticationViewController = self.parent?.parent?.parent as! GoogleSignInViewController
                             if user.isAdmin {

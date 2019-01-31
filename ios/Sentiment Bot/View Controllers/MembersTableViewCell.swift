@@ -13,5 +13,8 @@ class MembersTableViewCell: UITableViewCell {
     @IBOutlet weak var memberImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
 
-
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        memberImageView.image = UIImage(named: "missing-image-5")
+    }
 }

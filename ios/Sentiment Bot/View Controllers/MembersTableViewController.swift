@@ -79,11 +79,9 @@ extension MembersTableViewController: UITableViewDataSource, UITableViewDelegate
         if(editingStyle == .delete) {
             let teamMember = teamMembers![indexPath.row]
             APIController.shared.removeMemberFromTeam(teamId: team!.id, userId: teamMember.id) { (errorMessage) in
-                DispatchQueue.main.async {
-                    self.teamMembers?.remove(at: indexPath.row)
-                    self.teamMembersTableView.reloadData()
-                }
             }
+            self.teamMembers?.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
     

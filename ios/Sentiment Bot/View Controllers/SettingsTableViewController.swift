@@ -102,7 +102,7 @@ class SettingsTableViewController: UITableViewController, STPAddCardViewControll
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func logout(_ sender: UIBarButtonItem) {
+    @IBAction func logout(_ sender: Any) {
         self.view.window!.rootViewController?.dismiss(animated: true)
         GIDSignIn.sharedInstance()?.signOut()
         APIController.shared.logout()
@@ -153,6 +153,26 @@ class SettingsTableViewController: UITableViewController, STPAddCardViewControll
     
     func leaveTeam() {
         
+        guard let user = user else {
+            NSLog("User wasn't set on SettingsViewController")
+            return
+        }
+        let alert = UIAlertController(title: "Are You Sure?", message: nil, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { [weak alert] (_) in
+            APIController.shared.removeMemberFromTeam(teamId: user.teamId!, userId: user.id, completion: { (errorMessage) in
+                DispatchQueue.main.async {
+                    self.logout(self)
+                }
+
+            })
+        }))
+        
+        alert.addAction(UIAlertAction(title: "No", style: .default, handler: { [weak alert] (_) in
+            
+        }))
+        
+        present(alert, animated: true)
     }
     
     
@@ -161,6 +181,10 @@ class SettingsTableViewController: UITableViewController, STPAddCardViewControll
         if (user?.isAdmin)! {
             if indexPath.row == 0 && indexPath.section == 1 {
                 toggleSubscrption()
+            }
+        } else if !(user?.isAdmin)! {
+            if indexPath.row == 2 && indexPath.section == 2 {
+                leaveTeam()
             }
         }
 
