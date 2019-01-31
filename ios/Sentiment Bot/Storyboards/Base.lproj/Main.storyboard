@@ -356,7 +356,6 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="DAx-6V-plq" secondAttribute="bottom" id="EmA-I5-ZzK"/>
                                     <constraint firstAttribute="trailing" secondItem="DAx-6V-plq" secondAttribute="trailing" id="Na5-sg-g17"/>
                                     <constraint firstItem="DAx-6V-plq" firstAttribute="leading" secondItem="spK-8L-qSC" secondAttribute="leading" id="P0d-gn-x2L"/>
                                 </constraints>
