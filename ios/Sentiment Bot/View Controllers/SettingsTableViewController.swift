@@ -8,15 +8,29 @@
 
 import UIKit
 import GoogleSignIn
-
-class SettingsTableViewController: UITableViewController {
+import Stripe
+class SettingsTableViewController: UITableViewController, STPAddCardViewControllerDelegate {
     
+    var user: User?
     @IBOutlet weak var themeSelector: UISegmentedControl!
     @IBOutlet weak var subscriptionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        APIController.shared.getUser(userId: UserDefaults.standard.userId) { (user, errorMessage) in
+            if let errorMessage = errorMessage {
+                NSLog(errorMessage.message.joined())
+            } else if let user = user {
+                self.user = user
+                DispatchQueue.main.async {
+                    if user.subscribed {
+                        self.subscriptionLabel.text = "Cancel"
+                    } else if !user.subscribed {
+                       self.subscriptionLabel.text = "Subscribe"
+                    }
+                }
+            }
+        }
         themeSelector.selectedSegmentIndex = Theme.current.rawValue
 
     }
@@ -26,10 +40,48 @@ class SettingsTableViewController: UITableViewController {
         
     }
     
+    @IBAction func subscribe(_ sender: UIButton) {
+        // Setup add card view controller
+        let addCardViewController = STPAddCardViewController()
+        addCardViewController.delegate = self
+        addCardViewController.title = "Subscribe to Premium"
+        
+        // Present add card view controller
+        let navigationController = UINavigationController(rootViewController: addCardViewController)
+        present(navigationController, animated: true)
+    }
+    
+    // MARK: STPAddCardViewControllerDelegate
+    
+    func addCardViewControllerDidCancel(_ addCardViewController: STPAddCardViewController) {
+        // Dismiss add card view controller
+        dismiss(animated: true)
+    }
+    
+    var stripeToken: String?
+
+    
+    func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken, completion: @escaping STPErrorBlock) {
+        title = "Subscribe to Premium"
+        stripeToken = token.tokenId
+        print("Printing Strip response:\(token.allResponseFields)\n\n")
+        print("Printing Strip Token:\(token.tokenId)")
+        
+        
+        StripeController.shared.subscribeToPremium(token: stripeToken!) { (error) in
+            DispatchQueue.main.async {
+                self.subscriptionLabel.text = "Cancel"
+                self.dismiss(animated: true)
+            }
+            self.user?.subscribed = true
+        }
+        
+    }
+    
     @IBAction func themeSelector(_ sender: Any) {
         if let selectedTheme = Theme(rawValue: themeSelector.selectedSegmentIndex) {
             selectedTheme.apply()
-
+            //self.tableView.reloadData()
         }
     }
 
@@ -44,20 +96,39 @@ class SettingsTableViewController: UITableViewController {
     }
     
     private func toggleSubscrption() {
-        print("Subscribed")
+        if (user?.subscribed)! {
+            StripeController.shared.cancelPremiumSubscription { (error) in
+                DispatchQueue.main.async {
+                    self.subscriptionLabel.text = "Subscribe"
+                }
+                self.user?.subscribed = false
+            }
+            return
+        }
+        // Setup add card view controller
+        let addCardViewController = STPAddCardViewController()
+        addCardViewController.delegate = self
+        addCardViewController.title = "Subscribe to Premium"
+        
+        
+        // Present add card view controller
+        let navigationController = UINavigationController(rootViewController: addCardViewController)
+        //self.navigationController?.pushViewController(addCardViewController, animated: true)
+        present(navigationController, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        if indexPath.row == 0 && indexPath.section == 1 {
-            toggleSubscrption()
+        if (user?.isAdmin)! {
+            if indexPath.row == 0 && indexPath.section == 1 {
+                toggleSubscrption()
+            }
         }
+
         
         if let index = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: index, animated: true)
         }
     }
-    
     
 }
 

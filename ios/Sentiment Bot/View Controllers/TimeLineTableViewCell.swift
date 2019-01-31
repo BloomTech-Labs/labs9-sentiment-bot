@@ -8,6 +8,9 @@
 
 import UIKit
 
+protocol TimeLineTableViewCellDelegate: class {
+    func selectImage(on cell: TimeLineTableViewCell)
+}
 class TimeLineTableViewCell: UITableViewCell {
 
     @IBOutlet weak var dateLabel: UILabel!
@@ -23,22 +26,14 @@ class TimeLineTableViewCell: UITableViewCell {
         feelzNameLabel.text = response.mood.capitalized
         locationLabel.text = response.place
  
-        if let imageUrl = response.imageUrl {
-            APIController.shared.getImage(url: imageUrl) { (image, error) in
-                if let error = error {
-                    NSLog("Error getting image \(error)")
-                } else if let image = image {
-                    DispatchQueue.main.async {
-                        self.feelzImageView.image = image
-                    }
-                }
-            }
-        }
+
     }
     
     @IBAction func selectImage(_ sender: Any) {
-        print("Select Image")
+        delegate?.selectImage(on: self)
     }
+    
+    weak var delegate: TimeLineTableViewCellDelegate?
     
 
 }

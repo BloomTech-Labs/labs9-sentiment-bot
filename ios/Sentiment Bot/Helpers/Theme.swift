@@ -105,7 +105,12 @@ enum Theme: Int {
         guard let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else { return }
         statusBar.backgroundColor = backgroundColor1
         
-        UITableViewCell.appearance().backgroundColor = backgroundColor2
+        UITableViewCell.appearance(whenContainedInInstancesOf: [TimelineViewController.self]).backgroundColor = backgroundColor2
+        UITableViewCell.appearance(whenContainedInInstancesOf: [ManagerTimelineViewController.self]).backgroundColor = backgroundColor2
+        UITableViewCell.appearance(whenContainedInInstancesOf: [MembersTableViewController.self]).backgroundColor = backgroundColor2
+        UITableViewCell.appearance(whenContainedInInstancesOf: [SettingsTableViewController.self]).backgroundColor = backgroundColor2
+        UITableViewCell.appearance(whenContainedInInstancesOf: [SendSurveyViewController.self]).backgroundColor = backgroundColor2
+        //UITableViewCell.appearance().backgroundColor = backgroundColor2
         UITableView.appearance().backgroundColor = backgroundColor2
         
         //UILabel.appearance().textColor = textColor
@@ -115,6 +120,7 @@ enum Theme: Int {
        
         UIView.appearance(whenContainedInInstancesOf: [UserContainerViewController.self]).backgroundColor = backgroundColor1
         UIView.appearance(whenContainedInInstancesOf: [ManagementViewController.self]).backgroundColor = backgroundColor2
+        UIView.appearance(whenContainedInInstancesOf: [SettingsTableViewController.self]).backgroundColor = backgroundColor2
         
         UIButton.appearance(whenContainedInInstancesOf: [UserContainerViewController.self]).tintColor = .white
         UIButton.appearance(whenContainedInInstancesOf: [ManagementViewController.self]).backgroundColor = mainColor
@@ -138,14 +144,14 @@ enum Theme: Int {
     
     func styleSignInVC() {
         UIButton.appearance(whenContainedInInstancesOf: [SignInViewController.self]).backgroundColor = mainColor
-        UITextField.appearance(whenContainedInInstancesOf: [SignInViewController.self]).backgroundColor = backgroundColor1
-        UITextField.appearance(whenContainedInInstancesOf: [SignInViewController.self]).textColor = textColor
+        UITextField.appearance(whenContainedInInstancesOf: [SignInViewController.self]).backgroundColor = .white
+        UITextField.appearance(whenContainedInInstancesOf: [SignInViewController.self]).textColor = .black
     }
     
     func styleSignUpVC() {
         UIButton.appearance(whenContainedInInstancesOf: [SignUpViewController.self]).backgroundColor = mainColor
-        UITextField.appearance(whenContainedInInstancesOf: [SignUpViewController.self]).backgroundColor = backgroundColor1
-        UITextField.appearance(whenContainedInInstancesOf: [SignUpViewController.self]).textColor = textColor
+        UITextField.appearance(whenContainedInInstancesOf: [SignUpViewController.self]).backgroundColor = .white
+        UITextField.appearance(whenContainedInInstancesOf: [SignUpViewController.self]).textColor = .black
     }
 }
 

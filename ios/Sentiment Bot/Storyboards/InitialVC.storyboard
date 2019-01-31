@@ -18,55 +18,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gYK-zx-zEQ">
-                                <rect key="frame" x="152" y="399" width="70" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Join Team"/>
-                                <connections>
-                                    <action selector="joinTeam:" destination="dfY-fl-nhs" eventType="touchUpInside" id="6uh-kw-IRq"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3YR-DS-x4e">
-                                <rect key="frame" x="138" y="487" width="99" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Create a Team"/>
-                                <connections>
-                                    <action selector="createTeam:" destination="dfY-fl-nhs" eventType="touchUpInside" id="ioi-dr-Adz"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l7r-Ft-9vx">
-                                <rect key="frame" x="139" y="349" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QJs-jG-l4d">
-                                <rect key="frame" x="139" y="449" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G5X-20-FPC">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="211"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G5X-20-FPC">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="213"/>
                                 <connections>
                                     <segue destination="DGL-1u-vtS" kind="embed" id="PzS-cP-Fl2"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VAY-6n-d3L">
+                                <rect key="frame" x="0.0" y="213" width="375" height="454"/>
+                                <connections>
+                                    <segue destination="rKE-kX-w03" kind="embed" id="icY-ez-gBo"/>
+                                </connections>
+                            </containerView>
                         </subviews>
-                        <color key="backgroundColor" red="0.53296291829999998" green="0.7681911588" blue="0.83568340539999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="G5X-20-FPC" firstAttribute="top" secondItem="Bae-tw-zcT" secondAttribute="top" id="7hL-pj-aFG"/>
+                            <constraint firstItem="VAY-6n-d3L" firstAttribute="top" secondItem="G5X-20-FPC" secondAttribute="bottom" id="Gfu-G2-41E"/>
+                            <constraint firstItem="VAY-6n-d3L" firstAttribute="bottom" secondItem="1vc-Xe-ZtZ" secondAttribute="bottom" id="HNm-cu-CsI"/>
+                            <constraint firstItem="VAY-6n-d3L" firstAttribute="top" secondItem="Bae-tw-zcT" secondAttribute="top" constant="213" id="Td9-eH-8Ia"/>
+                            <constraint firstItem="VAY-6n-d3L" firstAttribute="trailing" secondItem="1vc-Xe-ZtZ" secondAttribute="trailing" id="UJ4-rA-NJe"/>
+                            <constraint firstItem="G5X-20-FPC" firstAttribute="trailing" secondItem="1vc-Xe-ZtZ" secondAttribute="trailing" id="Z6n-0e-hFj"/>
+                            <constraint firstItem="VAY-6n-d3L" firstAttribute="leading" secondItem="1vc-Xe-ZtZ" secondAttribute="leading" id="kc8-3G-We4"/>
+                            <constraint firstItem="G5X-20-FPC" firstAttribute="leading" secondItem="1vc-Xe-ZtZ" secondAttribute="leading" id="uIi-LR-0K4"/>
+                            <constraint firstItem="VAY-6n-d3L" firstAttribute="top" secondItem="G5X-20-FPC" secondAttribute="bottom" id="zkU-Oh-iPh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="1vc-Xe-ZtZ"/>
                     </view>
-                    <connections>
-                        <outlet property="teamCodeTextField" destination="l7r-Ft-9vx" id="ZI6-4N-umk"/>
-                        <outlet property="teamNameTextField" destination="QJs-jG-l4d" id="jfq-gH-6Wg"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hu3-eU-cKY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="525.60000000000002" y="317.73399014778329"/>
+            <point key="canvasLocation" x="797.60000000000002" y="300.89955022488761"/>
         </scene>
         <!--UIViewController-pUm-IC-PF1-->
         <scene sceneID="Sq5-k4-FTs">
@@ -75,6 +56,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F2h-Kf-wrN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-806" y="-93"/>
+        </scene>
+        <!--Join Create View Controller-->
+        <scene sceneID="Tdu-Bk-jdw">
+            <objects>
+                <viewController id="rKE-kX-w03" customClass="JoinCreateViewController" customModule="Sentiment_Bot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Hj-5E-LPH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="454"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5C-DW-pEJ">
+                                <rect key="frame" x="152" y="195" width="70" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Join Team"/>
+                                <connections>
+                                    <action selector="joinTeam:" destination="rKE-kX-w03" eventType="touchUpInside" id="UCr-TJ-exa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JNj-UW-Def">
+                                <rect key="frame" x="138" y="283" width="99" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Create a Team"/>
+                                <connections>
+                                    <action selector="createTeam:" destination="rKE-kX-w03" eventType="touchUpInside" id="dLr-qP-d9u"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rI5-rB-xG1">
+                                <rect key="frame" x="139" y="145" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Zv-aC-PlR">
+                                <rect key="frame" x="139" y="245" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="udl-uH-aog"/>
+                    </view>
+                    <connections>
+                        <outlet property="teamCodeTextField" destination="rI5-rB-xG1" id="193-J3-5z7"/>
+                        <outlet property="teamNameTextField" destination="7Zv-aC-PlR" id="JBN-e3-Sgr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JAf-Qy-NVh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-252" y="736"/>
         </scene>
     </scenes>
 </document>
