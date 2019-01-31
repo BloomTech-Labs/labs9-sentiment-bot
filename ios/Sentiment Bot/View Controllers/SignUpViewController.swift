@@ -15,6 +15,9 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear.withAlphaComponent(0.25)
         view.layer.cornerRadius = 20
+        signUpButton.layer.cornerRadius = signUpButton.frame.size.height / 2
+        googleButton.layer.cornerRadius = 5
+        googleButton.clipsToBounds = true
         setPlaceHolders()
     }
     
@@ -38,12 +41,13 @@ class SignUpViewController: UIViewController {
     }
     
     @IBOutlet weak var firstNameTextField: UITextField!
-    
     @IBOutlet weak var lastNameTextField: UITextField!
-    
     @IBOutlet weak var emailTextField: UITextField!
-    
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var signUpButton: UIButton!
+    
+    @IBOutlet weak var googleButton: UIButton!
+    
     
     @IBAction func signUp(_ sender: Any) {
         guard let firstName = firstNameTextField.text,

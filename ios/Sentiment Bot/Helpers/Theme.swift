@@ -25,7 +25,7 @@ enum Theme: Int {
         case .dark:
             return UIColor(red: 132.0/255.0, green: 13.0/255.0, blue: 27.0/255.0, alpha: 1.0)
         case .light:
-            return UIColor(red: 118.0/255.0, green: 214.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+            return UIColor(red: 68.0/255.0, green: 191.0/255.0, blue: 254.0/255.0, alpha: 1.0)
         }
     }
     
@@ -45,7 +45,9 @@ enum Theme: Int {
             return UIColor(red: 34.0/255.0, green: 34.0/255.0, blue: 34.0/255.0, alpha: 1.0)
         case .light:
             //Sky
-            return UIColor(red: 118.0/255.0, green: 214.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+            //return UIColor(red: 118.0/255.0, green: 214.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+            //Day One Blue
+            return UIColor(red: 68.0/255.0, green: 191.0/255.0, blue: 254.0/255.0, alpha: 1.0)
         }
     }
     
@@ -121,11 +123,14 @@ enum Theme: Int {
        
         UIView.appearance(whenContainedInInstancesOf: [UserContainerViewController.self]).backgroundColor = backgroundColor1
         UIView.appearance(whenContainedInInstancesOf: [ManagementViewController.self]).backgroundColor = backgroundColor2
-        UIView.appearance(whenContainedInInstancesOf: [SettingsTableViewController.self]).backgroundColor = backgroundColor2
+//        UIView.appearance(whenContainedInInstancesOf: [SettingsTableViewController.self]).backgroundColor = backgroundColor2
         
         UIButton.appearance().tintColor = textColor
         UIButton.appearance(whenContainedInInstancesOf: [UserContainerViewController.self]).tintColor = .white
         UIButton.appearance(whenContainedInInstancesOf: [ManagementViewController.self]).backgroundColor = mainColor
+        
+        UISegmentedControl.appearance().tintColor = mainColor
+        UISegmentedControl.appearance().backgroundColor = .white
                
 //        let controlBackground = UIImage(named: "controlBackground")?
 //            .withRenderingMode(.alwaysTemplate)

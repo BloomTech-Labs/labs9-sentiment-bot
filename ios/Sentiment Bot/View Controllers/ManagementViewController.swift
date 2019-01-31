@@ -35,9 +35,11 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
     //@IBOutlet weak var msgBox: UITextView!
     
     @IBOutlet weak var currentScheduleLabel: UILabel!
+    @IBOutlet weak var sendSurveyButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        sendSurveyButton.applyDesign()
         setSchedule()
     }
     
