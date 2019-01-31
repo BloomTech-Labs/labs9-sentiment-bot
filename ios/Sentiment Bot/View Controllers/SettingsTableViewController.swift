@@ -17,22 +17,12 @@ class SettingsTableViewController: UITableViewController, STPAddCardViewControll
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        APIController.shared.getUser(userId: UserDefaults.standard.userId) { (user, errorMessage) in
-            if let errorMessage = errorMessage {
-                NSLog(errorMessage.message.joined())
-            } else if let user = user {
-                self.user = user
-                DispatchQueue.main.async {
-                    if user.subscribed {
-                        self.subscriptionLabel.text = "Cancel"
-                    } else if !user.subscribed {
-                       self.subscriptionLabel.text = "Subscribe"
-                    }
-                }
-            }
+        if (user?.subscribed)! {
+            self.subscriptionLabel.text = "Cancel"
+        } else if !user!.subscribed {
+           self.subscriptionLabel.text = "Subscribe"
         }
         themeSelector.selectedSegmentIndex = Theme.current.rawValue
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -117,6 +107,21 @@ class SettingsTableViewController: UITableViewController, STPAddCardViewControll
         present(navigationController, animated: true)
     }
     
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 1
+        }
+        if section == 1 && !(user?.isAdmin)! {
+            return 0
+        }
+        if section == 2 {
+            return 3
+        }
+        return 1
+    }
+    
+    
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (user?.isAdmin)! {
             if indexPath.row == 0 && indexPath.section == 1 {
@@ -130,7 +135,16 @@ class SettingsTableViewController: UITableViewController, STPAddCardViewControll
         }
     }
     
-}
+ 
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section ==  1 && !(user?.isAdmin)! {
+           return 0
+        }
+        return tableView.sectionHeaderHeight
+    }
+
+   }
 
 //OLD CODE
 //

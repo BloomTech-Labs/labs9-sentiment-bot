@@ -94,6 +94,10 @@ enum Theme: Int {
         UIApplication.shared.delegate?.window??.tintColor = mainColor
         UIApplication.shared.delegate?.window??.backgroundColor = backgroundColor3
 //        UIApplication.shared.delegate?.window??.backgroundColor = mainColor
+        UISegmentedControl.appearance().tintColor = mainColor
+        UISegmentedControl.appearance().backgroundColor = .white
+        UISegmentedControl.appearance().layer.cornerRadius = 5.0;
+        UISegmentedControl.appearance().clipsToBounds = true;
         
         UITabBar.appearance().barTintColor = tabBarColor
        //UITabBar.appearance().barStyle = barStyle
@@ -111,6 +115,7 @@ enum Theme: Int {
         UITableViewCell.appearance(whenContainedInInstancesOf: [MembersTableViewController.self]).backgroundColor = backgroundColor2
         UITableViewCell.appearance(whenContainedInInstancesOf: [SettingsTableViewController.self]).backgroundColor = backgroundColor2
         UITableViewCell.appearance(whenContainedInInstancesOf: [SendSurveyViewController.self]).backgroundColor = backgroundColor2
+        
         //UITableViewCell.appearance().backgroundColor = backgroundColor2
         UITableView.appearance().backgroundColor = backgroundColor2
         
@@ -121,12 +126,14 @@ enum Theme: Int {
        
         UIView.appearance(whenContainedInInstancesOf: [UserContainerViewController.self]).backgroundColor = backgroundColor1
         UIView.appearance(whenContainedInInstancesOf: [ManagementViewController.self]).backgroundColor = backgroundColor2
-        UIView.appearance(whenContainedInInstancesOf: [SettingsTableViewController.self]).backgroundColor = backgroundColor2
+        //UIView.appearance(whenContainedInInstancesOf: [SettingsTableViewController.self]).backgroundColor = backgroundColor2
+        
+        UIView.appearance(whenContainedInInstancesOf: [JoinCreateViewController.self]).backgroundColor = backgroundColor2
         
         UIButton.appearance().tintColor = textColor
         UIButton.appearance(whenContainedInInstancesOf: [UserContainerViewController.self]).tintColor = .white
         UIButton.appearance(whenContainedInInstancesOf: [ManagementViewController.self]).backgroundColor = mainColor
-               
+        UIButton.appearance(whenContainedInInstancesOf: [JoinCreateViewController.self]).backgroundColor = mainColor
 //        let controlBackground = UIImage(named: "controlBackground")?
 //            .withRenderingMode(.alwaysTemplate)
 //            .resizableImage(withCapInsets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))

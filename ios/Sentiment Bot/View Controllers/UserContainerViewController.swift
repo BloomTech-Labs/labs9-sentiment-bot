@@ -164,4 +164,14 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ToSettingsScreen" {
+            if let nav = segue.destination as? UINavigationController {
+                let destination = nav.topViewController as! SettingsTableViewController
+                destination.user = users
+            }
+
+        }
+    }
 }

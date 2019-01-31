@@ -350,7 +350,7 @@
                                 <rect key="frame" x="337" y="52" width="30" height="30"/>
                                 <state key="normal" image="settings"/>
                                 <connections>
-                                    <segue destination="Iab-Me-R8X" kind="presentation" id="vba-Y3-vsT"/>
+                                    <segue destination="Iab-Me-R8X" kind="presentation" identifier="ToSettingsScreen" id="vba-Y3-vsT"/>
                                 </connections>
                             </button>
                         </subviews>
