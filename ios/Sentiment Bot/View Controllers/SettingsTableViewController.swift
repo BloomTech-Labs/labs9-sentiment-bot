@@ -32,6 +32,8 @@ class SettingsTableViewController: UITableViewController, STPAddCardViewControll
             }
         }
         themeSelector.selectedSegmentIndex = Theme.current.rawValue
+        themeSelector.layer.cornerRadius = 5.0;
+        themeSelector.clipsToBounds = true;
 
     }
     

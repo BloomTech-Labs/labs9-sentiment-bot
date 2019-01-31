@@ -126,6 +126,9 @@ enum Theme: Int {
         UIButton.appearance().tintColor = textColor
         UIButton.appearance(whenContainedInInstancesOf: [UserContainerViewController.self]).tintColor = .white
         UIButton.appearance(whenContainedInInstancesOf: [ManagementViewController.self]).backgroundColor = mainColor
+        
+        UISegmentedControl.appearance().tintColor = mainColor
+        UISegmentedControl.appearance().backgroundColor = .white
                
 //        let controlBackground = UIImage(named: "controlBackground")?
 //            .withRenderingMode(.alwaysTemplate)
