@@ -143,8 +143,6 @@ extension TimelineViewController: UINavigationControllerDelegate, UIImagePickerC
             return
         }
         
-        // TODO: - put image in Response array
-        
         guard let imageData = image.pngData(), let responseID = responseID else {
             dismiss(animated: true, completion: nil)
             return
@@ -156,7 +154,7 @@ extension TimelineViewController: UINavigationControllerDelegate, UIImagePickerC
             }
             APIController.shared.getUserResponses(userId: UserDefaults.standard.userId, completion: { (responses, error) in
                 DispatchQueue.main.async {
-                    self.userResponses = responses?.reversed()
+                    self.userResponses = responses
                     self.timelineTableView.reloadData()
                 }
             })

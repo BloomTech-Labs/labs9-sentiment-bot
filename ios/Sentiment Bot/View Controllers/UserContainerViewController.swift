@@ -78,7 +78,7 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
                                 DispatchQueue.main.async {
                                     if let number = self.responses?.count {
                                         self.leftLabel.text = "\(number) Feelz"
-                                        self.rightLabel.text = "Last in \(responses?.last?.date ?? "N/A")"
+                                        self.rightLabel.text = "Last in \(responses?.first?.date ?? "N/A")"
                                     }
                                     
                                 }

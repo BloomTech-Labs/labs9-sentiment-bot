@@ -17,7 +17,7 @@ enum Theme: Int {
 
     static var current: Theme {
         let storedTheme = UserDefaults.standard.integer(forKey: Keys.selectedTheme)
-        return Theme(rawValue: storedTheme) ?? .dark
+        return Theme(rawValue: storedTheme) ?? .light
     }
     
     var mainColor: UIColor {

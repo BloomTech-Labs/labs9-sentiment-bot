@@ -232,7 +232,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aWF-a7-8YD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="256" y="-427"/>
+            <point key="canvasLocation" x="155" y="-454"/>
         </scene>
         <!--TeamMembers-->
         <scene sceneID="6pE-OF-240">
@@ -242,7 +242,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xd3-K7-6Zm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="244" y="-586"/>
+            <point key="canvasLocation" x="143" y="-614"/>
         </scene>
         <!--SendSurvey-->
         <scene sceneID="B0d-gx-MJw">
@@ -252,7 +252,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YlX-fb-nor" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="233" y="-342"/>
+            <point key="canvasLocation" x="132" y="-369"/>
         </scene>
         <!--SentimentReport-->
         <scene sceneID="QHf-qK-VES">
@@ -262,7 +262,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y1r-EU-8EC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="256" y="-516"/>
+            <point key="canvasLocation" x="155" y="-544"/>
         </scene>
         <!--User Tab Bar Container View Controller-->
         <scene sceneID="N6f-Fb-9oE">
@@ -342,7 +342,7 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBO-BH-3Lf">
                                                 <rect key="frame" x="0.0" y="0.0" width="195.66666666666666" height="59"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
