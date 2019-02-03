@@ -10,17 +10,23 @@ import UIKit
 import GoogleSignIn
 
 class SignInViewController: UIViewController, UITextFieldDelegate {
+    
+    var switchLogin = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = UIColor.clear.withAlphaComponent(0.25)
         view.layer.cornerRadius = 20
         emailTextField.delegate = self
         passwordTextField.delegate = self
         signInButton.layer.cornerRadius = signInButton.frame.size.height / 2
-        googleButton.layer.cornerRadius = 5
+        googleButton.layer.cornerRadius = googleButton.frame.size.height / 2
         googleButton.clipsToBounds = true
         setPlaceHolders()
+        
+        moinButton.backgroundColor = .clear
+        scottButton.backgroundColor = .clear
     }
     
     func setPlaceHolders() {
@@ -40,6 +46,9 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var googleButton: UIButton!
+    @IBOutlet weak var moinButton: UIButton!
+    @IBOutlet weak var scottButton: UIButton!
+    
     
     
     @IBAction func signIn(_ sender: Any) {
@@ -57,7 +66,6 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         
         APIController.shared.logIn(email: email, password: password) { (error) in
             
-
             if let error = error {
                 //Better Error handling would be to show user error
                 //becuase the error that is retreived here may say something like
@@ -103,6 +111,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         return false
     }
     
+
 }
 
 // Dismiss Keyboard
@@ -113,3 +122,53 @@ extension UIViewController
         super.touchesBegan(touches, with: event)
     }
 }
+
+extension SignInViewController {
+
+    @IBAction func moinLongin(_ sender: UIButton) {
+
+       if switchLogin {
+            switchLogin.toggle()
+            emailTextField.setTextWithTypeAnimation(typedText: "moin@moin.com")
+        } else {
+            switchLogin.toggle()
+            passwordTextField.setTextWithTypeAnimation(typedText: "123456")
+        }
+        
+    }
+    
+    @IBAction func scottLogin(_ sender: UIButton) {
+        
+        if switchLogin {
+            switchLogin.toggle()
+            emailTextField.setTextWithTypeAnimation(typedText: "scott@scott.com")
+        } else {
+            switchLogin.toggle()
+            passwordTextField.setTextWithTypeAnimation(typedText: "123456")
+        }
+    }
+    
+}
+
+extension UITextField {
+    func setTextWithTypeAnimation(typedText: String, characterDelay: TimeInterval = 5.0) {
+        text = ""
+        var writingTask: DispatchWorkItem?
+        writingTask = DispatchWorkItem { [weak weakSelf = self] in
+            for character in typedText {
+                DispatchQueue.main.async {
+                    weakSelf?.text!.append(character)
+                }
+                Thread.sleep(forTimeInterval: characterDelay/100)
+            }
+        }
+        
+        if let task = writingTask {
+            let queue = DispatchQueue(label: "typespeed", qos: DispatchQoS.userInteractive)
+            queue.asyncAfter(deadline: .now() + 0.05, execute: task)
+        }
+    }
+    
+}
+
+

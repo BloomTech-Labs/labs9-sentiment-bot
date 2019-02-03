@@ -32,9 +32,11 @@ class TimelineViewController: UIViewController, UserProtocol, TimeLineTableViewC
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
+        
+ //       self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
         timelineTableView.layoutMargins = UIEdgeInsets.zero
         timelineTableView.separatorInset = UIEdgeInsets.zero
+        
         updateViews()
     }
     

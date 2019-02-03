@@ -16,7 +16,7 @@ class SignUpViewController: UIViewController {
         view.backgroundColor = UIColor.clear.withAlphaComponent(0.25)
         view.layer.cornerRadius = 20
         signUpButton.layer.cornerRadius = signUpButton.frame.size.height / 2
-        googleButton.layer.cornerRadius = 5
+        googleButton.layer.cornerRadius = googleButton.frame.size.height / 2
         googleButton.clipsToBounds = true
         setPlaceHolders()
     }
