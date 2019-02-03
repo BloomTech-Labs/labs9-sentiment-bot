@@ -23,8 +23,18 @@ class Response: NSObject, Decodable {
 
     
     var title: String? {
+        return "\(self.mood.capitalized)"
+    }
+    
+    var subtitle: String? {
         return self.place
     }
+    
+    
+//    var formattedDate: String {
+//        
+//    }
+  
     
 }
 

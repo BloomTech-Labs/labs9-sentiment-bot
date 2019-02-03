@@ -17,9 +17,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     private var userTrackingButton = MKUserTrackingButton()
     
     override func viewDidLoad() {
-        DispatchQueue.main.async {
-            self.locationManager = CLLocationManager()
-        }
+        self.locationManager = CLLocationManager()
         super.viewDidLoad()
         mapView.showsUserLocation = true
         if CLLocationManager.locationServicesEnabled() == true {
@@ -28,6 +26,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 locationManager?.requestWhenInUseAuthorization()
             }
             locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+            self.mapView.delegate = self
             locationManager?.delegate = self
             locationManager?.startUpdatingLocation()
         } else {
@@ -49,30 +48,33 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         guard let response = annotation as? Response else { return nil }
         
         let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "ResponseAnnotationView", for: response) as! MKMarkerAnnotationView
-
+        annotationView.glyphText = response.emoji
         annotationView.glyphTintColor = .red
         annotationView.canShowCallout = true
         
         return annotationView
     }
     
-    //MARK:- CLLocationManager Delegates
+    var updated = false
+    let scottCoordinates = CLLocationCoordinate2D(latitude: 38.943359375, longitude: -84.7267800844133)
+    let moinsCoordinates = CLLocationCoordinate2D(latitude: 40.70912330225265, longitude: -73.78719990509816)
+
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         self.locationManager?.stopUpdatingLocation()
-        
-        enum location {
-            static let pioneer = CLLocationCoordinate2D(latitude: 40.730610, longitude: -73.935242)
-            static let live = CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude)
+        if !updated {
+            let userCurrentLocation = userLocation.coordinate
+            
+            let span = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+            
+            let region = MKCoordinateRegion(center: scottCoordinates, span: span)
+            
+            self.mapView.setRegion(region, animated: true)
+            updated = true
         }
-        
-        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-        
-        let region = MKCoordinateRegion(center: location.pioneer, span: span)
-        
-        self.mapView.setRegion(region, animated: true)
-        
     }
+    
+    
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         NSLog("Unable to access your current location")

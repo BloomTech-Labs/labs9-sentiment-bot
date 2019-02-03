@@ -68,18 +68,16 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
         
         UNUserNotificationCenter.current().getPendingNotificationRequests {
             (requests) in
-       
+            var nextTriggerDates: [Date] = []
             for request in requests {
-                if let trigger = request.trigger as? UNCalendarNotificationTrigger {
-                    let components = trigger.dateComponents
-                    let date = Calendar.current.date(from: components)!
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
-                    let stringDate = dateFormatter.string(from: date)
-                    //NSLog("TRIGGER DATE: \(stringDate)")
+                if let trigger = request.trigger as? UNCalendarNotificationTrigger,
+                    let triggerDate = trigger.nextTriggerDate(){
+                    nextTriggerDates.append(triggerDate)
+                    print("TRIGGER DATES: \(nextTriggerDates)")
                 }
-
-                
+            }
+            if let nextTriggerDate = nextTriggerDates.min() {
+                print("NEXT TRIGGER DATE: \(nextTriggerDate)")
             }
         }
     }
@@ -111,7 +109,7 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
         
         switch schedule {
         case Trigger.Daily.rawValue:
-            trigger = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
+            trigger = Calendar.current.dateComponents([.hour, .minute, .second], from: Date())
         case Trigger.Monthly.rawValue:
             trigger = Calendar.current.dateComponents([.day], from: Date())
         case Trigger.Weekly.rawValue:
