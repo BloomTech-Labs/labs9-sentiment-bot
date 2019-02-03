@@ -38,9 +38,17 @@ class LocationHelper: NSObject, CLLocationManagerDelegate {
             }
             guard let placeMark = placemarks!.first else { return }
             let place = "\(ReversedGeoLocation(with: placeMark).city), \(ReversedGeoLocation(with: placeMark).state)"
-            
+    
             completion(place, nil)
         }
+    }
+    
+    
+    func saveLocation() {
+        let longitude = locationManager.location?.coordinate.longitude
+        let latitude = locationManager.location?.coordinate.latitude
+        UserDefaults.standard.set(longitude, forKey: UserDefaultsKeys.longitude.rawValue)
+        UserDefaults.standard.set(latitude, forKey: UserDefaultsKeys.latitude.rawValue)
     }
     
     

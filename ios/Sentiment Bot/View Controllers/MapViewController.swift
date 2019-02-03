@@ -25,6 +25,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             if CLLocationManager.authorizationStatus() == .restricted || CLLocationManager.authorizationStatus() == .denied ||  CLLocationManager.authorizationStatus() == .notDetermined {
                 locationManager?.requestWhenInUseAuthorization()
             }
+            locationHelper.saveLocation()
             locationManager?.desiredAccuracy = kCLLocationAccuracyBest
             self.mapView.delegate = self
             locationManager?.delegate = self

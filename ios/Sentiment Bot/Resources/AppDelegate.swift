@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        localNotifcationHelper.logNextTriggerDate()
+        NSLog(localNotifcationHelper.nextTriggerDate)
         GIDSignIn.sharedInstance()?.clientID = "803137383645-5pp4mgm804lbaeaur9p9en70usos2qrm.apps.googleusercontent.com"
         STPPaymentConfiguration.shared().publishableKey = "pk_test_5HdL7hdN6ydVCZjKW7rgtVJo"
         

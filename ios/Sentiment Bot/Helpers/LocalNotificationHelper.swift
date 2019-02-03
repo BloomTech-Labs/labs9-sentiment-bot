@@ -64,15 +64,19 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
         completionHandler()
     }
     
-    func logNextTriggerDate() {
-        
+    var nextTriggerDate: String {
+        var formattedDate = ""
         UNUserNotificationCenter.current().getPendingNotificationRequests {
             (requests) in
-            var nextTriggerDates: [Date] = []
+            var nextTriggerDates: [String] = []
             for request in requests {
                 if let trigger = request.trigger as? UNCalendarNotificationTrigger,
                     let triggerDate = trigger.nextTriggerDate(){
-                    nextTriggerDates.append(triggerDate)
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.timeZone = NSTimeZone.local
+                    dateFormatter.dateFormat = "MM/dd/yyyy h:mm:a"
+                    formattedDate = dateFormatter.string(from: triggerDate)
+                    nextTriggerDates.append(formattedDate)
                     print("TRIGGER DATES: \(nextTriggerDates)")
                 }
             }
@@ -80,6 +84,7 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
                 print("NEXT TRIGGER DATE: \(nextTriggerDate)")
             }
         }
+        return formattedDate
     }
     
     var currentSurveyId: Int?
@@ -146,7 +151,7 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
                 return
             }
             
-            self.logNextTriggerDate()
+            NSLog(self.nextTriggerDate)
             
         }
         

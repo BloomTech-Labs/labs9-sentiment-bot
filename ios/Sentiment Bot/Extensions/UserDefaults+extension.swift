@@ -23,4 +23,12 @@ extension UserDefaults {
         return string(forKey: UserDefaultsKeys.deviceToken.rawValue)
     }
     
+    var longitude: String? {
+        return string(forKey: UserDefaultsKeys.longitude.rawValue)
+    }
+    
+    var latitude: String? {
+        return string(forKey: UserDefaultsKeys.latitude.rawValue)
+    }
+    
 }
