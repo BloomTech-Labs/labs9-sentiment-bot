@@ -37,8 +37,13 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
                     dateFormatter.timeZone = NSTimeZone.local
                     dateFormatter.dateFormat = "MM/dd/yyyy h:mm:a"
                     let triggerDate = dateFormatter.string(from: triggerDate)
+                    let triggerDateArray = triggerDate.components(separatedBy: " ")
+                    let date = triggerDateArray.first!
+                    let time = triggerDateArray.last!
                     DispatchQueue.main.async {
-                        self.currentScheduleLabel.text = "Schedule\n \(survey.schedule.capitalized)\n\(triggerDate)"
+                        self.currentScheduleLabel.text = "Schedule: \(survey.schedule.capitalized)"
+                        self.nextDateLabel.text = "Date: \(date)"
+                        self.nextTimeLabel.text = "Time: \(time)"
                     }
                     nextTriggerDates.append(triggerDate)
                     print("TRIGGER DATES: \(nextTriggerDates)")
@@ -50,7 +55,18 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
         }
         
     }
+    @IBOutlet weak var containerStackView: UIStackView!
     
+    @IBAction func sendNow(_ sender: Any) {
+        guard let user = user,
+            let survey = survey else {
+                NSLog("User and Survey wasn't set on ManagementViewController")
+                return
+        }
+        APIController.shared.changeSurveySchedule(surveyId: survey.id, time: survey.time, schedule: "Now") { (errorMessage) in
+            
+        }
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         setSchedule()
@@ -65,8 +81,13 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         sendSurveyButton.applyDesign()
+        sendNowButton.applyDesign()
         setSchedule()
     }
+    
+    @IBOutlet weak var nextDateLabel: UILabel!
+    @IBOutlet weak var nextTimeLabel: UILabel!
+    
     
     override func viewWillAppear(_ animated: Bool) {
 //        if (user?.subscribed)! {
@@ -78,6 +99,7 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
     }
     
     
+    @IBOutlet weak var sendNowButton: UIButton!
     
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)

@@ -18,6 +18,8 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
         self.nextTriggerDate()
     }
     
+    static let shared = LocalNotificationHelper()
+    
     func getAuthorizationStatus(completion: @escaping (UNAuthorizationStatus) -> Void) {
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
             DispatchQueue.main.async {
@@ -110,7 +112,7 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
         
         let content = UNMutableNotificationContent()
         content.title = "How do you feel?"
-        content.sound = UNNotificationSound.default
+        //content.sound = UNNotificationSound.default
         content.categoryIdentifier = "emojiCategory"
         var trigger: DateComponents?
         var triggerNow: UNTimeIntervalNotificationTrigger?
@@ -121,11 +123,11 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
         
         let minute = Int(hourMinutesArr.last!)
         
-        //let stringStartDate = "05/18/2019 14:00"
-        //let dateFormatter = DateFormatter()
+//        let stringStartDate = "05/18/2019"
+//        let dateFormatter = DateFormatter()
 //        dateFormatter.timeZone = TimeZone.current
-//        dateFormatter.dateFormat = "mm/dd/yyyy HH:mm"
-        //let startDate = dateFormatter.date(from: stringStartDate)!
+//        dateFormatter.dateFormat = "MM/dd/yyyy"
+//        let startDate = dateFormatter.date(from: stringStartDate)!
         
         switch schedule {
         case Trigger.Daily.rawValue:
@@ -133,7 +135,7 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
         case Trigger.Monthly.rawValue:
             trigger = Calendar.current.dateComponents([.day], from: Date())
         case Trigger.Weekly.rawValue:
-            trigger = Calendar.current.dateComponents([.weekday,.hour,.minute,.second,], from: Date())
+            trigger = Calendar.current.dateComponents([.weekday,.hour,.minute,.second], from: Date())
         case Trigger.Now.rawValue:
             triggerNow = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         default:

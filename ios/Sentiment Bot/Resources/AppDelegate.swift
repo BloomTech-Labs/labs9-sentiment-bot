@@ -21,8 +21,6 @@ enum Identifiers {
 class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
     
     var window: UIWindow?
-    
-    let localNotifcationHelper: LocalNotificationHelper = LocalNotificationHelper()
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         return GIDSignIn.sharedInstance().handle(url as URL?,
@@ -32,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         //localNotifcationHelper.removePendingNotifications()
-        NSLog(localNotifcationHelper.nextTriggerDate())
+        NSLog(LocalNotificationHelper.shared.nextTriggerDate())
         GIDSignIn.sharedInstance()?.clientID = "803137383645-5pp4mgm804lbaeaur9p9en70usos2qrm.apps.googleusercontent.com"
         STPPaymentConfiguration.shared().publishableKey = "pk_test_5HdL7hdN6ydVCZjKW7rgtVJo"
         
@@ -98,10 +96,6 @@ extension AppDelegate {
             NSLog("Permission granted: \(granted)")
             guard granted else { return }
             
-            let viewAction = UNNotificationAction( identifier: Identifiers.viewAction, title: "😀  😐  ☹️", options: [.foreground])
-            let newsCategory = UNNotificationCategory(identifier: Identifiers.feelz, actions: [viewAction], intentIdentifiers: [], options: [])
-            UNUserNotificationCenter.current().setNotificationCategories([newsCategory])
-            
             self?.getNotificationSettings()
         }
     }
@@ -154,7 +148,7 @@ extension AppDelegate {
             return
         }
         
-        localNotifcationHelper.sendSurveyNotification(feelingsDictionaryArray: feelingsDictionaryArray, schedule: schedule, surveyId: surveyId, time: time)
+        LocalNotificationHelper.shared.sendSurveyNotification(feelingsDictionaryArray: feelingsDictionaryArray, schedule: schedule, surveyId: surveyId, time: time)
 
         NSLog("Message Received: \(aps)")
         completionHandler(UIBackgroundFetchResult.newData)
