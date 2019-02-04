@@ -239,21 +239,18 @@ class APIController {
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.post.rawValue
-        let longitude = locationHelper.getCurrentLocation()?.coordinate.longitude
-        let latitude = locationHelper.getCurrentLocation()?.coordinate.latitude
+        let longitude = UserDefaults.standard.longitude!
+        let latitude = UserDefaults.standard.latitude!
         
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd"
         let date = df.string(from: Date())
         
-        let responseParams = ["emoji": emoji, "mood": mood, "longitude": longitude, "latitude": latitude, "date": date, "surveyId": surveyId] as [String: Any]
+        let deviceToken = UserDefaults.standard.deviceToken!
         
-        guard let token = UserDefaults.standard.token else {
-            NSLog("No JWT Token Set to User Defaults")
-            return
-        }
+        let responseParams = ["emoji": emoji, "mood": mood, "longitude": longitude, "latitude": latitude, "date": date, "surveyId": surveyId, "deviceToken": deviceToken] as [String: Any]
         
-        request.setValue(token, forHTTPHeaderField: "Authorization")
+        //request.setValue(token, forHTTPHeaderField: "Authorization")
         
         do {
             let json = try JSONSerialization.data(withJSONObject: responseParams, options: .prettyPrinted)
@@ -510,6 +507,58 @@ class APIController {
             }
             
             NSLog("Successfully fetched Team members")
+            
+            
+            }.resume()
+    }
+    
+    func getTeam(teamId: Int, completion: @escaping (Team?, ErrorMessage?) -> Void) {
+        let url = baseUrl.appendingPathComponent("teams")
+            .appendingPathComponent("\(teamId)")
+        
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = HTTPMethod.get.rawValue
+        
+        guard let token = UserDefaults.standard.token else {
+            NSLog("No JWT Token Set to User Defaults")
+            return
+        }
+        
+        request.setValue(token, forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                NSLog("Error with getting team: \(error)")
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("Error retreiving data from server(getTeam)")
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                NSLog("Error code from the http request: \(httpResponse.statusCode)")
+                do {
+                    let errorMessage = try JSONDecoder().decode(ErrorMessage.self, from: data)
+                    completion(nil, errorMessage)
+                } catch {
+                    NSLog("Error decoding ErrorMessage(getTeam) \(error)")
+                    return
+                }
+                return
+            }
+            
+            do {
+                let team = try JSONDecoder().decode(Team.self, from: data)
+                completion(team, nil)
+            } catch {
+                NSLog("Error with network request: \(error)")
+                return
+            }
+            
+            NSLog("Successfully fetched Team")
             
             
             }.resume()
@@ -1143,27 +1192,6 @@ class APIController {
             NSLog("User successfully joined Team")
             
             }.resume()
-        
-        
-        
-        
-        
-//        let emojis = ["😄","😃"]
-//        localNotificationHelper.getAuthorizationStatus { (status) in
-//            switch status {
-//            case .authorized:
-//                self.localNotificationHelper.sendSurveyNotification(emojis: emojis, schedule: "Daily")
-//            case .notDetermined:
-//                self.localNotificationHelper.requestAuthorization(completion: { (granted) in
-//
-//                    if (granted) {
-//                        self.localNotificationHelper.sendSurveyNotification(emojis: emojis, schedule: "Daily")
-//                    }
-//                })
-//            default:
-//                return
-//            }
-//        }
     }
     
     

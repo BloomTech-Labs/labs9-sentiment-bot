@@ -12,6 +12,8 @@ import Foundation
 enum UserDefaultsKeys: String {
     case username
     case userId
+    case longitude
+    case latitude
     case teamId
     case token
     case deviceToken

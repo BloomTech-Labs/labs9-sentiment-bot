@@ -30,6 +30,7 @@ class Response: NSObject, Decodable {
         return self.place
     }
     
+    
 }
 
 

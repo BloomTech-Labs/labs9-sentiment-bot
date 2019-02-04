@@ -8,7 +8,8 @@
 
 import UIKit
 import Stripe
-class ManagementViewController: UIViewController, STPAddCardViewControllerDelegate, ManagerProtocol {
+import UserNotifications
+class ManagementViewController: UIViewController, STPAddCardViewControllerDelegate, ManagerProtocol, UNUserNotificationCenterDelegate {
     var user: User?
     
     var teamResponses: [Response]?
@@ -19,17 +20,57 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
     
     var teamMembers: [User]?
     
+    
     private func setSchedule() {
         guard let survey = survey else {
             NSLog("Survey wasn't set on ManagementViewController")
             return
         }
-        currentScheduleLabel.text = "Schedule: \(survey.schedule.capitalized)"
+        
+        UNUserNotificationCenter.current().getPendingNotificationRequests {
+            (requests) in
+            var nextTriggerDates: [String] = []
+            for request in requests {
+                if let trigger = request.trigger as? UNCalendarNotificationTrigger,
+                    let triggerDate = trigger.nextTriggerDate(){
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.timeZone = NSTimeZone.local
+                    dateFormatter.dateFormat = "MM/dd/yyyy h:mm:a"
+                    let triggerDate = dateFormatter.string(from: triggerDate)
+                    let triggerDateArray = triggerDate.components(separatedBy: " ")
+                    let date = triggerDateArray.first!
+                    let time = triggerDateArray.last!
+                    DispatchQueue.main.async {
+                        self.currentScheduleLabel.text = "Schedule: \(survey.schedule.capitalized)"
+                        self.nextDateLabel.text = "Date: \(date)"
+                        self.nextTimeLabel.text = "Time: \(time)"
+                    }
+                    nextTriggerDates.append(triggerDate)
+                    print("TRIGGER DATES: \(nextTriggerDates)")
+                }
+            }
+            if let nextTriggerDate = nextTriggerDates.min() {
+                print("NEXT TRIGGER DATE: \(nextTriggerDate)")
+            }
+        }
+        
+    }
+    @IBOutlet weak var containerStackView: UIStackView!
+    
+    @IBAction func sendNow(_ sender: Any) {
+        guard let user = user,
+            let survey = survey else {
+                NSLog("User and Survey wasn't set on ManagementViewController")
+                return
+        }
+        APIController.shared.changeSurveySchedule(surveyId: survey.id, time: survey.time, schedule: "Now") { (errorMessage) in
+            
+        }
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        setSchedule()
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        setSchedule()
+    }
     
     
     //@IBOutlet weak var msgBox: UITextView!
@@ -40,8 +81,13 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         sendSurveyButton.applyDesign()
+        sendNowButton.applyDesign()
         setSchedule()
     }
+    
+    @IBOutlet weak var nextDateLabel: UILabel!
+    @IBOutlet weak var nextTimeLabel: UILabel!
+    
     
     override func viewWillAppear(_ animated: Bool) {
 //        if (user?.subscribed)! {
@@ -53,6 +99,7 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
     }
     
     
+    @IBOutlet weak var sendNowButton: UIButton!
     
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
