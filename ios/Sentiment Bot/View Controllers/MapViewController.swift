@@ -43,6 +43,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UserProtoc
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkLocationAuthorizationStatus()
+        mapView.register(MKAnnotationView.self, forAnnotationViewWithReuseIdentifier: "ResponseAnnotationView")
     }
     
     func checkLocationAuthorizationStatus() {
@@ -85,7 +86,7 @@ extension MapViewController: MKMapViewDelegate {
         let identifier = "ResponseAnnotationView"
         var view: MKMarkerAnnotationView
         
-        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier, for: annotation)
             as? MKMarkerAnnotationView {
             dequeuedView.annotation = annotation
             view = dequeuedView
@@ -96,6 +97,7 @@ extension MapViewController: MKMapViewDelegate {
             view.calloutOffset = CGPoint(x: -5, y: 5)
             view.rightCalloutAccessoryView = UIButton(type: .roundedRect)
             view.glyphText = annotation.emoji
+            view.titleVisibility = .hidden
         }
         return view
     }

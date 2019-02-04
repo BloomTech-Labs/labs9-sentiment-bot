@@ -97,6 +97,12 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
                                 DispatchQueue.main.async {
                                     if let number = self.responses?.count {
                                         
+                                        let inputFormatter = DateFormatter()
+                                        inputFormatter.dateFormat = "yyyy-MM-dd"
+                                        let showDate = inputFormatter.date(from: (self.responses?.first?.date)!)
+                                        inputFormatter.dateFormat = "MMM-dd"
+                                        let resultString = inputFormatter.string(from: showDate!)
+                                        
                                         let font = UIFont.boldSystemFont(ofSize: 14)
                                         let attributes: [NSAttributedString.Key: Any] = [.font: font]
                                         
@@ -108,7 +114,7 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
                                         let teamString = NSAttributedString(string: "\nTeam Name")
                                         teamName.append(teamString)
                                         
-                                        let lastInDate = NSMutableAttributedString(string: "\(self.responses?.first?.date ?? "Never")", attributes: attributes)
+                                        let lastInDate = NSMutableAttributedString(string: "\(resultString)", attributes: attributes)
                                         let lastInString = NSAttributedString(string: "\nLast In")
                                         lastInDate.append(lastInString)
                                         

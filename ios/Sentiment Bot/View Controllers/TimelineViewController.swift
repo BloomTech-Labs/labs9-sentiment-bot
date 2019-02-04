@@ -36,6 +36,7 @@ class TimelineViewController: UIViewController, UserProtocol, TimeLineTableViewC
  //       self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
         timelineTableView.layoutMargins = UIEdgeInsets.zero
         timelineTableView.separatorInset = UIEdgeInsets.zero
+        timelineTableView.addSubview(self.refreshControl)
         
         updateViews()
     }
@@ -46,6 +47,27 @@ class TimelineViewController: UIViewController, UserProtocol, TimeLineTableViewC
             //self.timelineTableView.isHidden = false
             self.timelineTableView?.reloadData()
         }
+    }
+    
+    // MARK: - Refresh Control
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:
+            #selector(TimelineViewController.handleRefresh(_:)),
+                                 for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor.red
+        
+        return refreshControl
+    }()
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        APIController.shared.getUserResponses(userId: UserDefaults.standard.userId, completion: { (responses, error) in
+            DispatchQueue.main.async {
+                self.userResponses = responses
+                self.timelineTableView.reloadData()
+            }
+        })
+        refreshControl.endRefreshing()
     }
 }
 
@@ -78,7 +100,6 @@ extension TimelineViewController: UITableViewDataSource, UITableViewDelegate {
         cell.setResponse(response: response)
         return cell
     }
-    
 }
 
 // MARK: - Image Picker
