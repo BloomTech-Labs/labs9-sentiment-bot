@@ -79,7 +79,6 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
             }
         }
 
-
     }
     
     @objc func handleGoogle() {
@@ -88,6 +87,7 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         APIController.shared.getUser(userId: UserDefaults.standard.userId) { (user, errorMessage) in
             if let errorMessage = errorMessage {
                 NSLog(errorMessage.message.joined())
@@ -124,6 +124,7 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
             return button
     }
     
+
     var user: User?
     let locationHelper = LocationHelper()
     

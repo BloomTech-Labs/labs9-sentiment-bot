@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Jbd-m5-36C">
-                                <rect key="frame" x="87.5" y="213.5" width="200" height="240"/>
+                                <rect key="frame" x="87.5" y="223.5" width="200" height="220"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zxi-wd-Fxx">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
@@ -55,11 +55,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8aw-n6-XXT">
-                                        <rect key="frame" x="0.0" y="190" width="200" height="50"/>
+                                        <rect key="frame" x="0.0" y="190" width="200" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="19q-I2-qSK"/>
+                                            <constraint firstAttribute="height" constant="30" id="19q-I2-qSK"/>
                                             <constraint firstAttribute="width" constant="200" id="cJo-a4-RTk"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="rU3-IF-3fv"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="GoogleSignUp"/>
                                         <connections>

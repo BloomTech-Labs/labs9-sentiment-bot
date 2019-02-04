@@ -314,11 +314,12 @@
 		F1ECBCFE21E708F2005CDBE8 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A1F95305220278CD00C3CC9C /* ManagerTabBarContainerViewController.swift */,
 				A1DA7AE921FD56200006F7A7 /* FeelingTableViewCell.swift */,
 				A1EA607921EE57B000ACE25D /* GoogleSignInViewController.swift */,
 				A140D97121F76DB2008963C1 /* InitialViewController.swift */,
+				A1F953012202244000C3CC9C /* JoinCreateViewController.swift */,
 				A1DA7AEB21FD6D650006F7A7 /* ManagementViewController.swift */,
+				A1F95305220278CD00C3CC9C /* ManagerTabBarContainerViewController.swift */,
 				A140D95921F69257008963C1 /* ManagerTabBarViewController.swift */,
 				F15713C72200337F00F6A62F /* ManagerTimelineTableViewCell.swift */,
 				A140D96321F6A2F7008963C1 /* ManagerTimelineViewController.swift */,
@@ -338,7 +339,6 @@
 				F1E949A721EBB05F000634AD /* TimeLineTableViewCell.swift */,
 				F1ECBD0121E70BF5005CDBE8 /* TimelineViewController.swift */,
 				F1DFA0C021F924290078B8C5 /* UserContainerViewController.swift */,
-				A1F953012202244000C3CC9C /* JoinCreateViewController.swift */,
 				A1F95303220278B000C3CC9C /* UserTabBarContainerViewController.swift */,
 			);
 			path = "View Controllers";

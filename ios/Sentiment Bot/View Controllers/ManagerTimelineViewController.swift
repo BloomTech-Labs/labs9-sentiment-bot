@@ -33,7 +33,8 @@ class ManagerTimelineViewController: UIViewController , ManagerProtocol{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
+        
+//        self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
         managerTimelineTableView.layoutMargins = UIEdgeInsets.zero
         managerTimelineTableView.separatorInset = UIEdgeInsets.zero
         managerTimelineTableView.dataSource = self

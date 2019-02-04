@@ -103,8 +103,9 @@ class APIController {
                 let jwtToken = try JSONDecoder().decode(JWT.self, from: data)
                 let jwt = try decode(jwt: jwtToken.jwt)
                 let userId = jwt.body["id"] as! Int
+                let teamId = 0000 //jwt.body["teamid"] as! Int
                 let token = jwt.string
-                self.saveCurrentUser(userId: userId, token: token)
+                self.saveCurrentUser(userId: userId, teamId: teamId, token: token)
             } catch {
                 NSLog("Error decoding JSON Web Token \(error)")
                 return
@@ -444,8 +445,9 @@ class APIController {
                 let jwtToken = try JSONDecoder().decode(JWT.self, from: data)
                 let jwt = try decode(jwt: jwtToken.jwt)
                 let userId = jwt.body["id"] as! Int
+                let teamId = 0000 //jwt.body["teamid"] as! Int
                 let token = jwt.string
-                self.saveCurrentUser(userId: userId, token: token)
+                self.saveCurrentUser(userId: userId, teamId: teamId, token: token)
             } catch {
                 NSLog("Error decoding JSON Web Token \(error)")
                 return
@@ -1219,15 +1221,17 @@ class APIController {
     }
     
     //Save JSON Web Token and Associated User
-    private func saveCurrentUser(userId: Int, token: String) {
+    private func saveCurrentUser(userId: Int, teamId: Int, token: String) {
         UserDefaults.standard.set(token, forKey: UserDefaultsKeys.token.rawValue)
         UserDefaults.standard.set(userId, forKey: UserDefaultsKeys.userId.rawValue)
+        UserDefaults.standard.set(teamId, forKey: UserDefaultsKeys.teamId.rawValue)
         UserDefaults.standard.set(true, forKey: UserDefaultsKeys.isLoggedIn.rawValue)
     }
     
     func logout() {
         UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.isLoggedIn.rawValue)
         UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.token.rawValue)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.teamId.rawValue)
         UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.isLoggedIn.rawValue)
         UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.userId.rawValue)
     }

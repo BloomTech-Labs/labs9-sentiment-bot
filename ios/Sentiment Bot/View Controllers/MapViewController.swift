@@ -9,80 +9,98 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UserProtocol {
-    
+class MapViewController: UIViewController, CLLocationManagerDelegate, UserProtocol {
     
     @IBOutlet weak var mapView: MKMapView!
-    var locationManager: CLLocationManager?
-    private var userTrackingButton = MKUserTrackingButton()
+    
+    var userResponses: [Response]?
+    var user: User?
+    let locationHelper = LocationHelper()
+    var updated = false
+    
+    let locationManager = CLLocationManager()
+    let regionRadius: CLLocationDistance = 1000
     
     override func viewDidLoad() {
-        self.locationManager = CLLocationManager()
         super.viewDidLoad()
-        mapView.showsUserLocation = true
-        if CLLocationManager.locationServicesEnabled() == true {
-            
-            if CLLocationManager.authorizationStatus() == .restricted || CLLocationManager.authorizationStatus() == .denied ||  CLLocationManager.authorizationStatus() == .notDetermined {
-                locationManager?.requestWhenInUseAuthorization()
-            }
-            locationHelper.saveLocation()
-            locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-            self.mapView.delegate = self
-            locationManager?.delegate = self
-            locationManager?.startUpdatingLocation()
-        } else {
-            print("PLease turn on location services or GPS")
-        }
-        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "ResponseAnnotationView")
+        
+        mapView.delegate = self
+        
+//        let initialLocation = CLLocation(latitude: 38.943359375, longitude: -84.7267800844133)
+//        centerMapOnLoacation(location: initialLocation)
         
         guard let responses = userResponses else {
             NSLog("User Response not set on MapViewController")
             return
         }
+        
         DispatchQueue.main.async {
             self.mapView.addAnnotations(responses)
         }
+        
     }
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
-        guard let response = annotation as? Response else { return nil }
-        
-        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "ResponseAnnotationView", for: response) as! MKMarkerAnnotationView
-        annotationView.glyphText = response.emoji
-        annotationView.glyphTintColor = .red
-        annotationView.canShowCallout = true
-        
-        return annotationView
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        checkLocationAuthorizationStatus()
+        mapView.register(MKAnnotationView.self, forAnnotationViewWithReuseIdentifier: "ResponseAnnotationView")
     }
     
-    var updated = false
-    let scottCoordinates = CLLocationCoordinate2D(latitude: 38.943359375, longitude: -84.7267800844133)
-    let moinsCoordinates = CLLocationCoordinate2D(latitude: 40.70912330225265, longitude: -73.78719990509816)
-
+    func checkLocationAuthorizationStatus() {
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            mapView.showsUserLocation = true
+        } else {
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
+    
+    func centerMapOnLoacation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        self.locationManager?.stopUpdatingLocation()
+        self.locationManager.stopUpdatingLocation()
         if !updated {
             let userCurrentLocation = userLocation.coordinate
             
             let span = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
             
-            let region = MKCoordinateRegion(center: scottCoordinates, span: span)
+            let region = MKCoordinateRegion(center: userCurrentLocation, span: span)
             
             self.mapView.setRegion(region, animated: true)
             updated = true
         }
     }
-    
-    
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        NSLog("Unable to access your current location")
-    }
-    
-    var userResponses: [Response]? 
-    var user: User?    
-    let locationHelper = LocationHelper()
-
+ 
 }
+
+
+extension MapViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        //guard let annotation = annotation as? Artwork else { return nil }
+        guard let annotation = annotation as? Response else { return nil }
+        
+        let identifier = "ResponseAnnotationView"
+        var view: MKMarkerAnnotationView
+        
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier, for: annotation)
+            as? MKMarkerAnnotationView {
+            dequeuedView.annotation = annotation
+            view = dequeuedView
+        } else {
+            
+            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view.canShowCallout = true
+            view.calloutOffset = CGPoint(x: -5, y: 5)
+            view.rightCalloutAccessoryView = UIButton(type: .roundedRect)
+            view.glyphText = annotation.emoji
+            view.titleVisibility = .hidden
+        }
+        return view
+    }
+}
+
+

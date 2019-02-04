@@ -18,13 +18,20 @@ class TimeLineTableViewCell: UITableViewCell {
     @IBOutlet weak var emojiLabel: UILabel!
     @IBOutlet weak var feelzNameLabel: UILabel!
     @IBOutlet weak var feelzImageView: UIImageView!
-    
+
     
     func setResponse(response: Response) {
+        
         dateLabel.text = response.date
         emojiLabel.text = response.emoji
         feelzNameLabel.text = response.mood.capitalized
-        locationLabel.text = response.place
+        
+        if response.place == "N/A" {
+            locationLabel.text = ""
+        } else {
+           locationLabel.text = response.place
+        }
+        
  
 
     }
@@ -37,8 +44,10 @@ class TimeLineTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        feelzImageView.image = UIImage(named: "plus-button")
+        if Theme.current == .light {
+            feelzImageView.image = UIImage(imageLiteralResourceName: "plus-grey")
+        } else {
+            feelzImageView.image = UIImage(imageLiteralResourceName: "plus-grey")
+        }
     }
-    
-
 }

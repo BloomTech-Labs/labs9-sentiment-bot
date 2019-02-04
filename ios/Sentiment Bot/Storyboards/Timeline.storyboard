@@ -83,22 +83,22 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="70" id="A4q-Wc-Se3"/>
-                                                        <constraint firstAttribute="width" constant="70" id="l9U-C0-hfo"/>
+                                                        <constraint firstAttribute="height" constant="70" id="KZj-HW-wbr"/>
+                                                        <constraint firstAttribute="width" constant="70" id="nZC-SR-B3Q"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="Agt-hs-xVP" secondAttribute="bottom" constant="3" id="JXX-8b-0jH"/>
+                                                <constraint firstItem="x4B-T4-6uR" firstAttribute="centerY" secondItem="ijm-kL-Za6" secondAttribute="centerY" id="P5c-mm-Ncn"/>
                                                 <constraint firstItem="97Z-zu-7cK" firstAttribute="top" secondItem="ijm-kL-Za6" secondAttribute="top" constant="3" id="PeG-6A-Maj"/>
-                                                <constraint firstItem="x4B-T4-6uR" firstAttribute="centerY" secondItem="ijm-kL-Za6" secondAttribute="centerY" id="Xfj-Jb-Njw"/>
                                                 <constraint firstItem="Kuu-o9-pkV" firstAttribute="leading" secondItem="Gzo-jn-k02" secondAttribute="leading" constant="50" id="axk-zL-oXa"/>
+                                                <constraint firstAttribute="trailing" secondItem="x4B-T4-6uR" secondAttribute="trailing" constant="15" id="bYB-aX-jdG"/>
                                                 <constraint firstItem="Gzo-jn-k02" firstAttribute="centerY" secondItem="ijm-kL-Za6" secondAttribute="centerY" id="e1G-nm-sG7"/>
                                                 <constraint firstItem="Agt-hs-xVP" firstAttribute="leading" secondItem="ijm-kL-Za6" secondAttribute="leading" constant="15" id="e6m-EZ-dI6"/>
                                                 <constraint firstItem="97Z-zu-7cK" firstAttribute="leading" secondItem="ijm-kL-Za6" secondAttribute="leading" constant="15" id="eJF-sU-R92"/>
                                                 <constraint firstItem="Kuu-o9-pkV" firstAttribute="centerY" secondItem="ijm-kL-Za6" secondAttribute="centerY" id="uDm-8t-z2H"/>
                                                 <constraint firstItem="Gzo-jn-k02" firstAttribute="leading" secondItem="ijm-kL-Za6" secondAttribute="leadingMargin" id="vKK-Py-Khc"/>
-                                                <constraint firstAttribute="trailing" secondItem="x4B-T4-6uR" secondAttribute="trailing" constant="15" id="xzQ-5v-QYT"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

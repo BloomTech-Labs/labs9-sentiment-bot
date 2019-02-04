@@ -31,4 +31,7 @@ extension UserDefaults {
         return string(forKey: UserDefaultsKeys.latitude.rawValue)
     }
     
+    var teamID: Int {
+        return integer(forKey: UserDefaultsKeys.teamId.rawValue)
+    }
 }

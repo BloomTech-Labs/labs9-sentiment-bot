@@ -15,6 +15,9 @@ class ManagerTabBarViewController: UITabBarController {
         
         tabBar.unselectedItemTintColor = .white
         
+        // I don't need this I just have it here just in case
+        //for testing purposes
+
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let locationHelper = LocationHelper()
             locationHelper.requestLocationAuthorization()
@@ -27,6 +30,7 @@ class ManagerTabBarViewController: UITabBarController {
                 
             }
         }
+        
         
         getUserData()
     }
