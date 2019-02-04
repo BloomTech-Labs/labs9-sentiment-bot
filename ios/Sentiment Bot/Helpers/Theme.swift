@@ -75,7 +75,7 @@ enum Theme: Int {
         switch self {
         case .dark:
             //Dark Gray
-            return UIColor(red: 34.0/255.0, green: 34.0/255.0, blue: 34.0/255.0, alpha: 1.0)
+            return backgroundColor1
         case .light:
             return UIColor(red: 102.0/255.0, green: 102.0/255.0, blue: 102.0/255.0, alpha: 1.0)
         }

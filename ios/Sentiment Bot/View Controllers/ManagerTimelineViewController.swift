@@ -15,6 +15,7 @@ class ManagerTimelineViewController: UIViewController , ManagerProtocol{
     var survey: Survey?
     var user: User?
     
+    
     var teamResponses: [Response]? {
         didSet {
             updateViews()
@@ -39,6 +40,19 @@ class ManagerTimelineViewController: UIViewController , ManagerProtocol{
         managerTimelineTableView.dataSource = self
         managerTimelineTableView.delegate = self
     }
+    
+    @objc func populate() {
+        APIController.shared.getTeamResponses(teamId: (team?.id)!) { (responses, errorMessage) in
+            if let errorMessage = errorMessage {
+                
+            } else if let responses = responses {
+                self.teamResponses = responses
+                DispatchQueue.main.async {
+                    self.managerTimelineTableView.reloadData()
+                }
+            }
+        }
+    }
 }
 
 extension ManagerTimelineViewController: UITableViewDataSource, UITableViewDelegate {
@@ -46,6 +60,7 @@ extension ManagerTimelineViewController: UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return teamResponses?.count ?? 0
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TeamMemberFeelzCell") as! ManagerTimelineTableViewCell

@@ -19,6 +19,9 @@ class ManagerTabBarViewController: UITabBarController {
         //for testing purposes
 
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let locationHelper = LocationHelper()
+            locationHelper.requestLocationAuthorization()
+            locationHelper.saveLocation()
             guard let deviceToken = UserDefaults.standard.deviceToken else {
                 NSLog("Device Token wasn't set to User's Defaults")
                 return
