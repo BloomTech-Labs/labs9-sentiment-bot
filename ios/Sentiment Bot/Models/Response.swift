@@ -31,11 +31,6 @@ class Response: NSObject, Decodable {
     }
     
     
-//    var formattedDate: String {
-//        
-//    }
-  
-    
 }
 
 
