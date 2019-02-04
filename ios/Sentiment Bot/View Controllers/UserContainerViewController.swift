@@ -100,7 +100,7 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
                                         let inputFormatter = DateFormatter()
                                         inputFormatter.dateFormat = "yyyy-MM-dd"
                                         let showDate = inputFormatter.date(from: (self.responses?.first?.date)!)
-                                        inputFormatter.dateFormat = "MMM-dd"
+                                        inputFormatter.dateFormat = "MMM dd"
                                         let resultString = inputFormatter.string(from: showDate!)
                                         
                                         let font = UIFont.boldSystemFont(ofSize: 14)
