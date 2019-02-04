@@ -17,13 +17,14 @@ enum Theme: Int {
 
     static var current: Theme {
         let storedTheme = UserDefaults.standard.integer(forKey: Keys.selectedTheme)
-        return Theme(rawValue: storedTheme) ?? .dark
+        return Theme(rawValue: storedTheme) ?? .light
     }
     
     var mainColor: UIColor {
         switch self {
         case .dark:
-            return UIColor(red: 132.0/255.0, green: 13.0/255.0, blue: 27.0/255.0, alpha: 1.0)
+            return UIColor(red:0.76, green:0.04, blue:0.05, alpha:1.0)
+//           return UIColor(red: 171.0/255.0, green: 35.0/255.0, blue: 23.0/255.0, alpha: 1.0)
         case .light:
             return UIColor(red: 68.0/255.0, green: 191.0/255.0, blue: 254.0/255.0, alpha: 1.0)
         }

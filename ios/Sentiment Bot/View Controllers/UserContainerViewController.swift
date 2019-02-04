@@ -12,6 +12,7 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var leftLabel: UILabel!
+    @IBOutlet weak var middleLabel: UILabel!
     @IBOutlet weak var rightLabel: UILabel!
     @IBOutlet weak var userImageButton: UIButton!
     
@@ -68,7 +69,25 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
                 DispatchQueue.main.async {
                     guard let admin = self.users?.isAdmin else { return }
                     if admin {
-                        self.leftLabel.text = "Team ID: \(team?.code ?? 0)"
+                        
+                        let font = UIFont.boldSystemFont(ofSize: 14)
+                        let attributes: [NSAttributedString.Key: Any] = [.font: font]
+                        
+                        let teamCode = NSMutableAttributedString(string: "\(team?.code ?? 0)", attributes: attributes)
+                        let teamCodeString = NSAttributedString(string: "\nTeam ID")
+                        teamCode.append(teamCodeString)
+                        
+                        let userCount = NSMutableAttributedString(string: "\(team?.users?.count ?? 0)", attributes: attributes)
+                        let userCountString = NSAttributedString(string: "\nUsers")
+                        userCount.append(userCountString)
+                        
+                        let teamName = NSMutableAttributedString(string: "Mad Moin", attributes: attributes)
+                        let teamString = NSAttributedString(string: "\nTeam Name")
+                        teamName.append(teamString)
+                        
+                        self.leftLabel.attributedText = userCount
+                        self.middleLabel.attributedText = teamName
+                        self.rightLabel.attributedText = teamCode
                     } else {
                         APIController.shared.getUserResponses(userId: UserDefaults.standard.userId) { (responses, error) in
                             self.responses = responses
@@ -77,10 +96,33 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
                             } else {
                                 DispatchQueue.main.async {
                                     if let number = self.responses?.count {
-                                        self.leftLabel.text = "\(number) Feelz"
-                                        self.rightLabel.text = "Last in \(responses?.last?.date ?? "N/A")"
+                                        
+                                        let inputFormatter = DateFormatter()
+                                        inputFormatter.dateFormat = "yyyy-MM-dd"
+                                        let showDate = inputFormatter.date(from: (self.responses?.first?.date)!)
+                                        inputFormatter.dateFormat = "MMM-dd"
+                                        let resultString = inputFormatter.string(from: showDate!)
+                                        
+                                        let font = UIFont.boldSystemFont(ofSize: 14)
+                                        let attributes: [NSAttributedString.Key: Any] = [.font: font]
+                                        
+                                        let feelzNumber = NSMutableAttributedString(string: "\(number)", attributes: attributes)
+                                        let feelzString = NSAttributedString(string: "\nFeelz")
+                                        feelzNumber.append(feelzString)
+                                        
+                                        let teamName = NSMutableAttributedString(string: "Mad Moin", attributes: attributes)
+                                        let teamString = NSAttributedString(string: "\nTeam Name")
+                                        teamName.append(teamString)
+                                        
+                                        let lastInDate = NSMutableAttributedString(string: "\(resultString)", attributes: attributes)
+                                        let lastInString = NSAttributedString(string: "\nLast In")
+                                        lastInDate.append(lastInString)
+                                        
+                                        self.leftLabel.attributedText = feelzNumber
+                                        self.middleLabel.attributedText = teamName
+                                        self.rightLabel.attributedText = lastInDate
+                                        
                                     }
-                                    
                                 }
                             }
                         }
@@ -178,6 +220,7 @@ extension UIButton {
     func applyDesign() {
         // userImageButton Effects
         self.layer.cornerRadius = self.frame.size.height / 2
+        print("Button Radius \(self.frame.size.height / 2)")
         self.clipsToBounds = true
         // Put shadow on button
 //        self.backgroundColor = UIColor.darkGray

@@ -9,13 +9,15 @@
 import UIKit
 
 class JoinCreateViewController: UIViewController {
+    
     var user: User?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         APIController.shared.getUser(userId: UserDefaults.standard.userId) { (user, errorMessage) in
             if let errorMessage = errorMessage {
-                
+                NSLog("Error getting user \(errorMessage)")
             } else if let user = user {
                 self.user = user
             }
