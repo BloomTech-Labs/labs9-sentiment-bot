@@ -8,7 +8,8 @@
 
 import UIKit
 import Stripe
-class ManagementViewController: UIViewController, STPAddCardViewControllerDelegate, ManagerProtocol {
+import UserNotifications
+class ManagementViewController: UIViewController, STPAddCardViewControllerDelegate, ManagerProtocol, UNUserNotificationCenterDelegate {
     var user: User?
     
     var teamResponses: [Response]?
@@ -19,17 +20,41 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
     
     var teamMembers: [User]?
     
+    
     private func setSchedule() {
         guard let survey = survey else {
             NSLog("Survey wasn't set on ManagementViewController")
             return
         }
-        currentScheduleLabel.text = "Schedule: \(survey.schedule.capitalized)"
+        
+        UNUserNotificationCenter.current().getPendingNotificationRequests {
+            (requests) in
+            var nextTriggerDates: [String] = []
+            for request in requests {
+                if let trigger = request.trigger as? UNCalendarNotificationTrigger,
+                    let triggerDate = trigger.nextTriggerDate(){
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.timeZone = NSTimeZone.local
+                    dateFormatter.dateFormat = "MM/dd/yyyy h:mm:a"
+                    let triggerDate = dateFormatter.string(from: triggerDate)
+                    DispatchQueue.main.async {
+                        self.currentScheduleLabel.text = "Schedule\n \(survey.schedule.capitalized)\n\(triggerDate)"
+                    }
+                    nextTriggerDates.append(triggerDate)
+                    print("TRIGGER DATES: \(nextTriggerDates)")
+                }
+            }
+            if let nextTriggerDate = nextTriggerDates.min() {
+                print("NEXT TRIGGER DATE: \(nextTriggerDate)")
+            }
+        }
+        
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        setSchedule()
-//    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        setSchedule()
+    }
     
     
     //@IBOutlet weak var msgBox: UITextView!

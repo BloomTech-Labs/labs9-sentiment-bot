@@ -14,6 +14,7 @@ class LocationHelper: NSObject, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager()
     
+    
     func requestLocationAuthorization() {
         locationManager.requestWhenInUseAuthorization()
     }
