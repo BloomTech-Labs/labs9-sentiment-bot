@@ -9,12 +9,17 @@
 import UIKit
 
 class ManagerTimelineViewController: UIViewController , ManagerProtocol{
+    
+    // MARK: - Outlets
+    
+    @IBOutlet weak var managerTimelineTableView: UITableView!
+    
+    // MARK: - Properties
 
     var teamMembers: [User]?
     var team: Team?
     var survey: Survey?
     var user: User?
-    
     
     var teamResponses: [Response]? {
         didSet {
@@ -29,30 +34,42 @@ class ManagerTimelineViewController: UIViewController , ManagerProtocol{
         }
     }
     
-    @IBOutlet weak var managerTimelineTableView: UITableView!
+    // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
         managerTimelineTableView.layoutMargins = UIEdgeInsets.zero
         managerTimelineTableView.separatorInset = UIEdgeInsets.zero
         managerTimelineTableView.dataSource = self
         managerTimelineTableView.delegate = self
+        //self.managerTimelineTableView.addSubview(self.refreshControl)
+        managerTimelineTableView.refreshControl = refreshControl
     }
     
-    @objc func populate() {
+    // MARK: - Refresh Control
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(ManagerTimelineViewController.refreshTeamResponses(_:)), for: .valueChanged)
+       // refreshControl.tintColor = UIColor.red
+        
+        return refreshControl
+    }()
+    
+    @objc func refreshTeamResponses(_ refreshControl: UIRefreshControl) {
         APIController.shared.getTeamResponses(teamId: (team?.id)!) { (responses, errorMessage) in
             if let errorMessage = errorMessage {
-                
+                NSLog("Error getting TeamResponses \(errorMessage)")
             } else if let responses = responses {
                 self.teamResponses = responses
                 DispatchQueue.main.async {
                     self.managerTimelineTableView.reloadData()
+                    self.refreshControl.endRefreshing()
                 }
             }
         }
     }
+    
 }
 
 extension ManagerTimelineViewController: UITableViewDataSource, UITableViewDelegate {
@@ -60,7 +77,6 @@ extension ManagerTimelineViewController: UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return teamResponses?.count ?? 0
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TeamMemberFeelzCell") as! ManagerTimelineTableViewCell

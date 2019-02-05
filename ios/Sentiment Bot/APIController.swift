@@ -174,6 +174,7 @@ class APIController {
     }
     
     //Join a Team
+
     func joinTeam(code: Int, completion: @escaping (Team?, ErrorMessage?) -> Void) {
         let url = baseUrl.appendingPathComponent("join")
         var request = URLRequest(url: url)
@@ -226,7 +227,7 @@ class APIController {
                 NSLog("Error decoding team \(error)")
                 return
             }
-            
+
             NSLog("User successfully joined Team")
         
             }.resume()
@@ -239,6 +240,10 @@ class APIController {
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.post.rawValue
+        if mood == "om.apple.UNNotificationDefaultActionIdentifier" || emoji == "c" {
+            NSLog("User dismissed the notification")
+            return
+        }
         let longitude = UserDefaults.standard.longitude!
         let latitude = UserDefaults.standard.latitude!
         

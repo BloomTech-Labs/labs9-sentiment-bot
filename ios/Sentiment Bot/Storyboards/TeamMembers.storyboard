@@ -40,9 +40,17 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="laH-S3-FB2">
+                                                    <rect key="frame" x="93" y="68" width="267" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="lastInLabel" destination="laH-S3-FB2" id="S9W-E8-Bhf"/>
                                             <outlet property="memberImageView" destination="SuW-lT-S5v" id="Wle-XB-ub5"/>
                                             <outlet property="nameLabel" destination="Ncr-Nh-pn7" id="HcN-hp-Igd"/>
                                         </connections>

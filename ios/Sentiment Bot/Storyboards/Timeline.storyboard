@@ -41,7 +41,7 @@
                                                         <constraint firstAttribute="width" constant="200" id="4vh-a0-MWg"/>
                                                         <constraint firstAttribute="height" constant="17" id="ES2-ih-SDI"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="9"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>

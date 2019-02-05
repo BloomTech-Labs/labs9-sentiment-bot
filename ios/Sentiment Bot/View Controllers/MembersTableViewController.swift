@@ -10,6 +10,10 @@ import UIKit
 
 class MembersTableViewController: UIViewController, ManagerProtocol {
     
+    // MARK: - Outlets
+    
+    @IBOutlet weak var teamMembersTableView: UITableView!
+    
     // MARK: - Properties
     
     var teamResponses: [Response]?
@@ -23,28 +27,53 @@ class MembersTableViewController: UIViewController, ManagerProtocol {
         }
     }
     
-    private func updateViews() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+//        self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
+        teamMembersTableView.layoutMargins = UIEdgeInsets.zero
+        teamMembersTableView.separatorInset = UIEdgeInsets.zero
+        teamMembersTableView.dataSource = self
+        teamMembersTableView.delegate = self
         
+        if #available(iOS 10.0, *) {
+            teamMembersTableView.refreshControl = refreshControl
+        } else {
+            teamMembersTableView.addSubview(refreshControl)
+        }
+    }
+    
+    // MARK: - Private Functions
+    
+    private func updateViews() {
         DispatchQueue.main.async {
             self.teamMembersTableView?.reloadData()
         }
     }
     
+    // MARK: - Refresh Control
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(MembersTableViewController.refreshTeamMembers(_:)), for: .valueChanged)
+        
+        return refreshControl
+    }()
     
-    @IBOutlet weak var teamMembersTableView: UITableView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
-        teamMembersTableView.layoutMargins = UIEdgeInsets.zero
-        teamMembersTableView.separatorInset = UIEdgeInsets.zero
-        teamMembersTableView.dataSource = self
-        teamMembersTableView.delegate = self
+    @objc func refreshTeamMembers(_ refreshControl: UIRefreshControl) {
+        APIController.shared.getTeamMembers(teamId: (team?.id)!) { (user, errorMessage) in
+            if let errorMessage = errorMessage {
+                NSLog("Error getting Team Members: \(errorMessage)")
+            } else if let user = user {
+                self.teamMembers = user
+                DispatchQueue.main.async {
+                    self.updateViews()
+                    self.refreshControl.endRefreshing()
+                }
+            }
+        }
     }
     
 }
 
-//Todo: Implement remove team member on UI and Backend
 extension MembersTableViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,6 +88,17 @@ extension MembersTableViewController: UITableViewDataSource, UITableViewDelegate
         cell.memberImageView.layer.cornerRadius = cell.memberImageView.frame.size.width / 2
         cell.memberImageView.layer.masksToBounds = true
         cell.nameLabel.text = "\(teamMember.firstName) \(teamMember.lastName)"
+        
+        var dateString = "None"
+        if let surveyDate = teamMember.lastSurveyDate {
+            let inputFormatter = DateFormatter()
+            inputFormatter.dateFormat = "yyyy-MM-dd"
+            let showDate = inputFormatter.date(from: surveyDate)
+            inputFormatter.dateFormat = "MMMM dd, yyyy"
+            dateString = inputFormatter.string(from: showDate!)
+        }
+                
+        cell.lastInLabel.text = "Last Survey: \(dateString)"
         
         if let imageUrl = teamMember.imageUrl {
             APIController.shared.getImage(url: imageUrl) { (image, error) in
@@ -84,6 +124,8 @@ extension MembersTableViewController: UITableViewDataSource, UITableViewDelegate
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
+    
+    
     
 }
 
