@@ -67,6 +67,7 @@
 		F1B7E59021E547450096FC6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E58E21E547450096FC6F /* Main.storyboard */; };
 		F1B7E59221E547460096FC6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E59121E547460096FC6F /* Assets.xcassets */; };
 		F1B7E59521E547460096FC6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E59321E547460096FC6F /* LaunchScreen.storyboard */; };
+		F1B9B77F220A1B88002DC836 /* SignInUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B9B77E220A1B88002DC836 /* SignInUpViewController.swift */; };
 		F1C3CBDB2200D3A000CE2A31 /* MembersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3CBDA2200D3A000CE2A31 /* MembersTableViewCell.swift */; };
 		F1CDD23C21ECFF06008E7A57 /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1CDD23B21ECFF06008E7A57 /* Timeline.storyboard */; };
 		F1CDD23F21ECFF36008E7A57 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1CDD23D21ECFF36008E7A57 /* Map.storyboard */; };
@@ -142,6 +143,7 @@
 		F1B7E59121E547460096FC6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1B7E59421E547460096FC6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F1B7E59621E547460096FC6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1B9B77E220A1B88002DC836 /* SignInUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUpViewController.swift; sourceTree = "<group>"; };
 		F1C3CBDA2200D3A000CE2A31 /* MembersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersTableViewCell.swift; sourceTree = "<group>"; };
 		F1CDD23B21ECFF06008E7A57 /* Timeline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
 		F1CDD23E21ECFF36008E7A57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Sentiment Bot/Storyboards/Base.lproj/Map.storyboard"; sourceTree = "<group>"; };
@@ -340,6 +342,7 @@
 				F1ECBD0121E70BF5005CDBE8 /* TimelineViewController.swift */,
 				F1DFA0C021F924290078B8C5 /* UserContainerViewController.swift */,
 				A1F95303220278B000C3CC9C /* UserTabBarContainerViewController.swift */,
+				F1B9B77E220A1B88002DC836 /* SignInUpViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 				A1DA7AE621FD50910006F7A7 /* SendSurveyFormViewController.swift in Sources */,
 				F1E949A821EBB05F000634AD /* TimeLineTableViewCell.swift in Sources */,
 				A140D96821F6A549008963C1 /* SubscriptionViewController.swift in Sources */,
+				F1B9B77F220A1B88002DC836 /* SignInUpViewController.swift in Sources */,
 				A1DA7AEC21FD6D650006F7A7 /* ManagementViewController.swift in Sources */,
 				A1F95306220278CD00C3CC9C /* ManagerTabBarContainerViewController.swift in Sources */,
 				A140D94721F17F9E008963C1 /* SegmentedControlViewController.swift in Sources */,
