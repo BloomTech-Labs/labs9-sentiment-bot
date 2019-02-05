@@ -17,7 +17,14 @@ class ManagerTimelineTableViewCell: UITableViewCell {
     @IBOutlet weak var feelzImageView: UIImageView!
     
     func setResponse(response: Response) {
-        dateLabel.text = response.date
+        
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd"
+        let showDate = inputFormatter.date(from: response.date)
+        inputFormatter.dateFormat = "MMMM dd, yyyy"
+        let dateString = inputFormatter.string(from: showDate!)
+        
+        dateLabel.text = dateString
         emojiLabel.text = response.emoji
         feelzNameLabel.text = response.mood.capitalized
         

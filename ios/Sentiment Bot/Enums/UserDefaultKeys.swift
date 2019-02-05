@@ -15,6 +15,7 @@ enum UserDefaultsKeys: String {
     case longitude
     case latitude
     case teamId
+//    case teamName
     case token
     case deviceToken
     case isLoggedIn

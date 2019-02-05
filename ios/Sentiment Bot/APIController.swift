@@ -174,6 +174,7 @@ class APIController {
     }
     
     //Join a Team
+
     func joinTeam(code: Int, completion: @escaping (Team?, ErrorMessage?) -> Void) {
         let url = baseUrl.appendingPathComponent("join")
         var request = URLRequest(url: url)
@@ -226,7 +227,7 @@ class APIController {
                 NSLog("Error decoding team \(error)")
                 return
             }
-            
+
             NSLog("User successfully joined Team")
         
             }.resume()

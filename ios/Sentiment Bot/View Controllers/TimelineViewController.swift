@@ -10,11 +10,13 @@ import UIKit
 import GoogleSignIn
 
 class TimelineViewController: UIViewController, UserProtocol, TimeLineTableViewCellDelegate {
+    
     func selectImage(on cell: TimeLineTableViewCell) {
         guard let indexPath = timelineTableView.indexPath(for: cell) else { return }
         responseID = userResponses?[indexPath.row].id
         takeSelfie()
     }
+    
     // MARK: - Outlets
     @IBOutlet weak var timelineTableView: UITableView!
 
@@ -30,13 +32,18 @@ class TimelineViewController: UIViewController, UserProtocol, TimeLineTableViewC
     var responseID: Int?
     
     // MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
- //       self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
         timelineTableView.layoutMargins = UIEdgeInsets.zero
         timelineTableView.separatorInset = UIEdgeInsets.zero
-        timelineTableView.addSubview(self.refreshControl)
+
+        if #available(iOS 10.0, *) {
+            timelineTableView.refreshControl = refreshControl
+        } else {
+            timelineTableView.addSubview(refreshControl)
+        }
         
         updateViews()
     }
@@ -44,7 +51,6 @@ class TimelineViewController: UIViewController, UserProtocol, TimeLineTableViewC
     // MARK: - Private Functions
     private func updateViews() {
         DispatchQueue.main.async {
-            //self.timelineTableView.isHidden = false
             self.timelineTableView?.reloadData()
         }
     }
@@ -52,22 +58,19 @@ class TimelineViewController: UIViewController, UserProtocol, TimeLineTableViewC
     // MARK: - Refresh Control
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action:
-            #selector(TimelineViewController.handleRefresh(_:)),
-                                 for: UIControl.Event.valueChanged)
-        refreshControl.tintColor = UIColor.red
+        refreshControl.addTarget(self, action: #selector(TimelineViewController.refreshUserResponses(_:)), for: .valueChanged)
         
         return refreshControl
     }()
     
-    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+    @objc func refreshUserResponses(_ refreshControl: UIRefreshControl) {
         APIController.shared.getUserResponses(userId: UserDefaults.standard.userId, completion: { (responses, error) in
             DispatchQueue.main.async {
                 self.userResponses = responses
                 self.timelineTableView.reloadData()
+                self.refreshControl.endRefreshing()
             }
         })
-        refreshControl.endRefreshing()
     }
 }
 

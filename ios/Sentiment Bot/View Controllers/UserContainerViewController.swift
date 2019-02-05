@@ -10,22 +10,23 @@ import UIKit
 
 class UserContainerViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var leftLabel: UILabel!
     @IBOutlet weak var middleLabel: UILabel!
     @IBOutlet weak var rightLabel: UILabel!
     @IBOutlet weak var userImageButton: UIButton!
     
+    // MARK: - Properties
+    
     var responses: [Response]? = []
     var users: User?
     var team: Team?
+    var teamName = ""
+    var teamId = 0
     
-    lazy var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        formatter.timeStyle = .none
-        return formatter
-    }()
+    // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +35,8 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
         setupView()
     }
     
-    
     // MARK: - Setup View
+    
     private func setupView() {
         
         APIController.shared.getUser(userId: UserDefaults.standard.userId) { (users, error) in
@@ -43,17 +44,26 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
             if let error = error {
                 NSLog("Error getting user: \(error)")
             } else {
+                APIController.shared.getTeam(teamId: users?.teamId ?? 0) { (team, error) in
+                    self.team = team
+                    if let error = error {
+                        NSLog("Error getting Team Name \(error)")
+                    } else {
+                        self.teamName = team?.teamName ?? "None"
+                    }
+                }
+                guard let firstName = users?.firstName, let lastName = users?.lastName, let teamId = users?.teamId else { return }
+                self.teamId = teamId
                 DispatchQueue.main.async {
-                    guard let firstName = users?.firstName, let lastName = users?.lastName else { return }
                     self.nameLabel.text = "\(firstName.capitalized) \(lastName.capitalized)"
-                    if let imageUrl = users?.imageUrl {
-                        APIController.shared.getImage(url: imageUrl) { (image, error) in
-                            if let error = error {
-                                NSLog("Error getting image \(error)")
-                            } else if let image = image {
-                                DispatchQueue.main.async {
-                                    self.userImageButton.setBackgroundImage(image, for: .normal)
-                                }
+                }
+                if let imageUrl = users?.imageUrl {
+                    APIController.shared.getImage(url: imageUrl) { (image, error) in
+                        if let error = error {
+                            NSLog("Error getting image \(error)")
+                        } else if let image = image {
+                            DispatchQueue.main.async {
+                                self.userImageButton.setBackgroundImage(image, for: .normal)
                             }
                         }
                     }
@@ -66,63 +76,62 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
             if let error = error {
                 NSLog("Error getting managing team: \(error)")
             } else {
-                DispatchQueue.main.async {
-                    guard let admin = self.users?.isAdmin else { return }
-                    if admin {
-                        
-                        let font = UIFont.boldSystemFont(ofSize: 14)
-                        let attributes: [NSAttributedString.Key: Any] = [.font: font]
-                        
-                        let teamCode = NSMutableAttributedString(string: "\(team?.code ?? 0)", attributes: attributes)
-                        let teamCodeString = NSAttributedString(string: "\nTeam ID")
-                        teamCode.append(teamCodeString)
-                        
-                        let userCount = NSMutableAttributedString(string: "\(team?.users?.count ?? 0)", attributes: attributes)
-                        let userCountString = NSAttributedString(string: "\nUsers")
-                        userCount.append(userCountString)
-                        
-                        let teamName = NSMutableAttributedString(string: "Mad Moin", attributes: attributes)
-                        let teamString = NSAttributedString(string: "\nTeam Name")
-                        teamName.append(teamString)
-                        
+                guard let admin = self.users?.isAdmin else { return }
+                if admin {
+                    
+                    let font = UIFont.boldSystemFont(ofSize: 14)
+                    let attributes: [NSAttributedString.Key: Any] = [.font: font]
+                    
+                    let teamCode = NSMutableAttributedString(string: "\(team?.code ?? 0)", attributes: attributes)
+                    let teamCodeString = NSAttributedString(string: "\nTeam ID")
+                    teamCode.append(teamCodeString)
+                    
+                    let userCount = NSMutableAttributedString(string: "\(team?.users?.count ?? 0)", attributes: attributes)
+                    let userCountString = NSAttributedString(string: "\nUsers")
+                    userCount.append(userCountString)
+                    
+                    let teamName = NSMutableAttributedString(string: "\(team?.teamName ?? "")", attributes: attributes)
+                    let teamString = NSAttributedString(string: "\nTeam Name")
+                    teamName.append(teamString)
+                    
+                    DispatchQueue.main.async {
                         self.leftLabel.attributedText = userCount
                         self.middleLabel.attributedText = teamName
                         self.rightLabel.attributedText = teamCode
-                    } else {
-                        APIController.shared.getUserResponses(userId: UserDefaults.standard.userId) { (responses, error) in
-                            self.responses = responses
-                            if let error = error {
-                                NSLog("Error getting user responses: \(error)")
-                            } else {
+                    }
+                } else {
+                    APIController.shared.getUserResponses(userId: UserDefaults.standard.userId) { (responses, error) in
+                        self.responses = responses
+                        if let error = error {
+                            NSLog("Error getting user responses: \(error)")
+                        } else {
+                            if let number = self.responses?.count {
+                                
+                                let inputFormatter = DateFormatter()
+                                inputFormatter.dateFormat = "yyyy-MM-dd"
+                                let showDate = inputFormatter.date(from: (self.responses?.first?.date)!)
+                                inputFormatter.dateFormat = "MMM dd"
+                                let dateString = inputFormatter.string(from: showDate!)
+                                
+                                let font = UIFont.boldSystemFont(ofSize: 14)
+                                let attributes: [NSAttributedString.Key: Any] = [.font: font]
+                                
+                                let feelzNumber = NSMutableAttributedString(string: "\(number)", attributes: attributes)
+                                let feelzString = NSAttributedString(string: "\nFeelz")
+                                feelzNumber.append(feelzString)
+                                
+                                let teamName = NSMutableAttributedString(string: "\(self.teamName)", attributes: attributes)
+                                let teamString = NSAttributedString(string: "\nTeam Name")
+                                teamName.append(teamString)
+                                
+                                let lastInDate = NSMutableAttributedString(string: "\(dateString)", attributes: attributes)
+                                let lastInString = NSAttributedString(string: "\nLast In")
+                                lastInDate.append(lastInString)
+                                
                                 DispatchQueue.main.async {
-                                    if let number = self.responses?.count {
-                                        
-                                        let inputFormatter = DateFormatter()
-                                        inputFormatter.dateFormat = "yyyy-MM-dd"
-                                        let showDate = inputFormatter.date(from: (self.responses?.first?.date)!)
-                                        inputFormatter.dateFormat = "MMM-dd"
-                                        let resultString = inputFormatter.string(from: showDate!)
-                                        
-                                        let font = UIFont.boldSystemFont(ofSize: 14)
-                                        let attributes: [NSAttributedString.Key: Any] = [.font: font]
-                                        
-                                        let feelzNumber = NSMutableAttributedString(string: "\(number)", attributes: attributes)
-                                        let feelzString = NSAttributedString(string: "\nFeelz")
-                                        feelzNumber.append(feelzString)
-                                        
-                                        let teamName = NSMutableAttributedString(string: "Mad Moin", attributes: attributes)
-                                        let teamString = NSAttributedString(string: "\nTeam Name")
-                                        teamName.append(teamString)
-                                        
-                                        let lastInDate = NSMutableAttributedString(string: "\(resultString)", attributes: attributes)
-                                        let lastInString = NSAttributedString(string: "\nLast In")
-                                        lastInDate.append(lastInString)
-                                        
-                                        self.leftLabel.attributedText = feelzNumber
-                                        self.middleLabel.attributedText = teamName
-                                        self.rightLabel.attributedText = lastInDate
-                                        
-                                    }
+                                    self.leftLabel.attributedText = feelzNumber
+                                    self.middleLabel.attributedText = teamName
+                                    self.rightLabel.attributedText = lastInDate
                                 }
                             }
                         }
@@ -133,6 +142,7 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
     }
     
     // MARK: - Load Profile Picture
+    
     @IBAction func selectImage(_ sender: UIButton) {
             
             let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
@@ -220,7 +230,6 @@ extension UIButton {
     func applyDesign() {
         // userImageButton Effects
         self.layer.cornerRadius = self.frame.size.height / 2
-        print("Button Radius \(self.frame.size.height / 2)")
         self.clipsToBounds = true
         // Put shadow on button
 //        self.backgroundColor = UIColor.darkGray
