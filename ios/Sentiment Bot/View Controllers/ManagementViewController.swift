@@ -26,33 +26,37 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
             NSLog("Survey wasn't set on ManagementViewController")
             return
         }
-        
-        UNUserNotificationCenter.current().getPendingNotificationRequests {
-            (requests) in
-            var nextTriggerDates: [String] = []
-            for request in requests {
-                if let trigger = request.trigger as? UNCalendarNotificationTrigger,
-                    let triggerDate = trigger.nextTriggerDate(){
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.timeZone = NSTimeZone.local
-                    dateFormatter.dateFormat = "MM/dd/yyyy h:mm:a"
-                    let triggerDate = dateFormatter.string(from: triggerDate)
-                    let triggerDateArray = triggerDate.components(separatedBy: " ")
-                    let date = triggerDateArray.first!
-                    let time = triggerDateArray.last!
-                    DispatchQueue.main.async {
-                        self.currentScheduleLabel.text = "Schedule: \(survey.schedule.capitalized)"
-                        self.nextDateLabel.text = "Date: \(date)"
-                        self.nextTimeLabel.text = "Time: \(time)"
-                    }
-                    nextTriggerDates.append(triggerDate)
-                    print("TRIGGER DATES: \(nextTriggerDates)")
-                }
-            }
-            if let nextTriggerDate = nextTriggerDates.min() {
-                print("NEXT TRIGGER DATE: \(nextTriggerDate)")
-            }
-        }
+        self.currentScheduleLabel.text = "Schedule: \(survey.schedule.capitalized)"
+        self.nextDateLabel.text = "Date: \(survey.targetDate)"
+        self.nextTimeLabel.text = "Time: \(survey.formattedTime)"
+
+//
+//        UNUserNotificationCenter.current().getPendingNotificationRequests {
+//            (requests) in
+//            var nextTriggerDates: [String] = []
+//            for request in requests {
+//                if let trigger = request.trigger as? UNCalendarNotificationTrigger,
+//                    let triggerDate = trigger.nextTriggerDate(){
+//                    let dateFormatter = DateFormatter()
+//                    dateFormatter.timeZone = NSTimeZone.local
+//                    dateFormatter.dateFormat = "MM/dd/yyyy h:mm:a"
+//                    let triggerDate = dateFormatter.string(from: triggerDate)
+//                    let triggerDateArray = triggerDate.components(separatedBy: " ")
+//                    let date = triggerDateArray.first!
+//                    let time = triggerDateArray.last!
+//                    DispatchQueue.main.async {
+//                        self.currentScheduleLabel.text = "Schedule: \(survey.schedule.capitalized)"
+//                        self.nextDateLabel.text = "Date: \(date)"
+//                        self.nextTimeLabel.text = "Time: \(time)"
+//                    }
+//                    nextTriggerDates.append(triggerDate)
+//                    print("TRIGGER DATES: \(nextTriggerDates)")
+//                }
+//            }
+//            if let nextTriggerDate = nextTriggerDates.min() {
+//                print("NEXT TRIGGER DATE: \(nextTriggerDate)")
+//            }
+//        }
         
     }
     @IBOutlet weak var containerStackView: UIStackView!
@@ -63,7 +67,7 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
                 NSLog("User and Survey wasn't set on ManagementViewController")
                 return
         }
-        APIController.shared.changeSurveySchedule(surveyId: survey.id, time: survey.time, schedule: "Now") { (errorMessage) in
+        APIController.shared.changeSurveySchedule(surveyId: survey.id, time: survey.time, schedule: "Now") { (_, errorMessage) in
             
         }
     }
@@ -170,7 +174,8 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
     
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToSendSurveyViewController" {
-            let destination = segue.destination as! SendSurveyViewController
+            let nav = segue.destination as! UINavigationController
+            let destination = nav.topViewController as! SendSurveyViewController
             destination.teamResponses = teamResponses
             destination.survey = survey
             destination.user = user

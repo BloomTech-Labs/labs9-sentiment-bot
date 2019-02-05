@@ -239,6 +239,12 @@ class APIController {
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.post.rawValue
+        if mood == "om.apple.UNNotificationDefaultActionIdentifier" || emoji == "c" {
+            NSLog("User dismissed the notification")
+            return
+        }
+        
+        
         let longitude = UserDefaults.standard.longitude!
         let latitude = UserDefaults.standard.latitude!
         
@@ -728,7 +734,7 @@ class APIController {
     }
     
     //Change Survey Schedule
-    func changeSurveySchedule(surveyId: Int, time: String, schedule: String, completion: @escaping (ErrorMessage?) -> Void) {
+    func changeSurveySchedule(surveyId: Int, time: String, schedule: String, completion: @escaping (Survey?, ErrorMessage?) -> Void) {
         let url = baseUrl.appendingPathComponent("surveys")
             .appendingPathComponent("\(surveyId)")
 
@@ -770,7 +776,7 @@ class APIController {
                 NSLog("Error code from the http request: \(httpResponse.statusCode)")
                 do {
                     let errorMessage = try JSONDecoder().decode(ErrorMessage.self, from: data)
-                    completion(errorMessage)
+                    completion(nil, errorMessage)
                 } catch {
                     NSLog("Error decoding ErrorMessage(changeSurveySchedule) \(error)")
                     return
@@ -778,8 +784,15 @@ class APIController {
                 return
             }
             
+            do {
+                let survey = try JSONDecoder().decode(Survey.self, from: data)
+                completion(survey, nil)
+            } catch {
+                NSLog("Error with network request: \(error)")
+                return
+            }
+            
             NSLog("Manager successfully changed schedule of survey to \(schedule)")
-            completion(nil)
             
             }.resume()
     }

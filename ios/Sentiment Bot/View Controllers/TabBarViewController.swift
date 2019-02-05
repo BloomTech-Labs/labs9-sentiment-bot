@@ -21,6 +21,7 @@ class TabBarViewController: UITabBarController {
             NSLog("Device Token wasn't set to User's Defaults")
             return
         }
+        locationHelper.saveLocation()
         APIController.shared.saveDeviceToken(userId: UserDefaults.standard.userId, deviceToken: deviceToken) { (errorMessage) in
             
         }
@@ -71,7 +72,7 @@ class TabBarViewController: UITabBarController {
 //    }
     
     var user: User?
-    
+    let locationHelper = LocationHelper()
     var userResponses: [Response]? {
         didSet {
             passToVCs()
