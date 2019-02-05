@@ -189,7 +189,7 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
                             let sendSurveyViewController = self?.parent as! SendSurveyViewController
                             DispatchQueue.main.async {
                                 sendSurveyViewController.feelings?.append(feeling)
-                                let managementViewController = sendSurveyViewController.parent?.children.first as! ManagementViewController
+                                let managementViewController = sendSurveyViewController.parent?.presentingViewController?.children.last?.children.last as! ManagementViewController
                                 managementViewController.survey?.feelings?.append(feeling)
                                 sendSurveyViewController.tableView.reloadData()
                             }

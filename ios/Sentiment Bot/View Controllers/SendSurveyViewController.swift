@@ -61,10 +61,10 @@ class SendSurveyViewController: UITableViewController, ManagerProtocol {
     
     @IBAction func scheduleSurvey(_ sender: Any) {
         let sendSurveyViewController = self.children.first as! SendSurveyFormViewController
-        let managementViewController = self.parent?.children.first as! ManagementViewController
+        let managementViewController = self.parent?.presentingViewController?.children.last?.children.last as! ManagementViewController
         let newSchedule = sendSurveyViewController.selectedSchedule!
         managementViewController.survey?.schedule = newSchedule
-        managementViewController.currentScheduleLabel.text = "Schedule: \(newSchedule)"
+        //managementViewController.currentScheduleLabel.text = "Schedule: \(newSchedule)"
         let selectedTime = sendSurveyViewController.selectedTime!
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
@@ -72,9 +72,11 @@ class SendSurveyViewController: UITableViewController, ManagerProtocol {
         managementViewController.survey?.time = timeString
         self.survey?.time = timeString
         sendSurveyViewController.survey?.time = timeString
-        APIController.shared.changeSurveySchedule(surveyId: survey!.id, time: timeString, schedule: newSchedule, completion: { (errorMessage) in
+        APIController.shared.changeSurveySchedule(surveyId: survey!.id, time: timeString, schedule: newSchedule, completion: { (survey, errorMessage) in
+            sendSurveyViewController.survey?.startDate = survey!.startDate
+            managementViewController.survey?.startDate = survey!.startDate
             DispatchQueue.main.async {
-                sendSurveyViewController.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true)
             }
         })
         
@@ -133,6 +135,9 @@ class SendSurveyViewController: UITableViewController, ManagerProtocol {
         }
     }
     
+    @IBAction func cancel(_ sender: Any) {
+        dismiss(animated: true)
+    }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Feelings"

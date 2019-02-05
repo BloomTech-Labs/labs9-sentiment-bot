@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qb7-mJ-4d9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qTV-Sr-02o">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -70,17 +70,22 @@
                             <outlet property="delegate" destination="cUk-wY-Djm" id="Jr1-rw-ccF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="HSY-9L-SYZ">
-                        <barButtonItem key="rightBarButtonItem" title="Schedule" id="nRh-Yq-HRs">
+                    <navigationItem key="navigationItem" id="nhP-zc-bhW">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="6S7-G5-vBo">
                             <connections>
-                                <action selector="scheduleSurvey:" destination="cUk-wY-Djm" id="aS2-tk-Inj"/>
+                                <action selector="cancel:" destination="cUk-wY-Djm" id="CGP-jj-PRU"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="JId-9F-LCw">
+                            <connections>
+                                <action selector="scheduleSurvey:" destination="cUk-wY-Djm" id="g1J-EX-a7B"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XRg-nE-0NQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5544.8000000000002" y="-990.14778325123154"/>
+            <point key="canvasLocation" x="-4602.3999999999996" y="-990.14778325123154"/>
         </scene>
         <!--Send Survey Form View Controller-->
         <scene sceneID="sqE-EK-kES">
@@ -95,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4uU-4h-UCT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4436" y="-990.51724137931035"/>
+            <point key="canvasLocation" x="-3493.5999999999999" y="-990.88669950738915"/>
         </scene>
         <!--Survey-->
         <scene sceneID="KzF-fA-R68">
@@ -106,28 +111,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="axN-GY-Qso">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="685"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="ldW-Jx-Wu1">
-                                        <rect key="frame" x="0.0" y="190.66666666666669" width="375" height="260"/>
+                                        <rect key="frame" x="0.0" y="256.66666666666669" width="375" height="172"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="op5-2Q-ug3">
-                                                <rect key="frame" x="58.666666666666657" y="0.0" width="258" height="110"/>
+                                                <rect key="frame" x="187.66666666666666" y="0.0" width="0.0" height="22"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Schedule: TBD" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qvk-Id-qhD">
-                                                        <rect key="frame" x="0.0" y="0.0" width="258" height="29.333333333333332"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qvk-Id-qhD">
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Schedule: TBD" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNS-VE-NlB">
-                                                        <rect key="frame" x="0.0" y="40.333333333333314" width="258" height="29.333333333333329"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNS-VE-NlB">
+                                                        <rect key="frame" x="0.0" y="11" width="0.0" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Schedule: TBD" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZhS-6O-jEh">
-                                                        <rect key="frame" x="0.0" y="80.666666666666629" width="258" height="29.333333333333329"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZhS-6O-jEh">
+                                                        <rect key="frame" x="0.0" y="22" width="0.0" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -135,7 +139,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="JfN-pf-Zjs">
-                                                <rect key="frame" x="80" y="128" width="215" height="132"/>
+                                                <rect key="frame" x="80" y="40" width="215" height="132"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5e4-iH-MuU">
                                                         <rect key="frame" x="0.0" y="0.0" width="215" height="56"/>
@@ -143,7 +147,7 @@
                                                         <inset key="contentEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
                                                         <state key="normal" title="Schedule"/>
                                                         <connections>
-                                                            <segue destination="cUk-wY-Djm" kind="show" identifier="ToSendSurveyViewController" id="P4J-Zg-xbU"/>
+                                                            <segue destination="8dz-fQ-gl2" kind="show" identifier="ToSendSurveyViewController" id="P4J-Zg-xbU"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkc-Jl-jqh">
@@ -197,22 +201,22 @@
             <point key="canvasLocation" x="-6738.3999999999996" y="-1001.2315270935961"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="EpR-3R-l4l">
+        <scene sceneID="4YQ-t4-6yi">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Qb7-mJ-4d9" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8dz-fQ-gl2" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7gw-Jr-I8i">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gpA-V8-ljn">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="qTV-Sr-02o" kind="relationship" relationship="rootViewController" id="DAH-nL-mIA"/>
+                        <segue destination="cUk-wY-Djm" kind="relationship" relationship="rootViewController" id="8lM-ue-bDe"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gSA-Es-za0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KE4-Od-VsK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7849" y="-1001"/>
+            <point key="canvasLocation" x="-5544.8000000000002" y="-990.14778325123154"/>
         </scene>
     </scenes>
     <resources>

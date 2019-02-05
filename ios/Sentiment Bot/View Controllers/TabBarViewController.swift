@@ -73,7 +73,6 @@ class TabBarViewController: UITabBarController {
     
     var user: User?
     let locationHelper = LocationHelper()
-    
     var userResponses: [Response]? {
         didSet {
             passToVCs()
