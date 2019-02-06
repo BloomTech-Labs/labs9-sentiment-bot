@@ -9,6 +9,7 @@
 import UIKit
 import Stripe
 import UserNotifications
+//import SVProgressHUD
 class ManagementViewController: UIViewController, STPAddCardViewControllerDelegate, ManagerProtocol, UNUserNotificationCenterDelegate {
     var user: User?
     
@@ -62,13 +63,16 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
     @IBOutlet weak var containerStackView: UIStackView!
     
     @IBAction func sendNow(_ sender: Any) {
+        //let progressWithStatus = SVProgressHUD.self
+        //progressWithStatus.setBackgroundColor(Theme.current.mainColor)
+        //progressWithStatus.show(withStatus: "Sending...")
         guard let user = user,
             let survey = survey else {
                 NSLog("User and Survey wasn't set on ManagementViewController")
                 return
         }
         APIController.shared.changeSurveySchedule(surveyId: survey.id, time: survey.time, schedule: "Now") { (_, errorMessage) in
-            
+            //SVProgressHUD.showSuccess(withStatus: "Sent")
         }
     }
     
