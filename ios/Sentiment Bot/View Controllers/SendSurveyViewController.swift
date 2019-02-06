@@ -9,44 +9,33 @@
 import UIKit
 import Eureka
 class SendSurveyViewController: UITableViewController, ManagerProtocol {
+    
     var user: User?
-    
     var teamResponses: [Response]?
-    
     var team: Team?
-    
     var survey: Survey? {
         didSet {
             feelings = survey?.feelings
         }
     }
-    
     var feelings: [Feeling]?
-    
     var teamMembers: [User]?
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         //title = "Schedule: Daily"
     }
+    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return feelings?.count ?? 0
     }
-    
     
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeelingCell", for: indexPath) as! FeelingTableViewCell

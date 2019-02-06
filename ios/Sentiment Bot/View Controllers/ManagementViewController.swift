@@ -9,6 +9,7 @@
 import UIKit
 import Stripe
 import UserNotifications
+
 class ManagementViewController: UIViewController, STPAddCardViewControllerDelegate, ManagerProtocol, UNUserNotificationCenterDelegate {
     var user: User?
     

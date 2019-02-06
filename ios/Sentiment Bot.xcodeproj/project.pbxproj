@@ -68,6 +68,8 @@
 		F1B7E59221E547460096FC6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E59121E547460096FC6F /* Assets.xcassets */; };
 		F1B7E59521E547460096FC6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E59321E547460096FC6F /* LaunchScreen.storyboard */; };
 		F1B9B77F220A1B88002DC836 /* SignInUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B9B77E220A1B88002DC836 /* SignInUpViewController.swift */; };
+		F1B9B781220A4641002DC836 /* UIButton+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B9B780220A4641002DC836 /* UIButton+extension.swift */; };
+		F1B9B783220A46A0002DC836 /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B9B782220A46A0002DC836 /* UIColor+extension.swift */; };
 		F1C3CBDB2200D3A000CE2A31 /* MembersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3CBDA2200D3A000CE2A31 /* MembersTableViewCell.swift */; };
 		F1CDD23C21ECFF06008E7A57 /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1CDD23B21ECFF06008E7A57 /* Timeline.storyboard */; };
 		F1CDD23F21ECFF36008E7A57 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1CDD23D21ECFF36008E7A57 /* Map.storyboard */; };
@@ -144,6 +146,8 @@
 		F1B7E59421E547460096FC6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F1B7E59621E547460096FC6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1B9B77E220A1B88002DC836 /* SignInUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUpViewController.swift; sourceTree = "<group>"; };
+		F1B9B780220A4641002DC836 /* UIButton+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+extension.swift"; sourceTree = "<group>"; };
+		F1B9B782220A46A0002DC836 /* UIColor+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
 		F1C3CBDA2200D3A000CE2A31 /* MembersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersTableViewCell.swift; sourceTree = "<group>"; };
 		F1CDD23B21ECFF06008E7A57 /* Timeline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
 		F1CDD23E21ECFF36008E7A57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Sentiment Bot/Storyboards/Base.lproj/Map.storyboard"; sourceTree = "<group>"; };
@@ -241,6 +245,8 @@
 			isa = PBXGroup;
 			children = (
 				A1EA606821ECFF9A00ACE25D /* UserDefaults+extension.swift */,
+				F1B9B780220A4641002DC836 /* UIButton+extension.swift */,
+				F1B9B782220A46A0002DC836 /* UIColor+extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -566,6 +572,7 @@
 				F15713C421FD775100F6A62F /* Theme.swift in Sources */,
 				A1F953022202244000C3CC9C /* JoinCreateViewController.swift in Sources */,
 				A13547C421E6D06D0045C5F0 /* Response.swift in Sources */,
+				F1B9B781220A4641002DC836 /* UIButton+extension.swift in Sources */,
 				A1EA605B21E8270300ACE25D /* LocationHelper.swift in Sources */,
 				A140D95E21F693C2008963C1 /* SenitmentReportViewController.swift in Sources */,
 				A1F95304220278B000C3CC9C /* UserTabBarContainerViewController.swift in Sources */,
@@ -575,6 +582,7 @@
 				A1EA605E21E85D5A00ACE25D /* LocalNotificationHelper.swift in Sources */,
 				A140D96421F6A2F7008963C1 /* ManagerTimelineViewController.swift in Sources */,
 				A140D95A21F69257008963C1 /* ManagerTabBarViewController.swift in Sources */,
+				F1B9B783220A46A0002DC836 /* UIColor+extension.swift in Sources */,
 				A140D97221F76DB2008963C1 /* InitialViewController.swift in Sources */,
 				A140D96C21F6E127008963C1 /* ManagerProtocol.swift in Sources */,
 				A140D93A21EEEEED008963C1 /* ReversedGeoLocation.swift in Sources */,

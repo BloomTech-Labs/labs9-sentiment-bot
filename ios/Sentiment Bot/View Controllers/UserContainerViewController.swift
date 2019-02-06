@@ -44,12 +44,14 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
             if let error = error {
                 NSLog("Error getting user: \(error)")
             } else {
-                APIController.shared.getTeam(teamId: users?.teamId ?? 0) { (team, error) in
-                    self.team = team
-                    if let error = error {
-                        NSLog("Error getting Team Name \(error)")
-                    } else {
-                        self.teamName = team?.teamName ?? "None"
+                if (users?.isTeamMember)! {
+                    APIController.shared.getTeam(teamId: users?.teamId ?? 0) { (team, error) in
+                        self.team = team
+                        if let error = error {
+                            NSLog("Error getting Team Name \(error)")
+                        } else {
+                            self.teamName = team?.teamName ?? "None"
+                        }
                     }
                 }
                 guard let firstName = users?.firstName, let lastName = users?.lastName, let teamId = users?.teamId else { return }
@@ -226,19 +228,3 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
     }
 }
 
-extension UIButton {
-    func applyDesign() {
-        // userImageButton Effects
-        self.layer.cornerRadius = self.frame.size.height / 2
-        self.clipsToBounds = true
-        // Put shadow on button
-//        self.backgroundColor = UIColor.darkGray
-//        self.layer.borderWidth = 2.0
-//        self.layer.shadowColor = UIColor.darkGray.cgColor
-//        self.layer.shadowOpacity = 1.0
-//        self.layer.shadowRadius = 4.0
-//        self.layer.shadowOffset = CGSize(width: 0, height: 0)
-        // Put frame around button
-        //        userImageButton.layer.borderColor = UIColor(displayP3Red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.5).cgColor
-    }
-}

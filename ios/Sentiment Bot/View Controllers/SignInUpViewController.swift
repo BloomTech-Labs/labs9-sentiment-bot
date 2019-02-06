@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleSignIn
+import AVFoundation
 
 class SignInUpViewController: UIViewController {
     
@@ -33,34 +34,108 @@ class SignInUpViewController: UIViewController {
     // MARK: - Properties
     
     var switchLogin = true
+    
+    var user: User?
+    let locationHelper = LocationHelper()
+    
 
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        signUpView.layer.cornerRadius = 5
-        signInView.layer.cornerRadius = 5
         
-        signInView.isHidden = false
-        signUpView.isHidden = true
+        
+        signUpView.layer.cornerRadius = 10
+        signInView.layer.cornerRadius = 10
+        googleSignInButton.applyDesign()
+        googleSignUpButton.applyDesign()
+        signInButton.applyDesign()
+        signUpButton.applyDesign()
+        
+        moinButton.backgroundColor = .clear
+        scottButton.backgroundColor = .clear
+        
+        getUser()
+        
+        locationHelper.requestLocationAuthorization()
+        GIDSignIn.sharedInstance()?.uiDelegate = self
+        GIDSignIn.sharedInstance()?.delegate = self
 
     }
     
-    @IBAction func indexChanged(_ sender: UISegmentedControl) {
-        switch segmentedControl.selectedSegmentIndex {
-        case 0:
-            signInView.isHidden = false
-            signUpView.isHidden = true
-        case 1:
-            signInView.isHidden = true
-            signUpView.isHidden = false
-        default:
-            break
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        signInView.center.x -= view.bounds.width
+        signUpView.center.x -= view.bounds.width
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        signInView.center.x -= view.bounds.width
+        signUpView.center.x -= view.bounds.width
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        showSignIn()
+        
+        guard let _ = GIDSignIn.sharedInstance()?.currentUser else {
+            return
+        }
+        
+        if UserDefaults.standard.userId != 0 {
+            guard let user = user else { return }
+            DispatchQueue.main.async {
+                if user.isAdmin {
+                    self.performSegue(withIdentifier: "ToManagerScreen", sender: self)
+                } else if user.isTeamMember {
+                    self.performSegue(withIdentifier: "ToTeamMemberScreen", sender: self)
+                } else {
+                    let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                    
+                    let intialVC = mainStoryBoard.instantiateViewController(withIdentifier: "InitialViewController") as! InitialViewController
+                    self.present(intialVC, animated: true) {
+                        
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    private func getUser() {
+        
+        APIController.shared.getUser(userId: UserDefaults.standard.userId) { (user, errorMessage) in
+            if let errorMessage = errorMessage {
+                NSLog(errorMessage.message.joined())
+            } else if let user = user {
+                DispatchQueue.main.async {
+                    if user.isAdmin {
+                        self.performSegue(withIdentifier: "ToManagerScreen", sender: self)
+                    } else if user.isTeamMember {
+                        self.performSegue(withIdentifier: "ToTeamMemberScreen", sender: self)
+                    } else {
+                        let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                        
+                        let intialVC = mainStoryBoard.instantiateViewController(withIdentifier: "InitialViewController") as! InitialViewController
+                        self.present(intialVC, animated: true) {
+                            
+                        }
+                    }
+                }
+            }
         }
     }
     
     @IBAction func signIn(_ sender: UIButton) {
+        signInView.center.x -= view.bounds.width
+        signUpView.center.x -= view.bounds.width
+
         guard let email = signInEmailTextField.text,
             let password = signInPasswordTextField.text else {
                 return
@@ -89,7 +164,7 @@ class SignInUpViewController: UIViewController {
                     } else if let user = user {
                         clearFields()
                         DispatchQueue.main.async {
-                            let authenticationViewController = self.parent?.parent?.parent as! GoogleSignInViewController
+                            let authenticationViewController = self
                             if user.isAdmin {
                                 authenticationViewController.performSegue(withIdentifier: "ToManagerScreen", sender: self)
                             } else if user.isTeamMember {
@@ -147,11 +222,9 @@ class SignInUpViewController: UIViewController {
                         clearFields()
                     }
                 }
-                
             }
         }
     }
-
     
     @IBAction func googleSignUP(_ sender: Any) {
         GIDSignIn.sharedInstance()?.signIn()
@@ -213,4 +286,120 @@ extension UITextField {
         }
     }
     
+}
+
+extension SignInUpViewController: GIDSignInUIDelegate, GIDSignInDelegate {
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            print("\(error.localizedDescription)")
+        } else {
+            
+            guard let email = user.profile.email,
+                let fullName = user.profile.name,
+                //                let idToken = user.authentication.idToken,
+                let profileImageUrl = user.profile.imageURL(withDimension: 400) else {
+                    NSLog("Email and Full Name wasn't returned from GoogleSignIn")
+                    return
+            }
+            
+            
+            APIController.shared.googleSignIn(email: email, fullName: fullName, imageUrl: profileImageUrl) { (errorMessage) in
+                if let errorMessage = errorMessage {
+                    NSLog("Error: \(errorMessage)")
+                } else {
+                    APIController.shared.getUser(userId: UserDefaults.standard.userId) { (user, error) in
+                        
+                        if let error = error {
+                            NSLog("There was error retreiving current User: \(error)")
+                        } else if let user = user {
+                            self.user = user
+                            self.viewDidAppear(true)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    //Once the backend is implemented we can pass the current user to
+    //TabBarViewController and further refactor only doing one api call
+    //there instead of two as we're doing right now.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ToHomeScreen" {
+            guard let destination = segue.destination as? TabBarViewController else { return }
+            destination.user = user
+        }
+    }
+    
+    @objc func handleGoogle() {
+        GIDSignIn.sharedInstance()?.signIn()
+    }
+    
+    private func createButton(named: String) -> UIButton {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle(named, for: .normal)
+        button.backgroundColor = .white
+        button.setTitleColor(.gray, for: .normal)
+        return button
+    }
+    
+}
+
+extension SignInUpViewController {
+    
+    @IBAction func indexChanged(_ sender: UISegmentedControl) {
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            hideSignOut()
+            showSignIn()
+        case 1:
+            hideSignIn()
+            showSignOut()
+        default:
+            break
+        }
+    }
+    
+    func showSignIn() {
+        
+        UIView.animate(withDuration: 0.5, delay: 0.4, options: [], animations: {
+            self.signInView.center.x += self.view.bounds.width
+            self.view.layoutIfNeeded()
+            },
+            completion: nil
+        )
+    }
+    
+    func hideSignIn() {
+        
+        UIView.animate(withDuration: 0.5, delay: 0.4, options: [], animations: {
+            self.signInView.center.x -= self.view.bounds.width
+            self.view.layoutIfNeeded()
+            },
+            completion: nil
+        )
+    }
+    
+    func showSignOut() {
+        
+        UIView.animate(withDuration: 0.5, delay: 0.4, options: [], animations: {
+            self.signUpView.center.x += self.view.bounds.width
+            self.view.layoutIfNeeded()
+            },
+            completion: nil
+        )
+    }
+    
+    func hideSignOut() {
+        
+        UIView.animate(withDuration: 0.5, delay: 0.4, options: [], animations: {
+            self.signUpView.center.x -= self.view.bounds.width
+            self.view.layoutIfNeeded()
+            },
+            completion: nil
+        )
+    }
+ 
 }
