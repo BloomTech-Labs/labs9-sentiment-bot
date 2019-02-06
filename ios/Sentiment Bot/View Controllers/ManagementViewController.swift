@@ -10,17 +10,56 @@ import UIKit
 import Stripe
 import UserNotifications
 import SVProgressHUD
+
 class ManagementViewController: UIViewController, STPAddCardViewControllerDelegate, ManagerProtocol, UNUserNotificationCenterDelegate {
+    
+    // MARK: - Outlets
+    
+    @IBOutlet weak var containerStackView: UIStackView!
+    @IBOutlet weak var currentScheduleLabel: UILabel!
+    @IBOutlet weak var sendSurveyButton: UIButton!
+    @IBOutlet weak var sendNowButton: UIButton!
+    @IBOutlet weak var nextDateLabel: UILabel!
+    @IBOutlet weak var nextTimeLabel: UILabel!
+    @IBOutlet weak var subscriptionButton: UIButton!
+    //@IBOutlet weak var msgBox: UITextView!
+    
+    // MARK: - Properties
+    
     var user: User?
-    
     var teamResponses: [Response]?
-    
     var team: Team?
-    
     var survey: Survey?
-    
     var teamMembers: [User]?
+    var stripeToken: String?
     
+    // MARK: - View Life Cycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        sendSurveyButton.applyDesign()
+        sendNowButton.applyDesign()
+        setSchedule()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //        if (user?.subscribed)! {
+        //            subscriptionButton.setTitle("Cancel", for: .normal)
+        //        } else if !(user?.subscribed)! {
+        //            subscriptionButton.setTitle("Subscribe", for: .normal)
+        //        }
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        setSchedule()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    // MARK: - Private Functions
     
     private func setSchedule() {
         guard let survey = survey else {
@@ -60,7 +99,6 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
 //        }
         
     }
-    @IBOutlet weak var containerStackView: UIStackView!
     
     @IBAction func sendNow(_ sender: Any) {
         let progressWithStatus = SVProgressHUD.self
@@ -77,51 +115,11 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        setSchedule()
-    }
-    
-    
-    //@IBOutlet weak var msgBox: UITextView!
-    
-    @IBOutlet weak var currentScheduleLabel: UILabel!
-    @IBOutlet weak var sendSurveyButton: UIButton!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        sendSurveyButton.applyDesign()
-        sendNowButton.applyDesign()
-        setSchedule()
-    }
-    
-    @IBOutlet weak var nextDateLabel: UILabel!
-    @IBOutlet weak var nextTimeLabel: UILabel!
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-//        if (user?.subscribed)! {
-//            subscriptionButton.setTitle("Cancel", for: .normal)
-//        } else if !(user?.subscribed)! {
-//            subscriptionButton.setTitle("Subscribe", for: .normal)
-//        }
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-    
-    
-    @IBOutlet weak var sendNowButton: UIButton!
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-    
-    
     @IBAction func cancelSubscription(_ sender: Any) {
         StripeController.shared.cancelPremiumSubscription { (errorMessage) in
             
         }
     }
-    
-    @IBOutlet weak var subscriptionButton: UIButton!
     
     @IBAction func toggleSubscription(_ sender: UIButton) {
         if (user?.subscribed)! {
@@ -138,7 +136,6 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
         addCardViewController.delegate = self
         addCardViewController.title = "Subscribe to Premium"
         
-        
         // Present add card view controller
         //let navigationController = UINavigationController(rootViewController: addCardViewController)
         self.navigationController?.pushViewController(addCardViewController, animated: true)
@@ -152,8 +149,6 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
         //dismiss(animated: true)
         self.navigationController?.popViewController(animated: true)
     }
-    
-    var stripeToken: String?
     
     func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken, completion: @escaping STPErrorBlock) {
         addCardViewController.title = "Subscribe to Premium"
@@ -171,12 +166,6 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToSendSurveyViewController" {
             let nav = segue.destination as! UINavigationController
@@ -187,6 +176,5 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
             destination.team = team
         }
      }
-
 
 }

@@ -11,7 +11,21 @@ import GoogleSignIn
 
 class SignInViewController: UIViewController, UITextFieldDelegate {
     
+    // MARK: - Outlets
+    
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var googleButton: UIButton!
+    
+    @IBOutlet weak var moinButton: UIButton!
+    @IBOutlet weak var scottButton: UIButton!
+    
+    // MARK: - Properties
+    
     var switchLogin = true
+    
+    //MARK: - View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,33 +37,15 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         signInButton.layer.cornerRadius = signInButton.frame.size.height / 2
         googleButton.layer.cornerRadius = googleButton.frame.size.height / 2
         googleButton.clipsToBounds = true
-        setPlaceHolders()
         
         moinButton.backgroundColor = .clear
         scottButton.backgroundColor = .clear
     }
-    
-    func setPlaceHolders() {
-        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email:",
-                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password:",
-                                                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-    }
+
     
     @IBAction func googleSignIn(_ sender: Any) {
         GIDSignIn.sharedInstance()?.signIn()
     }
-    
-    
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var signInButton: UIButton!
-    @IBOutlet weak var googleButton: UIButton!
-    @IBOutlet weak var moinButton: UIButton!
-    @IBOutlet weak var scottButton: UIButton!
-    
-    
     
     @IBAction func signIn(_ sender: Any) {
         guard let email = emailTextField.text,
@@ -111,7 +107,6 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         return false
     }
     
-
 }
 
 // Dismiss Keyboard
@@ -123,10 +118,10 @@ extension UIViewController
     }
 }
 
+// For testing, auto logins
 extension SignInViewController {
 
     @IBAction func moinLongin(_ sender: UIButton) {
-
        if switchLogin {
             switchLogin.toggle()
             emailTextField.setTextWithTypeAnimation(typedText: "moin@moin.com")
@@ -134,11 +129,9 @@ extension SignInViewController {
             switchLogin.toggle()
             passwordTextField.setTextWithTypeAnimation(typedText: "123456")
         }
-        
     }
     
     @IBAction func scottLogin(_ sender: UIButton) {
-        
         if switchLogin {
             switchLogin.toggle()
             emailTextField.setTextWithTypeAnimation(typedText: "scott@scott.com")
@@ -147,28 +140,28 @@ extension SignInViewController {
             passwordTextField.setTextWithTypeAnimation(typedText: "123456")
         }
     }
-    
 }
 
-extension UITextField {
-    func setTextWithTypeAnimation(typedText: String, characterDelay: TimeInterval = 5.0) {
-        text = ""
-        var writingTask: DispatchWorkItem?
-        writingTask = DispatchWorkItem { [weak weakSelf = self] in
-            for character in typedText {
-                DispatchQueue.main.async {
-                    weakSelf?.text!.append(character)
-                }
-                Thread.sleep(forTimeInterval: characterDelay/100)
-            }
-        }
-        
-        if let task = writingTask {
-            let queue = DispatchQueue(label: "typespeed", qos: DispatchQoS.userInteractive)
-            queue.asyncAfter(deadline: .now() + 0.05, execute: task)
-        }
-    }
-    
-}
+// Typewriter Effect
+//extension UITextField {
+//    func setTextWithTypeAnimation(typedText: String, characterDelay: TimeInterval = 5.0) {
+//        text = ""
+//        var writingTask: DispatchWorkItem?
+//        writingTask = DispatchWorkItem { [weak weakSelf = self] in
+//            for character in typedText {
+//                DispatchQueue.main.async {
+//                    weakSelf?.text!.append(character)
+//                }
+//                Thread.sleep(forTimeInterval: characterDelay/100)
+//            }
+//        }
+//        
+//        if let task = writingTask {
+//            let queue = DispatchQueue(label: "typespeed", qos: DispatchQoS.userInteractive)
+//            queue.asyncAfter(deadline: .now() + 0.05, execute: task)
+//        }
+//    }
+//    
+//}
 
 

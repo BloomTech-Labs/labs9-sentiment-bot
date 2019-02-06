@@ -53,8 +53,7 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
                         }
                     }
                 }
-
-                guard let firstName = users?.firstName, let lastName = users?.lastName else { return }
+               guard let firstName = users?.firstName, let lastName = users?.lastName else { return }
                 DispatchQueue.main.async {
                     self.nameLabel.text = "\(firstName.capitalized) \(lastName.capitalized)"
                 }
@@ -101,45 +100,42 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
                         self.rightLabel.attributedText = teamCode
                     }
                 } else {
-                    if (self.users?.isTeamMember)! {
-                        APIController.shared.getUserResponses(userId: UserDefaults.standard.userId) { (responses, error) in
-                            self.responses = responses
-                            if let error = error {
-                                NSLog("Error getting user responses: \(error)")
-                            } else {
-                                if let number = self.responses?.count {
-                                    
-                                    let inputFormatter = DateFormatter()
-                                    inputFormatter.dateFormat = "yyyy-MM-dd"
-                                    let showDate = inputFormatter.date(from: (self.responses?.first?.date)!)
-                                    inputFormatter.dateFormat = "MMM dd"
-                                    let dateString = inputFormatter.string(from: showDate!)
-                                    
-                                    let font = UIFont.boldSystemFont(ofSize: 14)
-                                    let attributes: [NSAttributedString.Key: Any] = [.font: font]
-                                    
-                                    let feelzNumber = NSMutableAttributedString(string: "\(number)", attributes: attributes)
-                                    let feelzString = NSAttributedString(string: "\nFeelz")
-                                    feelzNumber.append(feelzString)
-                                    
-                                    let teamName = NSMutableAttributedString(string: "\(self.teamName)", attributes: attributes)
-                                    let teamString = NSAttributedString(string: "\nTeam Name")
-                                    teamName.append(teamString)
-                                    
-                                    let lastInDate = NSMutableAttributedString(string: "\(dateString)", attributes: attributes)
-                                    let lastInString = NSAttributedString(string: "\nLast In")
-                                    lastInDate.append(lastInString)
-                                    
-                                    DispatchQueue.main.async {
-                                        self.leftLabel.attributedText = feelzNumber
-                                        self.middleLabel.attributedText = teamName
-                                        self.rightLabel.attributedText = lastInDate
-                                    }
+                    APIController.shared.getUserResponses(userId: UserDefaults.standard.userId) { (responses, error) in
+                        self.responses = responses
+                        if let error = error {
+                            NSLog("Error getting user responses: \(error)")
+                        } else {
+                            if let number = self.responses?.count {
+                                
+                                let inputFormatter = DateFormatter()
+                                inputFormatter.dateFormat = "yyyy-MM-dd"
+                                let showDate = inputFormatter.date(from: (self.responses?.first?.date)!)
+                                inputFormatter.dateFormat = "MMM dd"
+                                let dateString = inputFormatter.string(from: showDate!)
+                                
+                                let font = UIFont.boldSystemFont(ofSize: 14)
+                                let attributes: [NSAttributedString.Key: Any] = [.font: font]
+                                
+                                let feelzNumber = NSMutableAttributedString(string: "\(number)", attributes: attributes)
+                                let feelzString = NSAttributedString(string: "\nFeelz")
+                                feelzNumber.append(feelzString)
+                                
+                                let teamName = NSMutableAttributedString(string: "\(self.teamName)", attributes: attributes)
+                                let teamString = NSAttributedString(string: "\nTeam Name")
+                                teamName.append(teamString)
+                                
+                                let lastInDate = NSMutableAttributedString(string: "\(dateString)", attributes: attributes)
+                                let lastInString = NSAttributedString(string: "\nLast In")
+                                lastInDate.append(lastInString)
+                                
+                                DispatchQueue.main.async {
+                                    self.leftLabel.attributedText = feelzNumber
+                                    self.middleLabel.attributedText = teamName
+                                    self.rightLabel.attributedText = lastInDate
                                 }
                             }
                         }
                     }
-
                 }
             }
         }
@@ -230,19 +226,3 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
     }
 }
 
-extension UIButton {
-    func applyDesign() {
-        // userImageButton Effects
-        self.layer.cornerRadius = self.frame.size.height / 2
-        self.clipsToBounds = true
-        // Put shadow on button
-//        self.backgroundColor = UIColor.darkGray
-//        self.layer.borderWidth = 2.0
-//        self.layer.shadowColor = UIColor.darkGray.cgColor
-//        self.layer.shadowOpacity = 1.0
-//        self.layer.shadowRadius = 4.0
-//        self.layer.shadowOffset = CGSize(width: 0, height: 0)
-        // Put frame around button
-        //        userImageButton.layer.borderColor = UIColor(displayP3Red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.5).cgColor
-    }
-}
