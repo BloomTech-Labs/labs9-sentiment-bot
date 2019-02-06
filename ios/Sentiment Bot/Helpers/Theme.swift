@@ -101,7 +101,8 @@ enum Theme: Int {
         UISegmentedControl.appearance().backgroundColor = .white
         
         UITabBar.appearance().barTintColor = tabBarColor
-       //UITabBar.appearance().barStyle = barStyle
+        UITabBar.appearance().backgroundColor = tabBarColor
+        //UITabBar.appearance().barStyle = barStyle
 
         //UINavigationBar.appearance().barStyle = barStyle
         UINavigationBar.appearance().barTintColor = backgroundColor1
