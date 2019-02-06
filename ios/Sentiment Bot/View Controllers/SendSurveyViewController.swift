@@ -8,6 +8,7 @@
 
 import UIKit
 import Eureka
+import SVProgressHUD
 class SendSurveyViewController: UITableViewController, ManagerProtocol {
     var user: User?
     
@@ -60,6 +61,9 @@ class SendSurveyViewController: UITableViewController, ManagerProtocol {
      }
     
     @IBAction func scheduleSurvey(_ sender: Any) {
+        let progressWithStatus = SVProgressHUD.self
+        progressWithStatus.setBackgroundColor(Theme.current.mainColor)
+        progressWithStatus.show()
         let sendSurveyViewController = self.children.first as! SendSurveyFormViewController
         let managementViewController = self.parent?.presentingViewController?.children.last?.children.last as! ManagementViewController
         let newSchedule = sendSurveyViewController.selectedSchedule!
@@ -76,6 +80,7 @@ class SendSurveyViewController: UITableViewController, ManagerProtocol {
             sendSurveyViewController.survey?.startDate = survey!.startDate
             managementViewController.survey?.startDate = survey!.startDate
             DispatchQueue.main.async {
+                progressWithStatus.dismiss()
                 self.dismiss(animated: true)
             }
         })
