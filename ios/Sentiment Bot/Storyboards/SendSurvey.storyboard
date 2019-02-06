@@ -85,7 +85,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XRg-nE-0NQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4602.3999999999996" y="-990.14778325123154"/>
+            <point key="canvasLocation" x="-4732" y="-990"/>
         </scene>
         <!--Send Survey Form View Controller-->
         <scene sceneID="sqE-EK-kES">
@@ -198,7 +198,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AAA-Gd-9NW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6738.3999999999996" y="-1001.2315270935961"/>
+            <point key="canvasLocation" x="-6359" y="-991"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4YQ-t4-6yi">

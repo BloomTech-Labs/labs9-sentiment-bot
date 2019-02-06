@@ -10,35 +10,8 @@ import UIKit
 import GoogleSignIn
 
 class SignUpViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = UIColor.clear.withAlphaComponent(0.25)
-        view.layer.cornerRadius = 20
-        signUpButton.layer.cornerRadius = signUpButton.frame.size.height / 2
-        googleButton.layer.cornerRadius = googleButton.frame.size.height / 2
-        googleButton.clipsToBounds = true
-        setPlaceHolders()
-    }
     
-    
-    func setPlaceHolders() {
-        firstNameTextField.attributedPlaceholder = NSAttributedString(string: "First Name:",
-                                                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        
-        lastNameTextField.attributedPlaceholder = NSAttributedString(string: "Last Name:",
-                                                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        
-        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email:",
-                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password:",
-                                                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-    }
-    
-    @IBAction func googleSignUp(_ sender: Any) {
-        GIDSignIn.sharedInstance()?.signIn()
-    }
+    // MARK: - Outlets
     
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
@@ -47,8 +20,24 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var signUpButton: UIButton!
     
     @IBOutlet weak var googleButton: UIButton!
+
+    // MARK: - View Live Cycle
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = UIColor.clear.withAlphaComponent(0.25)
+        view.layer.cornerRadius = 20
+        signUpButton.layer.cornerRadius = signUpButton.frame.size.height / 2
+        googleButton.layer.cornerRadius = googleButton.frame.size.height / 2
+        googleButton.clipsToBounds = true
+    }
+ 
+    // MARK: - View Methods
     
+    @IBAction func googleSignUp(_ sender: Any) {
+        GIDSignIn.sharedInstance()?.signIn()
+    }
+
     @IBAction func signUp(_ sender: Any) {
         guard let firstName = firstNameTextField.text,
             let lastName = lastNameTextField.text,
@@ -86,17 +75,6 @@ class SignUpViewController: UIViewController {
             }
         }
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
