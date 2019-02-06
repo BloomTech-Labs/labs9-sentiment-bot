@@ -43,6 +43,7 @@
 		A140D97C21F786E7008963C1 /* SentimentReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A140D97B21F786E7008963C1 /* SentimentReport.storyboard */; };
 		A140D97E21FA9DEB008963C1 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A140D97D21FA9DEA008963C1 /* Charts.framework */; };
 		A140D98021FC1DA2008963C1 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A140D97F21FC1DA1008963C1 /* Eureka.framework */; };
+		A14A444E220A6CAC0012C5FE /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14A444D220A6CAB0012C5FE /* SVProgressHUD.framework */; };
 		A1DA7AE621FD50910006F7A7 /* SendSurveyFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DA7AE521FD50910006F7A7 /* SendSurveyFormViewController.swift */; };
 		A1DA7AEA21FD56200006F7A7 /* FeelingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DA7AE921FD56200006F7A7 /* FeelingTableViewCell.swift */; };
 		A1DA7AEC21FD6D650006F7A7 /* ManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DA7AEB21FD6D650006F7A7 /* ManagementViewController.swift */; };
@@ -114,6 +115,7 @@
 		A140D97B21F786E7008963C1 /* SentimentReport.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SentimentReport.storyboard; sourceTree = "<group>"; };
 		A140D97D21FA9DEA008963C1 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
 		A140D97F21FC1DA1008963C1 /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = Carthage/Build/iOS/Eureka.framework; sourceTree = "<group>"; };
+		A14A444D220A6CAB0012C5FE /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 		A1DA7AE521FD50910006F7A7 /* SendSurveyFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendSurveyFormViewController.swift; sourceTree = "<group>"; };
 		A1DA7AE921FD56200006F7A7 /* FeelingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingTableViewCell.swift; sourceTree = "<group>"; };
 		A1DA7AEB21FD6D650006F7A7 /* ManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagementViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			files = (
 				A1EA606321ECFD4E00ACE25D /* JWTDecode.framework in Frameworks */,
 				A140D94E21F40E30008963C1 /* Stripe.framework in Frameworks */,
+				A14A444E220A6CAC0012C5FE /* SVProgressHUD.framework in Frameworks */,
 				0C99F989B5C76ECD3F5C3CD2 /* Pods_Sentiment_Bot.framework in Frameworks */,
 				A140D97E21FA9DEB008963C1 /* Charts.framework in Frameworks */,
 				A140D98021FC1DA2008963C1 /* Eureka.framework in Frameworks */,
@@ -226,6 +229,7 @@
 		A1EA606121ECFD4D00ACE25D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A14A444D220A6CAB0012C5FE /* SVProgressHUD.framework */,
 				A140D97F21FC1DA1008963C1 /* Eureka.framework */,
 				A140D97D21FA9DEA008963C1 /* Charts.framework */,
 				A140D94D21F40E30008963C1 /* Stripe.framework */,
@@ -492,6 +496,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Stripe.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Charts.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Eureka.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SVProgressHUD.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -500,6 +505,7 @@
 				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/Stripe.framework",
 				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/Charts.framework",
 				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/Eureka.framework",
+				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/SVProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
