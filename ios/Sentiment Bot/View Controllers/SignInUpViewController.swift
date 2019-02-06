@@ -36,6 +36,9 @@ class SignInUpViewController: UIViewController {
     @IBOutlet weak var moinButton: UIButton!
     @IBOutlet weak var scottButton: UIButton!
     
+    @IBOutlet weak var testButton: UIButton!
+    
+    
     // MARK: - Properties
     
     var switchLogin = true
@@ -55,7 +58,7 @@ class SignInUpViewController: UIViewController {
         googleSignUpButton.applyDesign()
         signInButton.applyDesign()
         signUpButton.applyDesign()
-        
+                
         moinButton.backgroundColor = .clear
         scottButton.backgroundColor = .clear
         
@@ -371,7 +374,7 @@ extension SignInUpViewController {
     
     func showSignIn() {
         
-        UIView.animate(withDuration: 0.5, delay: 0.4, options: [], animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: [], animations: {
             self.signInView.alpha = 1.0
 //            self.signInView.center.x += self.view.bounds.width
 //            self.view.layoutIfNeeded()
@@ -382,7 +385,7 @@ extension SignInUpViewController {
     
     func hideSignIn() {
         
-        UIView.animate(withDuration: 0.5, delay: 0.4, options: [], animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: [], animations: {
             self.signInView.alpha = 0.0
 //            self.signInView.center.x -= self.view.bounds.width
 //            self.view.layoutIfNeeded()
@@ -393,7 +396,7 @@ extension SignInUpViewController {
     
     func showSignUp() {
         
-        UIView.animate(withDuration: 0.5, delay: 0.4, options: [], animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: [], animations: {
             self.signUpView.alpha = 1.0
 //            self.signUpView.center.x += self.view.bounds.width
 //            self.view.layoutIfNeeded()
@@ -404,7 +407,7 @@ extension SignInUpViewController {
     
     func hideSignUp() {
         
-        UIView.animate(withDuration: 0.5, delay: 0.4, options: [], animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: [], animations: {
             self.signUpView.alpha = 0.0
 //            self.signUpView.center.x -= self.view.bounds.width
 //            self.view.layoutIfNeeded()

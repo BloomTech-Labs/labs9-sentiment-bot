@@ -23,10 +23,9 @@ enum Theme: Int {
     var mainColor: UIColor {
         switch self {
         case .dark:
-            return UIColor(red:0.76, green:0.04, blue:0.05, alpha:1.0)
-//           return UIColor(red: 171.0/255.0, green: 35.0/255.0, blue: 23.0/255.0, alpha: 1.0)
+            return UIColor(red: 194/255, green: 10/255, blue: 13/255, alpha:1.0)
         case .light:
-            return UIColor(red: 68.0/255.0, green: 191.0/255.0, blue: 254.0/255.0, alpha: 1.0)
+            return UIColor(red: 40/255, green: 85/255, blue: 136/255, alpha: 1.0)
         }
     }
     
@@ -43,12 +42,10 @@ enum Theme: Int {
         switch self {
         case .dark:
             //Dark Gray
-            return UIColor(red: 34.0/255.0, green: 34.0/255.0, blue: 34.0/255.0, alpha: 1.0)
+            return UIColor(red: 34/255, green: 34/255, blue: 34/255, alpha: 1.0)
         case .light:
-            //Sky
-            //return UIColor(red: 118.0/255.0, green: 214.0/255.0, blue: 255.0/255.0, alpha: 1.0)
             //Day One Blue
-            return UIColor(red: 68.0/255.0, green: 191.0/255.0, blue: 254.0/255.0, alpha: 1.0)
+            return UIColor(red: 40/255, green: 85/255, blue: 136/255, alpha: 1.0)
         }
     }
     
@@ -56,7 +53,7 @@ enum Theme: Int {
         switch self {
         case .dark:
             //Light Gray
-            return UIColor(red: 102.0/255.0, green: 102.0/255.0, blue: 102.0/255.0, alpha: 1.0)
+            return UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1.0)
         case .light:
             return UIColor.white
         }
@@ -75,9 +72,9 @@ enum Theme: Int {
         switch self {
         case .dark:
             //Dark Gray
-            return backgroundColor1
+            return .black //backgroundColor1
         case .light:
-            return UIColor(red: 102.0/255.0, green: 102.0/255.0, blue: 102.0/255.0, alpha: 1.0)
+            return .black //UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1.0)
         }
     }
     
@@ -96,18 +93,15 @@ enum Theme: Int {
         
         UIApplication.shared.delegate?.window??.tintColor = mainColor
         UIApplication.shared.delegate?.window??.backgroundColor = backgroundColor3
-//        UIApplication.shared.delegate?.window??.backgroundColor = mainColor
         UISegmentedControl.appearance().tintColor = mainColor
         UISegmentedControl.appearance().backgroundColor = .white
         
         UITabBar.appearance().barTintColor = tabBarColor
         UITabBar.appearance().backgroundColor = tabBarColor
-       //UITabBar.appearance().barStyle = barStyle
+        //UITabBar.appearance().barStyle = barStyle
 
         //UINavigationBar.appearance().barStyle = barStyle
-        UINavigationBar.appearance().barTintColor = backgroundColor1
-//        UINavigationBar.appearance().barStyle = barStyle
-        
+        UINavigationBar.appearance().barTintColor = backgroundColor1        
 
         guard let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else { return }
         statusBar.backgroundColor = backgroundColor1
@@ -135,8 +129,10 @@ enum Theme: Int {
         
         UIButton.appearance().tintColor = textColor
         UIButton.appearance(whenContainedInInstancesOf: [UserContainerViewController.self]).tintColor = .white
-        UIButton.appearance(whenContainedInInstancesOf: [ManagementViewController.self]).backgroundColor = mainColor
-        UIButton.appearance(whenContainedInInstancesOf: [JoinCreateViewController.self]).backgroundColor = mainColor
+//        UIButton.appearance(whenContainedInInstancesOf: [ManagementViewController.self]).backgroundColor = mainColor
+//        UIButton.appearance(whenContainedInInstancesOf: [JoinCreateViewController.self]).backgroundColor = mainColor
+//        UIButton.appearance(whenContainedInInstancesOf: [SignInUpViewController.self]).backgroundColor = mainColor
+        
 //        let controlBackground = UIImage(named: "controlBackground")?
 //            .withRenderingMode(.alwaysTemplate)
 //            .resizableImage(withCapInsets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
@@ -148,21 +144,21 @@ enum Theme: Int {
 //        UISegmentedControl.appearance().setBackgroundImage(controlBackground, for: .normal, barMetrics: .default)
 //        UISegmentedControl.appearance().setBackgroundImage(controlSelectedBackground, for: .selected, barMetrics: .default)
         
-        styleSignInVC()
-        styleSignUpVC()
+//        styleSignInVC()
+//        styleSignUpVC()
     }
     
     
-    func styleSignInVC() {
-        UIButton.appearance(whenContainedInInstancesOf: [SignInViewController.self]).backgroundColor = mainColor
-        UITextField.appearance(whenContainedInInstancesOf: [SignInViewController.self]).backgroundColor = .white
-        UITextField.appearance(whenContainedInInstancesOf: [SignInViewController.self]).textColor = .black
-    }
-    
-    func styleSignUpVC() {
-        UIButton.appearance(whenContainedInInstancesOf: [SignUpViewController.self]).backgroundColor = mainColor
-        UITextField.appearance(whenContainedInInstancesOf: [SignUpViewController.self]).backgroundColor = .white
-        UITextField.appearance(whenContainedInInstancesOf: [SignUpViewController.self]).textColor = .black
-    }
+//    func styleSignInVC() {
+//        UIButton.appearance(whenContainedInInstancesOf: [SignInViewController.self]).backgroundColor = mainColor
+//        UITextField.appearance(whenContainedInInstancesOf: [SignInViewController.self]).backgroundColor = .white
+//        UITextField.appearance(whenContainedInInstancesOf: [SignInViewController.self]).textColor = .black
+//    }
+//
+//    func styleSignUpVC() {
+//        UIButton.appearance(whenContainedInInstancesOf: [SignUpViewController.self]).backgroundColor = mainColor
+//        UITextField.appearance(whenContainedInInstancesOf: [SignUpViewController.self]).backgroundColor = .white
+//        UITextField.appearance(whenContainedInInstancesOf: [SignUpViewController.self]).textColor = .black
+//    }
 }
 

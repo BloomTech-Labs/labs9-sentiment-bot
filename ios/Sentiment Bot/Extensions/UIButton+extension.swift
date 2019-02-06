@@ -9,27 +9,31 @@
 import UIKit
 
 extension UIButton {
+    
     func applyDesign() {
-        // userImageButton Effects
+
         self.layer.cornerRadius = self.frame.size.height / 2
         self.clipsToBounds = true
         self.translatesAutoresizingMaskIntoConstraints = false
         self.setTitleColor(.white, for: .normal)
+        
         if Theme.current == .light {
             self.backgroundColor = .mainColorLight
         } else {
             self.backgroundColor = .mainColorDark
         }
-        
-        // Put shadow on button
-        //        self.backgroundColor = UIColor.darkGray
-        //        self.layer.borderWidth = 2.0
-        //        self.layer.shadowColor = UIColor.darkGray.cgColor
-        //        self.layer.shadowOpacity = 1.0
-        //        self.layer.shadowRadius = 4.0
-        //        self.layer.shadowOffset = CGSize(width: 0, height: 0)
-        // Put frame around button
-        //        userImageButton.layer.borderColor = UIColor(displayP3Red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.5).cgColor
+    }
+    
+    func applyShadow() {
+
+        self.backgroundColor = UIColor.darkGray
+        self.layer.borderWidth = 2.0
+        self.layer.shadowColor = UIColor.darkGray.cgColor
+        self.layer.shadowOpacity = 1.0
+        self.layer.shadowRadius = 4.0
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
+//         Put frame around button
+//                userImageButton.layer.borderColor = UIColor(displayP3Red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.5).cgColor
     }
 }
 
