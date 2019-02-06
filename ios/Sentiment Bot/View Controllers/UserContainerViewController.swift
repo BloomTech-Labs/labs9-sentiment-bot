@@ -44,14 +44,17 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
             if let error = error {
                 NSLog("Error getting user: \(error)")
             } else {
-                APIController.shared.getTeam(teamId: users?.teamId ?? 0) { (team, error) in
-                    self.team = team
-                    if let error = error {
-                        NSLog("Error getting Team Name \(error)")
-                    } else {
-                        self.teamName = team?.teamName ?? "None"
+                if (users?.isTeamMember)! {
+                    APIController.shared.getTeam(teamId: users?.teamId ?? 0) { (team, error) in
+                        self.team = team
+                        if let error = error {
+                            NSLog("Error getting Team Name \(error)")
+                        } else {
+                            self.teamName = team?.teamName ?? "None"
+                        }
                     }
                 }
+
                 guard let firstName = users?.firstName, let lastName = users?.lastName, let teamId = users?.teamId else { return }
                 self.teamId = teamId
                 DispatchQueue.main.async {
