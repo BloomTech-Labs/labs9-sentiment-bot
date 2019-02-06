@@ -9,6 +9,7 @@
 import UIKit
 import GoogleSignIn
 import Stripe
+import SVProgressHUD
 class SettingsTableViewController: UITableViewController, STPAddCardViewControllerDelegate {
     
     var user: User?
@@ -110,12 +111,28 @@ class SettingsTableViewController: UITableViewController, STPAddCardViewControll
     
     private func toggleSubscrption() {
         if (user?.subscribed)! {
-            StripeController.shared.cancelPremiumSubscription { (error) in
-                DispatchQueue.main.async {
-                    self.subscriptionLabel.text = "Subscribe"
+            
+            let alert = UIAlertController(title: "Are You Sure?", message: nil, preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { [weak alert] (_) in
+                let progressWithStatus = SVProgressHUD.self
+                progressWithStatus.setBackgroundColor(Theme.current.mainColor)
+                progressWithStatus.show(withStatus: "Canceling...")
+                StripeController.shared.cancelPremiumSubscription { (error) in
+                    progressWithStatus.showSuccess(withStatus: "Canceled")
+                    progressWithStatus.dismiss(withDelay: 1.0)
+                    DispatchQueue.main.async {
+                        self.subscriptionLabel.text = "Subscribe"
+                    }
+                    self.user?.subscribed = false
                 }
-                self.user?.subscribed = false
-            }
+            }))
+            
+            alert.addAction(UIAlertAction(title: "No", style: .default, handler: { [weak alert] (_) in
+                
+            }))
+            
+            present(alert, animated: true)
             return
         }
         // Setup add card view controller
