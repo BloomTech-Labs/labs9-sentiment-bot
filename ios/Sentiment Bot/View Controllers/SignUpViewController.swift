@@ -48,12 +48,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             authenticationViewController.containerView.frame.origin.y -= authenticationViewController.view.frame.height/8
         }
     }
+
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         let authenticationViewController = self.parent?.parent?.parent as! GoogleSignInViewController
         UIView.animate(withDuration: 0.3) {
-            authenticationViewController.robotImageView.alpha = 1
             authenticationViewController.containerView.frame.origin.y += authenticationViewController.view.frame.height/8
+            authenticationViewController.robotImageView.alpha = 1
         }
     }
     
