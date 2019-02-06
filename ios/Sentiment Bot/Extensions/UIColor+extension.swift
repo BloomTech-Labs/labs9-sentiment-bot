@@ -17,6 +17,6 @@ extension UIColor {
     static let happy3 = UIColor(red: 254/255, green: 2184/255, blue: 6/255, alpha: 1.0)
     static let happy2 = UIColor(red: 255/255, green: 100/255, blue: 3/255, alpha: 1.0)
     static let happy1 = UIColor(red: 255/255, green: 100/255, blue: 3/255, alpha: 1.0)
-    static let mainColorLight = UIColor(red: 68.0/255.0, green: 191.0/255.0, blue: 254.0/255.0, alpha: 1.0)
-    static let mainColorDark = UIColor(red:0.76, green:0.04, blue:0.05, alpha:1.0)
+    static let mainColorLight = UIColor(red: 68/255, green: 191/255, blue: 254/255, alpha: 1.0)
+    static let mainColorDark = UIColor(red: 167/255, green: 85/255, blue: 85/255, alpha:1.0)
 }

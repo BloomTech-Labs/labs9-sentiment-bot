@@ -28,6 +28,11 @@ class SignInUpViewController: UIViewController {
     @IBOutlet weak var googleSignUpButton: UIButton!
     @IBOutlet weak var signUpView: UIView!
     
+    @IBOutlet weak var signInLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var signInTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var signUpLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var signUpTrailingConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var moinButton: UIButton!
     @IBOutlet weak var scottButton: UIButton!
     
@@ -43,8 +48,6 @@ class SignInUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         
         signUpView.layer.cornerRadius = 10
         signInView.layer.cornerRadius = 10
@@ -67,22 +70,31 @@ class SignInUpViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        signInView.center.x -= view.bounds.width
-        signUpView.center.x -= view.bounds.width
+        self.signInView.alpha = 1.0
+        self.signUpView.alpha = 0.0
+        
+//        signInLeadingConstraint.constant -= view.bounds.width
+//        signUpLeadingConstraint.constant -= view.bounds.width
+//        signInTrailingConstraint.constant += view.bounds.width
+//        signUpTrailingConstraint.constant += view.bounds.width
+        
+//        signInView.center.x -= view.bounds.width
+//        signUpView.center.x -= view.bounds.width
         
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        signInView.center.x -= view.bounds.width
-        signUpView.center.x -= view.bounds.width
+//        signInView.center.x -= view.bounds.width
+//        signUpView.center.x -= view.bounds.width
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        showSignIn()
+//        showSignIn()
+//        hideSignUp()
         
         guard let _ = GIDSignIn.sharedInstance()?.currentUser else {
             return
@@ -133,8 +145,8 @@ class SignInUpViewController: UIViewController {
     }
     
     @IBAction func signIn(_ sender: UIButton) {
-        signInView.center.x -= view.bounds.width
-        signUpView.center.x -= view.bounds.width
+//        signInView.center.x += view.bounds.width
+//        signUpView.center.x += view.bounds.width
 
         guard let email = signInEmailTextField.text,
             let password = signInPasswordTextField.text else {
@@ -236,13 +248,12 @@ class SignInUpViewController: UIViewController {
         } else {
             view.endEditing(true)
         }
-        
         return false
     }
-
 }
 
-// For testing, auto logins
+// MARK: - For testing, auto logins
+
 extension SignInUpViewController {
     
     @IBAction func moinLongin(_ sender: UIButton) {
@@ -266,7 +277,8 @@ extension SignInUpViewController {
     }
 }
 
-// Typewriter Effect
+// MARK: - Typewriter Effect
+
 extension UITextField {
     func setTextWithTypeAnimation(typedText: String, characterDelay: TimeInterval = 5.0) {
         text = ""
@@ -287,6 +299,8 @@ extension UITextField {
     }
     
 }
+
+// MARK: - Google Delegates
 
 extension SignInUpViewController: GIDSignInUIDelegate, GIDSignInDelegate {
     
@@ -336,27 +350,20 @@ extension SignInUpViewController: GIDSignInUIDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance()?.signIn()
     }
     
-    private func createButton(named: String) -> UIButton {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(named, for: .normal)
-        button.backgroundColor = .white
-        button.setTitleColor(.gray, for: .normal)
-        return button
-    }
-    
 }
+
+// MARK: - Animations
 
 extension SignInUpViewController {
     
     @IBAction func indexChanged(_ sender: UISegmentedControl) {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            hideSignOut()
+            hideSignUp()
             showSignIn()
         case 1:
             hideSignIn()
-            showSignOut()
+            showSignUp()
         default:
             break
         }
@@ -365,8 +372,9 @@ extension SignInUpViewController {
     func showSignIn() {
         
         UIView.animate(withDuration: 0.5, delay: 0.4, options: [], animations: {
-            self.signInView.center.x += self.view.bounds.width
-            self.view.layoutIfNeeded()
+            self.signInView.alpha = 1.0
+//            self.signInView.center.x += self.view.bounds.width
+//            self.view.layoutIfNeeded()
             },
             completion: nil
         )
@@ -375,28 +383,31 @@ extension SignInUpViewController {
     func hideSignIn() {
         
         UIView.animate(withDuration: 0.5, delay: 0.4, options: [], animations: {
-            self.signInView.center.x -= self.view.bounds.width
-            self.view.layoutIfNeeded()
+            self.signInView.alpha = 0.0
+//            self.signInView.center.x -= self.view.bounds.width
+//            self.view.layoutIfNeeded()
             },
             completion: nil
         )
     }
     
-    func showSignOut() {
+    func showSignUp() {
         
         UIView.animate(withDuration: 0.5, delay: 0.4, options: [], animations: {
-            self.signUpView.center.x += self.view.bounds.width
-            self.view.layoutIfNeeded()
+            self.signUpView.alpha = 1.0
+//            self.signUpView.center.x += self.view.bounds.width
+//            self.view.layoutIfNeeded()
             },
             completion: nil
         )
     }
     
-    func hideSignOut() {
+    func hideSignUp() {
         
         UIView.animate(withDuration: 0.5, delay: 0.4, options: [], animations: {
-            self.signUpView.center.x -= self.view.bounds.width
-            self.view.layoutIfNeeded()
+            self.signUpView.alpha = 0.0
+//            self.signUpView.center.x -= self.view.bounds.width
+//            self.view.layoutIfNeeded()
             },
             completion: nil
         )
