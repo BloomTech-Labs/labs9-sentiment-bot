@@ -24,7 +24,6 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
     var users: User?
     var team: Team?
     var teamName = ""
-    var teamId = 0
     
     // MARK: - View Life Cycle
     
@@ -54,8 +53,7 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
                         }
                     }
                 }
-                guard let firstName = users?.firstName, let lastName = users?.lastName, let teamId = users?.teamId else { return }
-                self.teamId = teamId
+                guard let firstName = users?.firstName, let lastName = users?.lastName else { return }
                 DispatchQueue.main.async {
                     self.nameLabel.text = "\(firstName.capitalized) \(lastName.capitalized)"
                 }
