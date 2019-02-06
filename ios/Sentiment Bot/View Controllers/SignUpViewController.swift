@@ -9,15 +9,20 @@
 import UIKit
 import GoogleSignIn
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear.withAlphaComponent(0.25)
-        view.layer.cornerRadius = 20
-        signUpButton.layer.cornerRadius = signUpButton.frame.size.height / 2
-        googleButton.layer.cornerRadius = googleButton.frame.size.height / 2
-        googleButton.clipsToBounds = true
+        //view.layer.cornerRadius = 20
+        
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        //signUpButton.layer.cornerRadius = signUpButton.frame.size.height / 2
+        //googleButton.layer.cornerRadius = googleButton.frame.size.height / 2
+        //googleButton.clipsToBounds = true
         setPlaceHolders()
     }
     
@@ -34,6 +39,22 @@ class SignUpViewController: UIViewController {
         
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password:",
                                                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let authenticationViewController = self.parent?.parent?.parent as! GoogleSignInViewController
+        UIView.animate(withDuration: 0.3) {
+            authenticationViewController.robotImageView.alpha = 0
+            authenticationViewController.containerView.frame.origin.y -= authenticationViewController.view.frame.height/8
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let authenticationViewController = self.parent?.parent?.parent as! GoogleSignInViewController
+        UIView.animate(withDuration: 0.3) {
+            authenticationViewController.robotImageView.alpha = 1
+            authenticationViewController.containerView.frame.origin.y += authenticationViewController.view.frame.height/8
+        }
     }
     
     @IBAction func googleSignUp(_ sender: Any) {

@@ -41,6 +41,10 @@ class SegmentedControlViewController: UIViewController {
         segmentedControl.selectedSegmentIndex = 0
     }
     
+    @IBOutlet weak var signUpContainerView: UIView!
+    
+    @IBOutlet weak var signInContainerView: UIView!
+    
     @objc func selectionDidChange(_ sender: UISegmentedControl) {
         updateView()
     }
@@ -99,11 +103,11 @@ class SegmentedControlViewController: UIViewController {
     
     private func updateView() {
         if segmentedControl.selectedSegmentIndex == 0 {
-            remove(asChildViewController: signUpViewController)
-            add(asChildViewController: signInViewController)
+            signInContainerView.isHidden = false
+            signUpContainerView.isHidden = true
         } else {
-            remove(asChildViewController: signInViewController)
-            add(asChildViewController: signUpViewController)
+            signInContainerView.isHidden = true
+            signUpContainerView.isHidden = false
         }
     }
     

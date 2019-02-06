@@ -54,7 +54,9 @@ class GoogleSignInViewController: UIViewController, GIDSignInUIDelegate, GIDSign
             destination.user = user
         }
     }
+    @IBOutlet weak var robotHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var robotImageView: UIImageView!
     
     override func viewDidAppear(_ animated: Bool) {
         guard let _ = GIDSignIn.sharedInstance()?.currentUser else {
