@@ -237,6 +237,7 @@
                         <outlet property="googleSignUpButton" destination="TRx-bT-ofs" id="AJg-QH-XBp"/>
                         <outlet property="lastNameTextField" destination="sAu-jq-fE4" id="5cP-MS-H3e"/>
                         <outlet property="moinButton" destination="3ew-L3-Ntu" id="o4x-6Z-1C7"/>
+                        <outlet property="robotImageView" destination="ub4-b1-1mJ" id="MWT-1m-BOa"/>
                         <outlet property="scottButton" destination="vmg-25-bmm" id="Esj-hg-7et"/>
                         <outlet property="segmentedControl" destination="XJO-YV-bJH" id="ND2-B3-IYg"/>
                         <outlet property="signInButton" destination="WZS-5E-5CQ" id="tFK-eB-jaR"/>

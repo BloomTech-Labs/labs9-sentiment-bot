@@ -27,6 +27,7 @@ class SignInUpViewController: UIViewController {
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var googleSignUpButton: UIButton!
     @IBOutlet weak var signUpView: UIView!
+    @IBOutlet weak var robotImageView: UIImageView!
     
     @IBOutlet weak var signInLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var signInTrailingConstraint: NSLayoutConstraint!
@@ -45,6 +46,8 @@ class SignInUpViewController: UIViewController {
     
     var user: User?
     let locationHelper = LocationHelper()
+    
+    var keyboardHeight: CGFloat = 0
     
 
     // MARK: - View Life Cycle
@@ -67,7 +70,22 @@ class SignInUpViewController: UIViewController {
         locationHelper.requestLocationAuthorization()
         GIDSignIn.sharedInstance()?.uiDelegate = self
         GIDSignIn.sharedInstance()?.delegate = self
-
+        
+        signInEmailTextField.delegate = self
+        signInPasswordTextField.delegate = self
+        signUpEmailTextField.delegate = self
+        signUpPasswordTextField.delegate = self
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate = self
+        
+//        signInEmailTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
+//        NotificationCenter.default.addObserver(
+//            self,
+//            selector: #selector(keyboardWillShow),
+//            name: UIResponder.keyboardWillShowNotification,
+//            object: nil
+//        )
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -148,8 +166,6 @@ class SignInUpViewController: UIViewController {
     }
     
     @IBAction func signIn(_ sender: UIButton) {
-//        signInView.center.x += view.bounds.width
-//        signUpView.center.x += view.bounds.width
 
         guard let email = signInEmailTextField.text,
             let password = signInPasswordTextField.text else {
@@ -245,62 +261,6 @@ class SignInUpViewController: UIViewController {
         GIDSignIn.sharedInstance()?.signIn()
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == signInEmailTextField {
-            signInPasswordTextField.becomeFirstResponder()
-        } else {
-            view.endEditing(true)
-        }
-        return false
-    }
-}
-
-// MARK: - For testing, auto logins
-
-extension SignInUpViewController {
-    
-    @IBAction func moinLongin(_ sender: UIButton) {
-        if switchLogin {
-            switchLogin.toggle()
-            signInEmailTextField.setTextWithTypeAnimation(typedText: "moin@moin.com")
-        } else {
-            switchLogin.toggle()
-            signInPasswordTextField.setTextWithTypeAnimation(typedText: "123456")
-        }
-    }
-    
-    @IBAction func scottLogin(_ sender: UIButton) {
-        if switchLogin {
-            switchLogin.toggle()
-            signInEmailTextField.setTextWithTypeAnimation(typedText: "scott@scott.com")
-        } else {
-            switchLogin.toggle()
-            signInPasswordTextField.setTextWithTypeAnimation(typedText: "123456")
-        }
-    }
-}
-
-// MARK: - Typewriter Effect
-
-extension UITextField {
-    func setTextWithTypeAnimation(typedText: String, characterDelay: TimeInterval = 5.0) {
-        text = ""
-        var writingTask: DispatchWorkItem?
-        writingTask = DispatchWorkItem { [weak weakSelf = self] in
-            for character in typedText {
-                DispatchQueue.main.async {
-                    weakSelf?.text!.append(character)
-                }
-                Thread.sleep(forTimeInterval: characterDelay/100)
-            }
-        }
-        
-        if let task = writingTask {
-            let queue = DispatchQueue(label: "typespeed", qos: DispatchQoS.userInteractive)
-            queue.asyncAfter(deadline: .now() + 0.05, execute: task)
-        }
-    }
-    
 }
 
 // MARK: - Google Delegates
@@ -351,6 +311,53 @@ extension SignInUpViewController: GIDSignInUIDelegate, GIDSignInDelegate {
     
     @objc func handleGoogle() {
         GIDSignIn.sharedInstance()?.signIn()
+    }
+    
+}
+
+// MARK: - TextFieldDelegate
+
+extension SignInUpViewController: UITextFieldDelegate {
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            keyboardHeight = keyboardRectangle.height
+            
+            //            let distance = self.view.bounds.height - self.signInView.bounds.height - self.keyboardHeight
+            //            print(distance)
+            //            print(self.view.bounds.height)
+            //            print(self.signInView.bounds.height)
+            //            print(self.keyboardHeight)
+        }
+    }
+    
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        if textField == signInEmailTextField {
+//            signInPasswordTextField.becomeFirstResponder()
+//        } else {
+//            view.endEditing(true)
+//        }
+//        return false
+//    }
+    
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.5, delay: 0.2, options: [], animations: {
+            self.robotImageView.frame.origin.x -= self.view.bounds.width
+            self.segmentedControl.frame.origin.x -= self.view.bounds.width
+            self.signInView.frame.origin.y -= self.signInView.frame.height / 8
+            self.signUpView.frame.origin.y -= self.signUpView.frame.height / 8
+        }, completion: nil)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.5, delay: 0.2, options: [], animations: {
+            self.robotImageView.frame.origin.x += self.view.bounds.width
+            self.segmentedControl.frame.origin.x += self.view.bounds.width
+            self.signInView.frame.origin.y += self.signInView.frame.height / 8
+            self.signUpView.frame.origin.y += self.signUpView.frame.height / 8
+        }, completion: nil)
     }
     
 }
@@ -417,3 +424,52 @@ extension SignInUpViewController {
     }
  
 }
+
+// MARK: - For testing, auto logins
+
+extension SignInUpViewController {
+    
+    @IBAction func moinLongin(_ sender: UIButton) {
+        if switchLogin {
+            switchLogin.toggle()
+            signInEmailTextField.setTextWithTypeAnimation(typedText: "moin@moin.com")
+        } else {
+            switchLogin.toggle()
+            signInPasswordTextField.setTextWithTypeAnimation(typedText: "123456")
+        }
+    }
+    
+    @IBAction func scottLogin(_ sender: UIButton) {
+        if switchLogin {
+            switchLogin.toggle()
+            signInEmailTextField.setTextWithTypeAnimation(typedText: "scott@scott.com")
+        } else {
+            switchLogin.toggle()
+            signInPasswordTextField.setTextWithTypeAnimation(typedText: "123456")
+        }
+    }
+}
+
+// MARK: - Typewriter Effect
+
+extension UITextField {
+    func setTextWithTypeAnimation(typedText: String, characterDelay: TimeInterval = 5.0) {
+        text = ""
+        var writingTask: DispatchWorkItem?
+        writingTask = DispatchWorkItem { [weak weakSelf = self] in
+            for character in typedText {
+                DispatchQueue.main.async {
+                    weakSelf?.text!.append(character)
+                }
+                Thread.sleep(forTimeInterval: characterDelay/100)
+            }
+        }
+        
+        if let task = writingTask {
+            let queue = DispatchQueue(label: "typespeed", qos: DispatchQoS.userInteractive)
+            queue.asyncAfter(deadline: .now() + 0.05, execute: task)
+        }
+    }
+    
+}
+
