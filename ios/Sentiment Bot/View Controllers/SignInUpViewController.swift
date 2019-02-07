@@ -101,14 +101,24 @@ class SignInUpViewController: UIViewController {
         guard let _ = GIDSignIn.sharedInstance()?.currentUser else {
             return
         }
-        
         if UserDefaults.standard.userId != 0 {
             guard let user = user else { return }
-            DispatchQueue.main.async {
                 if user.isAdmin {
-                    self.performSegue(withIdentifier: "ToManagerScreen", sender: self)
+                    DispatchQueue.main.async {
+                        let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                        
+                        let managerVC = mainStoryBoard.instantiateViewController(withIdentifier: "ManagerTabBarContainerViewController") as! ManagerTabBarContainerViewController
+                        self.present(managerVC, animated: true) {
+                            
+                        }
+                    }
                 } else if user.isTeamMember {
-                    self.performSegue(withIdentifier: "ToTeamMemberScreen", sender: self)
+                    let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                    
+                    let userVC = mainStoryBoard.instantiateViewController(withIdentifier: "UserTabBarContainerViewController") as! UserTabBarContainerViewController
+                    self.present(userVC, animated: true) {
+                        
+                    }
                 } else {
                     let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
                     
@@ -116,7 +126,6 @@ class SignInUpViewController: UIViewController {
                     self.present(intialVC, animated: true) {
                         
                     }
-                }
             }
         }
 //        signInLeadingConstraint.constant -= view.bounds.width
@@ -136,6 +145,8 @@ class SignInUpViewController: UIViewController {
 //        signUpView.center.x -= view.bounds.width
     }
     
+    var googleSignedIn = false
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -144,6 +155,35 @@ class SignInUpViewController: UIViewController {
         
         guard let _ = GIDSignIn.sharedInstance()?.currentUser else {
             return
+        }
+        
+        
+        if UserDefaults.standard.userId != 0 {
+            guard let user = user else { return }
+            if user.isAdmin {
+                DispatchQueue.main.async {
+                    let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                    
+                    let managerVC = mainStoryBoard.instantiateViewController(withIdentifier: "ManagerTabBarContainerViewController") as! ManagerTabBarContainerViewController
+                    self.present(managerVC, animated: true) {
+                        
+                    }
+                }
+            } else if user.isTeamMember {
+                let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                
+                let userVC = mainStoryBoard.instantiateViewController(withIdentifier: "UserTabBarContainerViewController") as! UserTabBarContainerViewController
+                self.present(userVC, animated: true) {
+                    
+                }
+            } else {
+                let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                
+                let intialVC = mainStoryBoard.instantiateViewController(withIdentifier: "InitialViewController") as! InitialViewController
+                self.present(intialVC, animated: true) {
+                    
+                }
+            }
         }
     }
     
@@ -222,7 +262,7 @@ class SignInUpViewController: UIViewController {
         }
     }
     
-    @IBAction func googleSignIn(_ sender: UIButton) {
+    @IBAction func googleSignIn(_ sender: Any) {
         GIDSignIn.sharedInstance()?.signIn()
     }
     
@@ -297,7 +337,9 @@ extension SignInUpViewController: GIDSignInUIDelegate, GIDSignInDelegate {
                             NSLog("There was error retreiving current User: \(error)")
                         } else if let user = user {
                             self.user = user
-                            self.viewDidAppear(true)
+                            DispatchQueue.main.async {
+                                self.viewDidAppear(true)
+                            }
                         }
                     }
                 }

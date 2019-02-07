@@ -107,12 +107,14 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
                                 NSLog("Error getting user responses: \(error)")
                             } else {
                                 if let number = self.responses?.count {
-                                    
-                                    let inputFormatter = DateFormatter()
-                                    inputFormatter.dateFormat = "yyyy-MM-dd"
-                                    let showDate = inputFormatter.date(from: (self.responses?.first?.date)!)
-                                    inputFormatter.dateFormat = "MMM dd"
-                                    let dateString = inputFormatter.string(from: showDate!)
+                                var dateString = "N/A"
+                                    if number != 0 {
+                                        let inputFormatter = DateFormatter()
+                                        inputFormatter.dateFormat = "yyyy-MM-dd"
+                                        let showDate = inputFormatter.date(from: (self.responses?.first?.date) ?? "")
+                                        inputFormatter.dateFormat = "MMM dd"
+                                        dateString = inputFormatter.string(from: showDate!)
+                                    }
                                     
                                     let font = UIFont.boldSystemFont(ofSize: 14)
                                     let attributes: [NSAttributedString.Key: Any] = [.font: font]
