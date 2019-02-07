@@ -80,6 +80,7 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
+        //guard let annotation = annotation as? Artwork else { return nil }
         guard let response = annotation as? Response else { return nil }
         
         let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "ResponseAnnotationView", for: response) as! MKMarkerAnnotationView
@@ -88,7 +89,7 @@ extension MapViewController: MKMapViewDelegate {
         annotationView.rightCalloutAccessoryView = UIButton(type: .roundedRect)
         annotationView.glyphText = response.emoji
         annotationView.titleVisibility = .hidden
-    
+        
         return annotationView
         
     }
