@@ -48,6 +48,8 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
         //        } else if !(user?.subscribed)! {
         //            subscriptionButton.setTitle("Subscribe", for: .normal)
         //        }
+        sendNowButton.applyDesign()
+        sendSurveyButton.applyDesign()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     

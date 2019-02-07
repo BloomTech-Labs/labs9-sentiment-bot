@@ -56,6 +56,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="udl-uH-aog"/>
                     </view>
+                    <connections>
+                        <outlet property="createTeamButton" destination="JNj-UW-Def" id="AlA-G5-In2"/>
+                        <outlet property="joinTeamButton" destination="N5C-DW-pEJ" id="bSU-2o-98G"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JAf-Qy-NVh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

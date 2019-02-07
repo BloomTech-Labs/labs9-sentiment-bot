@@ -43,7 +43,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UserProtoc
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkLocationAuthorizationStatus()
-        mapView.register(MKAnnotationView.self, forAnnotationViewWithReuseIdentifier: "ResponseAnnotationView")
+        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "ResponseAnnotationView")
     }
     
     func checkLocationAuthorizationStatus() {
@@ -81,25 +81,16 @@ extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         //guard let annotation = annotation as? Artwork else { return nil }
-        guard let annotation = annotation as? Response else { return nil }
+        guard let response = annotation as? Response else { return nil }
         
-        let identifier = "ResponseAnnotationView"
-        var view: MKMarkerAnnotationView
+        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "ResponseAnnotationView", for: response) as! MKMarkerAnnotationView
+        annotationView.canShowCallout = true
+        annotationView.calloutOffset = CGPoint(x: -5, y: 5)
+        annotationView.rightCalloutAccessoryView = UIButton(type: .roundedRect)
+        annotationView.glyphText = response.emoji
+        annotationView.titleVisibility = .hidden
         
-        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier, for: annotation)
-            as? MKMarkerAnnotationView {
-            dequeuedView.annotation = annotation
-            view = dequeuedView
-        } else {
-            
-            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            view.canShowCallout = true
-            view.calloutOffset = CGPoint(x: -5, y: 5)
-            view.rightCalloutAccessoryView = UIButton(type: .roundedRect)
-            view.glyphText = annotation.emoji
-            view.titleVisibility = .hidden
-        }
-        return view
+        return annotationView
     }
 }
 

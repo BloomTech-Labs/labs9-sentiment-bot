@@ -14,7 +14,6 @@ class JoinCreateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         APIController.shared.getUser(userId: UserDefaults.standard.userId) { (user, errorMessage) in
             if let errorMessage = errorMessage {
                 NSLog("Error getting user \(errorMessage)")
@@ -25,8 +24,15 @@ class JoinCreateViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        joinTeamButton.applyDesign()
+        createTeamButton.applyDesign()
+    }
+    
     var userInput: String?
     
+    @IBOutlet weak var joinTeamButton: UIButton!
+    @IBOutlet weak var createTeamButton: UIButton!
     
     @IBAction func joinTeam(_ sender: Any) {
         
