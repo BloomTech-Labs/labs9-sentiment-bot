@@ -490,7 +490,11 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ee-CI-nWw">
-                                <rect key="frame" x="329" y="52" width="30" height="30"/>
+                                <rect key="frame" x="309" y="16" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="c6C-du-rw4"/>
+                                    <constraint firstAttribute="height" constant="50" id="xya-wg-tMo"/>
+                                </constraints>
                                 <state key="normal" image="settings"/>
                                 <connections>
                                     <segue destination="Iab-Me-R8X" kind="presentation" identifier="ToSettingsScreen" id="vba-Y3-vsT"/>
@@ -499,11 +503,11 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="Nhg-Xu-SIS" firstAttribute="leading" secondItem="Jx4-s3-GF5" secondAttribute="leading" id="4ql-K8-hvg"/>
+                            <constraint firstItem="4Ee-CI-nWw" firstAttribute="top" secondItem="Jx4-s3-GF5" secondAttribute="top" constant="16" id="5kV-yc-5Nr"/>
                             <constraint firstItem="Nhg-Xu-SIS" firstAttribute="top" secondItem="Jx4-s3-GF5" secondAttribute="top" id="Ei8-ba-xcQ"/>
                             <constraint firstItem="cnm-9X-YXh" firstAttribute="trailing" secondItem="Nhg-Xu-SIS" secondAttribute="trailing" id="SuJ-r5-srt"/>
-                            <constraint firstItem="4Ee-CI-nWw" firstAttribute="top" secondItem="cnm-9X-YXh" secondAttribute="top" constant="8" id="aBM-7b-Y4R"/>
                             <constraint firstItem="cnm-9X-YXh" firstAttribute="bottom" secondItem="Nhg-Xu-SIS" secondAttribute="bottom" id="bR7-pZ-Zg3"/>
-                            <constraint firstItem="cnm-9X-YXh" firstAttribute="trailing" secondItem="4Ee-CI-nWw" secondAttribute="trailing" constant="16" id="qoi-pX-zlp"/>
+                            <constraint firstItem="cnm-9X-YXh" firstAttribute="trailing" secondItem="4Ee-CI-nWw" secondAttribute="trailing" constant="16" id="vyr-JI-bf2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cnm-9X-YXh"/>
                     </view>

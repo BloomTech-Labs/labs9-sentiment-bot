@@ -68,7 +68,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x4B-T4-6uR">
                                                     <rect key="frame" x="290" y="10" width="70" height="70"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="missing-image-5" translatesAutoresizingMaskIntoConstraints="NO" id="b9J-oE-jrX">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="plus-grey" translatesAutoresizingMaskIntoConstraints="NO" id="b9J-oE-jrX">
                                                             <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
@@ -136,6 +136,6 @@
     </scenes>
     <resources>
         <image name="memories" width="30" height="30"/>
-        <image name="missing-image-5" width="450" height="450"/>
+        <image name="plus-grey" width="50" height="50"/>
     </resources>
 </document>

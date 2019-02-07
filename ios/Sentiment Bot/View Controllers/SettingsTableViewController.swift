@@ -93,7 +93,7 @@ class SettingsTableViewController: UITableViewController, STPAddCardViewControll
         case 0:
             self.navigationController?.navigationBar.barTintColor = UIColor(red: 34.0/255.0, green: 34.0/255.0, blue: 34.0/255.0, alpha: 1.0)
         case 1:
-            self.navigationController?.navigationBar.barTintColor = UIColor(red: 118.0/255.0, green: 214.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+            self.navigationController?.navigationBar.barTintColor = UIColor(red: 40/255, green: 85/255, blue: 136/255, alpha: 1.0)
         default:
             NSLog("Theme not picked")
         }
