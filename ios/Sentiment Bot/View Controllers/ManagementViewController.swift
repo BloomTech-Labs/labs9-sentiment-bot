@@ -43,6 +43,10 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        sendSurveyButton.applyDesign()
+        sendNowButton.applyDesign()
+        
         //        if (user?.subscribed)! {
         //            subscriptionButton.setTitle("Cancel", for: .normal)
         //        } else if !(user?.subscribed)! {
