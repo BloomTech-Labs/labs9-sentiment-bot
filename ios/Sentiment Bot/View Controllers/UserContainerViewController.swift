@@ -53,7 +53,7 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
                         }
                     }
                 }
-               guard let firstName = users?.firstName, let lastName = users?.lastName else { return }
+                guard let firstName = users?.firstName, let lastName = users?.lastName else { return }
                 DispatchQueue.main.async {
                     self.nameLabel.text = "\(firstName.capitalized) \(lastName.capitalized)"
                 }
@@ -100,38 +100,42 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
                         self.rightLabel.attributedText = teamCode
                     }
                 } else {
-                    APIController.shared.getUserResponses(userId: UserDefaults.standard.userId) { (responses, error) in
-                        self.responses = responses
-                        if let error = error {
-                            NSLog("Error getting user responses: \(error)")
-                        } else {
-                            if let number = self.responses?.count {
-                                
-                                let inputFormatter = DateFormatter()
-                                inputFormatter.dateFormat = "yyyy-MM-dd"
-                                let showDate = inputFormatter.date(from: (self.responses?.first?.date)!)
-                                inputFormatter.dateFormat = "MMM dd"
-                                let dateString = inputFormatter.string(from: showDate!)
-                                
-                                let font = UIFont.boldSystemFont(ofSize: 14)
-                                let attributes: [NSAttributedString.Key: Any] = [.font: font]
-                                
-                                let feelzNumber = NSMutableAttributedString(string: "\(number)", attributes: attributes)
-                                let feelzString = NSAttributedString(string: "\nFeelz")
-                                feelzNumber.append(feelzString)
-                                
-                                let teamName = NSMutableAttributedString(string: "\(self.teamName)", attributes: attributes)
-                                let teamString = NSAttributedString(string: "\nTeam Name")
-                                teamName.append(teamString)
-                                
-                                let lastInDate = NSMutableAttributedString(string: "\(dateString)", attributes: attributes)
-                                let lastInString = NSAttributedString(string: "\nLast In")
-                                lastInDate.append(lastInString)
-                                
-                                DispatchQueue.main.async {
-                                    self.leftLabel.attributedText = feelzNumber
-                                    self.middleLabel.attributedText = teamName
-                                    self.rightLabel.attributedText = lastInDate
+                    if ((self.users?.isTeamMember)!) {
+                        APIController.shared.getUserResponses(userId: UserDefaults.standard.userId) { (responses, error) in
+                            self.responses = responses
+                            if let error = error {
+                                NSLog("Error getting user responses: \(error)")
+                            } else {
+                                if let number = self.responses?.count {
+                                var dateString = "N/A"
+                                    if number != 0 {
+                                        let inputFormatter = DateFormatter()
+                                        inputFormatter.dateFormat = "yyyy-MM-dd"
+                                        let showDate = inputFormatter.date(from: (self.responses?.first?.date) ?? "")
+                                        inputFormatter.dateFormat = "MMM dd"
+                                        dateString = inputFormatter.string(from: showDate!)
+                                    }
+                                    
+                                    let font = UIFont.boldSystemFont(ofSize: 14)
+                                    let attributes: [NSAttributedString.Key: Any] = [.font: font]
+                                    
+                                    let feelzNumber = NSMutableAttributedString(string: "\(number)", attributes: attributes)
+                                    let feelzString = NSAttributedString(string: "\nFeelz")
+                                    feelzNumber.append(feelzString)
+                                    
+                                    let teamName = NSMutableAttributedString(string: "\(self.teamName)", attributes: attributes)
+                                    let teamString = NSAttributedString(string: "\nTeam Name")
+                                    teamName.append(teamString)
+                                    
+                                    let lastInDate = NSMutableAttributedString(string: "\(dateString)", attributes: attributes)
+                                    let lastInString = NSAttributedString(string: "\nLast In")
+                                    lastInDate.append(lastInString)
+                                    
+                                    DispatchQueue.main.async {
+                                        self.leftLabel.attributedText = feelzNumber
+                                        self.middleLabel.attributedText = teamName
+                                        self.rightLabel.attributedText = lastInDate
+                                    }
                                 }
                             }
                         }

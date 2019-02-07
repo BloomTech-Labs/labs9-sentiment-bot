@@ -51,7 +51,10 @@ class SignInUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.signUpView.translatesAutoresizingMaskIntoConstraints = true;
+        self.signInView.translatesAutoresizingMaskIntoConstraints = true;
+        self.robotImageView.translatesAutoresizingMaskIntoConstraints = true
+        self.segmentedControl.translatesAutoresizingMaskIntoConstraints = true
         signUpView.layer.cornerRadius = 10
         signInView.layer.cornerRadius = 10
         googleSignInButton.applyDesign()
@@ -74,12 +77,6 @@ class SignInUpViewController: UIViewController {
         signUpPasswordTextField.delegate = self
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
-        
-        signInView.translatesAutoresizingMaskIntoConstraints = true
-        signUpView.translatesAutoresizingMaskIntoConstraints = true
-        robotImageView.translatesAutoresizingMaskIntoConstraints = true
-        segmentedControl.translatesAutoresizingMaskIntoConstraints = true
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,11 +84,50 @@ class SignInUpViewController: UIViewController {
         
         signInButton.applyDesign()
         signUpButton.applyDesign()
-        
         signInView.center.x -= self.view.bounds.width
         signUpView.center.x += self.view.bounds.width
+        
+        guard let _ = GIDSignIn.sharedInstance()?.currentUser else {
+            return
+        }
+        if UserDefaults.standard.userId != 0 {
+            guard let user = user else { return }
+                if user.isAdmin {
+                    DispatchQueue.main.async {
+                        let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                        
+                        let managerVC = mainStoryBoard.instantiateViewController(withIdentifier: "ManagerTabBarContainerViewController") as! ManagerTabBarContainerViewController
+                        self.present(managerVC, animated: true) {
+                            
+                        }
+                    }
+                } else if user.isTeamMember {
+                    let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                    
+                    let userVC = mainStoryBoard.instantiateViewController(withIdentifier: "UserTabBarContainerViewController") as! UserTabBarContainerViewController
+                    self.present(userVC, animated: true) {
+                        
+                    }
+                } else {
+                    let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                    
+                    let intialVC = mainStoryBoard.instantiateViewController(withIdentifier: "InitialViewController") as! InitialViewController
+                    self.present(intialVC, animated: true) {
+                        
+                    }
+            }
+        }
+//        signInLeadingConstraint.constant -= view.bounds.width
+//        signUpLeadingConstraint.constant -= view.bounds.width
+//        signInTrailingConstraint.constant += view.bounds.width
+//        signUpTrailingConstraint.constant += view.bounds.width
+
+//        signInView.center.x -= view.bounds.width
+//        signUpView.center.x -= view.bounds.width
 
     }
+    
+    var googleSignedIn = false
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -102,24 +138,34 @@ class SignInUpViewController: UIViewController {
             return
         }
         
+        
         if UserDefaults.standard.userId != 0 {
             guard let user = user else { return }
-            DispatchQueue.main.async {
-                if user.isAdmin {
-                    self.performSegue(withIdentifier: "ToManagerScreen", sender: self)
-                } else if user.isTeamMember {
-                    self.performSegue(withIdentifier: "ToTeamMemberScreen", sender: self)
-                } else {
+            if user.isAdmin {
+                DispatchQueue.main.async {
                     let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
                     
-                    let intialVC = mainStoryBoard.instantiateViewController(withIdentifier: "InitialViewController") as! InitialViewController
-                    self.present(intialVC, animated: true) {
+                    let managerVC = mainStoryBoard.instantiateViewController(withIdentifier: "ManagerTabBarContainerViewController") as! ManagerTabBarContainerViewController
+                    self.present(managerVC, animated: true) {
                         
                     }
                 }
+            } else if user.isTeamMember {
+                let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                
+                let userVC = mainStoryBoard.instantiateViewController(withIdentifier: "UserTabBarContainerViewController") as! UserTabBarContainerViewController
+                self.present(userVC, animated: true) {
+                    
+                }
+            } else {
+                let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                
+                let intialVC = mainStoryBoard.instantiateViewController(withIdentifier: "InitialViewController") as! InitialViewController
+                self.present(intialVC, animated: true) {
+                    
+                }
             }
         }
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -206,7 +252,7 @@ class SignInUpViewController: UIViewController {
         }
     }
     
-    @IBAction func googleSignIn(_ sender: UIButton) {
+    @IBAction func googleSignIn(_ sender: Any) {
         GIDSignIn.sharedInstance()?.signIn()
     }
     
@@ -325,6 +371,15 @@ extension SignInUpViewController: UITextFieldDelegate {
         }
     }
     
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        if textField == signInEmailTextField {
+//            signInPasswordTextField.becomeFirstResponder()
+//        } else {
+//            view.endEditing(true)
+//        }
+//        return false
+//    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == signInEmailTextField {
             signInPasswordTextField.becomeFirstResponder()
@@ -333,6 +388,7 @@ extension SignInUpViewController: UITextFieldDelegate {
         }
         return false
     }
+    
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
@@ -384,7 +440,7 @@ extension SignInUpViewController {
     }
     
     func showSignIn() {
-        
+        signInView.isHidden = false
         UIView.animate(withDuration: 0.5, delay: 0.0, options: [], animations: {
             self.signInView.center.x += self.view.bounds.width
             self.view.layoutIfNeeded()
@@ -392,7 +448,7 @@ extension SignInUpViewController {
     }
     
     func hideSignIn() {
-        
+        signInView.isHidden = true
         UIView.animate(withDuration: 0.5, delay: 0.0, options: [], animations: {
             self.signInView.center.x -= self.view.bounds.width
             self.view.layoutIfNeeded()
@@ -400,7 +456,7 @@ extension SignInUpViewController {
     }
     
     func showSignUp() {
-        
+        signUpView.isHidden = false
         UIView.animate(withDuration: 0.5, delay: 0.0, options: [], animations: {
             self.signUpView.center.x -= self.view.bounds.width
             self.view.layoutIfNeeded()
@@ -408,7 +464,7 @@ extension SignInUpViewController {
     }
     
     func hideSignUp() {
-        
+                signUpView.isHidden = true
         UIView.animate(withDuration: 0.5, delay: 0.0, options: [], animations: {
             self.signUpView.center.x += self.view.bounds.width
             self.view.layoutIfNeeded()
