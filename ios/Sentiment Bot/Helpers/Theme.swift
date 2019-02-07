@@ -129,8 +129,8 @@ enum Theme: Int {
         
         UIButton.appearance().tintColor = textColor
         UIButton.appearance(whenContainedInInstancesOf: [UserContainerViewController.self]).tintColor = .white
-//        UIButton.appearance(whenContainedInInstancesOf: [ManagementViewController.self]).backgroundColor = mainColor
-//        UIButton.appearance(whenContainedInInstancesOf: [JoinCreateViewController.self]).backgroundColor = mainColor
+        UIButton.appearance(whenContainedInInstancesOf: [ManagementViewController.self]).backgroundColor = mainColor
+        UIButton.appearance(whenContainedInInstancesOf: [JoinCreateViewController.self]).backgroundColor = mainColor
 //        UIButton.appearance(whenContainedInInstancesOf: [SignInUpViewController.self]).backgroundColor = mainColor
         
 //        let controlBackground = UIImage(named: "controlBackground")?

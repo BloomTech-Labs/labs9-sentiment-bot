@@ -21,8 +21,6 @@
 		A140D94321F17DE2008963C1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D94221F17DE2008963C1 /* SignInViewController.swift */; };
 		A140D94521F17E31008963C1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D94421F17E31008963C1 /* SignUpViewController.swift */; };
 		A140D94721F17F9E008963C1 /* SegmentedControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D94621F17F9E008963C1 /* SegmentedControlViewController.swift */; };
-		A140D94A21F188B2008963C1 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A140D94921F188B2008963C1 /* SignIn.storyboard */; };
-		A140D94C21F188F4008963C1 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A140D94B21F188F4008963C1 /* SignUp.storyboard */; };
 		A140D94E21F40E30008963C1 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A140D94D21F40E30008963C1 /* Stripe.framework */; };
 		A140D95021F41620008963C1 /* StripeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D94F21F41620008963C1 /* StripeController.swift */; };
 		A140D95221F419E3008963C1 /* PremiumCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D95121F419E3008963C1 /* PremiumCheckoutViewController.swift */; };
@@ -96,8 +94,6 @@
 		A140D94221F17DE2008963C1 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		A140D94421F17E31008963C1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A140D94621F17F9E008963C1 /* SegmentedControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlViewController.swift; sourceTree = "<group>"; };
-		A140D94921F188B2008963C1 /* SignIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
-		A140D94B21F188F4008963C1 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		A140D94D21F40E30008963C1 /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
 		A140D94F21F41620008963C1 /* StripeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeController.swift; sourceTree = "<group>"; };
 		A140D95121F419E3008963C1 /* PremiumCheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumCheckoutViewController.swift; sourceTree = "<group>"; };
@@ -302,8 +298,6 @@
 				A140D97921F786BC008963C1 /* SendSurvey.storyboard */,
 				A140D97B21F786E7008963C1 /* SentimentReport.storyboard */,
 				F1CDD27021ED99D5008E7A57 /* Settings.storyboard */,
-				A140D94921F188B2008963C1 /* SignIn.storyboard */,
-				A140D94B21F188F4008963C1 /* SignUp.storyboard */,
 				A140D97721F7868D008963C1 /* TeamMembers.storyboard */,
 				F1CDD23B21ECFF06008E7A57 /* Timeline.storyboard */,
 			);
@@ -434,8 +428,6 @@
 				A1EA607821EE56E400ACE25D /* credentials.plist in Resources */,
 				F1CDD23F21ECFF36008E7A57 /* Map.storyboard in Resources */,
 				F1CDD23C21ECFF06008E7A57 /* Timeline.storyboard in Resources */,
-				A140D94C21F188F4008963C1 /* SignUp.storyboard in Resources */,
-				A140D94A21F188B2008963C1 /* SignIn.storyboard in Resources */,
 				A140D97821F7868D008963C1 /* TeamMembers.storyboard in Resources */,
 				A140D97621F78646008963C1 /* ManagerTimeline.storyboard in Resources */,
 				F1B7E59221E547460096FC6F /* Assets.xcassets in Resources */,
