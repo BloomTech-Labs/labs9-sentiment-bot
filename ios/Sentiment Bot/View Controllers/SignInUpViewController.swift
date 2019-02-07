@@ -77,12 +77,6 @@ class SignInUpViewController: UIViewController {
         signUpPasswordTextField.delegate = self
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
-        
-        signInView.translatesAutoresizingMaskIntoConstraints = true
-        signUpView.translatesAutoresizingMaskIntoConstraints = true
-        robotImageView.translatesAutoresizingMaskIntoConstraints = true
-        segmentedControl.translatesAutoresizingMaskIntoConstraints = true
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,8 +84,8 @@ class SignInUpViewController: UIViewController {
         
         signInButton.applyDesign()
         signUpButton.applyDesign()
-        self.signInView.alpha = 1.0
-        self.signUpView.alpha = 0.0
+        signInView.center.x -= self.view.bounds.width
+        signUpView.center.x += self.view.bounds.width
         
         guard let _ = GIDSignIn.sharedInstance()?.currentUser else {
             return
@@ -131,13 +125,6 @@ class SignInUpViewController: UIViewController {
 //        signInView.center.x -= view.bounds.width
 //        signUpView.center.x -= view.bounds.width
 
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-//        signInView.center.x -= view.bounds.width
-//        signUpView.center.x -= view.bounds.width
     }
     
     var googleSignedIn = false
