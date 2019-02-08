@@ -86,12 +86,8 @@ class SignInUpViewController: UIViewController {
         signInButton.applyDesign()
         signUpButton.applyDesign()
         
-        if !(signInView.center.x == view.bounds.width / -2) {
-            signInView.center.x -= view.bounds.width
-        }
-        if !(signUpView.center.x == view.bounds.width * 1.5) {
-            signUpView.center.x += view.bounds.width
-        }
+        popSignIn()
+        popSignUp()
         
         
         
@@ -250,9 +246,7 @@ class SignInUpViewController: UIViewController {
     
     @IBAction func googleSignIn(_ sender: Any) {
         GIDSignIn.sharedInstance()?.signIn()
-        if !(signInView.center.x == view.bounds.width) {
-            signInView.center.x -= self.view.bounds.width
-        }
+        popSignIn()
 
     }
     
@@ -300,12 +294,8 @@ class SignInUpViewController: UIViewController {
     
     @IBAction func googleSignUP(_ sender: Any) {
         GIDSignIn.sharedInstance()?.signIn()
-        if !(signInView.center.x == view.bounds.width) {
-            signInView.center.x -= self.view.bounds.width
-        }
-        if !(signUpView.center.x == self.view.bounds.width) {
-            signUpView.center.x += self.view.bounds.width
-        }
+        popSignIn()
+        popSignUp()
         segmentedControl.selectedSegmentIndex = 0
     }
     
@@ -369,8 +359,6 @@ extension SignInUpViewController: GIDSignInUIDelegate, GIDSignInDelegate {
 
 extension SignInUpViewController: UITextFieldDelegate {
     
-    
-    
     @objc func keyboardWillShow(_ notification: Notification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
@@ -406,11 +394,6 @@ extension SignInUpViewController: UITextFieldDelegate {
             self.segmentedControl.frame.origin.y -= self.slideFactor
             self.signInView.frame.origin.y -= self.slideFactor
             self.signUpView.frame.origin.y -= self.slideFactor
-
-//            print(self.view.bounds.height)
-//            print(216 - (self.view.bounds.height - self.signUpView.frame.origin.x))
-//            print(self.view.frame.height / 8.5)
-            
         }, completion: nil)
     }
     
@@ -458,7 +441,7 @@ extension SignInUpViewController {
             if !(self.signInView.center.x == self.view.bounds.width / -2) {
                 self.signInView.center.x -= self.view.bounds.width
                 print("Hide SignIn: \(self.signInView.center.x)")
-                print("Hide View: \(-self.view.bounds.width / 2)")
+                print("Hide View: \(self.view.bounds.width / -2)")
             }
         }, completion: nil)
     }
@@ -482,6 +465,18 @@ extension SignInUpViewController {
             }
             
             }, completion: nil)
+    }
+    
+    func popSignIn() {
+        if !(signInView.center.x == view.bounds.width / -2) {
+            signInView.center.x -= view.bounds.width
+        }
+    }
+    
+    func popSignUp() {
+        if !(signUpView.center.x == view.bounds.width * 1.5) {
+            signUpView.center.x += view.bounds.width
+        }
     }
  
 }
