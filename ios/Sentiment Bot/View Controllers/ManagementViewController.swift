@@ -110,8 +110,7 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
         let progressWithStatus = SVProgressHUD.self
         progressWithStatus.setBackgroundColor(Theme.current.mainColor)
         progressWithStatus.show(withStatus: "Sending...")
-        guard let user = user,
-            let survey = survey else {
+        guard let survey = survey else {
                 NSLog("User and Survey wasn't set on ManagementViewController")
                 return
         }

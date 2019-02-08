@@ -114,7 +114,7 @@ class SettingsTableViewController: UITableViewController, STPAddCardViewControll
             
             let alert = UIAlertController(title: "Are You Sure?", message: nil, preferredStyle: .alert)
             
-            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { [weak alert] (_) in
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { [] (_) in
                 let progressWithStatus = SVProgressHUD.self
                 progressWithStatus.setBackgroundColor(Theme.current.mainColor)
                 progressWithStatus.show(withStatus: "Canceling...")
@@ -128,7 +128,7 @@ class SettingsTableViewController: UITableViewController, STPAddCardViewControll
                 }
             }))
             
-            alert.addAction(UIAlertAction(title: "No", style: .default, handler: { [weak alert] (_) in
+            alert.addAction(UIAlertAction(title: "No", style: .default, handler: { [] (_) in
                 
             }))
             
@@ -176,7 +176,7 @@ class SettingsTableViewController: UITableViewController, STPAddCardViewControll
         }
         let alert = UIAlertController(title: "Are You Sure?", message: nil, preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { [weak alert] (_) in
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { [] (_) in
             APIController.shared.removeMemberFromTeam(teamId: user.teamId!, userId: user.id, completion: { (errorMessage) in
                 DispatchQueue.main.async {
                     self.logout(self)
@@ -185,7 +185,7 @@ class SettingsTableViewController: UITableViewController, STPAddCardViewControll
             })
         }))
         
-        alert.addAction(UIAlertAction(title: "No", style: .default, handler: { [weak alert] (_) in
+        alert.addAction(UIAlertAction(title: "No", style: .default, handler: { [] (_) in
             
         }))
         

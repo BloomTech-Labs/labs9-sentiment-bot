@@ -69,6 +69,7 @@
 		F1B9B77F220A1B88002DC836 /* SignInUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B9B77E220A1B88002DC836 /* SignInUpViewController.swift */; };
 		F1B9B781220A4641002DC836 /* UIButton+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B9B780220A4641002DC836 /* UIButton+extension.swift */; };
 		F1B9B783220A46A0002DC836 /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B9B782220A46A0002DC836 /* UIColor+extension.swift */; };
+		F1B9B788220CF3FE002DC836 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B9B787220CF3FE002DC836 /* UIView+extension.swift */; };
 		F1C3CBDB2200D3A000CE2A31 /* MembersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3CBDA2200D3A000CE2A31 /* MembersTableViewCell.swift */; };
 		F1CDD23C21ECFF06008E7A57 /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1CDD23B21ECFF06008E7A57 /* Timeline.storyboard */; };
 		F1CDD23F21ECFF36008E7A57 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1CDD23D21ECFF36008E7A57 /* Map.storyboard */; };
@@ -146,6 +147,7 @@
 		F1B9B77E220A1B88002DC836 /* SignInUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUpViewController.swift; sourceTree = "<group>"; };
 		F1B9B780220A4641002DC836 /* UIButton+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+extension.swift"; sourceTree = "<group>"; };
 		F1B9B782220A46A0002DC836 /* UIColor+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
+		F1B9B787220CF3FE002DC836 /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
 		F1C3CBDA2200D3A000CE2A31 /* MembersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersTableViewCell.swift; sourceTree = "<group>"; };
 		F1CDD23B21ECFF06008E7A57 /* Timeline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
 		F1CDD23E21ECFF36008E7A57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Sentiment Bot/Storyboards/Base.lproj/Map.storyboard"; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				A1EA606821ECFF9A00ACE25D /* UserDefaults+extension.swift */,
 				F1B9B780220A4641002DC836 /* UIButton+extension.swift */,
 				F1B9B782220A46A0002DC836 /* UIColor+extension.swift */,
+				F1B9B787220CF3FE002DC836 /* UIView+extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 				A1DA7AE621FD50910006F7A7 /* SendSurveyFormViewController.swift in Sources */,
 				F1E949A821EBB05F000634AD /* TimeLineTableViewCell.swift in Sources */,
 				A140D96821F6A549008963C1 /* SubscriptionViewController.swift in Sources */,
+				F1B9B788220CF3FE002DC836 /* UIView+extension.swift in Sources */,
 				F1B9B77F220A1B88002DC836 /* SignInUpViewController.swift in Sources */,
 				A1DA7AEC21FD6D650006F7A7 /* ManagementViewController.swift in Sources */,
 				A1F95306220278CD00C3CC9C /* ManagerTabBarContainerViewController.swift in Sources */,
