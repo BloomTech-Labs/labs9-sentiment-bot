@@ -490,7 +490,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ee-CI-nWw">
-                                <rect key="frame" x="309" y="16" width="50" height="50"/>
+                                <rect key="frame" x="309" y="0.0" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="c6C-du-rw4"/>
                                     <constraint firstAttribute="height" constant="50" id="xya-wg-tMo"/>
@@ -503,7 +503,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="Nhg-Xu-SIS" firstAttribute="leading" secondItem="Jx4-s3-GF5" secondAttribute="leading" id="4ql-K8-hvg"/>
-                            <constraint firstItem="4Ee-CI-nWw" firstAttribute="top" secondItem="Jx4-s3-GF5" secondAttribute="top" constant="16" id="5kV-yc-5Nr"/>
+                            <constraint firstItem="4Ee-CI-nWw" firstAttribute="top" secondItem="Jx4-s3-GF5" secondAttribute="top" id="5kV-yc-5Nr"/>
                             <constraint firstItem="Nhg-Xu-SIS" firstAttribute="top" secondItem="Jx4-s3-GF5" secondAttribute="top" id="Ei8-ba-xcQ"/>
                             <constraint firstItem="cnm-9X-YXh" firstAttribute="trailing" secondItem="Nhg-Xu-SIS" secondAttribute="trailing" id="SuJ-r5-srt"/>
                             <constraint firstItem="cnm-9X-YXh" firstAttribute="bottom" secondItem="Nhg-Xu-SIS" secondAttribute="bottom" id="bR7-pZ-Zg3"/>
