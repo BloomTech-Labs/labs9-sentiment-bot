@@ -15,7 +15,6 @@ class LocalNotificationHelper: NSObject, UNUserNotificationCenterDelegate {
         super.init()
         let center = UNUserNotificationCenter.current()
         center.delegate = self
-        self.nextTriggerDate()
     }
     
     static let shared = LocalNotificationHelper()
