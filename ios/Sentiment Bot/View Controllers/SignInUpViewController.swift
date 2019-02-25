@@ -40,21 +40,22 @@ class SignInUpViewController: UIViewController {
     // MARK: - Properties
     
     var switchLogin = true
-    
     var user: User?
     let locationHelper = LocationHelper()
-    
+    var googleSignedIn = false
     var keyboardHeight: CGFloat = 0
     var slideFactor: CGFloat = 0
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.signUpView.translatesAutoresizingMaskIntoConstraints = true;
         self.signInView.translatesAutoresizingMaskIntoConstraints = true;
         self.robotImageView.translatesAutoresizingMaskIntoConstraints = true
         self.segmentedControl.translatesAutoresizingMaskIntoConstraints = true
+        
         signUpView.layer.cornerRadius = 10
         signInView.layer.cornerRadius = 10
         googleSignInButton.applyDesign()
@@ -84,50 +85,44 @@ class SignInUpViewController: UIViewController {
         
         signInButton.applyDesign()
         signUpButton.applyDesign()
-        signInView.center.x -= self.view.bounds.width
-        signUpView.center.x += self.view.bounds.width
+        
+        popSignIn()
+        popSignUp()
+        
+        
         
         guard let _ = GIDSignIn.sharedInstance()?.currentUser else {
             return
         }
         if UserDefaults.standard.userId != 0 {
             guard let user = user else { return }
-                if user.isAdmin {
-                    DispatchQueue.main.async {
-                        let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                        
-                        let managerVC = mainStoryBoard.instantiateViewController(withIdentifier: "ManagerTabBarContainerViewController") as! ManagerTabBarContainerViewController
-                        self.present(managerVC, animated: true) {
-                            
-                        }
-                    }
-                } else if user.isTeamMember {
+            if user.isAdmin {
+                DispatchQueue.main.async {
                     let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
                     
-                    let userVC = mainStoryBoard.instantiateViewController(withIdentifier: "UserTabBarContainerViewController") as! UserTabBarContainerViewController
-                    self.present(userVC, animated: true) {
+                    let managerVC = mainStoryBoard.instantiateViewController(withIdentifier: "ManagerTabBarContainerViewController") as! ManagerTabBarContainerViewController
+                    self.present(managerVC, animated: true) {
                         
                     }
-                } else {
-                    let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                }
+            } else if user.isTeamMember {
+                let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                
+                let userVC = mainStoryBoard.instantiateViewController(withIdentifier: "UserTabBarContainerViewController") as! UserTabBarContainerViewController
+                self.present(userVC, animated: true) {
                     
-                    let intialVC = mainStoryBoard.instantiateViewController(withIdentifier: "InitialViewController") as! InitialViewController
-                    self.present(intialVC, animated: true) {
-                        
-                    }
+                }
+            } else {
+                let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                
+                let intialVC = mainStoryBoard.instantiateViewController(withIdentifier: "InitialViewController") as! InitialViewController
+                self.present(intialVC, animated: true) {
+                    
+                }
             }
         }
-//        signInLeadingConstraint.constant -= view.bounds.width
-//        signUpLeadingConstraint.constant -= view.bounds.width
-//        signInTrailingConstraint.constant += view.bounds.width
-//        signUpTrailingConstraint.constant += view.bounds.width
-
-//        signInView.center.x -= view.bounds.width
-//        signUpView.center.x -= view.bounds.width
 
     }
-    
-    var googleSignedIn = false
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -168,11 +163,7 @@ class SignInUpViewController: UIViewController {
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        signUpView.center.x -= self.view.bounds.width
-    }
+    // MARK: - Private Functions
     
     private func getUser() {
         
@@ -215,9 +206,11 @@ class SignInUpViewController: UIViewController {
         APIController.shared.logIn(email: email, password: password) { (error) in
             
             if let error = error {
+                
                 //Better Error handling would be to show user error
                 //becuase the error that is retreived here may say something like
                 // "Password field cannot be empty", etc.
+                
                 DispatchQueue.main.async {
                     self.signInView.shake()
                 }
@@ -247,13 +240,14 @@ class SignInUpViewController: UIViewController {
                         }
                     }
                 }
-                
             }
         }
     }
     
     @IBAction func googleSignIn(_ sender: Any) {
         GIDSignIn.sharedInstance()?.signIn()
+        popSignIn()
+
     }
     
     @IBAction func signUp(_ sender: UIButton) {
@@ -276,9 +270,14 @@ class SignInUpViewController: UIViewController {
         APIController.shared.signUp(firstName: firstName, lastName: lastName, email: email, password: password) { (errorMessage) in
             
             if let errorMessage = errorMessage {
+                
                 //Better Error handling would be to show user error
                 //becuase the error that is retreived here may say something like
                 // "Password field cannot be empty", etc.
+                
+                DispatchQueue.main.async {
+                    self.signUpView.shake()
+                }
                 NSLog("Error signing up \(errorMessage)")
             } else {
                 DispatchQueue.main.async {
@@ -295,6 +294,9 @@ class SignInUpViewController: UIViewController {
     
     @IBAction func googleSignUP(_ sender: Any) {
         GIDSignIn.sharedInstance()?.signIn()
+        popSignIn()
+        popSignUp()
+        segmentedControl.selectedSegmentIndex = 0
     }
     
 }
@@ -339,6 +341,7 @@ extension SignInUpViewController: GIDSignInUIDelegate, GIDSignInDelegate {
     //Once the backend is implemented we can pass the current user to
     //TabBarViewController and further refactor only doing one api call
     //there instead of two as we're doing right now.
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToHomeScreen" {
             guard let destination = segue.destination as? TabBarViewController else { return }
@@ -356,8 +359,6 @@ extension SignInUpViewController: GIDSignInUIDelegate, GIDSignInDelegate {
 
 extension SignInUpViewController: UITextFieldDelegate {
     
-    
-    
     @objc func keyboardWillShow(_ notification: Notification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
@@ -371,15 +372,6 @@ extension SignInUpViewController: UITextFieldDelegate {
         }
     }
     
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        if textField == signInEmailTextField {
-//            signInPasswordTextField.becomeFirstResponder()
-//        } else {
-//            view.endEditing(true)
-//        }
-//        return false
-//    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == signInEmailTextField {
             signInPasswordTextField.becomeFirstResponder()
@@ -389,7 +381,6 @@ extension SignInUpViewController: UITextFieldDelegate {
         return false
     }
     
-    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
         slideFactor = view.frame.height / 8.5
@@ -397,16 +388,12 @@ extension SignInUpViewController: UITextFieldDelegate {
         var t = CGAffineTransform.identity
         t = t.scaledBy(x: 0.6, y: 0.6)
         t = t.translatedBy(x: 0, y: -90)
+        
         UIView.animate(withDuration: 0.3, delay: 0.0, options: [], animations: {
             self.robotImageView.transform = t
             self.segmentedControl.frame.origin.y -= self.slideFactor
             self.signInView.frame.origin.y -= self.slideFactor
             self.signUpView.frame.origin.y -= self.slideFactor
-
-//            print(self.view.bounds.height)
-//            print(216 - (self.view.bounds.height - self.signUpView.frame.origin.x))
-//            print(self.view.frame.height / 8.5)
-            
         }, completion: nil)
     }
     
@@ -440,48 +427,61 @@ extension SignInUpViewController {
     }
     
     func showSignIn() {
-        signInView.isHidden = false
         UIView.animate(withDuration: 0.5, delay: 0.0, options: [], animations: {
-            self.signInView.center.x += self.view.bounds.width
-            self.view.layoutIfNeeded()
-            }, completion: nil)
+            if !(self.signInView.center.x == self.view.bounds.width / 2) {
+                self.signInView.center.x += self.view.bounds.width
+                print("Show SignIn: \(self.signInView.center.x)")
+                print("Show View: \(self.view.bounds.width / 2)")
+            }
+        }, completion: nil)
     }
     
     func hideSignIn() {
-        signInView.isHidden = true
         UIView.animate(withDuration: 0.5, delay: 0.0, options: [], animations: {
-            self.signInView.center.x -= self.view.bounds.width
-            self.view.layoutIfNeeded()
-            }, completion: nil)
+            if !(self.signInView.center.x == self.view.bounds.width / -2) {
+                self.signInView.center.x -= self.view.bounds.width
+                print("Hide SignIn: \(self.signInView.center.x)")
+                print("Hide View: \(self.view.bounds.width / -2)")
+            }
+        }, completion: nil)
     }
     
     func showSignUp() {
-        signUpView.isHidden = false
         UIView.animate(withDuration: 0.5, delay: 0.0, options: [], animations: {
-            self.signUpView.center.x -= self.view.bounds.width
-            self.view.layoutIfNeeded()
-            }, completion: nil)
+            if !(self.signUpView.center.x == self.view.bounds.width / 2) {
+                self.signUpView.center.x -= self.view.bounds.width
+                print("Show SignUp: \(self.signUpView.center.x)")
+                print("Show View: \(self.view.bounds.width / 2)")
+            }
+        }, completion: nil)
     }
     
     func hideSignUp() {
-                signUpView.isHidden = true
         UIView.animate(withDuration: 0.5, delay: 0.0, options: [], animations: {
-            self.signUpView.center.x += self.view.bounds.width
-            self.view.layoutIfNeeded()
+            if !(self.signUpView.center.x == self.view.bounds.width * 1.5) {
+                self.signUpView.center.x += self.view.bounds.width
+                print("Hide SignUp: \(self.signUpView.center.x)")
+                print("Hide View: \(self.view.bounds.width * 1.5)")
+            }
+            
             }, completion: nil)
+    }
+    
+    func popSignIn() {
+        if !(signInView.center.x == view.bounds.width / -2) {
+            signInView.center.x -= view.bounds.width
+        }
+    }
+    
+    func popSignUp() {
+        if !(signUpView.center.x == view.bounds.width * 1.5) {
+            signUpView.center.x += view.bounds.width
+        }
     }
  
 }
 
-extension UIView {
-    
-    func shake() {
-        self.transform = CGAffineTransform(translationX: 20, y: 0)
-        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
-            self.transform = CGAffineTransform.identity
-        }, completion: nil)
-    }
-}
+
 
 // MARK: - For testing, auto logins
 

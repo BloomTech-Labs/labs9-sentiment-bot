@@ -31,6 +31,8 @@ class TimelineViewController: UIViewController, UserProtocol, TimeLineTableViewC
     var feelzImage: UIImage?
     var responseID: Int?
     
+    var newCell: TimeLineTableViewCell?
+    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
@@ -72,8 +74,6 @@ class TimelineViewController: UIViewController, UserProtocol, TimeLineTableViewC
             }
         })
     }
-    
-    var newCell: TimeLineTableViewCell?
 }
 
 // MARK: - TableView DataSourse and Delegate
@@ -176,6 +176,8 @@ extension TimelineViewController: UINavigationControllerDelegate, UIImagePickerC
             return
             
         }
+        
+        
         APIController.shared.uploadResponseSelfie(responseId: responseID, imageData: imageData) { (errorMessage) in
             if let errorMessage = errorMessage {
                 NSLog("Error uploading response selfie: \(errorMessage)")

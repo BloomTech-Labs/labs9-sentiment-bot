@@ -23,7 +23,7 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
     var responses: [Response]? = []
     var users: User?
     var team: Team?
-    var teamName = "Moin's team"
+    var teamName = "Moin's Team"
     
     // MARK: - View Life Cycle
     
@@ -147,52 +147,52 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
     // MARK: - Load Profile Picture
     
     @IBAction func selectImage(_ sender: UIButton) {
-            
-            let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (_) in
-                self.openCamera()
-            }))
-            alert.addAction(UIAlertAction(title: "Photos", style: .default, handler: { (_) in
-                self.openGallary()
-            }))
-            
-            alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
-            
-            // For iPad
-            switch UIDevice.current.userInterfaceIdiom {
-            case .pad:
-                alert.popoverPresentationController?.sourceView = sender
-                alert.popoverPresentationController?.sourceRect = sender.bounds
-                alert.popoverPresentationController?.permittedArrowDirections = .up
-            default:
-                break
-            }
-            
+        
+        let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (_) in
+            self.openCamera()
+        }))
+        alert.addAction(UIAlertAction(title: "Photos", style: .default, handler: { (_) in
+            self.openGallary()
+        }))
+        
+        alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
+        
+        // For iPad
+        switch UIDevice.current.userInterfaceIdiom {
+        case .pad:
+            alert.popoverPresentationController?.sourceView = sender
+            alert.popoverPresentationController?.sourceRect = sender.bounds
+            alert.popoverPresentationController?.permittedArrowDirections = .up
+        default:
+            break
+        }
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func openCamera() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            picker.sourceType = .camera
+            picker.cameraDevice = .front
+        } else {
+            let alert  = UIAlertController(title: "Warning", message: "Your device does not have a camera", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-        
-        func openCamera() {
-            let picker = UIImagePickerController()
-            picker.delegate = self
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                picker.sourceType = .camera
-                picker.cameraDevice = .front
-            } else {
-                let alert  = UIAlertController(title: "Warning", message: "Your device does not have a camera", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }
-            picker.allowsEditing = true
-            present(picker, animated: true)
-        }
-        
-        func openGallary() {
-            let picker = UIImagePickerController()
-            picker.delegate = self
-            picker.sourceType = .photoLibrary
-            picker.allowsEditing = true
-            present(picker, animated: true)
-        }
+        picker.allowsEditing = true
+        present(picker, animated: true)
+    }
+    
+    func openGallary() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        picker.allowsEditing = true
+        present(picker, animated: true)
+    }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
@@ -225,8 +225,7 @@ class UserContainerViewController: UIViewController, UINavigationControllerDeleg
                 let destination = nav.topViewController as! SettingsTableViewController
                 destination.user = users
             }
-
+            
         }
     }
 }
-
