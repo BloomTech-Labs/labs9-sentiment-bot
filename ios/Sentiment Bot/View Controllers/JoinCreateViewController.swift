@@ -61,7 +61,7 @@ class JoinCreateViewController: UIViewController {
         }))
         
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { [weak alert] (_) in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { [] (_) in
         }))
         
         present(alert, animated: true)
@@ -90,7 +90,7 @@ class JoinCreateViewController: UIViewController {
         }))
         
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { [weak alert] (_) in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { [] (_) in
         }))
         
         present(alert, animated: true)

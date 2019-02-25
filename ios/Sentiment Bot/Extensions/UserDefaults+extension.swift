@@ -34,8 +34,4 @@ extension UserDefaults {
     var teamID: Int {
         return integer(forKey: UserDefaultsKeys.teamId.rawValue)
     }
-    
-//    var teamName: String? {
-//        return string(forKey: UserDefaultsKeys.teamName.rawValue)
-//    }
 }

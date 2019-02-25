@@ -14,7 +14,7 @@ class TimelineViewController: UIViewController, UserProtocol, TimeLineTableViewC
     func selectImage(on cell: TimeLineTableViewCell) {
         guard let indexPath = timelineTableView.indexPath(for: cell) else { return }
         responseID = userResponses?[indexPath.row].id
-        takeSelfie()
+        takeSelfie(cell: cell)
     }
     
     // MARK: - Outlets
@@ -72,6 +72,8 @@ class TimelineViewController: UIViewController, UserProtocol, TimeLineTableViewC
             }
         })
     }
+    
+    var newCell: TimeLineTableViewCell?
 }
 
 // MARK: - TableView DataSourse and Delegate
@@ -109,11 +111,11 @@ extension TimelineViewController: UITableViewDataSource, UITableViewDelegate {
 extension TimelineViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBAction func imagePickerButton(_ sender: UIButton) {
-        takeSelfie()
+        //takeSelfie(cell: TimeLineTableViewCell)
     }
     
-    func takeSelfie() {
-        
+    func takeSelfie(cell: TimeLineTableViewCell) {
+        newCell = cell
         let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (_) in
             self.openCamera()
@@ -168,7 +170,7 @@ extension TimelineViewController: UINavigationControllerDelegate, UIImagePickerC
             NSLog("No image found")
             return
         }
-        
+        newCell?.feelzImageView.image = image
         guard let imageData = image.pngData(), let responseID = responseID else {
             dismiss(animated: true, completion: nil)
             return
@@ -178,12 +180,12 @@ extension TimelineViewController: UINavigationControllerDelegate, UIImagePickerC
             if let errorMessage = errorMessage {
                 NSLog("Error uploading response selfie: \(errorMessage)")
             }
-            APIController.shared.getUserResponses(userId: UserDefaults.standard.userId, completion: { (responses, error) in
-                DispatchQueue.main.async {
-                    self.userResponses = responses
-                    self.timelineTableView.reloadData()
-                }
-            })
+//            APIController.shared.getUserResponses(userId: UserDefaults.standard.userId, completion: { (responses, error) in
+//                DispatchQueue.main.async {
+//                    self.userResponses = responses
+//                    self.timelineTableView.reloadData()
+//                }
+//            })
         }
         
         dismiss(animated: true, completion: nil)

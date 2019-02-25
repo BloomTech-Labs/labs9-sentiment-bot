@@ -85,7 +85,17 @@ extension ManagerTimelineViewController: UITableViewDataSource, UITableViewDeleg
         cell.feelzImageView.layer.cornerRadius = cell.feelzImageView.frame.size.width / 2
         cell.feelzImageView.layer.masksToBounds = true
         let response = teamResponses![indexPath.row]
-        
+        if let imageUrl = response.imageUrl {
+            APIController.shared.getImage(url: imageUrl) { (image, error) in
+                if let error = error {
+                    NSLog("Error getting image \(error)")
+                } else if let image = image {
+                    DispatchQueue.main.async {
+                        cell.feelzImageView.image = image
+                    }
+                }
+            }
+        }
         cell.setResponse(response: response)
         
         return cell

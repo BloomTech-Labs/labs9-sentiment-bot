@@ -277,7 +277,7 @@
                                 <action selector="logout:" destination="GW6-l7-PL0" id="EMi-NA-j5L"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="fql-ar-Uv8">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="fql-ar-Uv8">
                             <connections>
                                 <action selector="doneButton:" destination="GW6-l7-PL0" id="5EB-1f-1LG"/>
                             </connections>
