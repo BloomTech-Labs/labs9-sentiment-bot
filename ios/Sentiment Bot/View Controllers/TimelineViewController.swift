@@ -111,7 +111,7 @@ extension TimelineViewController: UITableViewDataSource, UITableViewDelegate {
 extension TimelineViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBAction func imagePickerButton(_ sender: UIButton) {
-//        takeSelfie()
+        //takeSelfie(cell: TimeLineTableViewCell)
     }
     
     func takeSelfie(cell: TimeLineTableViewCell) {

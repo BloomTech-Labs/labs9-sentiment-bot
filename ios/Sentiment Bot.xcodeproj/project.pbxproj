@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C99F989B5C76ECD3F5C3CD2 /* Pods_Sentiment_Bot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C4288AE6B4B1B0B2C7069D /* Pods_Sentiment_Bot.framework */; };
+		A1279E1D222373E200D3D3C8 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1279E1C222373E200D3D3C8 /* InitialViewController.swift */; };
 		A13547BE21E69C5D0045C5F0 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13547BD21E69C5D0045C5F0 /* APIController.swift */; };
 		A13547C021E69D160045C5F0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13547BF21E69D160045C5F0 /* User.swift */; };
 		A13547C421E6D06D0045C5F0 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13547C321E6D06D0045C5F0 /* Response.swift */; };
@@ -21,9 +22,6 @@
 		A140D94321F17DE2008963C1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D94221F17DE2008963C1 /* SignInViewController.swift */; };
 		A140D94521F17E31008963C1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D94421F17E31008963C1 /* SignUpViewController.swift */; };
 		A140D94721F17F9E008963C1 /* SegmentedControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D94621F17F9E008963C1 /* SegmentedControlViewController.swift */; };
-		A140D94E21F40E30008963C1 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A140D94D21F40E30008963C1 /* Stripe.framework */; };
-		A140D95021F41620008963C1 /* StripeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D94F21F41620008963C1 /* StripeController.swift */; };
-		A140D95221F419E3008963C1 /* PremiumCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D95121F419E3008963C1 /* PremiumCheckoutViewController.swift */; };
 		A140D95621F54B92008963C1 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D95521F54B92008963C1 /* ErrorMessage.swift */; };
 		A140D95A21F69257008963C1 /* ManagerTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D95921F69257008963C1 /* ManagerTabBarViewController.swift */; };
 		A140D95C21F69298008963C1 /* SendSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D95B21F69298008963C1 /* SendSurveyViewController.swift */; };
@@ -33,8 +31,6 @@
 		A140D96821F6A549008963C1 /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D96721F6A549008963C1 /* SubscriptionViewController.swift */; };
 		A140D96A21F6BE99008963C1 /* Feeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D96921F6BE99008963C1 /* Feeling.swift */; };
 		A140D96C21F6E127008963C1 /* ManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D96B21F6E127008963C1 /* ManagerProtocol.swift */; };
-		A140D97221F76DB2008963C1 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140D97121F76DB2008963C1 /* InitialViewController.swift */; };
-		A140D97421F785FE008963C1 /* PremiumCheckout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A140D97321F785FE008963C1 /* PremiumCheckout.storyboard */; };
 		A140D97621F78646008963C1 /* ManagerTimeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A140D97521F78646008963C1 /* ManagerTimeline.storyboard */; };
 		A140D97821F7868D008963C1 /* TeamMembers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A140D97721F7868D008963C1 /* TeamMembers.storyboard */; };
 		A140D97A21F786BC008963C1 /* SendSurvey.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A140D97921F786BC008963C1 /* SendSurvey.storyboard */; };
@@ -57,7 +53,6 @@
 		A1F953022202244000C3CC9C /* JoinCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F953012202244000C3CC9C /* JoinCreateViewController.swift */; };
 		A1F95304220278B000C3CC9C /* UserTabBarContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F95303220278B000C3CC9C /* UserTabBarContainerViewController.swift */; };
 		A1F95306220278CD00C3CC9C /* ManagerTabBarContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F95305220278CD00C3CC9C /* ManagerTabBarContainerViewController.swift */; };
-		F10B4A8621F8CE7F00597DC8 /* InitialViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F10B4A8521F8CE7F00597DC8 /* InitialViewController.storyboard */; };
 		F14A520922012DE500274F6F /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A520822012DE500274F6F /* SettingsTableViewController.swift */; };
 		F15713C421FD775100F6A62F /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15713C321FD775100F6A62F /* Theme.swift */; };
 		F15713C82200337F00F6A62F /* ManagerTimelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15713C72200337F00F6A62F /* ManagerTimelineTableViewCell.swift */; };
@@ -82,7 +77,8 @@
 
 /* Begin PBXFileReference section */
 		3E65500EBE0280EA0839F9CF /* Pods-Sentiment Bot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sentiment Bot.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sentiment Bot/Pods-Sentiment Bot.release.xcconfig"; sourceTree = "<group>"; };
-		A13547BD21E69C5D0045C5F0 /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIController.swift; path = ../APIController.swift; sourceTree = "<group>"; };
+		A1279E1C222373E200D3D3C8 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		A13547BD21E69C5D0045C5F0 /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		A13547BF21E69D160045C5F0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A13547C321E6D06D0045C5F0 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		A13547C621E6D0C70045C5F0 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
@@ -95,9 +91,6 @@
 		A140D94221F17DE2008963C1 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		A140D94421F17E31008963C1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A140D94621F17F9E008963C1 /* SegmentedControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlViewController.swift; sourceTree = "<group>"; };
-		A140D94D21F40E30008963C1 /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
-		A140D94F21F41620008963C1 /* StripeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeController.swift; sourceTree = "<group>"; };
-		A140D95121F419E3008963C1 /* PremiumCheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumCheckoutViewController.swift; sourceTree = "<group>"; };
 		A140D95521F54B92008963C1 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		A140D95921F69257008963C1 /* ManagerTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerTabBarViewController.swift; sourceTree = "<group>"; };
 		A140D95B21F69298008963C1 /* SendSurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendSurveyViewController.swift; sourceTree = "<group>"; };
@@ -107,8 +100,6 @@
 		A140D96721F6A549008963C1 /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
 		A140D96921F6BE99008963C1 /* Feeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feeling.swift; sourceTree = "<group>"; };
 		A140D96B21F6E127008963C1 /* ManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerProtocol.swift; sourceTree = "<group>"; };
-		A140D97121F76DB2008963C1 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
-		A140D97321F785FE008963C1 /* PremiumCheckout.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PremiumCheckout.storyboard; sourceTree = "<group>"; };
 		A140D97521F78646008963C1 /* ManagerTimeline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ManagerTimeline.storyboard; sourceTree = "<group>"; };
 		A140D97721F7868D008963C1 /* TeamMembers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TeamMembers.storyboard; sourceTree = "<group>"; };
 		A140D97921F786BC008963C1 /* SendSurvey.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SendSurvey.storyboard; sourceTree = "<group>"; };
@@ -132,7 +123,6 @@
 		A1F95303220278B000C3CC9C /* UserTabBarContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTabBarContainerViewController.swift; sourceTree = "<group>"; };
 		A1F95305220278CD00C3CC9C /* ManagerTabBarContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerTabBarContainerViewController.swift; sourceTree = "<group>"; };
 		D5A27D069A6F1B1A0A158705 /* Pods-Sentiment Bot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sentiment Bot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sentiment Bot/Pods-Sentiment Bot.debug.xcconfig"; sourceTree = "<group>"; };
-		F10B4A8521F8CE7F00597DC8 /* InitialViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = InitialViewController.storyboard; sourceTree = "<group>"; };
 		F138A56521F6172C0004334F /* Sentiment Bot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sentiment Bot.entitlements"; sourceTree = "<group>"; };
 		F14A520822012DE500274F6F /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		F15713C321FD775100F6A62F /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -165,7 +155,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1EA606321ECFD4E00ACE25D /* JWTDecode.framework in Frameworks */,
-				A140D94E21F40E30008963C1 /* Stripe.framework in Frameworks */,
 				A14A444E220A6CAC0012C5FE /* SVProgressHUD.framework in Frameworks */,
 				0C99F989B5C76ECD3F5C3CD2 /* Pods_Sentiment_Bot.framework in Frameworks */,
 				A140D97E21FA9DEB008963C1 /* Charts.framework in Frameworks */,
@@ -236,7 +225,6 @@
 				A14A444D220A6CAB0012C5FE /* SVProgressHUD.framework */,
 				A140D97F21FC1DA1008963C1 /* Eureka.framework */,
 				A140D97D21FA9DEA008963C1 /* Charts.framework */,
-				A140D94D21F40E30008963C1 /* Stripe.framework */,
 				A1EA606221ECFD4D00ACE25D /* JWTDecode.framework */,
 				F7C4288AE6B4B1B0B2C7069D /* Pods_Sentiment_Bot.framework */,
 			);
@@ -276,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				F138A56521F6172C0004334F /* Sentiment Bot.entitlements */,
+				A13547BD21E69C5D0045C5F0 /* APIController.swift */,
 				A140D93D21EFEAB7008963C1 /* Protocols */,
 				A1EA606721ECFF7800ACE25D /* Extensions */,
 				A1EA605C21E8274500ACE25D /* Helpers */,
@@ -292,12 +281,10 @@
 			isa = PBXGroup;
 			children = (
 				A1F952FF2202202900C3CC9C /* InitialVC.storyboard */,
-				F10B4A8521F8CE7F00597DC8 /* InitialViewController.storyboard */,
 				F1B7E59321E547460096FC6F /* LaunchScreen.storyboard */,
 				F1B7E58E21E547450096FC6F /* Main.storyboard */,
 				A140D97521F78646008963C1 /* ManagerTimeline.storyboard */,
 				F1CDD23D21ECFF36008E7A57 /* Map.storyboard */,
-				A140D97321F785FE008963C1 /* PremiumCheckout.storyboard */,
 				A140D97921F786BC008963C1 /* SendSurvey.storyboard */,
 				A140D97B21F786E7008963C1 /* SentimentReport.storyboard */,
 				F1CDD27021ED99D5008E7A57 /* Settings.storyboard */,
@@ -314,8 +301,6 @@
 				A1EA607721EE56E300ACE25D /* credentials.plist */,
 				F1B7E59621E547460096FC6F /* Info.plist */,
 				F1B7E58A21E547450096FC6F /* AppDelegate.swift */,
-				A13547BD21E69C5D0045C5F0 /* APIController.swift */,
-				A140D94F21F41620008963C1 /* StripeController.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -325,7 +310,6 @@
 			children = (
 				A1DA7AE921FD56200006F7A7 /* FeelingTableViewCell.swift */,
 				A1EA607921EE57B000ACE25D /* GoogleSignInViewController.swift */,
-				A140D97121F76DB2008963C1 /* InitialViewController.swift */,
 				A1F953012202244000C3CC9C /* JoinCreateViewController.swift */,
 				A1DA7AEB21FD6D650006F7A7 /* ManagementViewController.swift */,
 				A1F95305220278CD00C3CC9C /* ManagerTabBarContainerViewController.swift */,
@@ -335,7 +319,6 @@
 				F1ECBD0521E70C26005CDBE8 /* MapViewController.swift */,
 				F1C3CBDA2200D3A000CE2A31 /* MembersTableViewCell.swift */,
 				A140D96521F6A352008963C1 /* MembersTableViewController.swift */,
-				A140D95121F419E3008963C1 /* PremiumCheckoutViewController.swift */,
 				A140D94621F17F9E008963C1 /* SegmentedControlViewController.swift */,
 				A1DA7AE521FD50910006F7A7 /* SendSurveyFormViewController.swift */,
 				A140D95B21F69298008963C1 /* SendSurveyViewController.swift */,
@@ -350,6 +333,7 @@
 				F1DFA0C021F924290078B8C5 /* UserContainerViewController.swift */,
 				A1F95303220278B000C3CC9C /* UserTabBarContainerViewController.swift */,
 				F1B9B77E220A1B88002DC836 /* SignInUpViewController.swift */,
+				A1279E1C222373E200D3D3C8 /* InitialViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -425,9 +409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A140D97A21F786BC008963C1 /* SendSurvey.storyboard in Resources */,
-				A140D97421F785FE008963C1 /* PremiumCheckout.storyboard in Resources */,
 				F1B7E59521E547460096FC6F /* LaunchScreen.storyboard in Resources */,
-				F10B4A8621F8CE7F00597DC8 /* InitialViewController.storyboard in Resources */,
 				A1EA607821EE56E400ACE25D /* credentials.plist in Resources */,
 				F1CDD23F21ECFF36008E7A57 /* Map.storyboard in Resources */,
 				F1CDD23C21ECFF06008E7A57 /* Timeline.storyboard in Resources */,
@@ -497,7 +479,6 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/JWTDecode.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Stripe.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Charts.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Eureka.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SVProgressHUD.framework",
@@ -506,7 +487,6 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/JWTDecode.framework",
-				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/Stripe.framework",
 				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/Charts.framework",
 				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/Eureka.framework",
 				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/SVProgressHUD.framework",
@@ -570,6 +550,7 @@
 				F15713C82200337F00F6A62F /* ManagerTimelineTableViewCell.swift in Sources */,
 				A140D93F21EFEDC1008963C1 /* UserProtocol.swift in Sources */,
 				A1EA607A21EE57B000ACE25D /* GoogleSignInViewController.swift in Sources */,
+				A1279E1D222373E200D3D3C8 /* InitialViewController.swift in Sources */,
 				F18865D221EEB306008F9D35 /* TestUser.swift in Sources */,
 				F15713C421FD775100F6A62F /* Theme.swift in Sources */,
 				A1F953022202244000C3CC9C /* JoinCreateViewController.swift in Sources */,
@@ -585,7 +566,6 @@
 				A140D96421F6A2F7008963C1 /* ManagerTimelineViewController.swift in Sources */,
 				A140D95A21F69257008963C1 /* ManagerTabBarViewController.swift in Sources */,
 				F1B9B783220A46A0002DC836 /* UIColor+extension.swift in Sources */,
-				A140D97221F76DB2008963C1 /* InitialViewController.swift in Sources */,
 				A140D96C21F6E127008963C1 /* ManagerProtocol.swift in Sources */,
 				A140D93A21EEEEED008963C1 /* ReversedGeoLocation.swift in Sources */,
 				F1ECBD0221E70BF5005CDBE8 /* TimelineViewController.swift in Sources */,
@@ -593,9 +573,7 @@
 				F1C3CBDB2200D3A000CE2A31 /* MembersTableViewCell.swift in Sources */,
 				A140D96A21F6BE99008963C1 /* Feeling.swift in Sources */,
 				A140D94521F17E31008963C1 /* SignUpViewController.swift in Sources */,
-				A140D95021F41620008963C1 /* StripeController.swift in Sources */,
 				A140D95621F54B92008963C1 /* ErrorMessage.swift in Sources */,
-				A140D95221F419E3008963C1 /* PremiumCheckoutViewController.swift in Sources */,
 				F1ECBD0621E70C26005CDBE8 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

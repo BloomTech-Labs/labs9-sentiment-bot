@@ -11,7 +11,7 @@ import Eureka
 
 class SendSurveyFormViewController: FormViewController, ManagerProtocol {
     var teamMembers: [User]?
-    
+    var addFeelingRow: TextRow?
     var user: User?
     
     var teamResponses: [Response]?
@@ -52,11 +52,16 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
         return date
     }
     
-
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        if Theme.current == .dark {
+            header.textLabel?.textColor = UIColor.black
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let selectScheduleSection = Section("Select Schedule")
         form +++ selectScheduleSection
             <<< PickerInputRow<String>("Picker Input Row"){
@@ -106,8 +111,10 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
 //
 //                    })
 //            }
+            
             +++ Section("Add a Feeling")
             <<< TextRow(){ row in
+                addFeelingRow = row
                 row.title = "  Feeling:"
                 row.placeholder = "Enter text here"
                 row.add(rule: RuleMaxLength(maxLength: 10))
@@ -121,7 +128,7 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
                 }
                 .cellUpdate { cell, row in
                     if !row.isValid {
-                        cell.titleLabel?.textColor = .red
+                        //cell.titleLabel?.textColor = .red
                     }
                 }
 //                .onRowValidationChanged { cell, row in
@@ -148,6 +155,8 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
                 $0.cell.layoutMargins = UIEdgeInsets.zero
                 self.selectedEmoji = $0.value
                 $0.selectorTitle = "Emojis"
+                }.cellSetup { (cell, row) in
+                    //cell.selectionStyle = .none
                 }.onPresent { from, to in
                     to.dismissOnSelection = true
                     to.dismissOnChange = false
@@ -176,7 +185,7 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
                 row.title = "Add"
                 }
                 .onCellSelection { [weak self] (cell, row) in
-                    row.section?.form?.validate()
+                    //row.section?.form?.validate()
                     
                     guard let mood = self?.feelingName,
                         let emoji = self?.selectedEmoji,
@@ -184,6 +193,7 @@ class SendSurveyFormViewController: FormViewController, ManagerProtocol {
                             NSLog("Mood and Emoji weren't entered on Form")
                             return
                     }
+                    self?.addFeelingRow?.value = ""
                     APIController.shared.createFeelingForSurvey(mood: mood, emoji: emoji, surveyId: survey.id, completion: { (feeling, errorMessage) in
                         if let feeling = feeling {
                             let sendSurveyViewController = self?.parent as! SendSurveyViewController
