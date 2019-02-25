@@ -78,7 +78,7 @@
 /* Begin PBXFileReference section */
 		3E65500EBE0280EA0839F9CF /* Pods-Sentiment Bot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sentiment Bot.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sentiment Bot/Pods-Sentiment Bot.release.xcconfig"; sourceTree = "<group>"; };
 		A1279E1C222373E200D3D3C8 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
-		A13547BD21E69C5D0045C5F0 /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIController.swift; path = ../APIController.swift; sourceTree = "<group>"; };
+		A13547BD21E69C5D0045C5F0 /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		A13547BF21E69D160045C5F0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A13547C321E6D06D0045C5F0 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		A13547C621E6D0C70045C5F0 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
@@ -264,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				F138A56521F6172C0004334F /* Sentiment Bot.entitlements */,
+				A13547BD21E69C5D0045C5F0 /* APIController.swift */,
 				A140D93D21EFEAB7008963C1 /* Protocols */,
 				A1EA606721ECFF7800ACE25D /* Extensions */,
 				A1EA605C21E8274500ACE25D /* Helpers */,
@@ -300,7 +301,6 @@
 				A1EA607721EE56E300ACE25D /* credentials.plist */,
 				F1B7E59621E547460096FC6F /* Info.plist */,
 				F1B7E58A21E547450096FC6F /* AppDelegate.swift */,
-				A13547BD21E69C5D0045C5F0 /* APIController.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
