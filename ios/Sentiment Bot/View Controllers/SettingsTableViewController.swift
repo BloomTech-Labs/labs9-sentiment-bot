@@ -8,9 +8,8 @@
 
 import UIKit
 import GoogleSignIn
-import Stripe
 import SVProgressHUD
-class SettingsTableViewController: UITableViewController, STPAddCardViewControllerDelegate {
+class SettingsTableViewController: UITableViewController {
     
     var user: User?
     @IBOutlet weak var themeSelector: UISegmentedControl!
@@ -19,9 +18,9 @@ class SettingsTableViewController: UITableViewController, STPAddCardViewControll
     override func viewDidLoad() {
         super.viewDidLoad()
         if (user?.subscribed)! {
-            self.subscriptionLabel.text = "Cancel"
+            //self.subscriptionLabel.text = "Cancel"
         } else if !user!.subscribed {
-           self.subscriptionLabel.text = "Subscribe"
+           //self.subscriptionLabel.text = "Subscribe"
         }
         themeSelector.selectedSegmentIndex = Theme.current.rawValue
         themeSelector.layer.cornerRadius = 5.0
@@ -32,44 +31,9 @@ class SettingsTableViewController: UITableViewController, STPAddCardViewControll
         super.viewDidAppear(animated)
         
     }
-    
-    @IBAction func subscribe(_ sender: UIButton) {
-        // Setup add card view controller
-        let addCardViewController = STPAddCardViewController()
-        addCardViewController.delegate = self
-        addCardViewController.title = "Subscribe to Premium"
-        
-        // Present add card view controller
-        let navigationController = UINavigationController(rootViewController: addCardViewController)
-        present(navigationController, animated: true)
-    }
-    
-    // MARK: STPAddCardViewControllerDelegate
-    
-    func addCardViewControllerDidCancel(_ addCardViewController: STPAddCardViewController) {
-        // Dismiss add card view controller
-        dismiss(animated: true)
-    }
-    
-    var stripeToken: String?
+
 
     
-    func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken, completion: @escaping STPErrorBlock) {
-        title = "Subscribe to Premium"
-        stripeToken = token.tokenId
-        print("Printing Strip response:\(token.allResponseFields)\n\n")
-        print("Printing Strip Token:\(token.tokenId)")
-        
-        
-        StripeController.shared.subscribeToPremium(token: stripeToken!) { (error) in
-            DispatchQueue.main.async {
-                self.subscriptionLabel.text = "Cancel"
-                self.dismiss(animated: true)
-            }
-            self.user?.subscribed = true
-        }
-        
-    }
     
     func reloadViewFromNib() {
         let parent = view.superview
@@ -109,43 +73,6 @@ class SettingsTableViewController: UITableViewController, STPAddCardViewControll
         APIController.shared.logout()
     }
     
-    private func toggleSubscrption() {
-        if (user?.subscribed)! {
-            
-            let alert = UIAlertController(title: "Are You Sure?", message: nil, preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { [] (_) in
-                let progressWithStatus = SVProgressHUD.self
-                progressWithStatus.setBackgroundColor(Theme.current.mainColor)
-                progressWithStatus.show(withStatus: "Canceling...")
-                StripeController.shared.cancelPremiumSubscription { (error) in
-                    progressWithStatus.showSuccess(withStatus: "Canceled")
-                    progressWithStatus.dismiss(withDelay: 1.0)
-                    DispatchQueue.main.async {
-                        self.subscriptionLabel.text = "Subscribe"
-                    }
-                    self.user?.subscribed = false
-                }
-            }))
-            
-            alert.addAction(UIAlertAction(title: "No", style: .default, handler: { [] (_) in
-                
-            }))
-            
-            present(alert, animated: true)
-            return
-        }
-        // Setup add card view controller
-        let addCardViewController = STPAddCardViewController()
-        addCardViewController.delegate = self
-        addCardViewController.title = "Subscribe to Premium"
-        
-        
-        // Present add card view controller
-        let navigationController = UINavigationController(rootViewController: addCardViewController)
-        //self.navigationController?.pushViewController(addCardViewController, animated: true)
-        present(navigationController, animated: true)
-    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -197,7 +124,7 @@ class SettingsTableViewController: UITableViewController, STPAddCardViewControll
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (user?.isAdmin)! {
             if indexPath.row == 0 && indexPath.section == 1 {
-                toggleSubscrption()
+                //toggleSubscrption()
             }
         } else if !(user?.isAdmin)! {
             if indexPath.row == 2 && indexPath.section == 2 {

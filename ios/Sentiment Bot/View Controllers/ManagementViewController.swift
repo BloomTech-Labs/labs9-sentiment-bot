@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import Stripe
 import UserNotifications
 import SVProgressHUD
 
-class ManagementViewController: UIViewController, STPAddCardViewControllerDelegate, ManagerProtocol, UNUserNotificationCenterDelegate {
+class ManagementViewController: UIViewController, ManagerProtocol, UNUserNotificationCenterDelegate {
     
     // MARK: - Outlets
     
@@ -119,57 +118,8 @@ class ManagementViewController: UIViewController, STPAddCardViewControllerDelega
             progressWithStatus.dismiss(withDelay: 1)
         }
     }
-    
-    @IBAction func cancelSubscription(_ sender: Any) {
-        StripeController.shared.cancelPremiumSubscription { (errorMessage) in
-            
-        }
-    }
-    
-    @IBAction func toggleSubscription(_ sender: UIButton) {
-        if (user?.subscribed)! {
-            StripeController.shared.cancelPremiumSubscription { (error) in
-                DispatchQueue.main.async {
-                    self.subscriptionButton.setTitle("Subscribe", for: .normal)
-                }
-                self.user?.subscribed = false
-            }
-            return
-        }
-        // Setup add card view controller
-        let addCardViewController = STPAddCardViewController()
-        addCardViewController.delegate = self
-        addCardViewController.title = "Subscribe to Premium"
-        
-        // Present add card view controller
-        //let navigationController = UINavigationController(rootViewController: addCardViewController)
-        self.navigationController?.pushViewController(addCardViewController, animated: true)
-        //present(navigationController, animated: true)
-    }
-    
-    // MARK: STPAddCardViewControllerDelegate
-    
-    func addCardViewControllerDidCancel(_ addCardViewController: STPAddCardViewController) {
-        // Dismiss add card view controller
-        //dismiss(animated: true)
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken, completion: @escaping STPErrorBlock) {
-        addCardViewController.title = "Subscribe to Premium"
-        stripeToken = token.tokenId
-        dismiss(animated: true)
-    }
-    
-    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
-        StripeController.shared.subscribeToPremium(token: stripeToken!) { (error) in
-            DispatchQueue.main.async {
-                self.subscriptionButton.setTitle("Cancel", for: .normal)
-                self.navigationController?.popViewController(animated: true)
-            }
-            self.user?.subscribed = true
-        }
-    }
+
+
     
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToSendSurveyViewController" {
