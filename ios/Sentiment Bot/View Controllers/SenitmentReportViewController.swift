@@ -24,7 +24,6 @@ class SenitmentReportViewController: UIViewController, ManagerProtocol {
     var survey: Survey?
     var teamMembers: [User]?
     
-//    var emojiSelection: [String] = ["😐" ,"😃","😢","😑","😞", "😡", "😊"]
     var emojiSelection: [String] = ["😃","😊","😐","😑","😢","😞","😡"]
     
     override func viewDidLoad() {

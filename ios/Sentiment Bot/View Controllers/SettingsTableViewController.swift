@@ -17,11 +17,6 @@ class SettingsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (user?.subscribed)! {
-            //self.subscriptionLabel.text = "Cancel"
-        } else if !user!.subscribed {
-           //self.subscriptionLabel.text = "Subscribe"
-        }
         themeSelector.selectedSegmentIndex = Theme.current.rawValue
         themeSelector.layer.cornerRadius = 5.0
         themeSelector.clipsToBounds = true
@@ -32,8 +27,6 @@ class SettingsTableViewController: UITableViewController {
         
     }
 
-
-    
     
     func reloadViewFromNib() {
         let parent = view.superview
@@ -75,22 +68,17 @@ class SettingsTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         guard let user = user else {
             NSLog("User wasn't passed to SettingsViewController")
             return 0
         }
-        
         if section == 0 {
             return 1
         }
-        if section == 1 && !user.isAdmin {
+        if section == 1 && user.isAdmin {
             return 0
-        }
-        if section == 2 && user.isAdmin {
-            return 2
-        } else if section == 2 && !user.isAdmin{
-            return 3
+        } else if section == 1 && !user.isAdmin{
+            return 1
         }
         return 1
     }
@@ -108,7 +96,6 @@ class SettingsTableViewController: UITableViewController {
                 DispatchQueue.main.async {
                     self.logout(self)
                 }
-
             })
         }))
         
@@ -122,12 +109,8 @@ class SettingsTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (user?.isAdmin)! {
-            if indexPath.row == 0 && indexPath.section == 1 {
-                //toggleSubscrption()
-            }
-        } else if !(user?.isAdmin)! {
-            if indexPath.row == 2 && indexPath.section == 2 {
+        if !(user?.isAdmin)! {
+            if indexPath.row == 2 && indexPath.section == 1 {
                 leaveTeam()
             }
         }
@@ -138,7 +121,7 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section ==  1 && !(user?.isAdmin)! {
+        if section ==  1 && (user?.isAdmin)! {
            return 0
         }
         return tableView.sectionHeaderHeight
