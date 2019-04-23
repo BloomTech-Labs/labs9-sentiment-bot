@@ -84,7 +84,6 @@ class SettingsTableViewController: UITableViewController {
     }
     
     func leaveTeam() {
-        
         guard let user = user else {
             NSLog("User wasn't set on SettingsViewController")
             return
@@ -110,7 +109,7 @@ class SettingsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if !(user?.isAdmin)! {
-            if indexPath.row == 2 && indexPath.section == 1 {
+            if indexPath.row == 0 && indexPath.section == 1 {
                 leaveTeam()
             }
         }
