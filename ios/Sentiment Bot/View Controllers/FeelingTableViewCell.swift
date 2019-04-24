@@ -32,8 +32,5 @@ class FeelingTableViewCell: UITableViewCell {
     }
     @IBOutlet weak var emojiLabel: UILabel!
     @IBOutlet weak var feelingLabel: UILabel!
-    
-    
-    //var feeling: Feeling?
-    
+
 }

@@ -45,12 +45,6 @@ class ManagementViewController: UIViewController, ManagerProtocol, UNUserNotific
         
         sendSurveyButton.applyDesign()
         sendNowButton.applyDesign()
-        
-        //        if (user?.subscribed)! {
-        //            subscriptionButton.setTitle("Cancel", for: .normal)
-        //        } else if !(user?.subscribed)! {
-        //            subscriptionButton.setTitle("Subscribe", for: .normal)
-        //        }
         sendNowButton.applyDesign()
         sendSurveyButton.applyDesign()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
